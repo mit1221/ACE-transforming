@@ -45,11 +45,11 @@ function play(el) {
 
 function move_slider(position, selected) {
   // 'selected' is either 'before' or 'after' only
-  if (selected == 'after') {
-    $('.resize:eq(' + position +')').animate({width: '99%'});
-    $('.handle:eq(' + position +')').animate({left: '99%'});
+  if (selected == 'before') {
+    $('.resize:eq(' + position +')').animate({width: '95%'});
+    $('.handle:eq(' + position +')').animate({left: '95%'});
   } else {
-    $('.resize:eq(' + position +')').animate({width: '1%'});
-    $('.handle:eq(' + position +')').animate({left: '1%'});
+    $('.resize:eq(' + position +')').animate({width: '5%'});
+    $('.handle:eq(' + position +')').animate({left: '5%'});
   }
 }
