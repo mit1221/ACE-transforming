@@ -273,10 +273,8 @@ body {
   height: 300px;
   width: 100%;
   object-fit: cover;
-  -webkit-animation-name: move-in; /* Safari 4.0 - 8.0 */
-  -webkit-animation-duration: 4s; /* Safari 4.0 - 8.0 */
-  animation-name: move-in;
-  animation-duration: 1.5s;
+  -webkit-animation: move-in 1.5s; /* Safari 4.0 - 8.0 */
+  animation: move-in 1.5s;
   position: relative;
   z-index: -1;
 }
@@ -390,14 +388,19 @@ h3 {
 
 h4 {
   font-size: 1.1em;
-  font-weight: bold;
+  font-weight: normal;
   padding: 0;
+  color: #002A5C;
   margin: 0 0 10px 0;
 }
 
 .button-group {
   display: flex;
   width: 100%;
+}
+
+section {
+  margin-bottom: 50px;
 }
 
 button {
@@ -410,11 +413,11 @@ button {
   font-size: 16px;
   transition: 0.2s;
   cursor: pointer;
+  font-family: 'Open Sans', Verdana, Geneva, Sans-Serif, Arial, Helvetica;
 }
 
-button:hover {
-  color: white;
-  background: #002A5C;
+button:hover:not(.btn-active) {
+  background: #ccc;
 }
 
 button:active {
@@ -429,19 +432,14 @@ button:active {
 
 .button-group-button:first-child {
   border-left: 1px solid #002A5C;
-  border-top-left-radius: 5px;
-  border-bottom-left-radius: 5px;
-}
-
-.button-group-button:last-child {
-  border-top-right-radius: 5px;
-  border-bottom-right-radius: 5px;
 }
 
 .btn-active {
   background: #002A5C;
   color: white;
   box-shadow: 0px 0px 26px 0px rgba(0, 0, 0, 0.5) inset;
+  cursor: default;
+  pointer-events: none;
 }
 /* ========================== COMPLETED WORKS ========================== */
 
@@ -609,4 +607,52 @@ button:active {
     line-height: 48px;
     font-size: 30px;
   }
+}
+
+/* ========================== FEEDBACK ========================== */
+.rooms {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+.card {
+  width: 270px;
+  height: 100px;
+  box-shadow: 0px 0px 25px 0px rgba(0, 0, 0, 0.4);
+  background: #002A5C;
+  display: flex;
+  align-items: center;
+  border-radius: 10px;
+  margin-right: 30px;
+  margin-bottom: 30px;
+  cursor: pointer;
+  transition: 0.2s;
+  -webkit-animation: move-in 0.3s ease-out; /* Safari 4.0 - 8.0 */
+  animation: move-in 0.3s ease-out;
+}
+
+
+.card:hover {
+  box-shadow: 0px 5px 35px 0px rgba(0, 0, 0, 0.6);
+  transform: scale(1.1);
+}
+
+.card img {
+  height: 100px;
+  width: 156px;
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+  border-right: 4px solid white;
+}
+
+.card h4 {
+  flex: 1;
+  text-align: center;
+  color: white;
+}
+
+#content h3 {
+  -webkit-animation: move-in 0.4s ease-out; /* Safari 4.0 - 8.0 */
+  animation: move-in 0.4s ease-out;
 }

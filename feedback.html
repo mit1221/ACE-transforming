@@ -16,6 +16,8 @@
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700" rel="stylesheet">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="js/navbar.js"></script>
+  <script src="js/button_toggle.js"></script>
+  <script src="js/show_rooms.js"></script>
 </head>
 
 <body>
@@ -112,14 +114,14 @@
     <div class="wrapper">
       <div id="main">
         <h1>Feedback</h1>
-        <div>
+        <section>
           <h2>Give feedback for:</h2>
-          <div class="button-group">
-            <button class="button-group-button btn-active">Completed Rooms</button>
-            <button class="button-group-button">Ongoing Rooms</button>
+          <div id="completed-ongoing-group" class="button-group">
+            <button onclick="show_rooms('completed')" class="button-group-button">Completed Rooms</button>
+            <button onclick="show_rooms('ongoing')" class="button-group-button">Rooms in Progress</button>
           </div>
-        </div>
-
+        </section>
+        <section id="content"></section>
       </div>
     </div>
   </div>

@@ -29,7 +29,7 @@ function animate() {
   for (var i = 0; i < ba_containers.length; i++) {
     var child = ba_containers[i];
     var top = child.getBoundingClientRect().top;
-    if (top < 400 && top > 0 && animated_array[i] == false) {
+    if (top < 400 && top > -100 && animated_array[i] == false) {
       play(resize_array[i]);
       play(before_text_array[i]);
       play(after_text_array[i]);
