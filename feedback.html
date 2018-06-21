@@ -102,18 +102,22 @@
     <div class="wrapper">
       <div id="main">
         <h1>Feedback</h1>
-        <div class="form_container">
+        <div class="form-container">
           <form method="post" name="feedback" onsubmit="return validateForm()">
             <div class="name-email">
-              <div>Full Name:<br><input type="text" name="name" autofocus></div>
+              <div class="fullname">
+                <div>Full Name:<br><input type="text" name="firstname" placeholder="First Name" autofocus></div>
+                <div><br><input type="text" name="lastname" placeholder="Last Name"></div>
+              </div>
               <br>
-              <div>Email:<br><input type="text" name="email" id="email" onchange="checkemail()"></div>
+              <div>Email:<br><input type="text" name="email" placeholder="Enter a valid email address"></div>
             </div>
             Select classroom:<br><input type="text" name="classroom" placeholder="Please use this format: BA290">
             <br>Question 1:<br><textarea rows="6" cols="50" name="q1"></textarea>
             <br>Question 2:<br><textarea rows="6" cols="50" name="q2"></textarea>
             <br>Question 3:<br><textarea rows="6" cols="50" name="q3"></textarea>
-            <br><input type="submit" value="submit">
+            <br>
+            <div style="display: flex; justify-content: center; margin-bottom: 0;"><input type="submit" name="submit" value="Submit Feedback" disabled></div>
           </form>
         </div>
       </div>

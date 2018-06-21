@@ -1,66 +1,92 @@
+var valid_array = [];
+var sumbit = null;
+
 window.onload = function() {
-  var name = document.forms['feedback']['name'];
-  var email = document.forms['feedback']['email'];
-  var classroom = document.forms['feedback']['classroom'];
+  submit = document.forms['feedback']['submit'];
+  var elements = [
+    document.forms['feedback']['firstname'],
+    document.forms['feedback']['lastname'],
+    document.forms['feedback']['email'],
+    document.forms['feedback']['classroom']
+  ];
 
-  var elements = [name, email, classroom];
+  for (var i = 0; i < elements.length; i++) {
+    valid_array.push(false);
+  }
 
-  // for (var i = 0; i < elements.length; i++) {
-  //   elements[i].addEventListener('input', function(){
-  //     if (this.classList.contains('validationError')) {
-  //       this.classList.remove('validationError');
-  //     }
-  //   });
-  // }
+  for (var i = 0; i < elements.length; i++) {
+    elements[i].addEventListener('input', validateElement.bind(this, elements[i], i));
+  }
+  for (var i = 0; i < elements.length; i++) {
+    elements[i].addEventListener('change', changeStyling.bind(this, elements[i]));
+  }
 }
 
-function validateForm() {
-  var error = false;
-  var name = document.forms['feedback']['name'];
-  var email = document.forms['feedback']['email'];
-  var classroom = document.forms['feedback']['classroom'];
 
-  if (name.value == '') {
-    validationError(name);
-    error = true;
+function changeStyling(el) {
+  if (!isValid(el)) {
+    validationError(el);
   }
-  if (email.value == '' || badEmail(email.value)) {
-    validationError(email);
-    error = true;
-  }
-  if (classroom.value == '' || badFormat(classroom.value)) {
-    validationError(classroom);
-    error = true;
+}
+
+
+function validateElement(el, index) {
+  if (isValid(el)) {
+    valid_array[index] = true;
+    validated(el);
+  } else {
+    valid_array[index] = false;
   }
 
-  if (error) {
-    // alert('Please fill in the following required fields.');
+  if (valid_array.every(function(curr) {return curr == true;})) {
+    submit.disabled = false;
+  } else {
+    submit.disabled = true;
+  }
+}
+
+
+function isValid(el) {
+  if (el.value == '') {
     return false;
   }
+  if (el.name == 'email') {
+    return isGoodEmail(el.value);
+  };
+  if (el.name == 'classroom') {
+    return isGoodFormat(el.value);
+  };
+  return true;
 }
+
 
 function validationError(el) {
   el.classList.add('validationError');
 }
 
-function badFormat(classroom) {
-  if (classroom.length > 6) {
-    return true;
-  }
-  var room_number = classroom.slice(2);
-  if (isNaN(room_number)) {
-    return true;
-  };
+function validated(el) {
+  el.classList.remove('validationError');
 }
 
-function checkemail() {
-  if (badEmail(document.getElementById('email'))) {
-    validationError(document.getElementById('email'));
-  } else {
-    document.getElementById('email').classList.remove('validationError');
+
+function isGoodFormat(classroom) {
+  if (classroom.length > 6 || classroom.length < 5) {
+    return false;
   }
+
+  var room_code = classroom.slice(0, 2);
+  if (!/^[a-z]+$/i.test(room_code)) {
+    return false;
+  }
+
+  var room_number = classroom.slice(2);
+  if (isNaN(room_number)) {
+    return false;
+  };
+  return true;
 }
-function badEmail(email) {
+
+function isGoodEmail(email) {
   var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-  return !re.test(email);
+  return re.test(email);
 }

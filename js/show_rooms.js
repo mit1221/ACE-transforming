@@ -54,5 +54,44 @@ function show_rooms(type) {
       content.appendChild(rooms_in_building);
     }
   }
+  // clicking a card to open the before/after slider
+  addClickListeners(content);
+}
+
+function addClickListeners(content) {
+  var cards = content.getElementsByClassName('card');
+  for (var i = 0; i < cards.length; i++) {
+    cards[i].addEventListener('click', addBAViewer.bind(this, cards[i]));
+  }
+}
+
+// the building that the before/after viewer is currently open for
+var current_building = null;
+var current_card = null;
+
+function addBAViewer(card) {
+  // remove currently open viewer if clicked card is from different building
+  if (current_building != null) {
+    if (card.parentElement != current_building || current_card == card) {
+      current_building.removeChild(current_building.getElementsByClassName('ba-container')[0]);
+    }
+
+    current_card.classList.remove('card-active');
+  }
+
+  if (current_card == card) {
+    current_building = null;
+    current_card = null;
+  } else {
+    card.classList.add('card-active');
+  }
+  // if the clicked card is from a different building
+  if (card.parentElement != current_building) {
+    var container = document.createElement('DIV');
+    container.className = 'ba-container';
+    card.parentElement.appendChild(container);
+    current_building = card.parentElement;
+    current_card = card;
+  }
 
 }
