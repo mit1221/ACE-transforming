@@ -609,7 +609,7 @@ button:active {
   }
 }
 
-/* ========================== FEEDBACK ========================== */
+/* ========================== PROGRESS ========================== */
 .rooms {
   display: flex;
   flex-wrap: wrap;
@@ -655,4 +655,95 @@ button:active {
 #content h3 {
   -webkit-animation: move-in 0.4s ease-out; /* Safari 4.0 - 8.0 */
   animation: move-in 0.4s ease-out;
+}
+
+/* ========================== FEEDBACK ========================== */
+.form_container {
+  background: #e4e4e4;
+  padding: 25px;
+}
+
+form {
+  font-weight: bold;
+}
+
+form > * {
+  margin: 8px 0 20px 0;
+}
+
+input, textarea {
+  font-family: inherit;
+  font-size: inherit;
+}
+
+textarea {
+  resize: none;
+}
+
+form input[type=text],
+form input[type=email],
+form textarea {
+  border: none;
+  border-radius: 5px;
+  padding: 10px;
+  outline: none;
+  border: 2px solid #CCC;
+  width: calc(100% - 25px);
+  transition: 0.2s;
+}
+
+form input[type=text]:focus,
+form input[type=email]:focus,
+form textarea:focus {
+  border-color: #002A5C;
+  box-shadow: 0 0 0 3px rgba(0, 42, 92, 0.3);
+}
+
+.name-email {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.name-email div {
+  flex: 1;
+}
+
+.name-email input {
+  margin-top: 8px;
+}
+
+.name-email div:first-child {
+  margin-right: 15px;
+}
+
+@media (max-width: 700px) {
+  .name-email div:first-child {
+    margin-right: 0;
+    margin-bottom: 20px;
+  }
+
+  .name-email div {
+    flex-basis: 100%;
+  }
+}
+
+.validationError {
+  background: #FF9494;
+  border-color: #f74343 !important;
+}
+
+.validationError:focus {
+  box-shadow: 0 0 15px 3px rgba(249, 92, 92, 0.5) !important;
+}
+
+.validationError::placeholder {
+  color: white;
+}
+
+.validationError:-ms-input-placeholder { /* Internet Explorer 10-11 */
+    color: white;
+}
+
+.validationError::-ms-input-placeholder { /* Microsoft Edge */
+    color: white;
 }

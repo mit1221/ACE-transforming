@@ -10,13 +10,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta charset="UTF-8">
 
-  <title>Feedback</title>
+  <title>Progress</title>
   <link rel="shortcut icon" href="images/favicon.ico">
   <link rel="stylesheet" href="css/index.css" type="text/css">
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700" rel="stylesheet">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="js/navbar.js"></script>
-  <script src="js/validate.js"></script>
+  <script src="js/button_toggle.js"></script>
+  <script src="js/show_rooms.js"></script>
 </head>
 
 <body>
@@ -69,7 +70,7 @@
               </ul>
             </li>
             <li>
-              <a href="progress.html">
+              <a href="progress.html" class="active">
                 <svg width="18px" height="18px" viewBox="0 0 60 60" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                     <title>progress icon</title>
                     <g id="Page-1" stroke="none" stroke-width="1" fill="white" fill-rule="evenodd">
@@ -87,7 +88,7 @@
                 </svg>Progress</a>
             </li>
             <li>
-              <a href="feedback.html" class="active">
+              <a href="feedback.html">
                 <svg width="18px" height="18px" viewBox="0 0 84 78" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                     <title>Feedback icon</title>
                     <g id="Page-1" stroke="none" stroke-width="1" fill="white" fill-rule="evenodd">
@@ -101,21 +102,14 @@
     </section>
     <div class="wrapper">
       <div id="main">
-        <h1>Feedback</h1>
-        <div class="form_container">
-          <form method="post" name="feedback" onsubmit="return validateForm()">
-            <div class="name-email">
-              <div>Full Name:<br><input type="text" name="name" autofocus></div>
-              <br>
-              <div>Email:<br><input type="text" name="email" id="email" onchange="checkemail()"></div>
-            </div>
-            Select classroom:<br><input type="text" name="classroom" placeholder="Please use this format: BA290">
-            <br>Question 1:<br><textarea rows="6" cols="50" name="q1"></textarea>
-            <br>Question 2:<br><textarea rows="6" cols="50" name="q2"></textarea>
-            <br>Question 3:<br><textarea rows="6" cols="50" name="q3"></textarea>
-            <br><input type="submit" value="submit">
-          </form>
-        </div>
+        <h1>Progress</h1>
+        <section>
+          <div id="completed-ongoing-group" class="button-group">
+            <button onclick="show_rooms('completed')" class="button-group-button">Completed Rooms</button>
+            <button onclick="show_rooms('ongoing')" class="button-group-button">Rooms in Progress</button>
+          </div>
+        </section>
+        <section id="content"></section>
       </div>
     </div>
   </div>
