@@ -1,5 +1,8 @@
 // Call & init
-$(document).ready(function(){
+$(document).ready(add_sliding_functionality);
+
+
+function add_sliding_functionality(){
   $('.ba-slider').each(function(){
     var cur = $(this);
     // Adjust the slider
@@ -8,7 +11,11 @@ $(document).ready(function(){
     // Bind dragging events
     drags(cur.find('.handle'), cur.find('.resize'), cur);
   });
-});
+
+  if ($('.ba-slider').length != 0) {
+    before_after_buttons();
+  }
+}
 
 // Update sliders on resize.
 $(window).resize(function(){

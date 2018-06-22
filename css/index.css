@@ -470,8 +470,8 @@ button:active, input[type=submit]:active {
   color: #002A5C;
   font-size: 10px;
   font-weight: bold;
-  -webkit-animation: fade-in 1.4s paused; /* Safari 4.0 - 8.0 */
-  animation: fade-in 1.4s paused;
+  -webkit-animation: fade-in 1.4s; /* Safari 4.0 - 8.0 */
+  animation: fade-in 1.4s;
   cursor: pointer;
   transition: 0.2s;
 }
@@ -523,8 +523,8 @@ button:active, input[type=submit]:active {
   height: 100%;
   overflow: hidden;
   width: 50%;
-  -webkit-animation: slide-in 1s paused; /* Safari 4.0 - 8.0 */
-  animation: slide-in 1s paused;
+  -webkit-animation: slide-in 1s; /* Safari 4.0 - 8.0 */
+  animation: slide-in 1s;
 }
 .handle {
   /* Thin line seperator */
@@ -536,8 +536,8 @@ button:active, input[type=submit]:active {
   margin-left: -2px;
   background: white;
   cursor: ew-resize;
-  -webkit-animation: handle-move-in 1s paused; /* Safari 4.0 - 8.0 */
-  animation: handle-move-in 1s paused;
+  -webkit-animation: handle-move-in 1s; /* Safari 4.0 - 8.0 */
+  animation: handle-move-in 1s;
 }
 
 /* Safari 4.0 - 8.0 */
@@ -619,6 +619,8 @@ button:active, input[type=submit]:active {
   display: flex;
   flex-wrap: wrap;
   width: 100%;
+  -webkit-animation: move-in 0.3s ease-out; /* Safari 4.0 - 8.0 */
+  animation: move-in 0.3s ease-out;
 }
 
 .card {
@@ -631,10 +633,9 @@ button:active, input[type=submit]:active {
   border-radius: 10px;
   margin-right: 30px;
   margin-bottom: 30px;
+  border: 3px solid transparent;
   cursor: pointer;
   transition: 0.2s;
-  -webkit-animation: move-in 0.3s ease-out; /* Safari 4.0 - 8.0 */
-  animation: move-in 0.3s ease-out;
 }
 
 
@@ -643,11 +644,31 @@ button:active, input[type=submit]:active {
   transform: scale(1.1);
 }
 
+.card.card-active {
+  border-color: white;
+  -webkit-animation: float 1s infinite; /* Safari 4.0 - 8.0 */
+  animation: float 1s infinite;
+}
+
+/* Safari 4.0 - 8.0 */
+@-webkit-keyframes float {
+  0% {transform: translateY(-2px) scale(1.1);}
+  50% {transform: translateY(2px) scale(1.1);}
+  100% {transform: translateY(-2px) scale(1.1);}
+}
+
+/* Standard syntax */
+@keyframes float {
+  0% {transform: translateY(-2px) scale(1.1);}
+  50% {transform: translateY(2px) scale(1.1);}
+  100% {transform: translateY(-2px) scale(1.1);}
+}
+
 .card img {
   height: 100px;
   width: 156px;
-  border-top-left-radius: 10px;
-  border-bottom-left-radius: 10px;
+  border-top-left-radius: 8px;
+  border-bottom-left-radius: 8px;
   border-right: 4px solid white;
 }
 
@@ -658,14 +679,14 @@ button:active, input[type=submit]:active {
 }
 
 #content h3 {
-  -webkit-animation: move-in 0.4s ease-out; /* Safari 4.0 - 8.0 */
-  animation: move-in 0.4s ease-out;
+  -webkit-animation: move-in 0.3s ease-out; /* Safari 4.0 - 8.0 */
+  animation: move-in 0.3s ease-out;
 }
 
 .ba-container {
   width: 100%;
-  height: 500px;
   background: #CCC;
+  padding: 15px;
 }
 
 /* ========================== FEEDBACK ========================== */

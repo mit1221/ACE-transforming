@@ -36,7 +36,7 @@ function show_rooms(type) {
       // create cards for the rooms
       for (var i = 0; i < rooms[type][building].length; i++) {
         var card = document.createElement('DIV');
-        card.className = 'card';
+        card.className = 'card' + ' ' + building;
 
         var room_image = document.createElement('IMG');
         room_image.src = 'images/room_images/' + building +
@@ -65,33 +65,68 @@ function addClickListeners(content) {
   }
 }
 
-// the building that the before/after viewer is currently open for
-var current_building = null;
-var current_card = null;
+// the room that the before/after viewer is currently open for
+var current = null;
 
 function addBAViewer(card) {
-  // remove currently open viewer if clicked card is from different building
-  if (current_building != null) {
-    if (card.parentElement != current_building || current_card == card) {
-      current_building.removeChild(current_building.getElementsByClassName('ba-container')[0]);
-    }
-
-    current_card.classList.remove('card-active');
+  // deactivate currently open card and close open container
+  if (current != null) {
+    current.parentElement.removeChild(current.parentElement.lastChild);
+    current.classList.remove('card-active');
   }
 
-  if (current_card == card) {
-    current_building = null;
-    current_card = null;
-  } else {
+  // add before/after container
+  if (current != card) {
     card.classList.add('card-active');
-  }
-  // if the clicked card is from a different building
-  if (card.parentElement != current_building) {
     var container = document.createElement('DIV');
     container.className = 'ba-container';
+    container.appendChild(addContent(card));
     card.parentElement.appendChild(container);
-    current_building = card.parentElement;
-    current_card = card;
+    add_sliding_functionality();
+    current = card;
+    return;
   }
+  // if same card was clicked twice, then it removes the card from 'current'
+  current = null;
+}
 
+function addContent(room) {
+  var building = room.classList[1];
+  var room_number = room.textContent.split(' ').pop();
+
+  var slider = document.createElement('DIV');
+  slider.className = 'ba-slider';
+
+  var before_image = document.createElement('IMG');
+  var after_image = document.createElement('IMG');
+
+  var image_url = 'images/room_images/' + building +
+  '/completed/' + room_number;
+
+  before_image.src = image_url + '_before.jpg';
+  after_image.src = image_url + '.jpg';
+  before_image.alt = building + ' ' + room_number + ' Before';
+  after_image.alt = building + ' ' + room_number + ' After';
+
+  var before_text = document.createElement('DIV');
+  var after_text = document.createElement('DIV');
+  before_text.className = 'ba_text before_text';
+  after_text.className = 'ba_text after_text';
+  before_text.textContent = 'Before';
+  after_text.textContent = 'After';
+
+  slider.appendChild(after_image);
+  slider.appendChild(after_text);
+
+  var resize = document.createElement('DIV');
+  resize.className = 'resize';
+  resize.appendChild(before_image);
+  resize.appendChild(before_text);
+
+  slider.appendChild(resize);
+
+  var handle = document.createElement('SPAN');
+  handle.className = 'handle';
+  slider.appendChild(handle);
+  return slider;
 }
