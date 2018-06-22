@@ -10,10 +10,14 @@ window.onload = function() {
 }
 
 function make_active(buttons, number) {
+  var active = null;
   for (var i = 0; i < buttons.length; i++) {
     if (buttons[i].classList.contains('btn-active')) {
+      active = buttons[i];
       buttons[i].classList.remove('btn-active');
     }
   }
-  buttons[number].classList.add('btn-active');
+  if (active != buttons[number]) {
+    buttons[number].classList.add('btn-active');
+  }
 }

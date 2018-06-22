@@ -18,50 +18,53 @@ var rooms = {
     'MP': [134, 137, 202]}
 };
 
+var current_type = null;
 function show_rooms(type) {
   // type is either 'completed' or 'ongoing'
   var content = document.getElementById('content');
   content.innerHTML = '';
-  for (var building in rooms[type]) {
-    if (rooms[type].hasOwnProperty(building)) {
-      // create heading for each
-      var heading = document.createElement('H3');
-      heading.textContent = fullform[building] + ' (' + building + ')';
-      content.appendChild(heading);
 
-      // container for the rooms in each
-      var rooms_in_building = document.createElement('DIV');
-      rooms_in_building.className = 'rooms';
+  if (current_type != type) {
+    for (var building in rooms[type]) {
+      if (rooms[type].hasOwnProperty(building)) {
+        // create heading for each
+        var heading = document.createElement('H3');
+        heading.textContent = fullform[building] + ' (' + building + ')';
+        content.appendChild(heading);
 
-      // create cards for the rooms
-      for (var i = 0; i < rooms[type][building].length; i++) {
-        var card = document.createElement('DIV');
-        card.className = 'card' + ' ' + building;
+        // container for the rooms in each
+        var rooms_in_building = document.createElement('DIV');
+        rooms_in_building.className = 'rooms';
 
-        var room_image = document.createElement('IMG');
-        room_image.src = 'images/room_images/' + building +
-        '/' + type + '/' + rooms[type][building][i] + '.jpg';
-        room_image.alt = building + ' ' + rooms[type][building][i];
-        card.appendChild(room_image);
+        // create cards for the rooms
+        for (var i = 0; i < rooms[type][building].length; i++) {
+          var card = document.createElement('DIV');
+          card.className = 'card' + ' ' + building;
 
-        var card_heading = document.createElement('H4');
-        card_heading.textContent = room_image.alt;
-        card.appendChild(card_heading);
+          var room_image = document.createElement('IMG');
+          room_image.src = 'images/room_images/' + building +
+          '/' + type + '/' + rooms[type][building][i] + '.jpg';
+          room_image.alt = building + ' ' + rooms[type][building][i];
+          card.appendChild(room_image);
 
-        rooms_in_building.appendChild(card);
+          var card_heading = document.createElement('H4');
+          card_heading.textContent = room_image.alt;
+          card.appendChild(card_heading);
+          rooms_in_building.appendChild(card);
+
+          // clicking a card to open the before/after slider
+          if (type == 'completed') {
+            card.addEventListener('click', addBAViewer.bind(this, card));
+          }
+        }
+
+        content.appendChild(rooms_in_building);
       }
-
-      content.appendChild(rooms_in_building);
     }
-  }
-  // clicking a card to open the before/after slider
-  addClickListeners(content);
-}
 
-function addClickListeners(content) {
-  var cards = content.getElementsByClassName('card');
-  for (var i = 0; i < cards.length; i++) {
-    cards[i].addEventListener('click', addBAViewer.bind(this, cards[i]));
+    current_type = type;
+  } else {
+    current_type = null;
   }
 }
 
@@ -80,6 +83,12 @@ function addBAViewer(card) {
     card.classList.add('card-active');
     var container = document.createElement('DIV');
     container.className = 'ba-container';
+
+    var title = document.createElement('p');
+    title.className = 'ba-container-title';
+    title.textContent = card.textContent;
+    container.appendChild(title);
+
     container.appendChild(addContent(card));
     card.parentElement.appendChild(container);
     add_sliding_functionality();

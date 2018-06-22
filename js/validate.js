@@ -12,20 +12,48 @@ window.onload = function() {
 
   for (var i = 0; i < elements.length; i++) {
     valid_array.push(false);
+    elements[i].addEventListener('input', validateElement.bind(this, elements[i], i));
+    elements[i].addEventListener('change', changeStyling.bind(this, elements[i]));
   }
 
-  for (var i = 0; i < elements.length; i++) {
-    elements[i].addEventListener('input', validateElement.bind(this, elements[i], i));
-  }
-  for (var i = 0; i < elements.length; i++) {
-    elements[i].addEventListener('change', changeStyling.bind(this, elements[i]));
+  var text_inputs = document.querySelectorAll('#feedback input[type=text]');
+
+  for (var i = 0; i < text_inputs.length; i++) {
+    text_inputs[i].addEventListener('keypress', function(e) {
+      var key = e.which || e.keyCode;
+      if (key === 13 && !valid_array.every(function(curr) {return curr == true;}) && isValid(this)) { // 13 is the code for 'enter'
+        errorDialog();
+      }
+    })
   }
 }
 
+var delay = 5000;
+function errorDialog(el) {
+  var error_text = '';
+  if (el == undefined) {
+    error_text = 'Please fill out the required fields correctly before submitting the form.'
+  } else {
+    error_text = el.name.charAt(0).toUpperCase() + el.name.slice(1) + ' was not entered correctly.';
+  }
+  
+  var dialog = document.createElement('DIV');
+  dialog.className = 'error-dialog';
+  dialog.textContent = error_text;
+  var dialogs = document.getElementById('error-dialogs');
+  dialogs.appendChild(dialog);
+  $('.error-dialog:last-child')
+    .animate({opacity: 100}, delay - 1000)
+    .animate({opacity: 0}, 1000);
+  window.setTimeout(function() {
+    dialogs.removeChild(dialogs.firstChild);
+  }, delay);
+}
 
 function changeStyling(el) {
   if (!isValid(el)) {
     validationError(el);
+    errorDialog(el);
   }
 }
 

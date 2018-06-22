@@ -129,7 +129,7 @@ body {
   width: 70px;
 }
 
-@media only screen and (max-width: 1100px) {
+@media (max-width: 1100px) {
   .nav-mobile {
     display: block;
   }
@@ -175,7 +175,7 @@ body {
     fill: #002A5C !important;
   }
 }
-@media screen and (min-width: 1101px) {
+@media (min-width: 1101px) {
   .nav-list {
     display: block !important;
   }
@@ -443,8 +443,6 @@ button:active, input[type=submit]:active {
   background: #002A5C;
   color: white;
   box-shadow: 0px 0px 26px 0px rgba(0, 0, 0, 0.5) inset;
-  cursor: default;
-  pointer-events: none;
 }
 /* ========================== COMPLETED WORKS ========================== */
 
@@ -641,6 +639,7 @@ button:active, input[type=submit]:active {
 
 .card:hover, .card.card-active {
   box-shadow: 0px 5px 35px 0px rgba(0, 0, 0, 0.6);
+  background: #002A5C;
   transform: scale(1.1);
 }
 
@@ -687,6 +686,15 @@ button:active, input[type=submit]:active {
   width: 100%;
   background: #CCC;
   padding: 15px;
+}
+
+
+.ba-container-title {
+  font-weight: bold;
+  text-transform: uppercase;
+  color: #002A5C;
+  font-size: 24px;
+  text-align: center;
 }
 
 /* ========================== FEEDBACK ========================== */
@@ -812,21 +820,31 @@ form input[type=submit]:disabled {
     color: white;
 }
 
-/* .error-dialog {
+#error-dialogs {
   position: fixed;
-  bottom: 50px;
-  left: 0;
-  right: 0;
-  margin: 0 auto;
+  bottom: 30px;
   width: 100%;
-  min-width: 500px;
+  z-index: 1000;
+}
+
+.error-dialog {
+  width: 50%;
+  margin: 0 auto;
+  margin-top: 10px;
   padding: 10px 0;
   background: #FF9494;
   border: 2px solid #f74343;
-  color: #f74343;
-  font-weight: bold;
+  color: #c12525;
   text-align: center;
-  font-size: 20px;
-  border-radius: 10px;
-  z-index: 1000;
-} */
+  font-size: 16px;
+  box-shadow: 0 3px 7px 0 rgba(0, 0, 0, 0.4);
+  border-radius: 7px;
+  -webkit-animation: move-in 0.5s; /* Safari 4.0 - 8.0 */
+  animation: move-in 0.5s;
+}
+
+@media (max-width: 500px) {
+  .error-dialog {
+    width: 95%;
+  }
+}
