@@ -1,5 +1,17 @@
 var valid_array = [];
 var sumbit = null;
+var error_messages = {
+  'email': {
+    '-2': 'Email is not  valid.',
+    '-3': 'Email is missing "@" symbol.'
+  },
+  'classroom': {
+    '-2': 'Classroom length should be between 5 and 6 characters.',
+    '-3': 'The first 2 letters should be alphabetic characters representing the building code.',
+    '-4': 'The last 3-4 letters should represent the room number.'
+  }
+}
+
 
 window.onload = function() {
   submit = document.forms['feedback']['submit'];
@@ -21,22 +33,33 @@ window.onload = function() {
   for (var i = 0; i < text_inputs.length; i++) {
     text_inputs[i].addEventListener('keypress', function(e) {
       var key = e.which || e.keyCode;
-      if (key === 13 && !valid_array.every(function(curr) {return curr == true;}) && isValid(this)) { // 13 is the code for 'enter'
+      if (key === 13 && !valid_array.every(function(curr) {return curr == true;}) && isValid(this) >= -1) { // 13 is the code for 'enter'
         errorDialog();
+        for (var i = 0; i < elements.length; i++) {
+          if (valid_array[i] == false) {
+            validationError(elements[i]);
+          }
+        }
       }
-    })
+    });
   }
 }
 
 var delay = 5000;
-function errorDialog(el) {
+function errorDialog(el, errorCode) {
+  // logic for the error dialog text
   var error_text = '';
   if (el == undefined) {
-    error_text = 'Please fill out the required fields correctly before submitting the form.'
+    error_text = 'Please fill out the required fields correctly.';
   } else {
-    error_text = el.name.charAt(0).toUpperCase() + el.name.slice(1) + ' was not entered correctly.';
+    if(errorCode == -1) {
+      error_text = 'Please fill out the ' + el.name + ' input.';
+    } else {
+      error_text = error_messages[el.name][errorCode];
+    }
   }
-  
+
+  // displaying the error dialogs in a queue
   var dialog = document.createElement('DIV');
   dialog.className = 'error-dialog';
   dialog.textContent = error_text;
@@ -51,15 +74,16 @@ function errorDialog(el) {
 }
 
 function changeStyling(el) {
-  if (!isValid(el)) {
+  var errorCode = isValid(el);
+  if (errorCode < 0) {
     validationError(el);
-    errorDialog(el);
+    errorDialog(el, errorCode);
   }
 }
 
 
 function validateElement(el, index) {
-  if (isValid(el)) {
+  if (isValid(el) == 1) {
     valid_array[index] = true;
     validated(el);
   } else {
@@ -76,7 +100,7 @@ function validateElement(el, index) {
 
 function isValid(el) {
   if (el.value == '') {
-    return false;
+    return -1;
   }
   if (el.name == 'email') {
     return isGoodEmail(el.value);
@@ -84,7 +108,7 @@ function isValid(el) {
   if (el.name == 'classroom') {
     return isGoodFormat(el.value);
   };
-  return true;
+  return 1;
 }
 
 
@@ -98,23 +122,31 @@ function validated(el) {
 
 
 function isGoodFormat(classroom) {
+  classroom = classroom.replace(/\s/g,'');
   if (classroom.length > 6 || classroom.length < 5) {
-    return false;
+    return -2;
   }
 
   var room_code = classroom.slice(0, 2);
   if (!/^[a-z]+$/i.test(room_code)) {
-    return false;
+    return -3;
   }
 
   var room_number = classroom.slice(2);
   if (isNaN(room_number)) {
-    return false;
+    return -4;
   };
-  return true;
+  return 1;
 }
 
 function isGoodEmail(email) {
+  if (email == '') {
+    return -1;
+  }
+  if (email.indexOf('@') == -1) {
+    return -3;
+  }
   var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-  return re.test(email);
+  if (re.test(email)) {return 1};
+  return -2;
 }

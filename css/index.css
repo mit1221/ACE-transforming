@@ -373,7 +373,7 @@ h1 {
 }
 
 h2 {
-  font-size: 1.1em;
+  font-size: 1.2em;
   text-transform: uppercase;
   font-weight: normal;
   margin-bottom: 10px;
@@ -685,9 +685,8 @@ button:active, input[type=submit]:active {
 .ba-container {
   width: 100%;
   background: #CCC;
-  padding: 15px;
+  padding: 30px 15px;
 }
-
 
 .ba-container-title {
   font-weight: bold;
@@ -695,6 +694,15 @@ button:active, input[type=submit]:active {
   color: #002A5C;
   font-size: 24px;
   text-align: center;
+  margin-top: 0;
+}
+
+.ongoing-image {
+  width: 100%;
+  max-width: 900px;
+  position: relative;
+  margin: auto;
+  display: block;
 }
 
 /* ========================== FEEDBACK ========================== */
@@ -824,7 +832,7 @@ form input[type=submit]:disabled {
   position: fixed;
   bottom: 30px;
   width: 100%;
-  z-index: 1000;
+  z-index: 100;
 }
 
 .error-dialog {
@@ -832,13 +840,12 @@ form input[type=submit]:disabled {
   margin: 0 auto;
   margin-top: 10px;
   padding: 10px 0;
-  background: #FF9494;
-  border: 2px solid #f74343;
+  background: #f9a5a5;
+  border: 1px solid #f74343;
   color: #c12525;
   text-align: center;
   font-size: 16px;
-  box-shadow: 0 3px 7px 0 rgba(0, 0, 0, 0.4);
-  border-radius: 7px;
+  border-radius: 4px;
   -webkit-animation: move-in 0.5s; /* Safari 4.0 - 8.0 */
   animation: move-in 0.5s;
 }

@@ -53,9 +53,7 @@ function show_rooms(type) {
           rooms_in_building.appendChild(card);
 
           // clicking a card to open the before/after slider
-          if (type == 'completed') {
-            card.addEventListener('click', addBAViewer.bind(this, card));
-          }
+          card.addEventListener('click', addViewer.bind(this, card, type));
         }
 
         content.appendChild(rooms_in_building);
@@ -71,7 +69,7 @@ function show_rooms(type) {
 // the room that the before/after viewer is currently open for
 var current = null;
 
-function addBAViewer(card) {
+function addViewer(card, type) { // type is 'completed' or 'ongoing'
   // deactivate currently open card and close open container
   if (current != null) {
     current.parentElement.removeChild(current.parentElement.lastChild);
@@ -89,7 +87,11 @@ function addBAViewer(card) {
     title.textContent = card.textContent;
     container.appendChild(title);
 
-    container.appendChild(addContent(card));
+    if (type == 'completed') {
+      container.appendChild(addContent(card));
+    } else {
+      container.appendChild(addImage(card, 'ongoing'));
+    }
     card.parentElement.appendChild(container);
     add_sliding_functionality();
     current = card;
@@ -100,22 +102,8 @@ function addBAViewer(card) {
 }
 
 function addContent(room) {
-  var building = room.classList[1];
-  var room_number = room.textContent.split(' ').pop();
-
   var slider = document.createElement('DIV');
   slider.className = 'ba-slider';
-
-  var before_image = document.createElement('IMG');
-  var after_image = document.createElement('IMG');
-
-  var image_url = 'images/room_images/' + building +
-  '/completed/' + room_number;
-
-  before_image.src = image_url + '_before.jpg';
-  after_image.src = image_url + '.jpg';
-  before_image.alt = building + ' ' + room_number + ' Before';
-  after_image.alt = building + ' ' + room_number + ' After';
 
   var before_text = document.createElement('DIV');
   var after_text = document.createElement('DIV');
@@ -124,12 +112,13 @@ function addContent(room) {
   before_text.textContent = 'Before';
   after_text.textContent = 'After';
 
-  slider.appendChild(after_image);
+  var ba_images = addImage(room, 'completed');
+  slider.appendChild(ba_images[1]);
   slider.appendChild(after_text);
 
   var resize = document.createElement('DIV');
   resize.className = 'resize';
-  resize.appendChild(before_image);
+  resize.appendChild(ba_images[0]);
   resize.appendChild(before_text);
 
   slider.appendChild(resize);
@@ -138,4 +127,27 @@ function addContent(room) {
   handle.className = 'handle';
   slider.appendChild(handle);
   return slider;
+}
+
+function addImage(room, type) {
+  var building = room.classList[1];
+  var room_number = room.textContent.split(' ').pop();
+  var image_url = 'images/room_images/' + building +
+  '/' + type + '/' + room_number;
+
+  if (type == 'completed') {
+    var before_image = document.createElement('IMG');
+    var after_image = document.createElement('IMG');
+    before_image.src = image_url + '_before.jpg';
+    after_image.src = image_url + '.jpg';
+    before_image.alt = building + ' ' + room_number + ' Before';
+    after_image.alt = building + ' ' + room_number + ' After';
+    return [before_image, after_image];
+  } else {
+    var image = document.createElement('IMG');
+    image.className = 'ongoing-image';
+    image.src = image_url + '.jpg';
+    image.alt = room.textContent;
+    return image;
+  }
 }
