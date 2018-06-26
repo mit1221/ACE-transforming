@@ -105,10 +105,10 @@
       <div id="main">
         <h1>Progress</h1>
         <section>
-          <p>Click one of the below buttons to view completed room or rooms in progress:</p>
+          <p>Sort rooms by:</p>
           <div id="completed-ongoing-group" class="button-group">
-            <button onclick="show_rooms('completed')" class="button-group-button">Completed Rooms</button>
-            <button onclick="show_rooms('ongoing')" class="button-group-button">Rooms in Progress</button>
+            <button onclick="show_rooms_by('date')" class="button-group-button default">Date</button>
+            <button onclick="show_rooms_by('building')" class="button-group-button">Building</button>
           </div>
         </section>
         <section id="content"></section>
