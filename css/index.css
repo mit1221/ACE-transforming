@@ -453,6 +453,7 @@ button:active, input[type=submit]:active {
   width: 100%;
   max-width: 900px;
   margin: auto;
+  min-height: 100px;
 }
 .ba-slider img {
   width: 100%;
@@ -686,6 +687,8 @@ button:active, input[type=submit]:active {
   width: 100%;
   background: #CCC;
   padding: 30px 15px;
+  -webkit-animation: move-in 0.3s ease-out; /* Safari 4.0 - 8.0 */
+  animation: move-in 0.3s ease-out;
 }
 
 .ba-container-title {
@@ -805,6 +808,10 @@ form input[type=submit]:disabled {
   form input[type=submit] {
     flex: 1;
   }
+}
+
+.asterisk {
+  color: #f74343;
 }
 
 .validationError {

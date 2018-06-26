@@ -2,15 +2,15 @@ var fullform = {
   'BA': 'Bahen Centre Information Tech',
   'HS': 'Health Sciences ',
   'MC': 'Mechanical Engineering ',
-  'MP': 'McLennan Physical Laboratories'
+  'MP': 'McLennan Physical Laboratories',
+  'OI': 'O.I.S.E.'
 }
 
 var rooms = {
   'completed': {
-    'BA': [2139, 2145, 2155, 2159, 2165],
-    'HS': [106, 108, 610, 614],
-    'MC': [254],
-    'MP': [102, 103, 118]},
+    'OI': [2205, 2211, 4414, 4416, 5260, 5270, 5280, 5290],
+    'HS': [100, 108, 614, 618, 696, 705, 715]
+  },
   'ongoing': {
     'BA': [1190, 1210, 1240, 2135],
     'HS': [100, 705, 715],
@@ -23,6 +23,7 @@ function show_rooms(type) {
   // type is either 'completed' or 'ongoing'
   var content = document.getElementById('content');
   content.innerHTML = '';
+  current = null;
 
   if (current_type != type) {
     for (var building in rooms[type]) {
@@ -133,20 +134,20 @@ function addImage(room, type) {
   var building = room.classList[1];
   var room_number = room.textContent.split(' ').pop();
   var image_url = 'images/room_images/' + building +
-  '/' + type + '/' + room_number;
+  '/' + type + '/';
 
   if (type == 'completed') {
     var before_image = document.createElement('IMG');
     var after_image = document.createElement('IMG');
-    before_image.src = image_url + '_before.jpg';
-    after_image.src = image_url + '.jpg';
+    before_image.src = image_url + 'before/' + room_number + '.jpg';
+    after_image.src = image_url + 'after/' + room_number + '.jpg';
     before_image.alt = building + ' ' + room_number + ' Before';
     after_image.alt = building + ' ' + room_number + ' After';
     return [before_image, after_image];
   } else {
     var image = document.createElement('IMG');
     image.className = 'ongoing-image';
-    image.src = image_url + '.jpg';
+    image.src = image_url + room_number + '.jpg';
     image.alt = room.textContent;
     return image;
   }

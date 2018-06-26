@@ -14,13 +14,8 @@ var error_messages = {
 
 
 window.onload = function() {
+  var elements = document.getElementsByClassName('required');
   submit = document.forms['feedback']['submit'];
-  var elements = [
-    document.forms['feedback']['firstname'],
-    document.forms['feedback']['lastname'],
-    document.forms['feedback']['email'],
-    document.forms['feedback']['classroom']
-  ];
 
   for (var i = 0; i < elements.length; i++) {
     valid_array.push(false);
@@ -149,4 +144,15 @@ function isGoodEmail(email) {
   var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
   if (re.test(email)) {return 1};
   return -2;
+}
+
+//creating autocomplete
+var rooms = ['BA250', 'BA290', 'BA310', 'BA4100', 'HS100', 'HS300', 'OI3000', 'MP102', 'MP200'];
+
+function Tree(root, children) {
+  this.root = root;
+  this.children = children != undefined ? children : [];
+  this.print_children = function() {
+    
+  }
 }
