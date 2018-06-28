@@ -1,4 +1,4 @@
-var temp = {
+var rooms_dict = {
   'OI': {
     'Pilot': {
       '2205': '1/2-2010',
@@ -138,19 +138,19 @@ function addContent(room) {
 function addImage(room) {
   var image_url = 'images/room_images/' + room.building +
   '/' + room.type + '/';
-  var image_text = this.building + ' ' + this.room_number;
+  var image_text = room.building + ' ' + room.room_number;
 
   if (room.type == 'Ongoing') {
     var image = document.createElement('IMG');
     image.className = 'ongoing-image';
-    image.src = image_url + this.room_number + '.jpg';
+    image.src = image_url + room.room_number + '.jpg';
     image.alt = image_text;
     return image;
   } else {
     var before_image = document.createElement('IMG');
     var after_image = document.createElement('IMG');
-    before_image.src = image_url + 'before/' + this.room_number + '.jpg';
-    after_image.src = image_url + 'after/' + this.room_number + '.jpg';
+    before_image.src = image_url + 'before/' + room.room_number + '.jpg';
+    after_image.src = image_url + 'after/' + room.room_number + '.jpg';
     before_image.alt = image_text + ' Before';
     after_image.alt = image_text + ' After';
     return [before_image, after_image];
@@ -180,25 +180,7 @@ Rooms.prototype.make_room_objects = function(dict) {
       }
     }
   }
-
   return rooms;
-}
-
-Rooms.prototype.add_room = function(room) {
-  this.rooms.push(room);
-  this.sort_rooms();
-}
-
-Rooms.prototype.remove_room = function(room_code) {
-  //room_code has format 'building-room number', for example, 'BA-250'
-  var separated = room_code.split('-');
-  var building = separated[0], room_number = separated[1];
-  for (var i = 0; i < this.rooms.length; i++) {
-    if (this.rooms[i].building == building && this.rooms[i].room_number == room_number) {
-      this.rooms.splice(i, 1);
-      return;
-    }
-  }
 }
 
 Rooms.prototype.sort_rooms = function() {
@@ -217,10 +199,17 @@ Rooms.prototype.categorize_rooms = function(sort_type) { // sort_type is either 
   var dict_type = sort_type == 'date' ? this.categorized_by_date : this.categorized_by_building;
 
   for (var i = 0; i < this.rooms.length; i++) {
-    if (dict_type[this.rooms[i][sort_type]] == undefined) {
-      dict_type[this.rooms[i][sort_type]] = [];
+    if (this.rooms[i].type == 'Pilot' && sort_type == 'date') {
+      if (dict_type['Pilot'] == undefined) {
+        dict_type['Pilot'] = [];
+      }
+      dict_type['Pilot'].push(this.rooms[i]);
+    } else {
+      if (dict_type[this.rooms[i][sort_type]] == undefined) {
+        dict_type[this.rooms[i][sort_type]] = [];
+      }
+      dict_type[this.rooms[i][sort_type]].push(this.rooms[i]);
     }
-    dict_type[this.rooms[i][sort_type]].push(this.rooms[i]);
   }
 }
 
@@ -237,8 +226,8 @@ Rooms.prototype.show_rooms_by = function(type) { // type is either 'date' or 'bu
   if (type == 'date') {
     // sort by year first and then by season
     categories.sort(function(a, b) {
-      var year_a = parseInt(a.slice(-4));
-      var year_b = parseInt(b.slice(-4));
+      var year_a = a == 'Pilot' ? 0 : parseInt(a.slice(-4));
+      var year_b = b == 'Pilot' ? 0 : parseInt(b.slice(-4));
       var season_a = parseInt(a.charAt(0));
       var season_b = parseInt(b.charAt(0));
 
@@ -253,15 +242,44 @@ Rooms.prototype.show_rooms_by = function(type) { // type is either 'date' or 'bu
   for (var i = 0; i < categories.length; i++) {
     // create heading for each
     var heading = document.createElement('DIV');
-    heading.className = 'category_heading';
+    heading.className = 'category-heading';
+
+    var images_container = document.createElement('DIV');
+    images_container.className = 'season-images-container';
+
+    if (!isNaN(categories[i].charAt(0))) {
+      var season_image1 = document.createElement('IMG');
+      season_image1.src = 'images/' + seasons_fullform[categories[i].charAt(0)] + '.svg';
+      season_image1.className = 'heading-image';
+
+      var season_image2 = document.createElement('IMG');
+      season_image2.src = 'images/' + seasons_fullform[categories[i].charAt(2)] + '.svg';
+      season_image2.className = 'heading-image';
+
+      images_container.appendChild(season_image1);
+      images_container.appendChild(season_image2);
+    } else {
+      var image = document.createElement('IMG');
+      image.src = 'images/building.svg';
+      image.className = 'heading-image';
+      images_container.appendChild(image);
+    }
+
+
     if (type == 'date') {
       var date = categories[i];
-      heading.textContent = seasons_fullform[categories[i].charAt(0)] + '/' +
-        seasons_fullform[categories[i].charAt(2)] + ' ' + date.slice(-4);
+      if (categories[i] != 'Pilot') {
+        heading.textContent = seasons_fullform[categories[i].charAt(0)] + '/' +
+          seasons_fullform[categories[i].charAt(2)] + ' ' + date.slice(-4);
+      } else {
+        heading.textContent = 'Pilot Project';
+      }
     } else if (type == 'building') {
       var building = categories[i];
       heading.textContent = fullform[building] + ' (' + building + ')';
     }
+    // adding the season images
+    heading.appendChild(images_container);
     content.appendChild(heading);
 
     // container for the rooms in each building
@@ -296,7 +314,7 @@ function close_heading(heading) {
 
 
 $(function() {
-  var room_objects = new Rooms(temp);
+  var room_objects = new Rooms(rooms_dict);
   var default_sort = document.getElementsByClassName('default')[0].textContent.toLowerCase();
   room_objects.show_rooms_by(default_sort); // since Date is clicked by default
   document.getElementById('date_button').addEventListener('click', function() {room_objects.show_rooms_by('date')});

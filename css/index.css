@@ -615,11 +615,12 @@ button:active, input[type=submit]:active {
 }
 
 /* ========================== PROGRESS ========================== */
-.category_heading {
+.category-heading {
   width: 100%;
   font-size: 18px;
   box-shadow: 0 2px 6px rgba(0,0,0,0.16), 0 2px 6px rgba(0,0,0,0.23);
   background: #dedcdc;
+  color: #736f6f;
   margin-bottom: 10px;
   padding: 20px 15px;
   border-radius: 3px;
@@ -630,12 +631,12 @@ button:active, input[type=submit]:active {
   transition: 0.2s ease-out;
 }
 
-.category_heading:hover {
+.category-heading:hover {
   box-shadow: 0 10px 28px rgba(0,0,0,0.25), 0 6px 10px rgba(0,0,0,0.22);
   transform: translateY(-3px);
 }
 
-.category_heading:after {
+.category-heading:after {
     content: '\002B';
     color: #a7a3a3;
     font-weight: bold;
@@ -643,8 +644,29 @@ button:active, input[type=submit]:active {
     margin-left: 5px;
 }
 
-.category_heading.open:after {
+.category-heading.open {
+  background: #736f6f;
+  color: white;
+}
+
+.category-heading.open:after {
     content: "\2212";
+}
+
+.season-images-container {
+  display: inline;
+  float: left;
+  margin-right: 10px;
+  margin-top: -3px;
+}
+
+.heading-image {
+  width: 30px;
+  height: 30px;
+}
+
+.heading-image:first-child {
+  margin-right: 5px;
 }
 
 .rooms {
