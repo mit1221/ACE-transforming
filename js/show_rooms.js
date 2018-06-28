@@ -58,7 +58,7 @@ Room.prototype.make_card = function() {
 
   var room_image = document.createElement('IMG');
   room_image.src = 'images/room_images/' + this.building +
-  '/' + this.type + '/' + this.room_number + '.jpg';
+    '/' + this.type + '/' + this.room_number + '.jpg';
   room_image.alt = this.building + ' ' + this.room_number;
   card.appendChild(room_image);
 
@@ -73,9 +73,10 @@ Room.prototype.make_card = function() {
 
 // the room that the before/after viewer is currently open for
 var current = null;
+var parent = null;
 function addViewer(card) {
   // deactivate currently open card and close open container
-  if (current != null) {
+  if (current != null && parent.contains(current)) {
     current.parentElement.removeChild(current.parentElement.lastChild);
     current.classList.remove('card-active');
   }
@@ -99,6 +100,7 @@ function addViewer(card) {
     card.parentElement.appendChild(container);
     add_sliding_functionality();
     current = card;
+    parent = card.parentElement;
     return;
   }
   // if same card was clicked twice, then it removes the card from 'current'
@@ -223,13 +225,14 @@ Rooms.prototype.categorize_rooms = function(sort_type) { // sort_type is either 
 }
 
 Rooms.prototype.show_rooms_by = function(type) { // type is either 'date' or 'building'
-  var dict_type = type == 'date' ? this.categorized_by_date :
-    this.categorized_by_building;
-  var categories = Object.keys(dict_type);
-
   var content = document.getElementById('content');
   content.innerHTML = '';
   current = null; // refers to currently active card
+  currently_open = []; // refers to currently open headings
+
+  var dict_type = type == 'date' ? this.categorized_by_date :
+    this.categorized_by_building;
+  var categories = Object.keys(dict_type);
 
   if (type == 'date') {
     // sort by year first and then by season
@@ -249,7 +252,8 @@ Rooms.prototype.show_rooms_by = function(type) { // type is either 'date' or 'bu
   // rendering the content (headings and the room cards)
   for (var i = 0; i < categories.length; i++) {
     // create heading for each
-    var heading = document.createElement('H3');
+    var heading = document.createElement('DIV');
+    heading.className = 'category_heading';
     if (type == 'date') {
       var date = categories[i];
       heading.textContent = seasons_fullform[categories[i].charAt(0)] + '/' +
@@ -272,11 +276,12 @@ var currently_open = [];
 function add_cards(heading, dict, category) {
   // create cards for the rooms and add to container
   var room_container = heading.nextSibling;
-  if (!currently_open.includes(heading)) {
+  if (currently_open.indexOf(heading) == -1) {
     dict[category].forEach(function(room) {
       room_container.appendChild(room.make_card());
     });
     currently_open.push(heading);
+    heading.classList.add('open');
   } else {
     close_heading(heading);
   }
@@ -286,7 +291,7 @@ function close_heading(heading) {
   var room_container = heading.nextSibling;
   room_container.innerHTML = '';
   currently_open.splice(currently_open.indexOf(heading), 1);
-  current = null;  // refers to currently active card
+  heading.classList.remove('open');
 }
 
 

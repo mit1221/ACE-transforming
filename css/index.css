@@ -615,10 +615,43 @@ button:active, input[type=submit]:active {
 }
 
 /* ========================== PROGRESS ========================== */
+.category_heading {
+  width: 100%;
+  font-size: 18px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.16), 0 2px 6px rgba(0,0,0,0.23);
+  background: #dedcdc;
+  margin-bottom: 10px;
+  padding: 20px 15px;
+  border-radius: 3px;
+  box-sizing: border-box;
+  cursor: pointer;
+  -webkit-animation: move-in 0.3s ease-out; /* Safari 4.0 - 8.0 */
+  animation: move-in 0.3s ease-out;
+  transition: 0.2s ease-out;
+}
+
+.category_heading:hover {
+  box-shadow: 0 10px 28px rgba(0,0,0,0.25), 0 6px 10px rgba(0,0,0,0.22);
+  transform: translateY(-3px);
+}
+
+.category_heading:after {
+    content: '\002B';
+    color: #a7a3a3;
+    font-weight: bold;
+    float: right;
+    margin-left: 5px;
+}
+
+.category_heading.open:after {
+    content: "\2212";
+}
+
 .rooms {
   display: flex;
   flex-wrap: wrap;
   width: 100%;
+  margin-bottom: 20px;
   -webkit-animation: move-in 0.3s ease-out; /* Safari 4.0 - 8.0 */
   animation: move-in 0.3s ease-out;
 }
@@ -677,11 +710,6 @@ button:active, input[type=submit]:active {
   flex: 1;
   text-align: center;
   color: white;
-}
-
-#content h3 {
-  -webkit-animation: move-in 0.3s ease-out; /* Safari 4.0 - 8.0 */
-  animation: move-in 0.3s ease-out;
 }
 
 .ba-container {
