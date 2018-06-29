@@ -751,6 +751,11 @@ button:active, input[type=submit]:active {
   margin-top: 0;
 }
 
+.date-text {
+  text-align: center;
+  font-size: 15px;
+}
+
 .ongoing-image {
   width: 100%;
   max-width: 900px;

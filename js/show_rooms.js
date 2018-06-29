@@ -19,7 +19,7 @@ var seasons_fullform = {
 function Room(room_number, building, type, date) {
   this.room_number = room_number;
   this.building = building;
-  this.type = type; //type is 'pilot', 'completed', or 'ongoing'
+  this.type = type; //type is 'Pilot', 'Completed', or 'Ongoing'
   this.date = date; // format: 'Season1/Season2-Year' Ex: 'F/W-2018'
 }
 
@@ -29,7 +29,7 @@ Room.prototype.make_card = function() {
 
   var room_image = document.createElement('IMG');
   room_image.src = 'images/room_images/' + this.building +
-    '/' + this.type + '/' + this.room_number + '.jpg';
+    '/' + this.type + '/' + this.room_number + '_' + this.date.split('/')[0] + '-' + this.date.split('/')[1] + '.jpg';
   room_image.alt = this.building + ' ' + this.room_number;
   card.appendChild(room_image);
 
@@ -62,6 +62,15 @@ function addViewer(card) {
     title.className = 'ba-container-title';
     title.textContent = this.building + ' ' + this.room_number;
     container.appendChild(title);
+
+    var date_text = document.createElement('P');
+    date_text.className = 'date-text';
+    var temp = this.date.split('/');
+    var formatted_date = seasons_fullform[temp[0]];
+    var temp2 = temp[1].split('-');
+    formatted_date += '/' + seasons_fullform[temp2[0]] + ' ' + temp2[1];
+    date_text.innerHTML = this.type == 'Ongoing' ? '<strong>Scheduled to be Completed by:</strong> ' + formatted_date : '<strong>Completed on:</strong> ' + formatted_date;
+    container.appendChild(date_text);
 
     if (this.type == 'Ongoing') {
       container.appendChild(addImage(this));
@@ -114,7 +123,7 @@ function addImage(room) {
   if (room.type == 'Ongoing') {
     var image = document.createElement('IMG');
     image.className = 'ongoing-image';
-    image.src = image_url + room.room_number + '.jpg';
+    image.src = image_url + room.room_number + '_' + room.date.split('/')[0] + '-' + room.date.split('/')[1] + '.jpg';
     image.alt = image_text;
     return image;
   } else {

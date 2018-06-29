@@ -27,4 +27,4 @@ for (dirpath, dirnames, filenames) in walk('./images/room_images'):
 with open('js/show_rooms.js', 'r+') as f:
     content = f.read()
     f.seek(0, 0)
-    f.write('var rooms_dict = ' + str(rooms_dict) + ';\n\n' + content)
+    f.write('var rooms_dict = ' + str(rooms_dict) + ';\n\n' + content[content.find(';') + 3:])

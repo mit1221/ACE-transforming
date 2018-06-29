@@ -2,51 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2bb7178a-09f0-4bc5-b47f-6d47de9d6b7e" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/images/room_images/HS/Completed/100_1-2-2015.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/room_images/HS/Completed/108_1-2-2012.JPG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/room_images/HS/Completed/614_3-4-2012.JPG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/room_images/HS/Completed/618_2-3-2012.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/room_images/HS/Completed/696_3-4-2012.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/room_images/HS/Completed/705_4-1-2013.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/room_images/HS/Completed/715_3-1-2014.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/room_images/HS/Completed/After/100.JPG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/room_images/HS/Completed/After/108.JPG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/room_images/HS/Completed/After/614.JPG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/room_images/HS/Completed/After/618.JPG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/room_images/HS/Completed/After/696.JPG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/room_images/HS/Completed/After/705.JPG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/room_images/HS/Completed/After/715.JPG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/room_images/HS/Completed/Before/100.JPG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/room_images/HS/Completed/Before/108.JPG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/room_images/HS/Completed/Before/614.JPG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/room_images/HS/Completed/Before/618.JPG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/room_images/HS/Completed/Before/696.JPG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/room_images/HS/Completed/Before/705.JPG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/room_images/HS/Completed/Before/715.JPG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/room_images/OI/Completed/2205_1-2-2012.JPG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/room_images/OI/Completed/2211_1-2-2012.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/room_images/OI/Completed/4414_2-3-2013.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/room_images/OI/Completed/4416_1-2-2012.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/room_images/OI/Completed/5260_4-1-2014.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/room_images/OI/Completed/5270_1-2-2014.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/room_images/OI/Completed/5280_2-3-2013.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/room_images/OI/Completed/5290_3-1-2014.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/room_images/OI/Completed/After/2205.JPG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/room_images/OI/Completed/After/2211.JPG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/room_images/OI/Completed/After/4414.JPG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/room_images/OI/Completed/After/4416.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/room_images/OI/Completed/After/5260.JPG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/room_images/OI/Completed/After/5270.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/room_images/OI/Completed/After/5280.JPG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/room_images/OI/Completed/After/5290.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/room_images/OI/Completed/Before/2205.JPG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/room_images/OI/Completed/Before/2211.JPG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/room_images/OI/Completed/Before/4414.JPG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/room_images/OI/Completed/Before/4416.JPG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/room_images/OI/Completed/Before/5260.JPG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/room_images/OI/Completed/Before/5270.JPG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/room_images/OI/Completed/Before/5280.JPG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/room_images/OI/Completed/Before/5290.JPG" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/css/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/index.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/show_rooms 2.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/show_rooms 2.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/js/show_rooms.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/show_rooms.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/update_rooms.py" beforeDir="false" afterPath="$PROJECT_DIR$/update_rooms.py" afterDir="false" />
     </list>
@@ -58,15 +16,15 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="CoverageDataManager">
-    <SUITE FILE_PATH="coverage/ACE_transforming$update_rooms.coverage" NAME="update_rooms Coverage Results" MODIFIED="1530218501704" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/ACE_transforming$update_rooms.coverage" NAME="update_rooms Coverage Results" MODIFIED="1530278941499" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file leaf-file-name="update_rooms.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/update_rooms.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="425">
-              <caret line="25" lean-forward="true" selection-start-line="25" selection-end-line="25" />
+            <state relative-caret-position="247">
+              <caret line="26" column="41" lean-forward="true" selection-start-line="26" selection-start-column="41" selection-end-line="26" selection-end-column="41" />
             </state>
           </provider>
         </entry>
@@ -198,7 +156,7 @@
       <window_info anchor="bottom" id="Version Control" order="7" />
       <window_info anchor="bottom" id="Python Console" order="7" />
       <window_info anchor="bottom" id="Terminal" order="7" />
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.26752505" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.27110156" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="right" id="Database" order="3" />
       <window_info anchor="right" id="SciView" order="3" />
@@ -226,6 +184,13 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/update_rooms.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="375">
+          <caret line="25" lean-forward="true" selection-start-line="25" selection-end-line="25" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/update_rooms.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="90">
@@ -270,8 +235,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/update_rooms.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="425">
-          <caret line="25" lean-forward="true" selection-start-line="25" selection-end-line="25" />
+        <state relative-caret-position="247">
+          <caret line="26" column="41" lean-forward="true" selection-start-line="26" selection-start-column="41" selection-end-line="26" selection-end-column="41" />
         </state>
       </provider>
     </entry>

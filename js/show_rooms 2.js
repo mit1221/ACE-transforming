@@ -1,33 +1,4 @@
-// var rooms_dict = {
-//   'OI': {
-//     'Pilot': {
-//       '2205': '1/2-2010',
-//       '2211': '2/3-2011',
-//       '4414': '3/4-2012',
-//     },
-//     'Completed': {
-//       '111': '2/3-2011',
-//       '222': '3/4-2012'
-//     },
-//     'Ongoing': {
-//       '000': '4/1-2019',
-//       '333': '1/2-2021'
-//     }
-//   },
-//   'HS': {
-//     'Pilot': {
-//       '100': '1/2-2010',
-//       '108': '4/1-2013',
-//     },
-//     'Completed': {
-//       '-111': '4/1-2013'
-//     },
-//     'Ongoing': {
-//       '-222': '1/2-2020',
-//       '-333': '4/1-2019'
-//     }
-//   }
-// };
+var rooms_dict = {'HS': {'Completed': {}, 'Ongoing': {'1050': '1/2-2019', '1001': '1/2-2018'}, 'Pilot': {'715': '3/1-2014', '618': '2/3-2012', '108': '1/2-2012', '705': '4/1-2013', '696': '3/4-2012', '100': '1/2-2015', '614': '3/4-2012'}}, 'OI': {'Completed': {'520': '3/4-2016', '528': '1/3-2013'}, 'Ongoing': {'220': '1/2-2014', '314': '2/3-2015'}, 'Pilot': {'2211': '1/2-2012', '2205': '1/2-2012', '5290': '3/1-2014', '4414': '2/3-2013', '4416': '1/2-2012', '5260': '4/1-2014', '5280': '2/3-2013', '5270': '1/2-2014'}}};
 
 var fullform = {
   'BA': 'Bahen Centre Information Tech',
@@ -48,7 +19,7 @@ var seasons_fullform = {
 function Room(room_number, building, type, date) {
   this.room_number = room_number;
   this.building = building;
-  this.type = type; //type is 'pilot', 'completed', or 'ongoing'
+  this.type = type; //type is 'Pilot', 'Completed', or 'Ongoing'
   this.date = date; // format: 'Season1/Season2-Year' Ex: 'F/W-2018'
 }
 
@@ -58,7 +29,7 @@ Room.prototype.make_card = function() {
 
   var room_image = document.createElement('IMG');
   room_image.src = 'images/room_images/' + this.building +
-    '/' + this.type + '/' + this.room_number + '.jpg';
+    '/' + this.type + '/' + this.room_number + '_' + this.date.split('/')[0] + '-' + this.date.split('/')[1] + '.jpg';
   room_image.alt = this.building + ' ' + this.room_number;
   card.appendChild(room_image);
 
@@ -91,6 +62,15 @@ function addViewer(card) {
     title.className = 'ba-container-title';
     title.textContent = this.building + ' ' + this.room_number;
     container.appendChild(title);
+
+    var date_text = document.createElement('P');
+    date_text.className = 'date-text';
+    var temp = this.date.split('/');
+    var formatted_date = seasons_fullform[temp[0]];
+    var temp2 = temp[1].split('-');
+    formatted_date += '/' + seasons_fullform[temp2[0]] + ' ' + temp2[1];
+    date_text.innerHTML = this.type == 'Ongoing' ? '<strong>Scheduled to be Completed by:</strong> ' + formatted_date : '<strong>Completed on:</strong> ' + formatted_date;
+    container.appendChild(date_text);
 
     if (this.type == 'Ongoing') {
       container.appendChild(addImage(this));
@@ -143,7 +123,7 @@ function addImage(room) {
   if (room.type == 'Ongoing') {
     var image = document.createElement('IMG');
     image.className = 'ongoing-image';
-    image.src = image_url + room.room_number + '.jpg';
+    image.src = image_url + room.room_number + '_' + room.date.split('/')[0] + '-' + room.date.split('/')[1] + '.jpg';
     image.alt = image_text;
     return image;
   } else {
