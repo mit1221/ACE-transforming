@@ -69,7 +69,7 @@ function addViewer(card) {
     var formatted_date = seasons_fullform[temp[0]];
     var temp2 = temp[1].split('-');
     formatted_date += '/' + seasons_fullform[temp2[0]] + ' ' + temp2[1];
-    date_text.innerHTML = this.type == 'Ongoing' ? '<strong>Scheduled to be Completed by:</strong> ' + formatted_date : '<strong>Completed on:</strong> ' + formatted_date;
+    date_text.innerHTML = this.type == 'Ongoing' ? '<strong>Scheduled to be Completed:</strong> ' + formatted_date : '<strong>Completed:</strong> ' + formatted_date;
     container.appendChild(date_text);
 
     if (this.type == 'Ongoing') {
