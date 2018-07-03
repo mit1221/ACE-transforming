@@ -1,12 +1,6 @@
 var rooms_dict = {'AB': {'Completed': {}, 'Ongoing': {'114': '1/2-2019'}, 'Pilot': {}}, 'BA': {'Completed': {}, 'Ongoing': {'2139': '1/2-2019', '2145': '1/2-2019', '2155': '1/2-2019', '2165': '1/2-2019', '2175': '1/2-2019', '2185': '1/2-2019', '2195': '1/2-2019'}, 'Pilot': {}}, 'BF': {'Completed': {}, 'Ongoing': {'214': '4/1-2018', '215': '4/1-2018', '315': '4/1-2018', '316': '4/1-2018', '323': '4/1-2018'}, 'Pilot': {}}, 'GB': {'Completed': {}, 'Ongoing': {'303': '4/1-2018', '304': '4/1-2018'}, 'Pilot': {}}, 'HS': {'Completed': {}, 'Ongoing': {}, 'Pilot': {'100': '1/2-2015', '108': '1/2-2012', '614': '3/4-2012', '618': '2/3-2012', '696': '3/4-2012', '705': '4/1-2013', '715': '3/1-2014'}}, 'MC': {'Completed': {}, 'Ongoing': {}, 'Pilot': {}}, 'MP': {'Completed': {}, 'Ongoing': {}, 'Pilot': {}}, 'OI': {'Completed': {}, 'Ongoing': {}, 'Pilot': {'2205': '1/2-2012', '2211': '1/2-2012', '4414': '2/3-2013', '4416': '1/2-2012', '5260': '4/1-2014', '5270': '1/2-2014', '5280': '2/3-2013', '5290': '3/1-2014'}}, 'WB': {'Completed': {}, 'Ongoing': {'119': '4/1-2018', '130': '4/1-2018', '219': '4/1-2018'}, 'Pilot': {}}, 'WW': {'Completed': {}, 'Ongoing': {'119': '1/2-2019', '120': '1/2-2019', '121': '1/2-2019', '126': '1/2-2019'}, 'Pilot': {}}};
 
-var fullform = {
-  'BA': 'Bahen Centre Information Tech',
-  'HS': 'Health Sciences ',
-  'MC': 'Mechanical Engineering ',
-  'MP': 'McLennan Physical Laboratories',
-  'OI': 'O.I.S.E.'
-};
+var fullform = {'AB': 'Astronomy and Astrophysics', 'BA': 'Bahen Centre', 'BF': 'Bancroft Building', 'GB': 'Galbraith', 'HS': 'Health Sciences', 'MC': 'Mechanical Engineering', 'MP': 'McLennan Physical Laboratories', 'OI': 'O.I.S.E', 'WB': 'Wallberg', 'WW': 'Woodsworth College'};
 
 var seasons_fullform = {
   1: 'Winter',
@@ -28,7 +22,7 @@ Room.prototype.make_card = function() {
   card.className = 'card' + ' ' + this.building;
 
   var room_image = document.createElement('IMG');
-  room_image.src = 'images/room_images/' + this.building +
+  room_image.src = 'images/room_images/' + this.building + '-' + fullform[this.building] +
     '/' + this.type + '/' + this.room_number + '_' + this.date.split('/')[0] + '-' + this.date.split('/')[1] + '.jpg';
   room_image.alt = this.building + ' ' + this.room_number;
   card.appendChild(room_image);
@@ -116,7 +110,7 @@ function addContent(room) {
 }
 
 function addImage(room) {
-  var image_url = 'images/room_images/' + room.building +
+  var image_url = 'images/room_images/' + room.building + '-' + fullform[room.building] +
   '/' + room.type + '/';
   var image_text = room.building + ' ' + room.room_number;
 
@@ -302,3 +296,4 @@ $(function() {
   document.getElementById('date_button').addEventListener('click', function() {room_objects.show_rooms_by('date')});
   document.getElementById('building_button').addEventListener('click', function() {room_objects.show_rooms_by('building')});
 });
+

@@ -28,6 +28,7 @@ for (dirpath, dirnames, filenames) in walk('./images/room_images'):
 
 with open('js/show_rooms.js', 'r+') as f:
     content = f.read()
+    append_text = content[content.find(';', content.find(';') + 1):]
     f.seek(0, 0)
-    f.write('var rooms_dict = ' + str(rooms_dict) + ';')
-    f.write('var fullform = ' + str(dict) + content[content.find(';'):])
+    f.write('var rooms_dict = ' + str(rooms_dict) + ';\n\n')
+    f.write('var fullform = ' + str(fullforms) + append_text)
