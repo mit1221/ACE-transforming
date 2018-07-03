@@ -26,6 +26,79 @@ body {
   color: #333;
 }
 
+#full-page {
+  width: 100%;
+  min-width: 600px;
+  height: 100%;
+  background: rgb(0, 42, 92);
+  position: absolute;
+  box-sizing: border-box;
+  padding: 20px;
+  top: 0;
+  left: 0;
+  display: table;
+  -webkit-animation: fade-out 1s ease-out; /* Safari 4.0 - 8.0 */
+  -webkit-animation-delay: 1s;
+  animation: fade-out 1.2s ease-out;
+  animation-delay: 1.2s;
+}
+
+/* Safari 4.0 - 8.0 */
+@-webkit-keyframes move-in-left {
+  from {opacity: 0; transform:  translateX(-300px);}
+  to {opacity: 1; transform: translateX(0px);}
+}
+
+/* Standard syntax */
+@keyframes fade-out {
+  from {opacity: 1;}
+  to {opacity: 0;}
+}
+
+#text-div {
+  display: table-cell;
+  vertical-align: middle;
+}
+
+#main-heading {
+  color: white;
+  font-size: 50px;
+  font-weight: bold;
+  -webkit-animation: move-in-left 0.6s ease-out; /* Safari 4.0 - 8.0 */
+  animation: move-in-left 0.6s ease-out;
+}
+
+#subheading {
+  color: #bccbde;
+  font-size: 30px;
+  -webkit-animation: move-in-right 0.6s ease-out; /* Safari 4.0 - 8.0 */
+  animation: move-in-right 0.6s ease-out;
+}
+
+/* Safari 4.0 - 8.0 */
+@-webkit-keyframes move-in-left {
+  from {opacity: 0; transform:  translateX(-300px);}
+  to {opacity: 1; transform: translateX(0px);}
+}
+
+/* Standard syntax */
+@keyframes move-in-left {
+  from {opacity: 0; transform:  translateX(-300px);}
+  to {opacity: 1; transform: translateX(0px);}
+}
+
+/* Safari 4.0 - 8.0 */
+@-webkit-keyframes move-in-right {
+  from {opacity: 0; transform:  translateX(300px);}
+  to {opacity: 1; transform: translateX(0px);}
+}
+
+/* Standard syntax */
+@keyframes move-in-right {
+  from {opacity: 0; transform:  translateX(300px);}
+  to {opacity: 1; transform: translateX(0px);}
+}
+
 #container {
   position: relative;
   min-height: 100vh;
@@ -269,14 +342,77 @@ body {
 }
 
 /* ---------------------------- IMAGE ----------------------------*/
-#background {
-  height: 300px;
+.background-container {
   width: 100%;
-  object-fit: cover;
-  -webkit-animation: move-in 1.5s; /* Safari 4.0 - 8.0 */
-  animation: move-in 1.5s;
-  position: relative;
+  height: 400px;
+  padding-bottom: 6px;
+  border-bottom: 5px solid #002A5C;
+  margin-bottom: 10px;
+  -webkit-animation: move-in 0.7s ease-out; /* Safari 4.0 - 8.0 */
+  animation: move-in 0.7s ease-out;
+}
+
+.background {
+  background-color: rgba(51, 51, 51, 0.3);
+  background-blend-mode: soft-light;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 400px;
+  width: 100%;
   z-index: -1;
+  position: absolute;
+}
+
+.background:after {
+  position: absolute;
+  bottom: 20px;
+  color: white;
+  left: 20px;
+  font-size: 40px;
+  font-weight: lighter;
+  background: #002A5C;
+  padding: 10px 30px;
+  -webkit-animation: fade-in 1.2s; /* Safari 4.0 - 8.0 */
+  animation: fade-in 1.2s;
+}
+
+.background.index {
+  background-image: url('../images/CEIE.jpg');
+  background-position: 0% 70%;
+}
+.background.index:after {
+  content: 'Transforming the Instructional Landscape';
+}
+@media (max-width: 900px) {
+  .background.index:after {
+    font-size: 30px;
+  }
+}
+
+.background.introduction {
+  background-image: url('../images/intro_image.jpg');
+}
+
+.background.emerging {
+  background-image: url('../images/emerging_image.jpg');
+}
+.background.emerging:after {
+  content: 'Emerging';
+}
+
+.background.expanding {
+  background-image: url('../images/expanding_image.jpg');
+}
+.background.expanding:after {
+  content: 'Expanding';
+}
+
+.background.enhancing {
+  background-image: url('../images/enhancing_image.jpg');
+}
+.background.enhancing:after {
+  content: 'Enhancing';
 }
 
 /* Safari 4.0 - 8.0 */
@@ -365,7 +501,7 @@ footer {
 h1 {
   font-weight: bold;
   line-height: 1.25em;
-  margin: 0px 0px 15px 0px;
+  margin: 0px 0px 15px 35px;
   border: 0;
   padding: 0;
   text-align: left;

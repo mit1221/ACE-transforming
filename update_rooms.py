@@ -2,6 +2,7 @@
 from os import walk
 
 rooms_dict = {}
+fullforms = {}
 for (dirpath, dirnames, filenames) in walk('./images/room_images'):
     if not('Before' in dirpath or 'After' in dirpath):
         if 'completed' in dirpath.lower() or 'ongoing' in dirpath.lower() or 'pilot' in dirpath.lower():
@@ -17,8 +18,9 @@ for (dirpath, dirnames, filenames) in walk('./images/room_images'):
                     year = temp2[2].split('.')[0]
                     type_dict[room_number] = season1 + '/' + season2 + '-' + year
 
-            splitted_path = dirpath.split('/')
-            building = splitted_path[-2]
+            splitted_path = dirpath.split('\\')
+            building = splitted_path[-2].split('-')[0]
+            fullforms[building] = '-'.join(splitted_path[-2].split('-')[1:])
             type = splitted_path[-1]
             if building not in rooms_dict:
                 rooms_dict[building] = {}
@@ -27,4 +29,5 @@ for (dirpath, dirnames, filenames) in walk('./images/room_images'):
 with open('js/show_rooms.js', 'r+') as f:
     content = f.read()
     f.seek(0, 0)
-    f.write('var rooms_dict = ' + str(rooms_dict) + content[content.find(';'):])
+    f.write('var rooms_dict = ' + str(rooms_dict) + ';')
+    f.write('var fullform = ' + str(dict) + content[content.find(';'):])

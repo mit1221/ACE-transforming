@@ -68,7 +68,7 @@
               </ul>
             </li>
             <li>
-              <a href="#">
+              <a href="progress.html">
                 <svg width="18px" height="18px" viewBox="0 0 60 60" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                     <title>progress icon</title>
                     <g id="Page-1" stroke="none" stroke-width="1" fill="white" fill-rule="evenodd">
@@ -84,17 +84,6 @@
                         </g>
                     </g>
                 </svg>Progress</a>
-              <ul class="nav-dropdown">
-                <li>
-                  <a href="completed.html">Completed Works</a>
-                </li>
-                <li>
-                  <a href=".html">To Be Completed</a>
-                </li>
-                <li>
-                  <a href="schedule.html">Project Schedule and Updates</a>
-                </li>
-              </ul>
             </li>
             <li>
               <a href="feedback.html">
@@ -109,11 +98,14 @@
         </nav>
       </div>
     </section>
-    <img id="background" src="images/CEIE.png" alt="CEIE" />
+    <div class="background-container">
+      <div class="background index"></div>
+    </div>
     <div class="wrapper">
       <div id="main">
-        <h1>Hello</h1>
-        <p>Test</p><br>
+        <section>
+          <p>test...</p>
+        </section>
       </div>
     </div>
   </div>
@@ -127,6 +119,20 @@
       </ul>
     </nav>
   </footer>
+  <div id="full-page">
+    <div id="text-div">
+      <p id="main-heading">Transforming the Instructional Landscape</p>
+      <p id="subheading">Academic + Campus Events</p>
+    </div>
+  </div>
+  <script type="text/javascript">
+    document.body.style.overflow = 'hidden';
+    setTimeout(function() {
+      document.getElementById('full-page').style.display = 'none';
+      document.body.style.overflow = 'scroll';
+    }, 2400);
+
+  </script>
 </body>
 
 </html>

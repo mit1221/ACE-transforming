@@ -1,4 +1,4 @@
-var rooms_dict = {'HS': {'Completed': {}, 'Ongoing': {'1050': '1/2-2019', '1001': '1/2-2018'}, 'Pilot': {'715': '3/1-2014', '618': '2/3-2012', '108': '1/2-2012', '705': '4/1-2013', '696': '3/4-2012', '100': '1/2-2015', '614': '3/4-2012'}}, 'OI': {'Completed': {'520': '3/4-2016', '528': '1/3-2013'}, 'Ongoing': {'220': '1/2-2014', '314': '2/3-2015'}, 'Pilot': {'2211': '1/2-2012', '2205': '1/2-2012', '5290': '3/1-2014', '4414': '2/3-2013', '4416': '1/2-2012', '5260': '4/1-2014', '5280': '2/3-2013', '5270': '1/2-2014'}}};
+var rooms_dict = {'AB': {'Completed': {}, 'Ongoing': {'114': '1/2-2019'}, 'Pilot': {}}, 'BA': {'Completed': {}, 'Ongoing': {'2139': '1/2-2019', '2145': '1/2-2019', '2155': '1/2-2019', '2165': '1/2-2019', '2175': '1/2-2019', '2185': '1/2-2019', '2195': '1/2-2019'}, 'Pilot': {}}, 'BF': {'Completed': {}, 'Ongoing': {'214': '4/1-2018', '215': '4/1-2018', '315': '4/1-2018', '316': '4/1-2018', '323': '4/1-2018'}, 'Pilot': {}}, 'GB': {'Completed': {}, 'Ongoing': {'303': '4/1-2018', '304': '4/1-2018'}, 'Pilot': {}}, 'HS': {'Completed': {}, 'Ongoing': {}, 'Pilot': {'100': '1/2-2015', '108': '1/2-2012', '614': '3/4-2012', '618': '2/3-2012', '696': '3/4-2012', '705': '4/1-2013', '715': '3/1-2014'}}, 'MC': {'Completed': {}, 'Ongoing': {}, 'Pilot': {}}, 'MP': {'Completed': {}, 'Ongoing': {}, 'Pilot': {}}, 'OI': {'Completed': {}, 'Ongoing': {}, 'Pilot': {'2205': '1/2-2012', '2211': '1/2-2012', '4414': '2/3-2013', '4416': '1/2-2012', '5260': '4/1-2014', '5270': '1/2-2014', '5280': '2/3-2013', '5290': '3/1-2014'}}, 'WB': {'Completed': {}, 'Ongoing': {'119': '4/1-2018', '130': '4/1-2018', '219': '4/1-2018'}, 'Pilot': {}}, 'WW': {'Completed': {}, 'Ongoing': {'119': '1/2-2019', '120': '1/2-2019', '121': '1/2-2019', '126': '1/2-2019'}, 'Pilot': {}}};
 
 var fullform = {
   'BA': 'Bahen Centre Information Tech',
@@ -208,10 +208,12 @@ Rooms.prototype.show_rooms_by = function(type) { // type is either 'date' or 'bu
     categories.sort(function(a, b) {
       var year_a = a == 'Pilot' ? 0 : parseInt(a.slice(-4));
       var year_b = b == 'Pilot' ? 0 : parseInt(b.slice(-4));
-      var season_a = parseInt(a.charAt(0));
-      var season_b = parseInt(b.charAt(0));
+      var season_a_1 = parseInt(a.charAt(0));
+      var season_a_2 = parseInt(a.charAt(2));
+      var season_b_1 = parseInt(b.charAt(0));
+      var season_b_2 = parseInt(b.charAt(2));
 
-      return year_a - year_b != 0 ? (year_a - year_b) : (season_a - season_b);
+      return (year_a - year_b) != 0 ? (year_a - year_b) : (season_a_1 - season_b_1) != 0 ? (season_a_1 - season_b_1) : (season_a_2 - season_b_2);
     });
   } else if (type == 'building') {
     // sort alphabetically
