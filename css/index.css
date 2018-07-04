@@ -895,6 +895,12 @@ button:active, input[type=submit]:active {
   animation: float 1s infinite;
 }
 
+.card-incomplete {
+  background: #CCC;
+  box-shadow: 0 2px 15px 0 rgba(184, 180, 180, 0.5);
+  pointer-events: none;
+}
+
 /* Safari 4.0 - 8.0 */
 @-webkit-keyframes float {
   0% {transform: translateY(-2px) scale(1.1);}
@@ -909,6 +915,10 @@ button:active, input[type=submit]:active {
   100% {transform: translateY(-2px) scale(1.1);}
 }
 
+.card .text-div {
+  flex: 1;
+}
+
 .card img {
   height: 100px;
   width: 156px;
@@ -918,9 +928,21 @@ button:active, input[type=submit]:active {
 }
 
 .card h4 {
-  flex: 1;
   text-align: center;
   color: white;
+}
+
+.card-incomplete img {
+  border-right: 4px solid #a7a3a3;
+}
+
+.card-incomplete h4 {
+  color: #736f6f;
+}
+
+.card-incomplete p {
+  text-align: center;
+  margin-bottom: 0;
 }
 
 .ba-container {
@@ -1005,7 +1027,7 @@ form input[type=submit] {
 form input[type=submit]:disabled {
   background: #CCC;
   color: #a7a3a3;
-  border: 1px solid #CCC;
+  border: none;
   cursor: not-allowed;
 }
 

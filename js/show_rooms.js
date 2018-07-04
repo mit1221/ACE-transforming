@@ -19,7 +19,10 @@ function Room(room_number, building, type, date) {
 
 Room.prototype.make_card = function() {
   var card = document.createElement('DIV');
-  card.className = 'card' + ' ' + this.building;
+  card.className = 'card';
+  if (this.type == 'Ongoing') {
+    card.className += ' card-incomplete'
+  }
 
   var room_image = document.createElement('IMG');
   room_image.src = 'images/room_images/' + this.building + '-' + fullform[this.building] +
@@ -27,9 +30,24 @@ Room.prototype.make_card = function() {
   room_image.alt = this.building + ' ' + this.room_number;
   card.appendChild(room_image);
 
+  var text_div = document.createElement('DIV');
+  text_div.className = 'text-div';
+
   var card_heading = document.createElement('H4');
   card_heading.textContent = room_image.alt;
-  card.appendChild(card_heading);
+  text_div.appendChild(card_heading);
+
+  if (this.type == 'Ongoing') {
+    var date_heading = document.createElement('p');
+    var temp = this.date.split('/');
+    var formatted_date = seasons_fullform[temp[0]];
+    var temp2 = temp[1].split('-');
+    formatted_date += '/' + seasons_fullform[temp2[0]] + ' ' + temp2[1];
+    date_heading.textContent = formatted_date;
+    text_div.appendChild(date_heading);
+  }
+
+  card.appendChild(text_div);
 
   // clicking a card to open the before/after slider
   card.addEventListener('click', addViewer.bind(this, card));
@@ -296,4 +314,3 @@ $(function() {
   document.getElementById('date_button').addEventListener('click', function() {room_objects.show_rooms_by('date')});
   document.getElementById('building_button').addEventListener('click', function() {room_objects.show_rooms_by('building')});
 });
-
