@@ -12,18 +12,25 @@ var error_messages = {
   }
 }
 
+function delegate1(a, b) {
+  return function() {
+    validateElement(a, b);
+  }
+}
 
-window.onload = function() {
-  var elements = document.getElementsByClassName('required');
-  submit = document.forms['feedback']['submit'];
+function form(form_name) {
+  var elements = document.getElementById(form_name + '_form').getElementsByClassName('required');
+  submit = document.forms[form_name]['submit'];
 
   for (var i = 0; i < elements.length; i++) {
     valid_array.push(false);
-    elements[i].addEventListener('input', validateElement.bind(this, elements[i], i));
+    // elements[i].removeEventListener('input', validateElement);
+
+    elements[i].addEventListener('input', validateElement(event));
     elements[i].addEventListener('change', changeStyling.bind(this, elements[i]));
   }
 
-  var text_inputs = document.querySelectorAll('#feedback input[type=text]');
+  var text_inputs = document.querySelectorAll('#' + form_name + '_form input[type=text]');
 
   for (var i = 0; i < text_inputs.length; i++) {
     text_inputs[i].addEventListener('keypress', function(e) {
@@ -90,11 +97,13 @@ function validateElement(el, index) {
   } else {
     submit.disabled = true;
   }
+  console.log('h');
 }
 
 
 function isValid(el) {
   if (el.value == '') {
+    console.log('i');
     return -1;
   }
   if (el.name == 'email') {
@@ -153,6 +162,6 @@ function Tree(root, children) {
   this.root = root;
   this.children = children != undefined ? children : [];
   this.print_children = function() {
-    
+
   }
 }

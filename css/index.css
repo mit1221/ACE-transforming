@@ -107,6 +107,30 @@ body {
   display: block;
 }
 
+#landing_page_container {
+  display: flex;
+}
+
+#landing_page_container div:first-child {
+  flex: 3;
+  margin-right: 10px;
+}
+
+#landing_page_container div:last-child {
+  flex-basis: 100px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#landing_page_container div:last-child img:first-child {
+  width: 400px;
+}
+
+#landing_page_container div:last-child img:last-child {
+  width: 200px;
+}
+
 /* ----------------------- HEADER -------------------- */
 
 .navigation {
@@ -350,6 +374,7 @@ body {
   margin-bottom: 10px;
   -webkit-animation: move-in 0.7s ease-out; /* Safari 4.0 - 8.0 */
   animation: move-in 0.7s ease-out;
+  display: flex;
 }
 
 .background {
@@ -358,15 +383,15 @@ body {
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  height: 400px;
   width: 100%;
+  height: 400px;
   z-index: -1;
-  position: absolute;
+  flex: 3;
 }
 
 .background:after {
-  position: absolute;
-  bottom: 20px;
+  position: relative;
+  top: 320px;
   color: white;
   left: 20px;
   font-size: 40px;
@@ -415,6 +440,11 @@ body {
   content: 'Enhancing';
 }
 
+.background.accessibility {
+  background-size: contain;
+  background-image: url('../images/accessibility.png');
+}
+
 /* Safari 4.0 - 8.0 */
 @-webkit-keyframes move-in {
   from {opacity: 0; transform:  translateX(-30px);}
@@ -425,6 +455,29 @@ body {
 @keyframes move-in {
   from {opacity: 0; transform:  translateX(-30px);}
   to {opacity: 1; transform: translateX(0px);}
+}
+
+.slideshow {
+  position: relative;
+  overflow: hidden;
+  flex-basis: 200px;
+  cursor: pointer;
+}
+.images {
+  background: url('../images/accessibility_slideshow.jpg');
+  background-size: contain;
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 500%;
+  width: 100%;
+  animation: slideshow 9s linear infinite;
+  transform: translate3d(0, 0, 0);
+}
+@keyframes slideshow {
+  100% {
+    -webkit-transform: translateY(-894px);
+  }
 }
 
 /* ----------------------------- FOOTER -----------------------------*/
