@@ -184,11 +184,6 @@ body {
   border-bottom-color: #bccbde;
   color: #bccbde;
 }
-.navigation nav ul li a:not(:only-child):after,
-.navigation nav ul li a:visited:not(:only-child):after {
-  padding-left: 4px;
-  content: '\25BE';
-}
 .navigation nav ul li ul li {
   min-width: 190px;
 }
@@ -272,6 +267,11 @@ body {
     fill: #002A5C !important;
   }
 }
+
+.dropdown-li:hover .nav-dropdown {
+  display: block;
+}
+
 @media (min-width: 1101px) {
   .nav-list {
     display: block !important;
@@ -377,6 +377,11 @@ body {
   display: flex;
 }
 
+.index_container {
+  position: relative;
+  overflow: hidden;
+}
+
 .background {
   background-color: rgba(51, 51, 51, 0.3);
   background-blend-mode: soft-light;
@@ -403,15 +408,37 @@ body {
 }
 
 .background.index {
-  background-image: url('../images/CEIE.jpg');
-  background-position: 0% 70%;
+  background-image: url('../images/image_gallery_images/wide_image.png');
+  position: absolute;
+  left: 0;
+  top: 0;
+  background-repeat: repeat;
+  width: 1000px;
+  height: 400px;
+  animation: slideshow-landing-page 15s linear infinite;
+  transform: translate3d(0, 0, 0);
 }
-.background.index:after {
-  content: 'Transforming the Instructional Landscape';
+
+#text-above-image {
+  position: absolute;
+  bottom: -10px;
+  color: white;
+  left: 20px;
+  font-size: 40px;
+  font-weight: lighter;
+  background: #002A5C;
+  padding: 10px 30px;
+  -webkit-animation: fade-in 1.2s; /* Safari 4.0 - 8.0 */
+  animation: fade-in 1.2s;
 }
 @media (max-width: 900px) {
-  .background.index:after {
-    font-size: 30px;
+  #text-above-image {
+    font-size: 25px;
+  }
+}
+@keyframes slideshow-landing-page {
+  100% {
+    -webkit-transform: translateX(-11000px);
   }
 }
 
@@ -634,7 +661,61 @@ button:active, input[type=submit]:active {
   box-shadow: 0px 0px 26px 0px rgba(0, 0, 0, 0.5) inset;
   pointer-events: none;
 }
-/* ========================== COMPLETED WORKS ========================== */
+
+/* ========================== MANDATE ========================== */
+.mandate-cards-container {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.mandate-card {
+  width: 220px;
+  border: 1px solid #a7a3a3;
+  border-radius: 3px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px 0;
+  margin-right: 20px;
+  margin-bottom: 20px;
+  transition: 0.2s ease-out;
+  cursor: pointer;
+}
+
+.mandate-card:hover {
+  background: #a7a3a3;
+  transform: scale(1.05);
+}
+
+.mandate-card:hover .line {
+  -webkit-animation: move-in 0.4s; /* Safari 4.0 - 8.0 */
+  animation: move-in 0.4s;
+}
+
+.mandate-card:last-child {
+  margin-right: 0;
+}
+
+.mandate-card > * {
+  margin: 10px 0;
+}
+
+.mandate-card img {
+  width: 50%;
+  border-radius: 50%;
+  border: 5px solid #ccc;
+}
+
+.mandate-card h4 {
+  text-transform: uppercase;
+}
+
+.mandate-card .line {
+  width: 30%;
+  border-bottom: 4px solid #ccc;
+}
+
+/* ========================== PROGRESS ========================== */
 
 /* styling for the before/after images */
 .ba-slider {
