@@ -43,12 +43,6 @@ body {
   animation-delay: 1.2s;
 }
 
-/* Safari 4.0 - 8.0 */
-@-webkit-keyframes move-in-left {
-  from {opacity: 0; transform:  translateX(-300px);}
-  to {opacity: 1; transform: translateX(0px);}
-}
-
 /* Standard syntax */
 @keyframes fade-out {
   from {opacity: 1;}
@@ -408,14 +402,15 @@ body {
 }
 
 .background.index {
-  background-image: url('../images/image_gallery_images/wide_image.png');
+  background-image: url('../images/wide_image.png');
   position: absolute;
   left: 0;
   top: 0;
   background-repeat: repeat;
-  width: 1000px;
+  background-size: contain;
+  width: 15000px;
   height: 400px;
-  animation: slideshow-landing-page 15s linear infinite;
+  animation: slideshow-landing-page 50s linear infinite;
   transform: translate3d(0, 0, 0);
 }
 
@@ -438,7 +433,7 @@ body {
 }
 @keyframes slideshow-landing-page {
   100% {
-    -webkit-transform: translateX(-11000px);
+    -webkit-transform: translateX(-6830px);
   }
 }
 
@@ -680,16 +675,12 @@ button:active, input[type=submit]:active {
   margin-bottom: 20px;
   transition: 0.2s ease-out;
   cursor: pointer;
+  text-align: center;
 }
 
 .mandate-card:hover {
   background: #a7a3a3;
   transform: scale(1.05);
-}
-
-.mandate-card:hover .line {
-  -webkit-animation: move-in 0.4s; /* Safari 4.0 - 8.0 */
-  animation: move-in 0.4s;
 }
 
 .mandate-card:last-child {
@@ -706,6 +697,26 @@ button:active, input[type=submit]:active {
   border: 5px solid #ccc;
 }
 
+.mandate-card:hover img {
+  -webkit-animation: rotate 0.5s; /* Safari 4.0 - 8.0 */
+  animation: rotate 0.5s;
+}
+
+/* Safari 4.0 - 8.0 */
+@-webkit-keyframes fade-in {
+  0% {transform: rotate(0deg);}
+  50% {transform: rotate(-30deg);}
+  100% {transform: rotate(0deg);}
+}
+
+/* Standard syntax */
+@keyframes rotate {
+  0% {transform: rotate(0deg);}
+  50% {transform: rotate(30deg);}
+  80% {transform: rotate(-10deg);}
+  100% {transform: rotate(0deg);}
+}
+
 .mandate-card h4 {
   text-transform: uppercase;
 }
@@ -713,6 +724,11 @@ button:active, input[type=submit]:active {
 .mandate-card .line {
   width: 30%;
   border-bottom: 4px solid #ccc;
+}
+
+.mandate-card:hover .line {
+  -webkit-animation: move-in 0.5s; /* Safari 4.0 - 8.0 */
+  animation: move-in 0.5s;
 }
 
 /* ========================== PROGRESS ========================== */
@@ -982,6 +998,21 @@ button:active, input[type=submit]:active {
   pointer-events: none;
 }
 
+.card-incomplete:before {
+  background: #a7a3a3;
+  text-align: center;
+  font-size: 14px;
+  color: white;
+  padding: 8px 0;
+  content: 'Upcoming';
+  position: absolute;
+  width: 106px;
+  margin-left: -38px;
+  transform: rotate(-90deg);
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
 /* Safari 4.0 - 8.0 */
 @-webkit-keyframes float {
   0% {transform: translateY(-2px) scale(1.1);}
@@ -1024,6 +1055,7 @@ button:active, input[type=submit]:active {
 .card-incomplete p {
   text-align: center;
   margin-bottom: 0;
+  color: #736f6f;
 }
 
 .ba-container {

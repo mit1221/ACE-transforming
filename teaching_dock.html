@@ -10,13 +10,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta charset="UTF-8">
 
-  <title>Feedback</title>
+  <title>Teaching Dock</title>
   <link rel="shortcut icon" href="images/favicon.ico">
   <link rel="stylesheet" href="css/index.css" type="text/css">
-  <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="js/navbar.js"></script>
-  <script src="js/button_toggle.js"></script>
 </head>
 
 <body>
@@ -86,8 +85,25 @@
                     </g>
                 </svg>Progress</a>
             </li>
+            <li class="dropdown-li">
+              <a href="teaching_aids.html">
+                <svg height="18px" width="18px" viewBox="0 0 418 522" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                    <title>Room description icon</title>
+                    <g id="Page-1" stroke="none" stroke-width="1" fill="#ffffff" fill-rule="evenodd">
+                        <path d="M261.25,0 L52.25,0 C23.5125,0 0.26125,23.49 0.26125,52.2 L0,469.8 C0,498.51 23.25125,522 51.98875,522 L365.75,522 C394.4875,522 418,498.51 418,469.8 L418,156.6 L261.25,0 L261.25,0 Z M313,417 L104,417 L104,365 L313,365 L313,417 L313,417 Z M313,313 L104,313 L104,261 L313,261 L313,313 L313,313 Z M235,183 L235,39 L379,183 L235,183 L235,183 Z" id="Icon"></path>
+                    </g>
+                </svg>Teaching Aids</a>
+              <ul class="nav-dropdown">
+                <li>
+                  <a href="teaching_dock.html">Teaching Dock</a>
+                </li>
+                <li>
+                  <a href="unified_teaching_station.html">Unified Teaching Station</a>
+                </li>
+              </ul>
+            </li>
             <li>
-              <a href="feedback.html" class="active">
+              <a href="feedback.html">
                 <svg width="18px" height="18px" viewBox="0 0 84 78" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                     <title>Feedback icon</title>
                     <g id="Page-1" stroke="none" stroke-width="1" fill="white" fill-rule="evenodd">
@@ -99,141 +115,26 @@
         </nav>
       </div>
     </section>
-    <h1>Feedback</h1>
+    <h1>Teaching Dock</h1>
+    <div class="background-container">
+      <div class="background teaching_dock"></div>
+    </div>
     <div class="wrapper">
+
       <div id="main">
-        <div class="button-group">
-          <button class="button-group-button default" onclick="openForm('classroom')">Classroom Feedback</button>
-          <button class="button-group-button" onclick="openForm('dock')">Teaching Dock</button>
-          <button class="button-group-button" onclick="openForm('station')">Unified Teaching Station</button>
-        </div>
-
-        <!-- Classroom Feedback Form -->
-        <div id="classroom" class="form-container">
-          <form method="post" name="classroom" id="classroom_form">
-            <div class="name-email">
-              <div class="fullname">
-                <div><span class="asterisk">* </span>Full Name:<br><input type="text" name="firstname" class="required"
-                    placeholder="First Name" autofocus></div>
-                <div><br><input type="text" name="lastname" class="required" placeholder="Last Name"></div>
-              </div>
-              <br>
-              <div><span class="asterisk">* </span>Email:<br><input type="text" name="email" class="required"
-                  placeholder="Enter a valid email address"></div>
-            </div>
-            <span class="asterisk">* </span>Select classroom:<br><input type="text" name="classroom"
-              class="required" placeholder="Please use this format: BA290">
-            <br>Elements of the classroom that could be improved:<br>
-            <textarea rows="5" cols="50" name="q1"></textarea>
-            <br>What do you like about this classroom?<br>
-            <textarea rows="5" cols="50" name="q2"></textarea>
-            <br>Any additional classroom features that would be useful, interesting, or engaging:<br>
-            <textarea rows="5" cols="50" name="q3"></textarea><br>
-            <div style="display: flex; justify-content: center; margin-bottom: 0;"><input type="submit" name="submit" onclick="return confirm('Do you really want to submit the form?');"
-                value="Submit Feedback" disabled></div>
-          </form>
-        </div>
-
-        <!-- Teaching Dock Form -->
-        <div id="dock" class="form-container">
-          <form method="post" name="dock" id="dock_form">
-            <div class="name-email">
-              <div class="fullname">
-                <div><span class="asterisk">* </span>Full Name:<br><input type="text" name="firstname" class="required"
-                    placeholder="First Name" autofocus></div>
-                <div><br><input type="text" name="lastname" class="required" placeholder="Last Name"></div>
-              </div>
-              <br>
-              <div><span class="asterisk">* </span>Email:<br><input type="text" name="email" class="required"
-                  placeholder="Enter a valid email address"></div>
-            </div>
-            Do you use the Teaching Dock, if not please provide a reason (i.e. Personal preference, design needs
-            to be improved etc.).<br>
-            <textarea rows="5" cols="50" name="q1"></textarea>
-            <br>Usability - does it impede sightlines i.e. too thick/coming off the wall too far? Is
-            the shelf practical for placing your laptop etc.?<br>
-            <textarea rows="5" cols="50" name="q2"></textarea>
-            <br>Size - how is the height placement, can you reach everything easily?<br>
-            <textarea rows="5" cols="50" name="q3"></textarea>
-            <br>Is it an ergonomic design? If not, please comment.<br>
-            <textarea rows="5" cols="50" name="q3"></textarea>
-            <br>Is it easy to use the help button? (i.e. how is the placement of the button, have you
-            ever activated it by accident?)<br>
-            <textarea rows="5" cols="50" name="q3"></textarea>
-            <br>Does the design of the Teaching Dock affect your teaching in any way?<br>
-            <textarea rows="5" cols="50" name="q3"></textarea>
-            <br>How can we improve your (user) experience?<br>
-            <textarea rows="5" cols="50" name="q3"></textarea>
-            <br>Have you heard any comments and/or feedback from the students?<br>
-            <textarea rows="5" cols="50" name="q3"></textarea>
-            <br>Any further comments?<br>
-            <textarea rows="5" cols="50" name="q3"></textarea>
-            <div style="display: flex; justify-content: center; margin-bottom: 0;"><input type="submit" name="submit" onclick="return confirm('Do you really want to submit the form?');"
-                value="Submit Feedback" disabled></div>
-          </form>
-        </div>
-
-        <!-- Teaching Station Form -->
-        <div id="station" class="form-container">
-          <form method="post" name="station" id="station_form">
-            <div class="name-email">
-              <div class="fullname">
-                <div><span class="asterisk">* </span>Full Name:<br><input type="text" name="firstname" class="required"
-                    placeholder="First Name" autofocus></div>
-                <div><br><input type="text" name="lastname" class="required" placeholder="Last Name"></div>
-              </div>
-              <br>
-              <div><span class="asterisk">* </span>Email:<br><input type="text" name="email" class="required"
-                  placeholder="Enter a valid email address"></div>
-            </div>
-            Do you use the Teaching Station, if not please provide a reason (i.e. Personal preference, design needs
-            to be improved etc.).<br>
-            <textarea rows="5" cols="50" name="q1"></textarea>
-            <br>Material - is the surface too sleek, have you noticed any damages, is it supportive enough?<br>
-            <textarea rows="5" cols="50" name="q2"></textarea>
-            <br>Size - how is the height placement, can you reach everything easily?<br>
-            <textarea rows="5" cols="50" name="q3"></textarea>
-            <br>Is it an ergonomic design? If not, please comment.<br>
-            <textarea rows="5" cols="50" name="q3"></textarea>
-            <br>Is it easy to use the help button? (i.e. how is the placement of the button, have you
-            ever activated it by accident?)<br>
-            <textarea rows="5" cols="50" name="q3"></textarea>
-            <br>Does the design of the Teaching Station affect your teaching in any way?<br>
-            <textarea rows="5" cols="50" name="q3"></textarea>
-            <br>How do you find the keyboard tray? Do you leave the keyboard in it or take it out while
-            teaching? Do you like it?<br>
-            <textarea rows="5" cols="50" name="q3"></textarea>
-            <br>How can we improve your (user) experience?<br>
-            <textarea rows="5" cols="50" name="q3"></textarea>
-            <br>Have you heard any comments and/or feedback from the students?<br>
-            <textarea rows="5" cols="50" name="q3"></textarea>
-            <br>Any further comments?<br>
-            <textarea rows="5" cols="50" name="q3"></textarea>
-            <div style="display: flex; justify-content: center; margin-bottom: 0;"><input type="submit" name="submit" onclick="return confirm('Do you really want to submit the form?');"
-                value="Submit Feedback" disabled></div>
-          </form>
-        </div>
+        <section>
+          <p>Text
+          </p>
+        </section>
       </div>
     </div>
   </div>
-
-  <script type="text/javascript">
-    openForm('classroom');
-
-    function openForm(name) {
-      var x = document.getElementsByClassName("form-container");
-      for (var i = 0; i < x.length; i++) {
-        x[i].style.display = "none";
-      }
-      document.getElementById(name).style.display = "block";
-      form(name);
-    }
-
-  </script>
   <!------------------------------------------------- foooter ------------------------------------>
   <footer id="footer">
     <nav>
       <ul id="footer_items">
+        <li><a href=".html">A/V Standards</a></li>
+        <li><a href=".html">Accessibility</a></li>
         <li><a href="contact.html">Contact Us</a></li>
       </ul>
     </nav>
