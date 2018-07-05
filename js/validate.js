@@ -127,7 +127,7 @@ function validated(el) {
 
 function isGoodFormat(classroom) {
   classroom = classroom.replace(/\s/g,'');
-  if (classroom.length > 6 || classroom.length < 5) {
+  if (classroom.length > 7 || classroom.length < 5) {
     return -2;
   }
 
@@ -136,7 +136,7 @@ function isGoodFormat(classroom) {
     return -3;
   }
 
-  var room_number = classroom.slice(2);
+  var room_number = classroom.slice(3);
   if (isNaN(room_number)) {
     return -4;
   };
