@@ -8,27 +8,22 @@
   background: #5880AF;
 }
 
+p {
+  line-height: 1.8;
+}
+
 a {
   text-decoration: none;
   cursor: pointer;
 }
 
-img {
+img:not(.resize img) {
   max-width: 100%;
 }
 
 html {
   height: 100vh;
   min-width: 600px;
-}
-
-.quote {
-  font-style: italic;
-  text-transform: uppercase;
-  font-family: 'Roboto Condensed';
-  color: #002A5C;
-  font-size: 25px;
-  margin-top: 80px;
 }
 
 body {
@@ -131,6 +126,116 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+
+.quote {
+  font-style: italic;
+  text-transform: uppercase;
+  font-family: 'Roboto Condensed';
+  color: #002A5C;
+  font-size: 23px;
+  margin: 10px 0;
+  line-height: 35px;
+}
+
+.quotes-icon {
+  height: 40px;
+  float: left;
+  margin-right: 20px;
+}
+
+.callout {
+  background: #bccbde;
+  padding: 15px 20px;
+  border-radius: 10px;
+  margin-bottom: 40px;
+  position: relative;
+  display: flex;
+}
+
+.callout:last-child {
+  margin: 0;
+}
+
+.callout::before {
+	content: "";
+	width: 0px;
+	height: 0px;
+	border: 1em solid transparent;
+	position: absolute;
+}
+
+.callout.bottom-left::before {
+	left: 20px;
+	bottom: -25px;
+  border-top: 10px solid #bccbde;
+
+}
+.callout.bottom-right::before {
+	right: 20px;
+	top: -25px;
+  border-bottom: 10px solid #bccbde;
+}
+
+.numbers {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.numbers:first-child {
+  margin-bottom: 40px;
+}
+
+.numbers img {
+  margin-right: 10px;
+}
+
+.numbers h2 {
+  text-align: center;
+  font-size: 22px;
+}
+
+.numbers-heading {
+  display: flex;
+  align-items: center;
+}
+
+.numbers-body {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  width: 100%;
+
+}
+
+.number-box {
+  flex-basis: 200px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.number {
+  font-size: 45px;
+  margin-top: 20px;
+  margin-bottom: 0;
+  font-weight: lighter;
+  color: #a7a3a3;
+}
+
+.number-box p:last-child {
+  margin-top: 0;
+  max-width: 200px;
+  text-align: center;
+  font-family: 'Roboto Condensed';
+  font-size: 18px;
+}
+
+@media (max-width: 700px) {
+  .number-box {
+    flex-basis: 400px;
+  }
 }
 
 /* ----------------------- HEADER -------------------- */
