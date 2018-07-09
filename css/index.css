@@ -13,6 +13,10 @@ a {
   cursor: pointer;
 }
 
+img {
+  max-width: 100%;
+}
+
 html {
   height: 100vh;
   min-width: 600px;
@@ -406,6 +410,7 @@ body {
   width: 15000px;
   height: 400px;
   animation: slideshow-landing-page 50s linear infinite;
+  animation-delay: 1s;
   transform: translate3d(0, 0, 0);
 }
 
@@ -420,6 +425,7 @@ body {
   padding: 10px 30px;
   -webkit-animation: fade-in 1.2s; /* Safari 4.0 - 8.0 */
   animation: fade-in 1.2s;
+  animation-delay: 0.8s;
 }
 @media (max-width: 900px) {
   #text-above-image {
@@ -1488,16 +1494,16 @@ form input[type=submit]:disabled {
 .row > * {
   padding-right: 60px;
   padding-left: 60px;
-  border-right: 1px solid #a7a3a3;
 }
 
 .one-column {
   display: flex;
   text-align: center;
+  border-right: 1px solid #a7a3a3;
   flex-direction: column;
 }
 
-.one-column:last-child {
+.row .one-column:last-child {
   border-right: none;
 }
 
