@@ -329,7 +329,7 @@ body {
   width: 70px;
 }
 
-@media (max-width: 1100px) {
+@media (max-width: 1250px) {
   .nav-mobile {
     display: block;
   }
@@ -380,7 +380,7 @@ body {
   display: block;
 }
 
-@media (min-width: 1101px) {
+@media (min-width: 1251px) {
   .nav-list {
     display: block !important;
   }
@@ -1380,8 +1380,9 @@ form input[type=submit]:disabled {
 #contact_info_card {
   background-color: #CCCCCC;
   padding: 15px;
-  margin: 10px 0px;
-  width: 400px;
+  margin: 10px 40px 10px 0;
+  min-width: 200px;
+  max-width: 400px;
 }
 
 .contact_card_title {
@@ -1437,6 +1438,7 @@ form input[type=submit]:disabled {
 }
 
 #images_container {
+  flex: 1;
   display: flex;
   flex-wrap: wrap;
   margin-top: 20px;
@@ -1444,12 +1446,13 @@ form input[type=submit]:disabled {
 
 #images_container>div {
   border: 0.5px solid rgba(0, 0, 0, 0.2);
-  width: 300px;
+  max-width: 300px;
+  min-width: 200px;
   padding: 10px;
   margin-right: 40px;
   margin-bottom: 20px;
   background-color: white;
-  box-shadow: 0px 8px 20px 0 rgba(0, 0, 0, 0.2);
+  box-shadow: 0px 8px 20px 0 rgba(0, 0, 0, 0.3);
   border-radius: 5px;
   transition: 0.4s;
   cursor: pointer;
@@ -1457,7 +1460,8 @@ form input[type=submit]:disabled {
 }
 
 #images_container>div:hover {
-  box-shadow: 0px 8px 30px 5px rgba(0, 0, 0, 0.5);
+  box-shadow: 0px 18px 30px 0 rgba(0, 0, 0, 0.25);
+  transform: translateY(-4px);
 }
 
 #images_container>div>div {
@@ -1528,7 +1532,6 @@ form input[type=submit]:disabled {
   object-fit: cover;
   max-width: 100%;
   max-height: 700px;
-  border-radius: 10px;
 }
 
 @media (max-height: 750px) {
@@ -1613,7 +1616,7 @@ form input[type=submit]:disabled {
 .row {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
+  justify-content: space-around;
   padding-bottom: 50px;
   padding-top: 50px;
   border-bottom: 5px solid #002A5C;
@@ -1634,12 +1637,7 @@ form input[type=submit]:disabled {
   flex-direction: column;
 }
 
-.teaching-aid img {
-  max-height: 500px;
-  max-width: 100%;
-}
-
 .one-column img {
   margin-bottom: 20px;
-  max-width: 550px;
+  width: 550px;
 }
