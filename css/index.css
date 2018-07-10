@@ -526,6 +526,7 @@ body {
   height: 400px;
   animation: slideshow-landing-page 40s linear infinite;
   animation-delay: 1s;
+  background-blend-mode:;
   transform: translate3d(0, 0, 0);
 }
 
