@@ -15,6 +15,7 @@ p {
 a {
   text-decoration: none;
   cursor: pointer;
+  color: #002A5C;
 }
 
 img:not(.resize img) {
@@ -1032,7 +1033,7 @@ button:active, input[type=submit]:active {
   font-size: 18px;
   box-shadow: 0 2px 6px rgba(0,0,0,0.16), 0 2px 6px rgba(0,0,0,0.23);
   background: #dedcdc;
-  color: #736f6f;
+  color: #333;
   margin-bottom: 10px;
   padding: 20px 15px;
   border-radius: 3px;
@@ -1057,7 +1058,9 @@ button:active, input[type=submit]:active {
 }
 
 .category-heading.open {
-  background: #736f6f;
+  box-shadow: 0 10px 28px rgba(0,0,0,0.25), 0 6px 10px rgba(0,0,0,0.22);
+  transform: translateY(-3px);
+  background: #002A5C;
   color: white;
 }
 
@@ -1119,16 +1122,16 @@ button:active, input[type=submit]:active {
 }
 
 .card-incomplete {
-  background: #CCC;
-  box-shadow: 0 2px 15px 0 rgba(184, 180, 180, 0.5);
+  background: #f0f0f0;
+  box-shadow: none;
   pointer-events: none;
 }
 
 .card-incomplete:before {
-  background: #a7a3a3;
+  background: rgba(240, 240, 240, 0.8);
   text-align: center;
   font-size: 14px;
-  color: white;
+  color: #a7a3a3;
   padding: 8px 0;
   content: 'Upcoming';
   position: absolute;
@@ -1137,6 +1140,7 @@ button:active, input[type=submit]:active {
   transform: rotate(-90deg);
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
+  z-index: 1;
 }
 
 /* Safari 4.0 - 8.0 */
@@ -1171,17 +1175,18 @@ button:active, input[type=submit]:active {
 }
 
 .card-incomplete img {
-  border-right: 4px solid #a7a3a3;
+  -webkit-filter: grayscale(60%); /* Safari 6.0 - 9.0 */
+  filter: grayscale(60%);
+  opacity: 0.6;
 }
 
-.card-incomplete h4 {
-  color: #736f6f;
+.card-incomplete h4, .card-incomplete p {
+  color: #a7a3a3;
 }
 
 .card-incomplete p {
   text-align: center;
   margin-bottom: 0;
-  color: #736f6f;
   font-size: 14px;
 }
 
@@ -1621,19 +1626,19 @@ form input[type=submit]:disabled {
 .one-column {
   display: flex;
   text-align: center;
-  border-right: 1px solid #a7a3a3;
+  border: 1px solid #a7a3a3;
+  margin-right: 5px;
+  margin-bottom: 15px;
+  padding: 10px;
   flex-direction: column;
 }
 
-.row .one-column:last-child {
-  border-right: none;
+.teaching-aid img {
+  max-height: 500px;
+  max-width: 100%;
 }
 
 .one-column img {
   margin-bottom: 20px;
-}
-
-.teaching-aid img {
   max-width: 550px;
-  max-height: 500px;
 }
