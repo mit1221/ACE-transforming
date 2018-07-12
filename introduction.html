@@ -16,6 +16,7 @@
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700" rel="stylesheet">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="js/navbar.js"></script>
+  <script src="https://storage.googleapis.com/vrview/2.0/build/vrview.min.js"></script>
 </head>
 
 <body>
@@ -123,6 +124,20 @@
     <div class="background-container">
       <div class="background introduction"></div>
     </div>
+    <div id='vrview'></div>
+    <script type="text/javascript">
+      window.addEventListener('load', onVrViewLoad);
+
+      function onVrViewLoad() {
+        // Selector '#vrview' finds element with id 'vrview'.
+        var vrView = new VRView.Player('#vrview', {
+          image: 'images/360_photos/R0010018.jpg',
+          width: '600px',
+          height: '500px'
+        });
+      }
+
+    </script>
     <div class="wrapper">
       <div id="main">
         <h3>Transforming the Instructional Landscape</h3>
@@ -164,7 +179,14 @@
   <footer id="footer">
     <nav>
       <ul id="footer_items">
-        <li><a href="../index.html">ACE Website</a></li>
+        <li>
+          <a href="../index.html">
+            <div style="display: flex; flex-direction: column">
+              <p style="margin: 0">ACE Website</p>
+              <p style="margin: 0">Academic + Campus Events</p>
+            </div>
+          </a>
+        </li>
         <li><a href="contact.html">Contact Us</a></li>
       </ul>
     </nav>

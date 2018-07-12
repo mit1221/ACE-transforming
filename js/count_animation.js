@@ -1,5 +1,3 @@
-window.addEventListener('scroll', checkPosition);
-
 var numbers_container;
 var numbers;
 var data = [];
@@ -10,6 +8,7 @@ window.onload = function() {
   for (var i = 0; i < numbers.length; i++) {
     data.push(parseInt(numbers[i].dataset.number));
   }
+  window.addEventListener('scroll', checkPosition);
 }
 
 var finished = false;

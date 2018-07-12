@@ -35,9 +35,13 @@ body {
   color: #333;
 }
 
+.zoom-image {
+  cursor: zoom-in;
+}
+
 #full-page {
-  width: 100%;
-  height: 100%;
+  width: 100vw;
+  height: 100vh;
   background: rgb(0, 42, 92);
   position: fixed;
   box-sizing: border-box;
@@ -125,7 +129,7 @@ body {
   flex-basis: 400px;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-around;
   align-items: center;
 }
 
@@ -560,6 +564,7 @@ body {
 }
 
 .background.introduction {
+  /* background-image: url('../images/intro_image.jpg'); */
   background-image: url('../images/intro_image.jpg');
 }
 
@@ -1033,8 +1038,8 @@ button:active, input[type=submit]:active {
   width: 100%;
   font-size: 18px;
   box-shadow: 0 2px 6px rgba(0,0,0,0.16), 0 2px 6px rgba(0,0,0,0.23);
-  background: #d4cece;
-  color: #333;
+  background: #337AB7;
+  color: white;
   margin-bottom: 10px;
   padding: 20px 15px;
   border-radius: 3px;
@@ -1052,7 +1057,7 @@ button:active, input[type=submit]:active {
 
 .category-heading:after {
     content: '\002B';
-    color: #a7a3a3;
+    color: white;
     font-weight: bold;
     float: right;
     margin-left: 5px;
@@ -1381,8 +1386,7 @@ form input[type=submit]:disabled {
   background-color: #CCCCCC;
   padding: 15px;
   margin: 10px 40px 10px 0;
-  min-width: 200px;
-  max-width: 400px;
+  flex-basis: 200px;
 }
 
 .contact_card_title {
@@ -1446,11 +1450,12 @@ form input[type=submit]:disabled {
 
 #images_container>div {
   border: 0.5px solid rgba(0, 0, 0, 0.2);
-  max-width: 300px;
+  max-width: 250px;
   min-width: 200px;
+  height: 320px;
   padding: 10px;
-  margin-right: 40px;
-  margin-bottom: 20px;
+  margin-right: 30px;
+  margin-bottom: 30px;
   background-color: white;
   box-shadow: 0px 8px 20px 0 rgba(0, 0, 0, 0.3);
   border-radius: 5px;
@@ -1472,7 +1477,7 @@ form input[type=submit]:disabled {
 #images_container img {
   display: block;
   margin: 0 auto;
-  width: 300px;
+  width: 250px;
   height: 200px;
   object-fit: cover;
   border-radius: 5px 5px 0 0;
@@ -1617,14 +1622,10 @@ form input[type=submit]:disabled {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
+  align-items: center;
   padding-bottom: 50px;
   padding-top: 50px;
   border-bottom: 5px solid #002A5C;
-}
-
-.row > * {
-  padding-right: 60px;
-  padding-left: 60px;
 }
 
 .one-column {
@@ -1639,5 +1640,5 @@ form input[type=submit]:disabled {
 
 .one-column img {
   margin-bottom: 20px;
-  width: 550px;
+  width: 500px;
 }
