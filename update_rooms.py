@@ -3,7 +3,7 @@ from os import walk
 
 rooms_dict = {}
 fullforms = {}
-for (dirpath, dirnames, filenames) in walk('./images/room_images'):
+for (dirpath, dirnames, filenames) in walk('./TIL Website/images/room_images'):
     if not('Before' in dirpath or 'After' in dirpath):
         if 'completed' in dirpath.lower() or 'ongoing' in dirpath.lower() or 'pilot' in dirpath.lower():
             type_dict = {}
@@ -26,7 +26,7 @@ for (dirpath, dirnames, filenames) in walk('./images/room_images'):
                 rooms_dict[building] = {}
             rooms_dict[building][type] = type_dict
 
-with open('js/show_rooms.js', 'r+') as f:
+with open('./TIL Website/js/show_rooms.js', 'r+') as f:
     content = f.read()
     append_text = content[content.find(';', content.find(';') + 1):]
     f.seek(0, 0)

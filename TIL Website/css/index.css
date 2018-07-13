@@ -1622,7 +1622,6 @@ form input[type=submit]:disabled {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
-  align-items: center;
   padding-bottom: 50px;
   padding-top: 50px;
   border-bottom: 5px solid #002A5C;
