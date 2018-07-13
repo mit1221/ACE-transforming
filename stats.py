@@ -10,11 +10,13 @@ last_index = len(df.index)-1
 for column in columns:
     totals.append(int(df[column][last_index]))
 
+
+file_path = './TIL Website/index.html'
 content = ''
-with open('./TIL Website/index_test.html', 'r') as f:
+with open(file_path, 'r') as f:
     content = f.read()
 
-with open('./TIL Website/index_test.html', 'w') as f:
+with open('./TIL Website/index.html', 'w') as f:
     return_string = ''
     return_string += content[:content.find('data-number') + 13]
 
