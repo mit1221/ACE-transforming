@@ -10,8 +10,11 @@ last_index = len(df.index)-1
 for column in columns:
     totals.append(int(df[column][last_index]))
 
-with open('./TIL Website/index_test.html', 'r+') as f:
+content = ''
+with open('./TIL Website/index_test.html', 'r') as f:
     content = f.read()
+
+with open('./TIL Website/index_test.html', 'w') as f:
     return_string = ''
     return_string += content[:content.find('data-number') + 13]
 
@@ -23,11 +26,8 @@ with open('./TIL Website/index_test.html', 'r+') as f:
         split_string = content[index:]
         end = split_string[13:].find('data-number')
         if (end != -1):
-            append_text = split_string[split_string.find('<'):end + 13]
+            append_text = split_string[split_string.find('<'):end + 26]
             return_string += append_text
         else:
             return_string += split_string[split_string.find('<'):]
-    print(return_string)
-            
-        
-    
+    f.write(return_string)
