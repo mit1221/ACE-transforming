@@ -737,8 +737,23 @@ h4 {
   margin: 0 0 10px 0;
 }
 
+h5 {
+  font-size: 1.1em;
+  color: #333;
+}
+
 section {
   margin-bottom: 50px;
+}
+
+.link {
+  font-weight: bold;
+  text-decoration: underline;
+  color: #002A5C;
+}
+
+.important {
+  font-style: italic;
 }
 
 button, input[type=submit] {

@@ -10,7 +10,6 @@ last_index = len(df.index)-1
 for column in columns:
     totals.append(int(df[column][last_index]))
 
-
 file_path = './TIL Website/index.html'
 content = ''
 with open(file_path, 'r') as f:
@@ -23,7 +22,7 @@ with open('./TIL Website/index.html', 'w') as f:
     index = 0
     for i in range(3):
         return_string = return_string + str(totals[i]) + "'>" + str(totals[i])
-        
+
         index = content.find('data-number', index + 1)
         split_string = content[index:]
         end = split_string[13:].find('data-number')
