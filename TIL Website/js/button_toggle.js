@@ -1,4 +1,6 @@
-$(function() {
+$(document).ready(add_toggle_functionality);
+
+function add_toggle_functionality() {
   var button_groups = document.getElementsByClassName('button-group');
   for (var i = 0; i < button_groups.length; i++) {
     var buttons = button_groups[i].children;
@@ -10,7 +12,7 @@ $(function() {
       }
     }
   }
-});
+};
 
 function make_active(buttons, number) {
   var active = null;

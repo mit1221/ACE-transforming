@@ -49,16 +49,19 @@ Room.prototype.make_card = function() {
 
   card.appendChild(text_div);
 
-  // clicking a card to open the before/after slider
-  card.addEventListener('click', addViewer.bind(this, card));
+  // clicking a card to open the viewer
+  if (this.type != 'Ongoing') {
+    card.addEventListener('click', addViewer.bind(this, card));
+  }
   return card;
 }
 
-// the room that the before/after viewer is currently open for
+// the room that the viewer is currently open for and its parent element
 var current = null;
 var parent = null;
 function addViewer(card) {
   // deactivate currently open card and close open container
+  // card.type is either 'Completed' or 'Pilot'
   if (current != null && parent.contains(current)) {
     current.parentElement.removeChild(current.parentElement.lastChild);
     current.classList.remove('card-active');
@@ -81,75 +84,89 @@ function addViewer(card) {
     var formatted_date = seasons_fullform[temp[0]];
     var temp2 = temp[1].split('-');
     formatted_date += '/' + seasons_fullform[temp2[0]] + ' ' + temp2[1];
-    date_text.innerHTML = this.type == 'Ongoing' ? '<strong>Scheduled to be Completed:</strong> ' + formatted_date : '<strong>Completed:</strong> ' + formatted_date;
+    date_text.innerHTML = '<strong>Completed:</strong> ' + formatted_date;
     container.appendChild(date_text);
 
-    if (this.type == 'Ongoing') {
-      container.appendChild(addImage(this));
-    } else {
-      container.appendChild(addContent(this));
-    }
+    // switching between 360 view and before/after image
+    var button_group = document.createElement('DIV');
+    button_group.className = 'button-group';
+    button_group.style.maxWidth = '900px';
+    button_group.style.paddingBottom = '10px';
+    var button1 = document.createElement('BUTTON');
+    var button2 = document.createElement('BUTTON');
+    button1.className = 'button-group-button default';
+    button2.className = 'button-group-button';
+    button1.innerHTML = 'Before/After Viewer';
+    button2.innerHTML = '360&#176; Viewer';
+
+    button_group.appendChild(button1);
+    button_group.appendChild(button2);
+    container.appendChild(button_group);
+
+    button1.onclick = addContent(this, 'ba viewer');
+    button2.onclick = addContent(this, '360');
+
+    // adds the before/after viewer by default
+    container.appendChild(addContent(this, 'ba viewer'));
+
     card.parentElement.appendChild(container);
     add_sliding_functionality();
-    setTimeout(function() {
-        container.scrollIntoView();
-      }, 200);
+    add_toggle_functionality();
+
+    container.scrollIntoView();      // scroll to the viewer automatically
     current = card;
     parent = card.parentElement;
     return;
   }
-  // if same card was clicked twice, then it removes the card from 'current'
+  // if the same card was clicked twice, then it removes the card from 'current'
   current = null;
 }
 
-function addContent(room) {
-  var slider = document.createElement('DIV');
-  slider.className = 'ba-slider';
+function addContent(room, viewer_type) {
+  if (viewer_type == 'ba viewer') {
+    var slider = document.createElement('DIV');
+    slider.className = 'ba-slider';
 
-  var before_text = document.createElement('DIV');
-  var after_text = document.createElement('DIV');
-  before_text.className = 'ba_text before_text';
-  after_text.className = 'ba_text after_text';
-  before_text.textContent = 'Before';
-  after_text.textContent = 'After';
+    var before_text = document.createElement('DIV');
+    var after_text = document.createElement('DIV');
+    before_text.className = 'ba_text before_text';
+    after_text.className = 'ba_text after_text';
+    before_text.textContent = 'Before';
+    after_text.textContent = 'After';
 
-  var ba_images = addImage(room); // returns an array with the before image and then the after image
-  slider.appendChild(ba_images[1]);
-  slider.appendChild(after_text);
+    var ba_images = addImages(room); // returns an array with the before image and then the after image
+    slider.appendChild(ba_images[1]);
+    slider.appendChild(after_text);
 
-  var resize = document.createElement('DIV');
-  resize.className = 'resize';
-  resize.appendChild(ba_images[0]);
-  resize.appendChild(before_text);
+    var resize = document.createElement('DIV');
+    resize.className = 'resize';
+    resize.appendChild(ba_images[0]);
+    resize.appendChild(before_text);
 
-  slider.appendChild(resize);
+    slider.appendChild(resize);
 
-  var handle = document.createElement('SPAN');
-  handle.className = 'handle';
-  slider.appendChild(handle);
-  return slider;
+    var handle = document.createElement('SPAN');
+    handle.className = 'handle';
+    slider.appendChild(handle);
+    return slider;
+  } else {
+    var image_url = 'images/room_images/' + room.building + '-' + fullform[room.building] +
+    '/' + room.type + '/';
+  }
 }
 
-function addImage(room) {
+function addImages(room) {
   var image_url = 'images/room_images/' + room.building + '-' + fullform[room.building] +
   '/' + room.type + '/';
   var image_text = room.building + ' ' + room.room_number;
 
-  if (room.type == 'Ongoing') {
-    var image = document.createElement('IMG');
-    image.className = 'ongoing-image';
-    image.src = image_url + room.room_number + '_' + room.date.split('/')[0] + '-' + room.date.split('/')[1] + '.jpg';
-    image.alt = image_text;
-    return image;
-  } else {
-    var before_image = document.createElement('IMG');
-    var after_image = document.createElement('IMG');
-    before_image.src = image_url + 'before/' + room.room_number + '.jpg';
-    after_image.src = image_url + 'after/' + room.room_number + '.jpg';
-    before_image.alt = image_text + ' Before';
-    after_image.alt = image_text + ' After';
-    return [before_image, after_image];
-  }
+  var before_image = document.createElement('IMG');
+  var after_image = document.createElement('IMG');
+  before_image.src = image_url + 'before/' + room.room_number + '.jpg';
+  after_image.src = image_url + 'after/' + room.room_number + '.jpg';
+  before_image.alt = image_text + ' Before';
+  after_image.alt = image_text + ' After';
+  return [before_image, after_image];
 }
 
 
