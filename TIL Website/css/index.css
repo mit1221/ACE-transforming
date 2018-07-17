@@ -1049,6 +1049,14 @@ button:active, input[type=submit]:active {
   }
 }
 
+.image-360 {
+  position: relative;
+  width: 100%;
+  max-width: 900px;
+  margin: auto;
+  min-height: 100px;
+}
+
 /* ========================== PROGRESS ========================== */
 .category-heading {
   width: 100%;

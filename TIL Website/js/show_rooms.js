@@ -1,5 +1,7 @@
 var rooms_dict = {'AB': {'Completed': {}, 'Ongoing': {'114': '1/2-2019'}, 'Pilot': {}}, 'BA': {'Completed': {}, 'Ongoing': {'1130': '2/3-2019', '1160': '2/3-2020', '1170': '2/3-2020', '1180': '2/3-2020', '1190': '2/3-2019', '1200': '2/3-2019', '1210': '2/3-2020', '1220': '2/3-2020', '1230': '2/3-2020', '1240': '2/3-2020', '2139': '1/2-2019', '2145': '1/2-2019', '2155': '1/2-2019', '2165': '1/2-2019', '2175': '1/2-2019', '2185': '1/2-2019', '2195': '1/2-2019'}, 'Pilot': {}}, 'BF': {'Completed': {}, 'Ongoing': {'214': '4/1-2018', '215': '4/1-2018', '315': '4/1-2018', '316': '4/1-2018', '323': '4/1-2018'}, 'Pilot': {}}, 'BL': {'Completed': {}, 'Ongoing': {'113': '1/2-2021', '305': '1/2-2021', '306': '1/2-2021', '312': '1/2-2021', '327': '1/2-2021'}, 'Pilot': {}}, 'ES': {'Completed': {}, 'Ongoing': {'4001': '2/3-2019', 'B142': '2/3-2019'}, 'Pilot': {}}, 'GB': {'Completed': {}, 'Ongoing': {'303': '4/1-2018', '304': '4/1-2018'}, 'Pilot': {}}, 'HS': {'Completed': {}, 'Ongoing': {'106': '2/3-2020', '610': '1/2-2021', '614': '1/2-2021', '618': '1/2-2021', '696': '1/2-2021', '705': '1/2-2021', '715': '1/2-2021'}, 'Pilot': {'100': '1/2-2015', '108': '1/2-2012', '614': '3/4-2012', '618': '2/3-2012', '696': '3/4-2012', '705': '4/1-2013', '715': '3/1-2014'}}, 'LM': {'Completed': {}, 'Ongoing': {'123': '1/2-2020', '155': '1/2-2020', '157': '1/2-2020', '159': '2/3-2019'}, 'Pilot': {}}, 'MC': {'Completed': {}, 'Ongoing': {}, 'Pilot': {}}, 'MP': {'Completed': {}, 'Ongoing': {'202': '2/3-2019', '203': '2/3-2019'}, 'Pilot': {}}, 'MS': {'Completed': {}, 'Ongoing': {'2290': '2/3-2019', '2394': '2/3-2019', '3153': '4/1-2020', '3154': '4/1-2020', '3290': '2/3-2019'}, 'Pilot': {}}, 'OI': {'Completed': {}, 'Ongoing': {'11200': '2/3-2019', '2212': '4/1-2020', '2214': '4/1-2020', '2279': '4/1-2020', '2286': '4/1-2020', '2295': '4/1-2020', '2296': '4/1-2020', '3311': '4/1-2020', '4410': '4/1-2020', '4426': '4/1-2020', '5150': '4/1-2020', '5160': '4/1-2020', '5170': '4/1-2020', '5230': '4/1-2020', '5240': '4/1-2020', '5250': '4/1-2020', '8170': '4/1-2020', '8180': '4/1-2020', '8200': '4/1-2020', '8201': '4/1-2020', '8214': '2/3-2019', '8220': '2/3-2019', '8280': '2/3-2019', 'G162': '2/3-2019'}, 'Pilot': {'2205': '1/2-2012', '2211': '1/2-2012', '4414': '2/3-2013', '4416': '1/2-2012', '5260': '4/1-2014', '5270': '1/2-2014', '5280': '2/3-2013', '5290': '3/1-2014'}}, 'PB': {'Completed': {}, 'Ongoing': {'255': '2/3-2020', 'B150': '2/3-2020', 'B250': '2/3-2020'}, 'Pilot': {}}, 'SF': {'Completed': {}, 'Ongoing': {'1105': '2/3-2020', '3202': '2/3-2019'}, 'Pilot': {}}, 'SK': {'Completed': {}, 'Ongoing': {'100': '1/2-2021', '114': '1/2-2021', '218': '1/2-2021', '222': '1/2-2021', '346': '1/2-2021', '348': '1/2-2021', '418': '1/2-2021', '548': '1/2-2021', '702': '1/2-2021'}, 'Pilot': {}}, 'SS': {'Completed': {}, 'Ongoing': {'1070': '2/3-2019', '1078': '2/3-2019', '1080': '2/3-2019', '1083': '2/3-2019', '1084': '2/3-2019', '1085': '2/3-2019', '1086': '2/3-2019', '1087': '2/3-2019', '1088': '2/3-2019', '2101': '2/3-2019', '2104': '2/3-2019', '2105': '2/3-2019', '2106': '2/3-2019', '2108': '2/3-2019', '2110': '2/3-2019', '2112': '2/3-2019', '2114': '2/3-2019', '2116': '2/3-2019', '2119': '2/3-2019', '2120': '2/3-2019', '2125': '1/2-2021', '2135': '2/3-2019'}, 'Pilot': {}}, 'UC': {'Completed': {}, 'Ongoing': {'140': '2/3-2020', '144': '2/3-2020', '148': '2/3-2020', '152': '1/2-2021', '163': '4/1-2019', '175': '4/1-2019', '177': '4/1-2019', '244': '1/2-2020', '248': '1/2-2020', '255': '1/2-2020', '256': '1/2-2020', '257': '1/2-2020', '44': '4/1-2019', '51': '4/1-2019', '52': '4/1-2019', '53': '4/1-2019', '55': '4/1-2019', '57': '4/1-2019', '63': '4/1-2019', '65': '4/1-2019', '67': '4/1-2019', '69': '4/1-2019', '85': '4/1-2019', '87': '4/1-2019', 'B203': '1/2-2020', 'D301': '1/2-2020', 'F204': '1/2-2020'}, 'Pilot': {}}, 'WB': {'Completed': {}, 'Ongoing': {'119': '4/1-2018', '130': '4/1-2018', '219': '4/1-2018'}, 'Pilot': {}}, 'WE': {'Completed': {}, 'Ongoing': {'69': '2/3-2019', '74': '2/3-2019', '75': '2/3-2019', '76': '2/3-2019'}, 'Pilot': {}}, 'WI': {'Completed': {}, 'Ongoing': {'2006': '2/3-2019', '523': '4/1-2019', '524': '4/1-2019'}, 'Pilot': {}}, 'WW': {'Completed': {}, 'Ongoing': {'119': '1/2-2019', '120': '1/2-2019', '121': '1/2-2019', '126': '1/2-2019'}, 'Pilot': {}}};
 
+var rooms_with_360_images = {'HS': ['100', '108', '614']};
+
 var fullform = {'AB': 'Astronomy and Astrophysics', 'BA': 'Bahen Centre', 'BF': 'Bancroft Building', 'BL': 'Bissell Building', 'ES': 'Earth Sciences Centre', 'GB': 'Galbraith', 'HS': 'Health Sciences', 'LM': 'Lash Miller Chemical Labs', 'MC': 'Mechanical Engineering', 'MP': 'McLennan Physical Laboratories', 'MS': 'Medical Sciences', 'OI': 'OISE', 'PB': 'Pharmacy', 'SF': 'Sandford Fleming', 'SK': 'Social Work', 'SS': 'Sidney Smith Hall', 'UC': 'University College', 'WB': 'Wallberg', 'WE': 'Wetmore Hall - New College', 'WI': 'Wilson Hall - New College', 'WW': 'Woodsworth College'};
 
 var seasons_fullform = {
@@ -15,6 +17,8 @@ function Room(room_number, building, type, date) {
   this.building = building;
   this.type = type; //type is 'Pilot', 'Completed', or 'Ongoing'
   this.date = date; // format: 'Season1/Season2-Year' Ex: 'F/W-2018'
+  this.has_360_image = rooms_with_360_images[this.building] !== undefined &&
+    rooms_with_360_images[this.building].indexOf(this.room_number) >= 0 ? true : false;
 }
 
 Room.prototype.make_card = function() {
@@ -60,14 +64,15 @@ Room.prototype.make_card = function() {
 var current = null;
 var parent = null;
 function addViewer(card) {
-  // deactivate currently open card and close open container
   // card.type is either 'Completed' or 'Pilot'
+
+  // deactivate currently open card and close open container
   if (current != null && parent.contains(current)) {
     current.parentElement.removeChild(current.parentElement.lastChild);
     current.classList.remove('card-active');
   }
 
-  // add before/after container
+  // add container
   if (current != card) {
     card.classList.add('card-active');
     var container = document.createElement('DIV');
@@ -87,33 +92,34 @@ function addViewer(card) {
     date_text.innerHTML = '<strong>Completed:</strong> ' + formatted_date;
     container.appendChild(date_text);
 
-    // switching between 360 view and before/after image
-    var button_group = document.createElement('DIV');
-    button_group.className = 'button-group';
-    button_group.style.maxWidth = '900px';
-    button_group.style.paddingBottom = '10px';
-    var button1 = document.createElement('BUTTON');
-    var button2 = document.createElement('BUTTON');
-    button1.className = 'button-group-button default';
-    button2.className = 'button-group-button';
-    button1.innerHTML = 'Before/After Viewer';
-    button2.innerHTML = '360&#176; Viewer';
+    // toggle between 360 view and before/after image
+    if (this.has_360_image) {
+      var button_group = document.createElement('DIV');
+      button_group.className = 'button-group';
+      button_group.style.maxWidth = '900px';
+      button_group.style.paddingBottom = '10px';
+      var button1 = document.createElement('BUTTON');
+      var button2 = document.createElement('BUTTON');
+      button1.className = 'button-group-button default';
+      button2.className = 'button-group-button';
+      button1.innerHTML = 'Before/After Viewer';
+      button2.innerHTML = '360&#176; Viewer';
 
-    button_group.appendChild(button1);
-    button_group.appendChild(button2);
-    container.appendChild(button_group);
-
-    button1.onclick = addContent(this, 'ba viewer');
-    button2.onclick = addContent(this, '360');
-
+      button_group.appendChild(button1);
+      button_group.appendChild(button2);
+      container.appendChild(button_group);
+      button1.addEventListener('click', toggle_viewer.bind(this, 'ba viewer'));
+      button2.addEventListener('click', toggle_viewer.bind(this, '360'));
+    }
     // adds the before/after viewer by default
-    container.appendChild(addContent(this, 'ba viewer'));
-
+    addContent(container, this, function() {toggle_viewer('ba viewer')});
     card.parentElement.appendChild(container);
     add_sliding_functionality();
-    add_toggle_functionality();
+    if (this.has_360_image) {
+      add_toggle_functionality();
+    }
 
-    container.scrollIntoView();      // scroll to the viewer automatically
+    container.scrollIntoView();  // scroll to the viewer automatically
     current = card;
     parent = card.parentElement;
     return;
@@ -122,36 +128,42 @@ function addViewer(card) {
   current = null;
 }
 
-function addContent(room, viewer_type) {
-  if (viewer_type == 'ba viewer') {
-    var slider = document.createElement('DIV');
-    slider.className = 'ba-slider';
+function addContent(container, room, callback) {
+  var slider = document.createElement('DIV');
+  slider.className = 'ba-slider';
 
-    var before_text = document.createElement('DIV');
-    var after_text = document.createElement('DIV');
-    before_text.className = 'ba_text before_text';
-    after_text.className = 'ba_text after_text';
-    before_text.textContent = 'Before';
-    after_text.textContent = 'After';
+  var before_text = document.createElement('DIV');
+  var after_text = document.createElement('DIV');
+  before_text.className = 'ba_text before_text';
+  after_text.className = 'ba_text after_text';
+  before_text.textContent = 'Before';
+  after_text.textContent = 'After';
 
-    var ba_images = addImages(room); // returns an array with the before image and then the after image
-    slider.appendChild(ba_images[1]);
-    slider.appendChild(after_text);
+  var ba_images = addImages(room); // returns an array with the before image and then the after image
+  slider.appendChild(ba_images[1]);
+  slider.appendChild(after_text);
 
-    var resize = document.createElement('DIV');
-    resize.className = 'resize';
-    resize.appendChild(ba_images[0]);
-    resize.appendChild(before_text);
+  var resize = document.createElement('DIV');
+  resize.className = 'resize';
+  resize.appendChild(ba_images[0]);
+  resize.appendChild(before_text);
 
-    slider.appendChild(resize);
+  slider.appendChild(resize);
 
-    var handle = document.createElement('SPAN');
-    handle.className = 'handle';
-    slider.appendChild(handle);
-    return slider;
-  } else {
-    var image_url = 'images/room_images/' + room.building + '-' + fullform[room.building] +
-    '/' + room.type + '/';
+  var handle = document.createElement('SPAN');
+  handle.className = 'handle';
+  slider.appendChild(handle);
+  container.appendChild(slider);
+
+  if (room.has_360_image) {
+    var image_360 = document.createElement('DIV');
+    image_360.id = room.building + room.room_number;
+    image_360.className = 'image-360';
+    container.appendChild(image_360);
+    setTimeout(function() {
+      load_360(room);
+      callback();
+    }, 100)
   }
 }
 
@@ -169,6 +181,27 @@ function addImages(room) {
   return [before_image, after_image];
 }
 
+function load_360(room) {
+  var image_url = 'images/room_images/' + room.building + '-' + fullform[room.building] +
+  '/360_images/' + room.room_number + '.jpg';
+
+  var vrView = new VRView.Player('#' + room.building + room.room_number, {
+    image: image_url,
+    width: '100%',
+    height: '500px'
+  });
+}
+
+
+function toggle_viewer(type) {
+  if (type == 'ba viewer') {
+    document.getElementsByClassName('image-360')[0].style.display = 'none';
+    document.getElementsByClassName('ba-slider')[0].style.display = 'block';
+  } else {
+    document.getElementsByClassName('ba-slider')[0].style.display = 'none';
+    document.getElementsByClassName('image-360')[0].style.display = 'block';
+  }
+}
 
 function Rooms(rooms_dict) {
   this.rooms = this.make_room_objects(rooms_dict);

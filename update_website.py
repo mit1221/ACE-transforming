@@ -6,7 +6,7 @@ from pandas import ExcelFile
 """ Gets the rooms added to the room_images directory and update the JavaScript file."""
 rooms_dict = {}
 fullforms = {}
-rooms_with_360_images = []
+rooms_with_360_images = {}
 for (dirpath, dirnames, filenames) in walk('./TIL Website/images/room_images'):
     if not('Before' in dirpath or 'After' in dirpath):
         if 'completed' in dirpath.lower() or 'ongoing' in dirpath.lower() or 'pilot' in dirpath.lower():
@@ -30,15 +30,22 @@ for (dirpath, dirnames, filenames) in walk('./TIL Website/images/room_images'):
                 rooms_dict[building] = {}
             rooms_dict[building][type] = type_dict
         if '360_images' in dirpath.lower():
+            splitted_path = dirpath.split('\\')
+            building = splitted_path[-2].split('-')[0]
             for pic in filenames:
-                rooms_with_360_images.append(pic)
+                if building not in rooms_with_360_images:
+                    rooms_with_360_images[building] = []
+                rooms_with_360_images[building].append(pic.split('.')[0])
 
 with open('./TIL Website/js/show_rooms.js', 'r+') as f:
     content = f.read()
-    append_text = content[content.find(';', content.find(';') + 1):]
+    index = 0
+    for _ in range(3):
+        index = content.find(';', index + 1)
+    append_text = content[index:]
     f.seek(0, 0)
     f.write('var rooms_dict = ' + str(rooms_dict) + ';\n\n')
-    f.write('var 360_images = ' + str(rooms_with_360_images) + ';\n\n')
+    f.write('var rooms_with_360_images = ' + str(rooms_with_360_images) + ';\n\n')
     f.write('var fullform = ' + str(fullforms) + append_text)
 
 
