@@ -653,6 +653,7 @@ footer {
   display: flex;
   flex-wrap: wrap;
   justify-content: flex-end;
+  align-items: center;
 }
 
 #footer_items li {
@@ -669,7 +670,7 @@ footer {
 #footer_items a {
   display: block;
   color: #bccbde;
-  padding: 25px 25px;
+  padding: 15px 25px;
   transition: 50ms;
 }
 
@@ -756,7 +757,7 @@ section {
   font-style: italic;
 }
 
-button, input[type=submit] {
+button, .button, input[type=submit] {
   outline: none;
   border: none;
   background: none;
@@ -769,12 +770,12 @@ button, input[type=submit] {
   font-family: 'Open Sans', Verdana, Geneva, Sans-Serif, Arial, Helvetica;
 }
 
-button:hover, input[type=submit]:hover {
+button:hover, .button:hover, input[type=submit]:hover {
   background: #002A5C;
   color: white;
 }
 
-button:active, input[type=submit]:active {
+button:active, .button:active, input[type=submit]:active {
   box-shadow: 0px 0px 26px 0px rgba(0, 0, 0, 0.5) inset;
 }
 
@@ -881,6 +882,23 @@ button:active, input[type=submit]:active {
 }
 
 /* ========================== PROGRESS ========================== */
+
+.ba-buttons {
+  width: 100%;
+  max-width: 900px;
+  display: flex;
+  justify-content: center;
+  margin: auto;
+  margin-top: 10px;
+}
+
+.ba-buttons > * {
+  margin: 0 5px;
+}
+
+.ba-buttons > * > img {
+  margin-right: 10px;
+}
 
 /* styling for the before/after images */
 .ba-slider {
