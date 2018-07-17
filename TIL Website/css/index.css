@@ -1095,7 +1095,7 @@ button:active, .button:active, input[type=submit]:active {
   transition: 0.2s ease-out;
 }
 
-.category-heading:hover {
+.category-heading:hover, .category-heading.open {
   box-shadow: 0 10px 28px rgba(0,0,0,0.25), 0 6px 10px rgba(0,0,0,0.22);
   transform: translateY(-3px);
 }
@@ -1109,10 +1109,7 @@ button:active, .button:active, input[type=submit]:active {
 }
 
 .category-heading.open {
-  box-shadow: 0 10px 28px rgba(0,0,0,0.25), 0 6px 10px rgba(0,0,0,0.22);
-  transform: translateY(-3px);
-  background: #002A5C;
-  color: white;
+  background: #154b79;
 }
 
 .category-heading.open:after {
@@ -1256,11 +1253,13 @@ button:active, .button:active, input[type=submit]:active {
   font-size: 24px;
   text-align: center;
   margin-top: 0;
+  margin-bottom: 5px;
 }
 
 .date-text {
   text-align: center;
   font-size: 15px;
+  margin-top: 5px;
 }
 
 .ongoing-image {
