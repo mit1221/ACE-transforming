@@ -768,6 +768,9 @@ button, .button, input[type=submit] {
   transition: 0.2s;
   cursor: pointer;
   font-family: 'Open Sans', Verdana, Geneva, Sans-Serif, Arial, Helvetica;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 button:hover, .button:hover, input[type=submit]:hover {
