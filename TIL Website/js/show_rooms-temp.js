@@ -92,33 +92,29 @@ function addViewer(card) {
     date_text.innerHTML = '<strong>Completed:</strong> ' + formatted_date;
     container.appendChild(date_text);
 
-    // toggle between 360 view and before/after image
-    if (this.has_360_image) {
-      var button_group = document.createElement('DIV');
-      button_group.className = 'button-group';
-      button_group.style.maxWidth = '900px';
-      button_group.style.paddingBottom = '10px';
-      var button1 = document.createElement('BUTTON');
-      var button2 = document.createElement('BUTTON');
-      button1.className = 'button-group-button default';
-      button2.className = 'button-group-button';
-      button1.innerHTML = 'Before/After Viewer';
-      button2.innerHTML = '360&#176; Viewer';
-
-      button_group.appendChild(button1);
-      button_group.appendChild(button2);
-      container.appendChild(button_group);
-      button1.addEventListener('click', toggle_viewer.bind(this, 'ba viewer'));
-      button2.addEventListener('click', toggle_viewer.bind(this, '360'));
-    }
     // adds the before/after viewer by default
-    addContent(container, this, function() {toggle_viewer('ba viewer')});
+    addContent(container, this);
     card.parentElement.appendChild(container);
     add_sliding_functionality();
+    var ba_buttons = document.createElement('DIV');
+    ba_buttons.className = 'ba-buttons';
+
     if (this.has_360_image) {
-      add_toggle_functionality();
+      var toggle_button = document.createElement('BUTTON');
+      toggle_button.innerHTML = '<img src="images/360_icon.svg">360&#176; Viewer';
+      toggle_button.id = 'toggle-button';
+      toggle_button.addEventListener('click', toggle_viewer);
+      ba_buttons.appendChild(toggle_button);
     }
 
+    var feedback_button = document.createElement('A');
+    feedback_button.target = '_blank';
+    feedback_button.className = 'button';
+    feedback_button.href = 'feedback.html?room=' + this.building + this.room_number;
+    feedback_button.innerHTML = "<img src='images/feedback.svg'>Give feedback";
+
+    ba_buttons.appendChild(feedback_button);
+    container.appendChild(ba_buttons);
     container.scrollIntoView();  // scroll to the viewer automatically
     current = card;
     parent = card.parentElement;
@@ -128,7 +124,7 @@ function addViewer(card) {
   current = null;
 }
 
-function addContent(container, room, callback) {
+function addContent(container, room) {
   var slider = document.createElement('DIV');
   slider.className = 'ba-slider';
 
@@ -160,10 +156,10 @@ function addContent(container, room, callback) {
     image_360.id = room.building + room.room_number;
     image_360.className = 'image-360';
     container.appendChild(image_360);
+    image_360.style.display = 'none';
     setTimeout(function() {
       load_360(room);
-      callback();
-    }, 100)
+    }, 100);
   }
 }
 
@@ -186,20 +182,22 @@ function load_360(room) {
   '/360_images/' + room.room_number + '.jpg';
 
   var vrView = new VRView.Player('#' + room.building + room.room_number, {
-    image: image_url,
+    image: 'http://127.0.0.1:8887/' + image_url,
     width: '100%',
     height: '500px'
   });
 }
 
-
-function toggle_viewer(type) {
-  if (type == 'ba viewer') {
-    document.getElementsByClassName('image-360')[0].style.display = 'none';
-    document.getElementsByClassName('ba-slider')[0].style.display = 'block';
-  } else {
+function toggle_viewer() {
+  var button = document.getElementById('toggle-button');
+  if (button.textContent.substring(0, 3) == '360') {
+    button.innerHTML = '<img src="images/ba_icon.svg">Before/After Viewer';
     document.getElementsByClassName('ba-slider')[0].style.display = 'none';
     document.getElementsByClassName('image-360')[0].style.display = 'block';
+  } else {
+    button.innerHTML = '<img src="images/360_icon.svg">360&#176; Viewer';
+    document.getElementsByClassName('image-360')[0].style.display = 'none';
+    document.getElementsByClassName('ba-slider')[0].style.display = 'block';
   }
 }
 
