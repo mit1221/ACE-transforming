@@ -820,7 +820,7 @@ button:active, .button:active, input[type=submit]:active {
   border-color: #337AB7;
 }
 
-.icon-button img {
+button img, .button img {
   margin-right: 10px;
 }
 
