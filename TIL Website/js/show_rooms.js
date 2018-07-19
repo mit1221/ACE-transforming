@@ -94,6 +94,7 @@ function addViewer(card) {
       setTimeout(function() {
         current.parentElement.removeChild(current.parentElement.lastChild);
         current.classList.remove('card-active');
+        current.scrollIntoView();
         current = null;
       }, 300);
     }

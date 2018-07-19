@@ -821,7 +821,7 @@ button:active, .button:active, input[type=submit]:active {
   border-color: #337AB7;
 }
 
-button img, .button img {
+button img, .button img, .button svg {
   margin-right: 10px;
 }
 
@@ -846,7 +846,7 @@ button img, .button img {
 }
 
 .landing-card:hover {
-  background: #e4e4e4;
+  background: #eeeeee;
   transform: scale(1.05);
 }
 
@@ -908,6 +908,7 @@ button img, .button img {
   max-width: 900px;
   display: flex;
   justify-content: center;
+  align-items: center;
   margin: auto;
   margin-top: 10px;
 }
@@ -1147,8 +1148,6 @@ button img, .button img {
   flex-wrap: wrap;
   width: 100%;
   margin-bottom: 20px;
-  -webkit-animation: move-in 0.3s ease-out; /* Safari 4.0 - 8.0 */
-  animation: move-in 0.3s ease-out;
 }
 
 .card {
@@ -1584,10 +1583,8 @@ form input[type=submit]:disabled {
   width: 80%;
   max-width: 1000px;
   box-shadow: 0px 8px 20px 0 rgba(0, 0, 0, 0.2);
-  -webkit-animation-name: animatetop;
-  -webkit-animation-duration: 0.4s;
-  animation-name: animatetop;
-  animation-duration: 0.4s;
+  -webkit-animation: animatetop 0.4s;
+  animation: animatetop 0.4s;
 }
 
 .animateout {

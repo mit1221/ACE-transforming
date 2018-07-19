@@ -1,7 +1,8 @@
 var numbers_container;
 var numbers;
 var data = [];
-window.onload = function() {
+
+$(document).ready(function() {
   numbers_container = document.getElementsByClassName('numbers')[0];
   numbers = document.getElementsByClassName('number');
 
@@ -13,12 +14,13 @@ window.onload = function() {
     checkPosition();
     window.addEventListener('scroll', checkPosition);
   }, 1000);
-}
+});
 
 var finished = false;
 function checkPosition() {
   if (isInViewport(numbers_container) && !finished) {
     finished = true;
+    window.removeEventListener('scroll', checkPosition);
     countUp();
   }
 }
