@@ -7,6 +7,7 @@ window.onload = function() {
 
   for (var i = 0; i < numbers.length; i++) {
     data.push(parseInt(numbers[i].dataset.number));
+    numbers[i].textContent = '-';
   }
   setTimeout(function() {
     checkPosition();
