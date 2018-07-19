@@ -8,14 +8,17 @@ window.onload = function() {
   for (var i = 0; i < numbers.length; i++) {
     data.push(parseInt(numbers[i].dataset.number));
   }
-  window.addEventListener('scroll', checkPosition);
+  setTimeout(function() {
+    checkPosition();
+    window.addEventListener('scroll', checkPosition);
+  }, 1000);
 }
 
 var finished = false;
 function checkPosition() {
   if (isInViewport(numbers_container) && !finished) {
-    countUp();
     finished = true;
+    countUp();
   }
 }
 
@@ -41,5 +44,7 @@ function countUp() {
 // Determine if an element is in the visible viewport
 function isInViewport(element) {
   var rect = element.getBoundingClientRect();
-  return rect.top >= -300 && rect.top <= 500;
+  var height = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
+
+  return rect.top > -(element.clientHeight) + (height / 3) && rect.top < height - (height / 3);
 }

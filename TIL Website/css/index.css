@@ -809,6 +809,21 @@ button:active, .button:active, input[type=submit]:active {
   pointer-events: none;
 }
 
+.icon-button {
+  background: white;
+  color: #337AB7 !important;
+  border: 1px solid transparent;
+}
+
+.icon-button:hover {
+  background-color: #d6e6f5;
+  border-color: #337AB7;
+}
+
+.icon-button img {
+  margin-right: 10px;
+}
+
 /* ========================== MANDATE ========================== */
 .cards-container {
   display: flex;
@@ -899,10 +914,6 @@ button:active, .button:active, input[type=submit]:active {
   margin: 0 5px;
 }
 
-.ba-buttons > * > img {
-  margin-right: 10px;
-}
-
 /* styling for the before/after images */
 .ba-slider {
   position: relative;
@@ -920,12 +931,11 @@ button:active, .button:active, input[type=submit]:active {
 .ba_text {
   position: absolute;
   bottom: 5px;
-  background: rgba(255, 255, 255, 0.7);
+  background: white;
   padding: 5px;
   border-radius: 5px;
-  color: #002A5C;
+  color: #337AB7;
   font-size: 10px;
-  font-weight: bold;
   -webkit-animation: fade-in 1.4s; /* Safari 4.0 - 8.0 */
   animation: fade-in 1.4s;
   cursor: pointer;
@@ -933,8 +943,7 @@ button:active, .button:active, input[type=submit]:active {
 }
 
 .ba_text:hover {
-  color: white;
-  background: rgba(0, 42, 92, 0.7);
+  background: #d6e6f5;
 }
 
 @media (min-width: 500px) {
@@ -1035,12 +1044,11 @@ button:active, .button:active, input[type=submit]:active {
   height: 48px;
   margin: -24px 0 0 -24px;
   line-height: 48px;
-  font-size: 30px;
+  font-size: 32px;
   content: '\21d4';
   color: white;
   text-align: center;
-  background: #002A5C;
-  border: 3px solid white;
+  background: #337AB7;
   border-radius: 50%;
   transition: all 0.2s ease;
 }
@@ -1109,7 +1117,7 @@ button:active, .button:active, input[type=submit]:active {
 }
 
 .category-heading.open {
-  background: #154b79;
+  background: #073D6A;
 }
 
 .category-heading.open:after {
@@ -1144,6 +1152,7 @@ button:active, .button:active, input[type=submit]:active {
 .card {
   width: 270px;
   height: 100px;
+  position: relative;
   box-shadow: 0px 0px 25px 0px rgba(0, 0, 0, 0.4);
   background: #002A5C;
   display: flex;
@@ -1184,11 +1193,32 @@ button:active, .button:active, input[type=submit]:active {
   content: 'Upcoming';
   position: absolute;
   width: 106px;
-  margin-left: -38px;
+  left: -38px;
+  top: 33px;
+  -ms-transform: rotate(-90deg); /* IE 9 */
+  -webkit-transform: rotate(-90deg); /* Safari 3-8 */
   transform: rotate(-90deg);
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
   z-index: 1;
+}
+
+.feedback-for-incomplete {
+  position: absolute;
+  width: 130px;
+  height: 20px;
+  left: calc(50% - 150px/2);
+  top: calc(50% - 40px/2);
+  z-index: 10;
+  opacity: 0;
+  margin-top: 3px;
+  font-size: 14px;
+  box-shadow: 0px 2px 20px 10px rgba(0, 0, 0, 0.2);
+}
+
+.card-incomplete:hover .feedback-for-incomplete {
+  opacity: 1;
+  margin-top: 0px;
 }
 
 /* Safari 4.0 - 8.0 */
@@ -1209,7 +1239,7 @@ button:active, .button:active, input[type=submit]:active {
   flex: 1;
 }
 
-.card img {
+.card img:not(.feedback-button-icon) {
   height: 100px;
   width: 156px;
   border-top-left-radius: 8px;
@@ -1222,7 +1252,7 @@ button:active, .button:active, input[type=submit]:active {
   color: white;
 }
 
-.card-incomplete img {
+.card-incomplete img:not(.feedback-button-icon) {
   -webkit-filter: grayscale(60%); /* Safari 6.0 - 9.0 */
   filter: grayscale(60%);
   opacity: 0.7;
@@ -1253,6 +1283,7 @@ button:active, .button:active, input[type=submit]:active {
   font-size: 24px;
   text-align: center;
   margin-top: 0;
+  margin-left: 20px;
   margin-bottom: 5px;
 }
 
@@ -1652,12 +1683,12 @@ form input[type=submit]:disabled {
   float: right;
   font-size: 28px;
   font-weight: bold;
-  transition: 0.2s;
+  transition: 0.1s;
 }
 
 #close:hover,
 #close:focus {
-  color: #bccbde;
+  color: #337AB7;
   cursor: pointer;
 }
 
