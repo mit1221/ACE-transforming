@@ -843,6 +843,22 @@ button img, .button img, .button svg {
   transition: 0.2s ease-out;
   cursor: pointer;
   text-align: center;
+  opacity: 0;
+  -webkit-animation: rotate-in 0.5s ease-out forwards; /* Safari 4.0 - 8.0 */
+  animation: rotate-in 0.5s ease-out forwards;
+  transform-origin: top left;
+}
+
+/* Safari 4.0 - 8.0 */
+@-webkit-keyframes rotate-in {
+  from {opacity: 0; transform: rotate(30deg);}
+  to {opacity: 1; transform: rotate(0deg); transform-origin: center}
+}
+
+/* Standard syntax */
+@keyframes rotate-in {
+  from {opacity: 0; transform: rotate(30deg);}
+  to {opacity: 1; transform: rotate(0deg); transform-origin: center}
 }
 
 .landing-card:hover {
@@ -870,9 +886,10 @@ button img, .button img, .button svg {
 }
 
 /* Safari 4.0 - 8.0 */
-@-webkit-keyframes fade-in {
-  0% {tralandingnsform: rotate(0deg);}
-  50% {transform: rotate(-30deg);}
+@-webkit-keyframes rotate {
+  0% {transform: rotate(0deg);}
+  50% {transform: rotate(30deg);}
+  80% {transform: rotate(-10deg);}
   100% {transform: rotate(0deg);}
 }
 
