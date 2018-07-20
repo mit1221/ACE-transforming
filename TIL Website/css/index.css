@@ -51,8 +51,8 @@ body {
   display: table;
   -webkit-animation: fade-out 1s ease-out; /* Safari 4.0 - 8.0 */
   -webkit-animation-delay: 1s;
-  animation: fade-out 1.2s ease-out;
-  animation-delay: 1.2s;
+  animation: fade-out 1.0s ease-out;
+  animation-delay: 0.8s;
 }
 
 /* Standard syntax */
@@ -156,6 +156,10 @@ body {
   margin-bottom: 40px;
   position: relative;
   display: flex;
+  opacity: 0;
+  -webkit-animation: rotate-in 0.8s ease-out forwards paused; /* Safari 4.0 - 8.0 */
+  animation: rotate-in 0.8s ease-out forwards paused;
+  transform-origin: top left;
 }
 
 .callout:last-child {
@@ -219,6 +223,10 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
+  opacity: 0;
+  -webkit-animation: rotate-in 0.8s ease-out forwards paused; /* Safari 4.0 - 8.0 */
+  animation: rotate-in 0.8s ease-out forwards paused;
+  transform-origin: top left;
 }
 
 .number {
@@ -844,8 +852,8 @@ button img, .button img, .button svg {
   cursor: pointer;
   text-align: center;
   opacity: 0;
-  -webkit-animation: rotate-in 0.5s ease-out forwards; /* Safari 4.0 - 8.0 */
-  animation: rotate-in 0.5s ease-out forwards;
+  -webkit-animation: rotate-in 0.5s ease-out forwards paused; /* Safari 4.0 - 8.0 */
+  animation: rotate-in 0.5s ease-out forwards paused;
   transform-origin: top left;
 }
 
@@ -863,7 +871,6 @@ button img, .button img, .button svg {
 
 .landing-card:hover {
   background: #eeeeee;
-  transform: scale(1.05);
 }
 
 .landing-card:last-child {
