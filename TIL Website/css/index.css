@@ -156,10 +156,6 @@ body {
   margin-bottom: 40px;
   position: relative;
   display: flex;
-  opacity: 0;
-  -webkit-animation: rotate-in 0.8s ease-out forwards paused; /* Safari 4.0 - 8.0 */
-  animation: rotate-in 0.8s ease-out forwards paused;
-  transform-origin: top left;
 }
 
 .callout:last-child {
@@ -223,9 +219,6 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  opacity: 0;
-  -webkit-animation: rotate-in 0.8s ease-out forwards paused; /* Safari 4.0 - 8.0 */
-  animation: rotate-in 0.8s ease-out forwards paused;
   transform-origin: top left;
 }
 
@@ -614,6 +607,32 @@ body {
   to {opacity: 1; transform: translateX(0px);}
 }
 
+/* Safari 4.0 - 8.0 */
+@-webkit-keyframes move-up {
+  from {opacity: 0; transform: translateY(40px);}
+  to {opacity: 1; transform: translateY(0px);}
+}
+
+/* Standard syntax */
+@keyframes move-up {
+  from {opacity: 0; transform: translateY(40px) translateX(50px) scale(0.8);}
+  to {opacity: 1; transform: translateY(0px) translateX(0px) scale(1);}
+}
+
+/* Safari 4.0 - 8.0 */
+@-webkit-keyframes zoom-in {
+  0% {opacity: 0; transform: translateY(40px) scale(1.1);}
+  40% {transform: translateY(-10px) scale(1.1);}
+  100% {opacity: 1; transform: translateY(0px) scale(1);}
+}
+
+/* Standard syntax */
+@keyframes zoom-in {
+  0% {opacity: 0; transform: translateY(40px) scale(1.1);}
+  40% {transform: translateY(-10px) scale(1.1);}
+  100% {opacity: 1; transform: translateY(0px) scale(1);}
+}
+
 .slideshow {
   position: relative;
   overflow: hidden;
@@ -852,8 +871,8 @@ button img, .button img, .button svg {
   cursor: pointer;
   text-align: center;
   opacity: 0;
-  -webkit-animation: rotate-in 0.5s ease-out forwards paused; /* Safari 4.0 - 8.0 */
-  animation: rotate-in 0.5s ease-out forwards paused;
+  -webkit-animation: rotate-in 0.5s ease-out forwards; /* Safari 4.0 - 8.0 */
+  animation: rotate-in 0.5s ease-out forwards;
   transform-origin: top left;
 }
 
@@ -931,6 +950,7 @@ button img, .button img, .button svg {
   width: 100%;
   max-width: 900px;
   display: flex;
+  flex-wrap: wrap;
   justify-content: center;
   align-items: center;
   margin: auto;
@@ -938,7 +958,7 @@ button img, .button img, .button svg {
 }
 
 .ba-buttons > * {
-  margin: 0 5px;
+  margin: 5px;
 }
 
 /* styling for the before/after images */

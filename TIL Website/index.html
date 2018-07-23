@@ -16,13 +16,36 @@
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700|Roboto+Condensed" rel="stylesheet">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="js/navbar.js"></script>
-  <script src="js/count_animation.js"></script>
-  <script src="js/zoom_image.js"></script>
   <script src="js/animate_on_scroll.js"></script>
-  <script src="js/chain_animation.js"></script>
+  <script src="js/zoom_image.js"></script>
 </head>
 
 <body>
+  <script>
+    setTimeout(function() {
+      // for the 3 numbers on the landing page
+      new AnimateOnScroll(
+        document.getElementsByClassName('number-box'),
+        400,
+        'rotate-in 0.7s ease-out', [countUp]
+      );
+
+      // for the main info section
+      new AnimateOnScroll(
+        document.getElementById('landing_page_container'),
+        300,
+        'move-up 0.4s ease-in'
+      );
+
+      // for the comments
+      new AnimateOnScroll(
+        document.getElementsByClassName('callout'),
+        400,
+        'zoom-in 0.8s'
+      );
+    }, 1000);
+
+  </script>
   <div id="container">
     <section class="navigation">
       <div class="nav-container">
