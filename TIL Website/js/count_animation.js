@@ -16,7 +16,7 @@ $(document).ready(function() {
   // for the 3 numbers on the landing page
   setTimeout(function() {
     var numbers = new AnimateOnScroll(
-                    document.getElementsByClassName('number-box'), 0.2,
+                    document.getElementsByClassName('number-box'), 0.7,
                     [countUp]
                   );
     numbers.start();
@@ -28,30 +28,32 @@ $(document).ready(function() {
 });
 
 
-function countUp() {
-  var j = 0;
-
-  var timer = setInterval(function() {
-    if (j > 99) {
-      clearInterval(timer);
-      for (var i = 0; i < numbers.length; i++) {
-        numbers[i].textContent = data[i];
-      }
-    } else {
-      for (var i = 0; i < numbers.length; i++) {
-        numbers[i].textContent =  Math.ceil(j * (data[i] / 100));
-      }
-      j++;
-    }
-  }, 10);
+function countUp(element) {
+  // var j = 0;
+  //
+  // var timer = setInterval(function() {
+  //   if (j > 99) {
+  //     clearInterval(timer);
+  //     for (var i = 0; i < numbers.length; i++) {
+  //       numbers[i].textContent = data[i];
+  //     }
+  //   } else {
+  //     for (var i = 0; i < numbers.length; i++) {
+  //       numbers[i].textContent =  Math.ceil(j * (data[i] / 100));
+  //     }
+  //     j++;
+  //   }
+  // }, 10);
+  console.log(element);
 }
 
 
 
 function AnimateOnScroll(elements, gap, extraAnimations) {
   this.isFinished = [];
-  this.delay = 0;
+  this.queue = [];
   this.gap = gap;
+  this.extraAnimations = extraAnimations;
   this.elements = (HTMLCollection.prototype.isPrototypeOf(elements) ||
                   NodeList.prototype.isPrototypeOf(elements)) ?
                   elements : [elements];
@@ -73,27 +75,24 @@ AnimateOnScroll.prototype.start = function() {
 
 AnimateOnScroll.prototype.scrollHandler = function() {
   // whenever any of the elements come in the viewport, animate them in
-  // var counter = 0;
-  // var ref = this;
-  // var timer = setInterval(function() {
-  //   console.log('hi');
-  //   if (counter >= ref.elements.length) {
-  //     clearInterval(timer);
-  //   } else {
-  //     if (isInViewport(ref.elements[counter]) && !ref.isFinished[counter]) {
-  //       ref.isFinished[counter] = true;
-  //       ref.animateFunction(ref.elements[counter]);
-  //     }
-  //
-  //     counter++;
-  //   }
-  // }, 200);
-
   for (var counter = 0; counter < this.elements.length; counter++) {
     if (isInViewport(this.elements[counter]) && !this.isFinished[counter]) {
       this.isFinished[counter] = true;
-      this.animateFunction(this.elements[counter]);
+      this.queue.push(this.elements[counter]);
     }
+  }
+
+  var counter = 0;
+  while (this.queue.length > 0) {
+    var el = this.queue.shift();
+    doSetTimeout(counter, el, this);
+    counter++;
+  }
+
+  function doSetTimeout(i, el, object) {
+    setTimeout(function() {
+      object.animateFunction(el);
+    }, 200 * i);
   }
 
   // remove event listener if all the elements are animated
@@ -104,15 +103,12 @@ AnimateOnScroll.prototype.scrollHandler = function() {
 
 AnimateOnScroll.prototype.animateFunction = function(element) {
   element.style.animationPlayState = 'running';
-  element.style.animationDelay = this.delay + 's';
-  this.delay += this.gap;
-  if (extraAnimations !== undefined) {
-    for (var i = 0; i < extraAnimations.length; i++) {
-      extraAnimations[i](); // call all the other animations
+  if (this.extraAnimations !== undefined) {
+    for (var i = 0; i < this.extraAnimations.length; i++) {
+      this.extraAnimations[i](element); // call all the other animations
     }
   }
 }
-
 
 
 // Determine if an element is in the visible viewport
