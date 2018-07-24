@@ -84,6 +84,21 @@ function addViewer(card) {
     var container = document.createElement('DIV');
     container.className = 'ba-container';
 
+    var close = document.createElement('SPAN');
+    close.id = 'close';
+    close.innerHTML = '&times;';
+    container.appendChild(close);
+
+    close.onclick = function() {
+      container.classList.add('animateout');
+      setTimeout(function() {
+        current.parentElement.removeChild(current.parentElement.lastChild);
+        current.classList.remove('card-active');
+        current.scrollIntoView();
+        current = null;
+      }, 300);
+    }
+
     var title = document.createElement('p');
     title.className = 'ba-container-title';
     title.textContent = this.building + ' ' + this.room_number;
@@ -185,9 +200,6 @@ function addImages(room) {
 }
 
 function load_360(room) {
-  var xhttp = new XMLHttpRequest();
-
-
   var image_url = 'images/room_images/' + room.building + '-' + fullform[room.building] +
   '/360_images/' + room.room_number + '.jpg';
 

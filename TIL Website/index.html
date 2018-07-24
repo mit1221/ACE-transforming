@@ -22,27 +22,42 @@
 
 <body>
   <script>
+    // there is a delay of 1000 because of the loading animation
     setTimeout(function() {
       // for the 3 numbers on the landing page
-      new AnimateOnScroll(
-        document.getElementsByClassName('number-box'),
-        400,
-        'rotate-in 0.7s ease-out', [countUp]
-      );
+      new AnimateOnScroll({
+        elements: document.getElementsByClassName('number-box'),
+        animation: 'rotate-in 0.7s ease-out',
+        gap: 300,
+        extraAnimations: [countUp]
+      });
 
       // for the main info section
-      new AnimateOnScroll(
-        document.getElementById('landing_page_container'),
-        300,
-        'move-up 0.4s ease-in'
-      );
+      new AnimateOnScroll({
+        elements: document.getElementById('landing_page_container')
+      });
+
+      // for the images in the main info section
+      new AnimateOnScroll({
+        elements: document.getElementsByClassName('zoom-image'),
+        animation: 'move-in 0.4s ease-out',
+        gap: 300,
+        chainAnimation: true
+      });
+
+      // for the box containing the comments
+      new AnimateOnScroll({
+        elements: document.getElementById('callout-section')
+      });
 
       // for the comments
-      new AnimateOnScroll(
-        document.getElementsByClassName('callout'),
-        400,
-        'zoom-in 0.8s'
-      );
+      new AnimateOnScroll({
+        elements: document.getElementsByClassName('callout'),
+        animation: 'impact 1.4s',
+        gap: 600,
+        extraAnimations: [typewriter, quotes],
+        chainAnimation: true
+      });
     }, 1000);
 
   </script>
@@ -197,7 +212,7 @@
             <img style="width: 400px" class="zoom-image" src="images/landing_page_image.png" alt="Diagram">
           </div>
         </section>
-        <section style="background: #eeeeee; padding: 60px 10px; border-radius: 3px">
+        <section id="callout-section" style="background: #eeeeee; padding: 60px 10px; border-radius: 3px">
           <div class="callout bottom-left">
             <img class="quotes-icon" src="images/quotes.svg" alt="quotes icon">
             <p class="quote">Thank you. I am very grateful for having been given the opportunity to give feedback.</p>
@@ -292,7 +307,7 @@
   <script type="text/javascript">
     setTimeout(function() {
       document.getElementById('full-page').style.display = 'none';
-    }, 1800);
+    }, 1600);
 
   </script>
 </body>

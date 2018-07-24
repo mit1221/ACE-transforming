@@ -141,12 +141,14 @@ body {
   font-size: 23px;
   margin: 10px 0;
   line-height: 35px;
+  max-width: 90%;
 }
 
 .quotes-icon {
   height: 40px;
   float: left;
   margin-right: 20px;
+  opacity: 0;
 }
 
 .callout {
@@ -156,6 +158,7 @@ body {
   margin-bottom: 40px;
   position: relative;
   display: flex;
+  transform-origin: top left;
 }
 
 .callout:last-child {
@@ -615,22 +618,38 @@ body {
 
 /* Standard syntax */
 @keyframes move-up {
-  from {opacity: 0; transform: translateY(40px) translateX(50px) scale(0.8);}
-  to {opacity: 1; transform: translateY(0px) translateX(0px) scale(1);}
+  from {opacity: 0; transform: translateY(140px);}
+  to {opacity: 1; transform: translateY(0px);}
 }
 
 /* Safari 4.0 - 8.0 */
-@-webkit-keyframes zoom-in {
-  0% {opacity: 0; transform: translateY(40px) scale(1.1);}
-  40% {transform: translateY(-10px) scale(1.1);}
-  100% {opacity: 1; transform: translateY(0px) scale(1);}
+@-webkit-keyframes impact {
+  0% {opacity: 0; transform: translateY(40px) rotate(18deg);}
+  40% {transform: translateY(-10px)}
+  100% {opacity: 1; transform: translateY(0px) rotate(0deg)}
 }
 
 /* Standard syntax */
-@keyframes zoom-in {
-  0% {opacity: 0; transform: translateY(40px) scale(1.1);}
-  40% {transform: translateY(-10px) scale(1.1);}
-  100% {opacity: 1; transform: translateY(0px) scale(1);}
+@keyframes impact {
+  0% {opacity: 0; transform: translateY(40px) rotate(18deg);}
+  40% {transform: translateY(-10px) rotate(-0.5deg)}
+  100% {opacity: 1; transform: translateY(0px) rotate(0deg)}
+}
+
+/* Safari 4.0 - 8.0 */
+@-webkit-keyframes boom {
+  0% {opacity: 0; transform: scale(2.4) rotate(-90deg);}
+  40% {transform: scale(1) rotate(20deg);}
+  80% {transform: rotate(-5deg)}
+  100% {opacity: 1; transform: rotate(0deg);}
+}
+
+/* Standard syntax */
+@keyframes boom {
+  0% {opacity: 0; transform: scale(2.4) rotate(-90deg);}
+  40% {transform: scale(1) rotate(20deg);}
+  80% {transform: rotate(-5deg)}
+  100% {opacity: 1; transform: rotate(0deg);}
 }
 
 .slideshow {
@@ -871,20 +890,18 @@ button img, .button img, .button svg {
   cursor: pointer;
   text-align: center;
   opacity: 0;
-  -webkit-animation: rotate-in 0.5s ease-out forwards; /* Safari 4.0 - 8.0 */
-  animation: rotate-in 0.5s ease-out forwards;
   transform-origin: top left;
 }
 
 /* Safari 4.0 - 8.0 */
 @-webkit-keyframes rotate-in {
-  from {opacity: 0; transform: rotate(30deg);}
+  from {opacity: 0; transform: rotate(15deg);}
   to {opacity: 1; transform: rotate(0deg); transform-origin: center}
 }
 
 /* Standard syntax */
 @keyframes rotate-in {
-  from {opacity: 0; transform: rotate(30deg);}
+  from {opacity: 0; transform: rotate(15deg);}
   to {opacity: 1; transform: rotate(0deg); transform-origin: center}
 }
 

@@ -16,10 +16,22 @@
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700" rel="stylesheet">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="js/navbar.js"></script>
-  <script src="js/chain_animation.js"></script>
+  <script src="js/animate_on_scroll.js"></script>
 </head>
 
-<body onload="chainAnimate('landing-card', 0.1)">
+<body>
+  <script>
+    // cards animation
+    setTimeout(function() {
+      new AnimateOnScroll({
+        elements: document.getElementsByClassName('landing-card'),
+        animation: 'rotate-in 0.5s ease-out',
+        gap: 100,
+        chainAnimation: true
+      });
+    }, 10);
+
+  </script>
   <div id="container">
     <section class="navigation">
       <div class="nav-container">
