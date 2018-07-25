@@ -1,39 +1,95 @@
-function AnimateOnScroll(options) {
-  // options is an object with 4 possible keys: elements, animation, gap, and extraAnimations
+function Animate(options) {
+  // options is an object with 5 possible keys: elements, animation, gap, extraAnimations, and next
   // the elements parameter is required
   // if animation is not specified, the default is 'move-up 0.4s ease-out'
   // gap is not needed if there is only 1 element
-  // extraAnimations (array), chainAnimation (boolean) are optional
-  // chainAnimation: if any one of the elements is in the viewport, animate all elements
+  // extraAnimations (array) is optional
+  // next specifies an animation to happen after the current animation and is optional
   if (options.elements == null) {
     throw new Error('The elements parameter is required.');
   }
 
-  this.isFinished = [];
   this.elements = (HTMLCollection.prototype.isPrototypeOf(options.elements) ||
                   NodeList.prototype.isPrototypeOf(options.elements)) ?
                   options.elements : [options.elements];
+  this.animation = options.animation != null ? options.animation : 'move-up 0.4s ease-out';
+  this.extraAnimations = options.extraAnimations;
+  this.next = options.next;
+
+  if (this.elements.length > 1 && options.gap == null) {
+    throw new Error('The gap parameter is required.');
+  }
 
   // make all elements invisible at the start
   for (var i = 0; i < this.elements.length; i++) {
     this.elements[i].style.opacity = 0;
   }
-  if (options.gap != null) this.gap = options.gap;
-  this.animateFunction = function(el) {
-    var defaultAnimation = 'move-up 0.4s ease-out';
-    animation = typeof options.animation !== 'undefined' ? options.animation : defaultAnimation;
-    el.style.WebkitAnimation = animation + ' forwards';
-    el.style.animation = animation + ' forwards';
 
-    // call other animations, if any
-    if (options.extraAnimations != null) {
-      for (var i = 0; i < options.extraAnimations.length; i++) {
-        options.extraAnimations[i](el);
-      }
+  if (options.gap != null) this.gap = options.gap;
+}
+
+Animate.prototype.start = function() {
+  var queue = []
+
+  // add all elements to the queue
+  for (var i = 0; i < this.elements.length; i++) {
+    queue.push(this.elements[i]);
+  }
+  this.chainAnimate(queue);
+}
+
+Animate.prototype.animate = function(el) {
+  el.style.WebkitAnimation = this.animation + ' forwards';
+  el.style.animation = this.animation + ' forwards';
+
+  // call other animations which happen with the main animaiton, if any
+  if (this.extraAnimations != null) {
+    for (var i = 0; i < this.extraAnimations.length; i++) {
+      this.extraAnimations[i](el);
     }
-  };
+  }
+
+  var delay = (parseFloat(this.animation.split(' ')[1]) * 1000) * (2/4);
+  var object = this;
+
+  // call other animations which happen AFTER the main animation, if any
+  if (object.next != null) {
+    setTimeout(function() {
+      object.next.start();
+    }, delay);
+  }
+}
+
+Animate.prototype.chainAnimate = function(queue) {
+  /* animate each element in the queue one by one until queue is empty
+  if multiple elements are in the view */
+  var counter = 0;
+  while (queue.length > 0) {
+    doSetTimeout(counter, queue.shift(), this);
+    counter++;
+  }
+
+  // setting the gap between each element's animation
+  function doSetTimeout(i, el, object) {
+    setTimeout(function() {
+      object.animate(el);
+    }, object.gap * i);
+  }
+}
+
+
+function AnimateOnScroll(options) {
+  // chainAnimation (optional): if any one of the elements is in the viewport, animate all elements
+  Animate.call(this, options);
   this.chainAnimation = options.chainAnimation;
-  this.scrollHandlerBinded = this.scrollHandler.bind(this);
+  this.start();
+}
+
+AnimateOnScroll.prototype = Object.create(Animate.prototype);
+AnimateOnScroll.prototype.constructor = AnimateOnScroll;
+
+AnimateOnScroll.prototype.start = function() {
+  this.isFinished = [];
 
   /* set all elements in the isFinished array to false since none of the
   animations are finished at initialization */
@@ -41,13 +97,11 @@ function AnimateOnScroll(options) {
     this.isFinished.push(false);
   }
 
-  this.start();
-}
-
-AnimateOnScroll.prototype.start = function() {
   /* if the user has not scrolled yet and an animatable element is in view,
   the animation should happen */
   this.scrollHandler();
+
+  this.scrollHandlerBinded = this.scrollHandler.bind(this);
   window.addEventListener('scroll', this.scrollHandlerBinded);
 }
 
@@ -80,24 +134,11 @@ AnimateOnScroll.prototype.scrollHandler = function() {
       }
     }
 
-    /* animate each element in the queue one by one until queue is empty
-    if multiple elements are in the view */
-    var counter = 0;
-    while (queue.length > 0) {
-      doSetTimeout(counter, queue.shift(), this);
-      counter++;
-    }
-
-    // setting the gap between each element's animation
-    function doSetTimeout(i, el, object) {
-      setTimeout(function() {
-        object.animateFunction(el);
-      }, object.gap * i);
-    }
+    this.chainAnimate(queue);
   } else { // with one element, there is no need for a queue to animate elements one by one
     if (shouldAnimate.call(this, 0)) {
       this.isFinished[0] = true;
-      this.animateFunction(this.elements[0]);
+      this.animate(this.elements[0]);
     }
   }
 
@@ -107,6 +148,8 @@ AnimateOnScroll.prototype.scrollHandler = function() {
   }
 }
 
+// ================================================================================================== //
+// ================================================================================================== //
 
 // Determine if an element is in the visible viewport
 function isInViewport(element) {
@@ -139,7 +182,7 @@ function typewriter(element) {
   var quote = element.getElementsByClassName('quote')[0];
   quote.style.WebkitAnimation = 'move-in-right 0.7s forwards';
   quote.style.animation = 'move-in-right 0.7s forwards';
-  
+
   var quoteText = quote.textContent;
   var letters = quoteText.split('');
 
@@ -165,13 +208,5 @@ function typewriter(element) {
       quote.textContent += lettersCorrect[i];
       i++;
     }
-  }, 800 / lettersCorrect.length);
-}
-
-function quotes(element) {
-  var quoteIcon = element.getElementsByClassName('quotes-icon')[0];
-  quoteIcon.style.WebkitAnimation = 'boom 0.7s forwards';
-  quoteIcon.style.WebkitAnimationDelay = '0.5s';
-  quoteIcon.style.animation = 'boom 0.7s forwards';
-  quoteIcon.style.animationDelay = '0.5s';
+  }, 10);
 }

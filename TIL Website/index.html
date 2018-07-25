@@ -24,7 +24,12 @@
   <script>
     // there is a delay of 1000 because of the loading animation
     setTimeout(function() {
-      // for the 3 numbers on the landing page
+      // for the numbers section
+      new AnimateOnScroll({
+        elements: document.getElementsByClassName('numbers')
+      });
+
+      // for the 3 numbers in the numbers section
       new AnimateOnScroll({
         elements: document.getElementsByClassName('number-box'),
         animation: 'rotate-in 0.7s ease-out',
@@ -34,7 +39,7 @@
 
       // for the main info section
       new AnimateOnScroll({
-        elements: document.getElementById('landing_page_container')
+        elements: document.getElementById('landing-page-container')
       });
 
       // for the images in the main info section
@@ -45,18 +50,31 @@
         chainAnimation: true
       });
 
-      // for the box containing the comments
+      // for the themes section
       new AnimateOnScroll({
-        elements: document.getElementById('callout-section')
+        elements: document.getElementsByClassName('themes-section')
       });
 
-      // for the comments
+      // for the 3 items in themes
       new AnimateOnScroll({
-        elements: document.getElementsByClassName('callout'),
-        animation: 'impact 1.4s',
-        gap: 600,
-        extraAnimations: [typewriter, quotes],
-        chainAnimation: true
+        elements: document.getElementsByClassName('theme-card'),
+        gap: 200
+      });
+
+      // for the comments section
+      new AnimateOnScroll({
+        elements: document.getElementById('callout-section'),
+        next: new Animate({
+          elements: document.getElementsByClassName('callout'),
+          animation: 'impact 1.4s',
+          gap: 600,
+          extraAnimations: [typewriter],
+          next: new Animate({
+            elements: document.getElementsByClassName('quotes-icon'),
+            gap: 300,
+            animation: 'boom 0.7s'
+          })
+        })
       });
     }, 1000);
 
@@ -188,9 +206,9 @@
             </div>
           </div>
         </section>
-        <section id="landing_page_container">
+        <section id="landing-page-container">
           <div>
-            <h3>Classroom Upgrades</h3>
+            <h2>Classroom Upgrades</h2>
             <p>As the student and faculty demographics continue to change and evolve, new technology and
               emerging teaching pedagogies are also shifting the instructional landscape. The University
               must respond by providing a greater range of options within our teaching inventory. The
@@ -212,7 +230,31 @@
             <img style="width: 400px" class="zoom-image" src="images/landing_page_image.png" alt="Diagram">
           </div>
         </section>
-        <section id="callout-section" style="background: #eeeeee; padding: 60px 10px; border-radius: 3px">
+        <section class="themes-section">
+          <h2 style="text-align: center; margin-bottom: 20px">Themes</h2>
+          <div class="themes">
+            <div class="theme-card">
+              <img src="images/expanding_logo.png" alt="Expanding logo">
+              <p class="theme-heading">Expanding Technology</p>
+              <p>Add 1 sentence of text here. Add 1 sentence of text here.</p>
+              <a href="av.html" class="button">Learn More</a>
+            </div>
+            <div class="theme-card">
+              <img src="images/enhancing_logo.png" alt="Enhancing logo">
+              <p class="theme-heading">Enhancing Infrastructure</p>
+              <p>Add 1 sentence of text here.</p>
+              <a href="student_comfort.html" class="button">Learn More</a>
+            </div>
+            <div class="theme-card">
+              <img src="images/emerging_logo.png" alt="Emerging logo">
+              <p class="theme-heading">Emerging Environments</p>
+              <p>Add 1 sentence of text here.</p>
+              <a href="pedagogy.html" class="button">Learn More</a>
+            </div>
+          </div>
+        </section>
+        <section id="callout-section">
+          <h2 style="text-align: center">Comments</h2>
           <div class="callout bottom-left">
             <img class="quotes-icon" src="images/quotes.svg" alt="quotes icon">
             <p class="quote">Thank you. I am very grateful for having been given the opportunity to give feedback.</p>
