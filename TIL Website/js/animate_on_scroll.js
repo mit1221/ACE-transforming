@@ -198,7 +198,6 @@ function typewriter(element) {
     }
   }
   lettersCorrect.push(letters[letters.length - 1])
-
   var i = 0;
 
   var timer = setInterval(function() {
@@ -208,5 +207,5 @@ function typewriter(element) {
       quote.textContent += lettersCorrect[i];
       i++;
     }
-  }, 10);
+  }, 2000 / lettersCorrect.length);
 }

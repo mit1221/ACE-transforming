@@ -135,7 +135,6 @@ body {
 
 .quote {
   font-style: italic;
-  text-transform: uppercase;
   font-family: 'Roboto Condensed';
   color: #002A5C;
   font-size: 20px;
@@ -264,6 +263,10 @@ body {
 .theme-card p {
   text-align: center;
   max-width: 200px;
+}
+
+.theme-card p:last-of-type {
+  flex-grow: 1;
 }
 
 .theme-card img {
