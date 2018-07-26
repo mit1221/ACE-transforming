@@ -16,7 +16,7 @@ function Room(room_number, building, type, date) {
   this.room_number = room_number;
   this.building = building;
   this.type = type; //type is 'Pilot', 'Completed', or 'Ongoing'
-  this.date = date; // format: 'Season1/Season2-Year' Ex: 'F/W-2018'
+  this.date = date;
   this.has_360_image = rooms_with_360_images[this.building] !== undefined &&
     rooms_with_360_images[this.building].indexOf(this.room_number) >= 0 ? true : false;
 }
@@ -25,20 +25,22 @@ Room.prototype.make_card = function(sort_type) {
   var card = document.createElement('DIV');
   card.className = 'card';
 
+  // creating the thumbnail for the card
   var room_image = document.createElement('IMG');
   room_image.src = 'images/room_images/' + this.building + '-' + fullform[this.building] +
     '/' + this.type + '/' + this.room_number + '_' + this.date.split('/')[0] + '-' + this.date.split('/')[1] + '.jpg';
   room_image.alt = this.building + ' ' + this.room_number;
   card.appendChild(room_image);
 
+  // adding the room number title to the card
   var text_div = document.createElement('DIV');
   text_div.className = 'text-div';
-
   var card_heading = document.createElement('H4');
   card_heading.textContent = room_image.alt;
   text_div.appendChild(card_heading);
 
   if (this.type == 'Ongoing') {
+    // adding the feedback button on top of the card
     card.classList.add('card-incomplete');
     var feedback_button = document.createElement('A');
     feedback_button.className = 'button icon-button feedback-for-incomplete';
@@ -47,23 +49,24 @@ Room.prototype.make_card = function(sort_type) {
     feedback_button.target = '_blank';
     card.appendChild(feedback_button);
 
+    // adding the date to be completed to the card if the rooms are not sorted by date
     if (sort_type != 'date') {
       var date_heading = document.createElement('p');
       var temp = this.date.split('/');
       var formatted_date = seasons_fullform[temp[0]];
       var temp2 = temp[1].split('-');
-      formatted_date += '/' + seasons_fullform[temp2[0]] + ' ' + temp2[1];
+      var year = temp2[1];
+      formatted_date += '/' + seasons_fullform[temp2[0]] + ' ' + year;
       date_heading.textContent = formatted_date;
       text_div.appendChild(date_heading);
     }
+  } else {
+    // clicking a card for a complete room to open the viewer
+    card.addEventListener('click', addViewer.bind(this, card));
   }
 
   card.appendChild(text_div);
 
-  // clicking a card to open the viewer
-  if (this.type != 'Ongoing') {
-    card.addEventListener('click', addViewer.bind(this, card));
-  }
   return card;
 }
 
