@@ -867,7 +867,7 @@ button:active, .button:active, input[type=submit]:active {
 }
 
 .button-group-button:hover:not(.btn-active) {
-  background: #ccc;
+  background: #bccbde;
   color: #002A5C;
 }
 
@@ -1188,22 +1188,22 @@ button img, .button img, .button svg {
   border-radius: 3px;
   box-sizing: border-box;
   cursor: pointer;
-  -webkit-animation: move-in 0.3s ease-out; /* Safari 4.0 - 8.0 */
-  animation: move-in 0.3s ease-out;
+  opacity: 0;
   transition: 0.2s ease-out;
+  display: flex;
+  align-items: center;
 }
 
 .category-heading:hover, .category-heading.open {
   box-shadow: 0 10px 28px rgba(0,0,0,0.25), 0 6px 10px rgba(0,0,0,0.22);
-  transform: translateY(-3px);
+  /* transform: translateY(-3px); */
 }
 
 .category-heading:after {
     content: '\002B';
-    color: white;
+    color: #eeeeee;
     font-weight: bold;
-    float: right;
-    margin-left: 5px;
+    margin-left: auto;
 }
 
 .category-heading.open {
@@ -1214,20 +1214,27 @@ button img, .button img, .button svg {
     content: "\2212";
 }
 
-.season-images-container {
-  display: inline;
-  float: left;
-  margin-right: 10px;
-  margin-top: -3px;
+.stats {
+  min-width: 180px;
+  text-align: center;
+  padding: 7px 14px;
+  margin: 0 10px;
+  background-color: #eeeeee;
+  font-size: 14px;
+  font-weight: lighter;
+  color: #333;
+  border-radius: 50px;
+  box-shadow: 0 2px 3px 0 rgba(0,0,0,0.15);
 }
 
 .heading-image {
-  width: 30px;
-  height: 30px;
+  width: 25px;
+  height: 25px;
+  margin-right: 5px;
 }
 
-.heading-image:first-child {
-  margin-right: 5px;
+.heading-image:last-of-type {
+  margin-right: 15px;
 }
 
 .rooms {
@@ -1250,6 +1257,8 @@ button img, .button img, .button svg {
   margin-bottom: 30px;
   border: 3px solid transparent;
   cursor: pointer;
+  opacity: 0;
+  transform-origin: top left;
   transition: 0.2s;
 }
 
@@ -1301,7 +1310,7 @@ button img, .button img, .button svg {
   opacity: 0;
   margin-top: 3px;
   font-size: 14px;
-  box-shadow: 0px 2px 20px 10px rgba(0, 0, 0, 0.2);
+  box-shadow: 0px 2px 20px 4px rgba(0, 0, 0, 0.2);
 }
 
 .card-incomplete:hover .feedback-for-incomplete {

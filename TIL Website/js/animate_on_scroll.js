@@ -14,11 +14,7 @@ function Animate(options) {
                   options.elements : [options.elements];
   this.animation = options.animation != null ? options.animation : 'move-up 0.4s ease-out';
   this.extraAnimations = options.extraAnimations;
-  this.next = options.next;
-
-  if (this.elements.length > 1 && options.gap == null) {
-    throw new Error('The gap parameter is required.');
-  }
+  this.next = options.next != null ? (options.next.constructor === Array ? options.next : [options.next]) : [];
 
   // make all elements invisible at the start
   for (var i = 0; i < this.elements.length; i++) {
@@ -49,13 +45,13 @@ Animate.prototype.animate = function(el) {
     }
   }
 
-  var delay = (parseFloat(this.animation.split(' ')[1]) * 1000) * (2/4);
   var object = this;
+  var delay = object.next[1] != null ? object.next[1] : (parseFloat(this.animation.split(' ')[1]) * 1000) * (2/4);
 
   // call other animations which happen AFTER the main animation, if any
-  if (object.next != null) {
+  if (object.next.length > 0) {
     setTimeout(function() {
-      object.next.start();
+      object.next[0].start();
     }, delay);
   }
 }
@@ -204,8 +200,12 @@ function typewriter(element) {
     if (i >= lettersCorrect.length) {
       clearInterval(timer);
     } else {
-      quote.textContent += lettersCorrect[i];
-      i++;
+      if (lettersCorrect[i+1]) {
+        quote.textContent += lettersCorrect[i] + lettersCorrect[i+1];
+      } else {
+        quote.textContent += lettersCorrect[i];
+      }
+      i += 2;
     }
   }, 2000 / lettersCorrect.length);
 }

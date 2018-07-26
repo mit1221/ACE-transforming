@@ -21,18 +21,9 @@ function Room(room_number, building, type, date) {
     rooms_with_360_images[this.building].indexOf(this.room_number) >= 0 ? true : false;
 }
 
-Room.prototype.make_card = function() {
+Room.prototype.make_card = function(sort_type) {
   var card = document.createElement('DIV');
   card.className = 'card';
-  if (this.type == 'Ongoing') {
-    card.classList.add('card-incomplete');
-    var feedback_button = document.createElement('A');
-    feedback_button.className = 'button icon-button feedback-for-incomplete';
-    feedback_button.innerHTML = '<img class="feedback-button-icon" src="images/feedback.svg">Give feedback';
-    feedback_button.href = 'feedback.html?room=' + this.building + this.room_number;
-    feedback_button.target = '_blank';
-    card.appendChild(feedback_button);
-  }
 
   var room_image = document.createElement('IMG');
   room_image.src = 'images/room_images/' + this.building + '-' + fullform[this.building] +
@@ -48,13 +39,23 @@ Room.prototype.make_card = function() {
   text_div.appendChild(card_heading);
 
   if (this.type == 'Ongoing') {
-    var date_heading = document.createElement('p');
-    var temp = this.date.split('/');
-    var formatted_date = seasons_fullform[temp[0]];
-    var temp2 = temp[1].split('-');
-    formatted_date += '/' + seasons_fullform[temp2[0]] + ' ' + temp2[1];
-    date_heading.textContent = formatted_date;
-    text_div.appendChild(date_heading);
+    card.classList.add('card-incomplete');
+    var feedback_button = document.createElement('A');
+    feedback_button.className = 'button icon-button feedback-for-incomplete';
+    feedback_button.innerHTML = '<img class="feedback-button-icon" src="images/feedback.svg">Give feedback';
+    feedback_button.href = 'feedback.html?room=' + this.building + this.room_number;
+    feedback_button.target = '_blank';
+    card.appendChild(feedback_button);
+
+    if (sort_type != 'date') {
+      var date_heading = document.createElement('p');
+      var temp = this.date.split('/');
+      var formatted_date = seasons_fullform[temp[0]];
+      var temp2 = temp[1].split('-');
+      formatted_date += '/' + seasons_fullform[temp2[0]] + ' ' + temp2[1];
+      date_heading.textContent = formatted_date;
+      text_div.appendChild(date_heading);
+    }
   }
 
   card.appendChild(text_div);
@@ -321,9 +322,6 @@ Rooms.prototype.show_rooms_by = function(type) { // type is either 'date' or 'bu
     var heading = document.createElement('DIV');
     heading.className = 'category-heading';
 
-    var images_container = document.createElement('DIV');
-    images_container.className = 'season-images-container';
-
     if (!isNaN(categories[i].charAt(0))) {
       var season_image1 = document.createElement('IMG');
       season_image1.src = 'images/' + seasons_fullform[categories[i].charAt(0)] + '.svg';
@@ -333,50 +331,82 @@ Rooms.prototype.show_rooms_by = function(type) { // type is either 'date' or 'bu
       season_image2.src = 'images/' + seasons_fullform[categories[i].charAt(2)] + '.svg';
       season_image2.className = 'heading-image';
 
-      images_container.appendChild(season_image1);
-      images_container.appendChild(season_image2);
+      heading.appendChild(season_image1);
+      heading.appendChild(season_image2);
     } else {
       var image = document.createElement('IMG');
       image.src = 'images/building.svg';
       image.className = 'heading-image';
-      images_container.appendChild(image);
+      heading.appendChild(image);
     }
 
+    var title;
+    var stats;
+    var key = categories[i];
 
     if (type == 'date') {
-      var date = categories[i];
       if (categories[i] != 'Pilot') {
-        heading.textContent = seasons_fullform[categories[i].charAt(0)] + '/' +
-          seasons_fullform[categories[i].charAt(2)] + ' ' + date.slice(-4);
+        title = seasons_fullform[key.charAt(0)] + '/' +
+          seasons_fullform[key.charAt(2)] + ' ' + key.slice(-4);
       } else {
-        heading.textContent = 'Pilot Project';
+        title = 'Pilot Project';
       }
+
+      var unique_buildings = [];
+      for (var j = 0; j < dict_type[key].length; j++) {
+        var curr_building = dict_type[key][j].building;
+        if (unique_buildings[unique_buildings.length - 1] != curr_building) {
+          unique_buildings.push(curr_building);
+        }
+      }
+
+      stats = dict_type[key].length + ' Classrooms' + ' | ' + unique_buildings.length + ' Buildings';
     } else if (type == 'building') {
       var building = categories[i];
-      heading.textContent = fullform[building] + ' (' + building + ')';
+      title = fullform[building] + ' (' + building + ')';
+
+      var finished = 0;
+      var in_progress = 0;
+      for (var j = 0; j < dict_type[key].length; j++) {
+        var curr_type = dict_type[key][j].type;
+        if (curr_type == 'Ongoing') {
+          in_progress += 1;
+        } else {
+          finished += 1;
+        }
+      }
+
+      stats = finished + ' Completed' + ' | ' + in_progress + ' In progress';
     }
-    // adding the season images
-    heading.appendChild(images_container);
+
+    heading.innerHTML += title + '<div class="stats">' + stats + '</div>';
     content.appendChild(heading);
 
     // container for the rooms in each building
     var rooms_in_building = document.createElement('DIV');
     rooms_in_building.className = 'rooms';
     content.appendChild(rooms_in_building);
-    heading.addEventListener('click', add_cards.bind(this, heading, dict_type, categories[i]));
+    heading.addEventListener('click', add_cards.bind(this, heading, dict_type, categories[i], type));
   }
 }
 
 var currently_open = [];
-function add_cards(heading, dict, category) {
+function add_cards(heading, dict, category, type) {
   // create cards for the rooms and add to container
   var room_container = heading.nextSibling;
   if (currently_open.indexOf(heading) == -1) {
     dict[category].forEach(function(room) {
-      room_container.appendChild(room.make_card());
+      room_container.appendChild(room.make_card(type));
     });
     currently_open.push(heading);
     heading.classList.add('open');
+
+    // animating the cards when they show up
+    new Animate({
+      elements: room_container.getElementsByClassName('card'),
+      animation: 'move-in 0.5s ease-out',
+      gap: 30
+    }).start();
   } else {
     close_heading(heading);
   }
@@ -393,7 +423,23 @@ function close_heading(heading) {
 $(function() {
   var room_objects = new Rooms(rooms_dict);
   var default_sort = document.getElementsByClassName('default')[0].textContent.toLowerCase();
-  room_objects.show_rooms_by(default_sort); // since Date is clicked by default
-  document.getElementById('date_button').addEventListener('click', function() {room_objects.show_rooms_by('date')});
-  document.getElementById('building_button').addEventListener('click', function() {room_objects.show_rooms_by('building')});
+  room_objects.show_rooms_by(default_sort);
+  // for animating the headings on page load
+  var animation = new Animate({
+    elements: document.getElementsByClassName('category-heading'),
+    animation: 'move-in 0.4s ease-out',
+    gap: 70
+  });
+  animation.start();
+
+  document.getElementById('date_button').addEventListener('click', function() {
+    room_objects.show_rooms_by('date');
+    // for animating the headings when date is clicked
+    animation.start();
+  });
+  document.getElementById('building_button').addEventListener('click', function() {
+    room_objects.show_rooms_by('building');
+    // for animating the headings when building is clicked
+    animation.start();
+  });
 });
