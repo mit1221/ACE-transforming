@@ -21,7 +21,7 @@ function Room(room_number, building, type, date) {
     rooms_with_360_images[this.building].indexOf(this.room_number) >= 0 ? true : false;
 }
 
-Room.prototype.make_card = function(sort_type) {
+Room.prototype.makeCard = function(sort_type) {
   var card = document.createElement('DIV');
   card.className = 'card';
 
@@ -42,12 +42,6 @@ Room.prototype.make_card = function(sort_type) {
   if (this.type == 'Ongoing') {
     // adding the feedback button on top of the card
     card.classList.add('card-incomplete');
-    var feedback_button = document.createElement('A');
-    feedback_button.className = 'button icon-button feedback-for-incomplete';
-    feedback_button.innerHTML = '<img class="feedback-button-icon" src="images/feedback.svg">Give feedback';
-    feedback_button.href = 'feedback.html?room=' + this.building + this.room_number;
-    feedback_button.target = '_blank';
-    card.appendChild(feedback_button);
 
     // adding the date to be completed to the card if the rooms are not sorted by date
     if (sort_type != 'date') {
@@ -60,13 +54,10 @@ Room.prototype.make_card = function(sort_type) {
       date_heading.textContent = formatted_date;
       text_div.appendChild(date_heading);
     }
-  } else {
-    // clicking a card for a complete room to open the viewer
-    card.addEventListener('click', addViewer.bind(this, card));
   }
-
+  // clicking a card for a room to open the viewer
+  card.addEventListener('click', addViewer.bind(this, card));
   card.appendChild(text_div);
-
   return card;
 }
 
@@ -74,8 +65,6 @@ Room.prototype.make_card = function(sort_type) {
 var current = null;
 var parent = null;
 function addViewer(card) {
-  // card.type is either 'Completed' or 'Pilot'
-
   // deactivate currently open card and close open container
   if (current != null && parent.contains(current)) {
     current.parentElement.removeChild(current.parentElement.lastChild);
@@ -114,22 +103,32 @@ function addViewer(card) {
     var formatted_date = seasons_fullform[temp[0]];
     var temp2 = temp[1].split('-');
     formatted_date += '/' + seasons_fullform[temp2[0]] + ' ' + temp2[1];
-    date_text.innerHTML = this.type == 'Completed' ? '<strong>Completed:</strong> ' + formatted_date : '<strong>Completed:</strong> Summer 2017';
+    date_text.innerHTML = this.type != 'Ongoing' ? (this.type == 'Pilot' ?
+      '<strong>Completed:</strong> Summer 2017' :
+      '<strong>Completed:</strong> ' + formatted_date) :
+      '<strong>Scheduled to be Completed:</strong> ' + formatted_date;
     container.appendChild(date_text);
 
-    // adds the before/after viewer by default
-    addContent(container, this);
+    if (this.type == 'Ongoing') {
+      // displays enlarged image of thumbnail with scope
+      container.appendChild(addImages(this));
+    } else {
+      // adds the before/after viewer by default
+      addContent(container, this);
+    }
+
     card.parentElement.appendChild(container);
     add_sliding_functionality();
+
     var ba_buttons = document.createElement('DIV');
     ba_buttons.className = 'ba-buttons';
 
-    if (this.has_360_image) {
+    if (this.type != 'Ongoing' && this.has_360_image) {
       var toggle_button = document.createElement('BUTTON');
       toggle_button.innerHTML = '<img src="images/360_icon.svg">360&#176; Viewer';
       toggle_button.id = 'toggle-button';
       toggle_button.className = 'icon-button';
-      toggle_button.addEventListener('click', toggle_viewer);
+      toggle_button.addEventListener('click', toggleViewer);
       ba_buttons.appendChild(toggle_button);
     }
 
@@ -184,7 +183,7 @@ function addContent(container, room) {
     container.appendChild(image_360);
     image_360.style.display = 'none';
     setTimeout(function() {
-      load_360(room);
+      load360(room);
     }, 100);
   }
 }
@@ -194,16 +193,24 @@ function addImages(room) {
   '/' + room.type + '/';
   var image_text = room.building + ' ' + room.room_number;
 
-  var before_image = document.createElement('IMG');
-  var after_image = document.createElement('IMG');
-  before_image.src = image_url + 'before/' + room.room_number + '.jpg';
-  after_image.src = image_url + 'after/' + room.room_number + '.jpg';
-  before_image.alt = image_text + ' Before';
-  after_image.alt = image_text + ' After';
-  return [before_image, after_image];
+  if (room.type == 'Ongoing') {
+    var image = document.createElement('IMG');
+    image.className = 'ongoing-image';
+    image.src = image_url + room.room_number + '_' + room.date.split('/')[0] + '-' + room.date.split('/')[1] + '.jpg';
+    image.alt = image_text;
+    return image;
+  } else {
+    var before_image = document.createElement('IMG');
+    var after_image = document.createElement('IMG');
+    before_image.src = image_url + 'before/' + room.room_number + '.jpg';
+    after_image.src = image_url + 'after/' + room.room_number + '.jpg';
+    before_image.alt = image_text + ' Before';
+    after_image.alt = image_text + ' After';
+    return [before_image, after_image];
+  }
 }
 
-function load_360(room) {
+function load360(room) {
   var image_url = 'images/room_images/' + room.building + '-' + fullform[room.building] +
   '/360_images/' + room.room_number + '.jpg';
 
@@ -214,7 +221,7 @@ function load_360(room) {
   });
 }
 
-function toggle_viewer() {
+function toggleViewer() {
   var button = document.getElementById('toggle-button');
   if (button.textContent.substring(0, 3) == '360') {
     button.innerHTML = '<img src="images/ba_icon.svg">Before/After Viewer';
@@ -228,17 +235,17 @@ function toggle_viewer() {
 }
 
 function Rooms(rooms_dict) {
-  this.rooms = this.make_room_objects(rooms_dict);
-  this.sort_rooms();
+  this.rooms = this.makeRoomObjects(rooms_dict);
+  this.sortRooms();
   this.categorized_by_date = {};
   this.categorized_by_building = {};
   if (rooms_dict != undefined) {
-    this.categorize_rooms('date');
-    this.categorize_rooms('building');
+    this.categorizeRooms('date');
+    this.categorizeRooms('building');
   }
 }
 
-Rooms.prototype.make_room_objects = function(dict) {
+Rooms.prototype.makeRoomObjects = function(dict) {
   var rooms = [];
 
   for (var building in dict) {
@@ -252,7 +259,7 @@ Rooms.prototype.make_room_objects = function(dict) {
   return rooms;
 }
 
-Rooms.prototype.sort_rooms = function() {
+Rooms.prototype.sortRooms = function() {
   this.rooms.sort(function(a, b) {
     var building_a = a.building;
     var number_a;
@@ -274,7 +281,7 @@ Rooms.prototype.sort_rooms = function() {
   });
 }
 
-Rooms.prototype.categorize_rooms = function(sort_type) { // sort_type is either 'date' or 'building'
+Rooms.prototype.categorizeRooms = function(sort_type) { // sort_type is either 'date' or 'building'
   var dict_type = sort_type == 'date' ? this.categorized_by_date : this.categorized_by_building;
 
   for (var i = 0; i < this.rooms.length; i++) {
@@ -292,7 +299,7 @@ Rooms.prototype.categorize_rooms = function(sort_type) { // sort_type is either 
   }
 }
 
-Rooms.prototype.show_rooms_by = function(type) { // type is either 'date' or 'building'
+Rooms.prototype.showRoomsBy = function(type) { // type is either 'date' or 'building'
   var content = document.getElementById('content');
   content.innerHTML = '';
   current = null; // refers to currently active card
@@ -379,7 +386,7 @@ Rooms.prototype.show_rooms_by = function(type) { // type is either 'date' or 'bu
         }
       }
 
-      stats = finished + ' Completed' + ' | ' + in_progress + ' In progress';
+      stats = finished + ' Completed' + ' | ' + in_progress + ' Upcoming';
     }
 
     heading.innerHTML += title + '<div class="stats">' + stats + '</div>';
@@ -389,17 +396,25 @@ Rooms.prototype.show_rooms_by = function(type) { // type is either 'date' or 'bu
     var rooms_in_building = document.createElement('DIV');
     rooms_in_building.className = 'rooms';
     content.appendChild(rooms_in_building);
-    heading.addEventListener('click', add_cards.bind(this, heading, dict_type, categories[i], type));
+    heading.addEventListener('click', addCards.bind(this, heading, dict_type, categories[i], type));
   }
 }
 
+
+Rooms.prototype.getCardsByInput = function(query) {
+  query = query.toUpperCase();
+  return this.rooms.filter(function(room) {
+    return room.building.indexOf(query) !== -1;
+  });
+}
+
 var currently_open = [];
-function add_cards(heading, dict, category, type) {
+function addCards(heading, dict, category, type) {
   // create cards for the rooms and add to container
   var room_container = heading.nextSibling;
   if (currently_open.indexOf(heading) == -1) {
     dict[category].forEach(function(room) {
-      room_container.appendChild(room.make_card(type));
+      room_container.appendChild(room.makeCard(type));
     });
     currently_open.push(heading);
     heading.classList.add('open');
@@ -411,22 +426,50 @@ function add_cards(heading, dict, category, type) {
       gap: 30
     }).start();
   } else {
-    close_heading(heading);
+    closeHeading(heading);
   }
 }
 
-function close_heading(heading) {
+function closeHeading(heading) {
   var room_container = heading.nextSibling;
   room_container.innerHTML = '';
   currently_open.splice(currently_open.indexOf(heading), 1);
   heading.classList.remove('open');
 }
 
+function showSearchedCards(query) {
+  var container = document.getElementById('content');
+  container.innerHTML = '';
+  var matched = room_objects.getCardsByInput(query);
+  for (var i = 0; i < matched.length; i++) {
+    container.appendChild(matched[i].makeCard());
+  }
+
+  // animating the cards when they show up
+  new Animate({
+    elements: container.getElementsByClassName('card'),
+    animation: 'move-in 0.5s ease-out',
+    gap: 30
+  }).start();
+}
+
+var room_objects;
 
 $(function() {
-  var room_objects = new Rooms(rooms_dict);
+  room_objects = new Rooms(rooms_dict);
   var default_sort = document.getElementsByClassName('default')[0].textContent.toLowerCase();
-  room_objects.show_rooms_by(default_sort);
+  room_objects.showRoomsBy(default_sort);
+
+  // An array containing all the rooms
+  var rooms = [];
+
+  for (var i = 0; i < room_objects.rooms.length; i++) {
+    rooms.push(room_objects.rooms[i].building + room_objects.rooms[i].room_number);
+  }
+
+  // initiate the autocomplete function on the "search-input" element, and pass along the rooms array as possible autocomplete values
+  autocomplete(document.getElementsByClassName("search-input")[0], rooms);
+
   // for animating the headings on page load
   var animation = new Animate({
     elements: document.getElementsByClassName('category-heading'),
@@ -436,12 +479,12 @@ $(function() {
   animation.start();
 
   document.getElementById('date_button').addEventListener('click', function() {
-    room_objects.show_rooms_by('date');
+    room_objects.showRoomsBy('date');
     // for animating the headings when date is clicked
     animation.start();
   });
   document.getElementById('building_button').addEventListener('click', function() {
-    room_objects.show_rooms_by('building');
+    room_objects.showRoomsBy('building');
     // for animating the headings when building is clicked
     animation.start();
   });

@@ -13,7 +13,7 @@
     // });
     // Toggle open and close nav styles on click
     $('#nav-toggle').click(function() {
-      $('.navigation nav ul').slideToggle();
+      $('.navigation nav ul').slideToggle(1000);
     });
     // Hamburger to X toggle
     $('#nav-toggle').on('click', function() {
