@@ -1,7 +1,7 @@
 window.onload = function() {
   var cards = document.getElementById('images_container').children;
   var modal = document.getElementById('myModal');
-  var span = document.getElementById("close");
+  var span = document.getElementsByClassName("close")[0];
 
   function close_modal() {
     var content = document.getElementsByClassName('modal_content')[0];

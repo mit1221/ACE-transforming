@@ -77,9 +77,9 @@ function addViewer(card) {
     var container = document.createElement('DIV');
     container.className = 'ba-container';
 
-    var close = document.createElement('SPAN');
-    close.id = 'close';
-    close.innerHTML = '&times;';
+    var close = document.createElement('I');
+    close.className = 'material-icons close';
+    close.innerHTML = 'close';
     container.appendChild(close);
 
     close.onclick = function() {
@@ -402,9 +402,10 @@ Rooms.prototype.showRoomsBy = function(type) { // type is either 'date' or 'buil
 
 
 Rooms.prototype.getCardsByInput = function(query) {
-  query = query.toUpperCase();
+  query = query.toUpperCase().replace(/\s+/g, '');
   return this.rooms.filter(function(room) {
-    return room.building.indexOf(query) !== -1;
+    var room_string = room.building + room.room_number;
+    return room_string.indexOf(query) !== -1;
   });
 }
 
@@ -440,20 +441,28 @@ function closeHeading(heading) {
 function showSearchedCards(query) {
   var container = document.getElementById('content');
   container.innerHTML = '';
-  var matched = room_objects.getCardsByInput(query);
-  for (var i = 0; i < matched.length; i++) {
-    container.appendChild(matched[i].makeCard());
-  }
+  if (!query == '') {
+    try {
+      document.getElementsByClassName('btn-active')[0].classList.remove('btn-active');
+    }
+    catch(err) {}
 
-  // animating the cards when they show up
-  new Animate({
-    elements: container.getElementsByClassName('card'),
-    animation: 'move-in 0.5s ease-out',
-    gap: 30
-  }).start();
+    var matched = room_objects.getCardsByInput(query);
+    for (var i = 0; i < matched.length; i++) {
+      container.appendChild(matched[i].makeCard());
+    }
+
+    // animating the cards when they show up
+    new Animate({
+      elements: container.getElementsByClassName('card'),
+      animation: 'move-in 0.5s ease-out',
+      gap: 30
+    }).start();
+  }
 }
 
 var room_objects;
+var animation;
 
 $(function() {
   room_objects = new Rooms(rooms_dict);
@@ -470,12 +479,12 @@ $(function() {
   // initiate the autocomplete function on the "search-input" element, and pass along the rooms array as possible autocomplete values
   autocomplete(document.getElementsByClassName("search-input")[0], rooms);
 
-  // for animating the headings on page load
-  var animation = new Animate({
+  animation = new Animate({
     elements: document.getElementsByClassName('category-heading'),
     animation: 'move-in 0.4s ease-out',
     gap: 70
   });
+  // for animating the headings on page load
   animation.start();
 
   document.getElementById('date_button').addEventListener('click', function() {

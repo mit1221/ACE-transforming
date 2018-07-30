@@ -9,10 +9,10 @@ $(document).ready(function() {
   var modal_header = document.createElement('DIV');
   modal_header.className = 'modal_header';
 
-  var span = document.createElement('SPAN');
-  span.id = 'close';
-  span.innerHTML = '&times;';
-  modal_header.appendChild(span);
+  var close = document.createElement('I');
+  close.className = 'material-icons close';
+  close.innerHTML = 'close';
+  modal_header.appendChild(close);
 
   var header_text = document.createElement('P');
   header_text.id = 'header_text';
@@ -36,7 +36,7 @@ $(document).ready(function() {
   }
 
   // When the user clicks on <span> (x), close the modal
-  span.onclick = function() {
+  close.onclick = function() {
     close_modal();
   }
 

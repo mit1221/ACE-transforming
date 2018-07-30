@@ -1775,16 +1775,15 @@ form input[type=submit]:disabled {
 }
 
 /* The Close Button */
-#close {
+.close {
   color: white;
   float: right;
   font-size: 28px;
-  font-weight: bold;
   transition: 0.1s;
 }
 
-#close:hover,
-#close:focus {
+.close:hover,
+.close:focus {
   color: #337AB7;
   cursor: pointer;
 }
@@ -1796,7 +1795,7 @@ form input[type=submit]:disabled {
   z-index: 100;
   box-shadow: 0 3px 12px rgba(0, 0, 0, 0.15);
   max-height: 200px;
-  overflow-y: scroll;
+  overflow-y: auto;
   border-bottom-left-radius: 5px;
   border-bottom-right-radius: 5px;
 }
