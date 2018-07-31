@@ -50,9 +50,9 @@ for i in range(df.shape[0]):
     rooms_to_scope_dict[key] = []
     for j in range(1, df.shape[1]):
         if str(row[j]) != 'nan':
-            rooms_to_scope_dict[key].append(True)
+            rooms_to_scope_dict[key].append(1)
         else:
-            rooms_to_scope_dict[key].append(False)
+            rooms_to_scope_dict[key].append(0)
 
 # Updates the JavaScript file with the new data
 with open('./TIL Website/js/show_rooms.js', 'r+') as f:
