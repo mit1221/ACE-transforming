@@ -11,6 +11,7 @@ window.onload = function() {
       var body = document.getElementById('modal_body');
       body.removeChild(body.firstChild);
       content.classList.remove('animateout');
+      document.body.style.overflow = 'auto';
     }, 300);
   }
 
@@ -33,6 +34,7 @@ window.onload = function() {
       modal.style.display = 'block';
       document.getElementById('modal_body').appendChild(large_img);
       document.getElementById('header_text').innerHTML = this.children[1].innerHTML;
+      document.body.style.overflow = 'hidden';
     });
   }
 }

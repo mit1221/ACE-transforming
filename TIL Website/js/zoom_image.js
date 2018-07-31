@@ -32,6 +32,7 @@ $(document).ready(function() {
       modal.style.display = "none";
       body.removeChild(body.firstChild);
       content.classList.remove('animateout');
+      document.body.style.overflow = 'auto';
     }, 300);
   }
 
@@ -53,6 +54,7 @@ $(document).ready(function() {
       modal.style.display = 'block';
       body.appendChild(large_img);
       header_text.innerHTML = this.alt;
+      document.body.style.overflow = 'hidden';
     });
   }
 });
