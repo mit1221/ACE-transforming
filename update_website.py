@@ -44,24 +44,27 @@ df = pd.read_excel('scope.xlsx', sheet_name='Sheet1')
 columns = list(df.columns)
 for i in range(df.shape[0]):
     row = df.loc[i, : ]
-    rooms_to_scope_dict[row[0]] = []
+
+    #removes the space between building name and room number
+    key = ('').join(row[0].split(' '))
+    rooms_to_scope_dict[key] = []
     for j in range(1, df.shape[1]):
         if str(row[j]) != 'nan':
-            rooms_to_scope_dict[row[0]].append(True)
+            rooms_to_scope_dict[key].append(True)
         else:
-            rooms_to_scope_dict[row[0]].append(False)
-print(rooms_to_scope_dict)
+            rooms_to_scope_dict[key].append(False)
 
 # Updates the JavaScript file with the new data
 with open('./TIL Website/js/show_rooms.js', 'r+') as f:
     content = f.read()
     index = 0
-    for _ in range(3):
+    for _ in range(4):
         index = content.find(';', index + 1)
     append_text = content[index:]
     f.seek(0, 0)
     f.write('var rooms_dict = ' + str(rooms_dict) + ';\n\n')
     f.write('var rooms_with_360_images = ' + str(rooms_with_360_images) + ';\n\n')
+    f.write('var rooms_to_scope_dict = ' + str(rooms_to_scope_dict) + ';\n\n')
     f.write('var fullform = ' + str(fullforms) + append_text)
 
 
