@@ -1208,7 +1208,7 @@ button img, .button img, .button svg {
   transition: 0.2s ease-out;
 }
 
-.category-heading:hover, .category-heading.open, .card:hover {
+.category-heading:hover, .category-heading.open, .card:hover, .card.card-active {
   box-shadow: 0 6px 20px 0 rgba(0,0,0,0.3);
   top: -4px;
   /* transform: translateY(-3px); */
@@ -1263,6 +1263,8 @@ button img, .button img, .button svg {
   width: 270px;
   height: 100px;
   background: #002A5C;
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
   display: inline-flex;
   align-items: center;
   border-radius: 10px;
@@ -1374,10 +1376,14 @@ button img, .button img, .button svg {
 
 .ongoing-image {
   width: 100%;
+  height: auto;
   max-width: 900px;
   position: relative;
   margin: auto;
   display: block;
+  -webkit-filter: grayscale(80%); /* Safari 6.0 - 9.0 */
+  filter: grayscale(80%);
+  opacity: 0.7;
 }
 
 /* ========================== FEEDBACK ========================== */
@@ -1401,6 +1407,7 @@ input, textarea {
 
 textarea {
   resize: none;
+  overflow: auto;
 }
 
 input[type=text],

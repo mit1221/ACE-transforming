@@ -3,10 +3,12 @@ import pandas as pd
 from pandas import ExcelWriter
 from pandas import ExcelFile
 
-""" Gets the rooms added to the room_images directory and update the JavaScript file."""
+# Gets all the rooms added to the room_images directory
 rooms_dict = {}
 fullforms = {}
 rooms_with_360_images = {}
+rooms_to_scope_dict = {}
+
 for (dirpath, dirnames, filenames) in walk('./TIL Website/images/room_images'):
     if not('Before' in dirpath or 'After' in dirpath):
         if 'completed' in dirpath.lower() or 'ongoing' in dirpath.lower() or 'pilot' in dirpath.lower():
@@ -37,6 +39,20 @@ for (dirpath, dirnames, filenames) in walk('./TIL Website/images/room_images'):
                     rooms_with_360_images[building] = []
                 rooms_with_360_images[building].append(pic.split('.')[0])
 
+# Get the scope for all the rooms
+df = pd.read_excel('scope.xlsx', sheet_name='Sheet1')
+columns = list(df.columns)
+for i in range(df.shape[0]):
+    row = df.loc[i, : ]
+    rooms_to_scope_dict[row[0]] = []
+    for j in range(1, df.shape[1]):
+        if str(row[j]) != 'nan':
+            rooms_to_scope_dict[row[0]].append(True)
+        else:
+            rooms_to_scope_dict[row[0]].append(False)
+print(rooms_to_scope_dict)
+
+# Updates the JavaScript file with the new data
 with open('./TIL Website/js/show_rooms.js', 'r+') as f:
     content = f.read()
     index = 0
@@ -49,7 +65,7 @@ with open('./TIL Website/js/show_rooms.js', 'r+') as f:
     f.write('var fullform = ' + str(fullforms) + append_text)
 
 
-""" Gets the totals from the stats spreadsheet and updates the HTML file with the data."""
+# Gets the totals from the stats spreadsheet and updates the HTML file with the data
 df = pd.read_excel('stats.xlsx', sheet_name='Sheet1')
 columns = list(df.columns)[1:]
 totals = []

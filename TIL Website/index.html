@@ -61,22 +61,6 @@
         elements: document.getElementsByClassName('theme-card'),
         gap: 200
       });
-
-      // for the comments section
-      new AnimateOnScroll({
-        elements: document.getElementById('callout-section'),
-        next: new Animate({
-          elements: document.getElementsByClassName('callout'),
-          animation: 'impact 1.4s',
-          gap: 600,
-          extraAnimations: [typewriter],
-          next: new Animate({
-            elements: document.getElementsByClassName('quotes-icon'),
-            gap: 500,
-            animation: 'boom 0.7s'
-          })
-        })
-      });
     }, 1000);
 
   </script>
@@ -124,7 +108,7 @@
                   <a href="accessibility.html">Accessibility</a>
                 </li>
                 <li>
-                  <a href="student_comfort.html">Student Comfort</a>
+                  <a href="user_consultation.html">User Consultation</a>
                 </li>
               </ul>
             </li>
@@ -237,35 +221,24 @@
             <div class="theme-card">
               <img src="images/expanding_logo.png" alt="Expanding logo">
               <p class="theme-heading">Expanding Technology</p>
-              <p>Add 1 sentence of text here. Add 1 sentence of text here.</p>
+              <p>Creating a foundational technology expectation that will extend to all teaching spaces</p>
               <a href="av.html" class="button">Learn More</a>
             </div>
             <div class="theme-card">
               <img src="images/enhancing_logo.png" alt="Enhancing logo">
               <p class="theme-heading">Enhancing Infrastructure</p>
-              <p>Add 1 sentence of text here.</p>
-              <a href="student_comfort.html" class="button">Learn More</a>
+              <p>Creating spaces that are dynamic and accessible learning spaces</p>
+              <a href="user_consultation.html" class="button">Learn More</a>
             </div>
             <div class="theme-card">
               <img src="images/emerging_logo.png" alt="Emerging logo">
               <p class="theme-heading">Emerging Environments</p>
-              <p>Add 1 sentence of text here.</p>
+              <p>New spaces will be uniquely purpose built to address emerging pedagogical styles</p>
               <a href="pedagogy.html" class="button">Learn More</a>
             </div>
           </div>
         </section>
-        <section id="callout-section">
-          <h2 style="text-align: center">Comments</h2>
-          <div class="callout bottom-left">
-            <img class="quotes-icon" src="images/quotes.svg" alt="quotes icon">
-            <p class="quote">Thank you. I am very grateful for having been given the opportunity to give feedback.</p>
-          </div>
-          <div class="callout bottom-right">
-            <img class="quotes-icon" src="images/quotes.svg" alt="quotes icon">
-            <p class="quote">These proposed changes look amazing. I am sure our faculty and students will love the upgrade
-              to the classrooms. Thanks for all your hard work on this.</p>
-          </div>
-        </section>
+
         <div class="ba-buttons">
           <strong>Go to:</strong>
           <a class="button" href="introduction.html">

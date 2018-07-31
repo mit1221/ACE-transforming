@@ -11,6 +11,12 @@ var seasons_fullform = {
   4: 'Fall'
 };
 
+// Polyfill for startsWith()
+if (!String.prototype.startsWith) {
+  String.prototype.startsWith = function(search, pos) {
+    return this.substr(!pos || pos < 0 ? 0 : +pos, search.length) === search;
+  };
+}
 
 function Room(room_number, building, type, date) {
   this.room_number = room_number;
@@ -400,12 +406,10 @@ Rooms.prototype.showRoomsBy = function(type) { // type is either 'date' or 'buil
   }
 }
 
-
 Rooms.prototype.getCardsByInput = function(query) {
-  query = query.toUpperCase().replace(/\s+/g, '');
   return this.rooms.filter(function(room) {
     var room_string = room.building + room.room_number;
-    return room_string.indexOf(query) !== -1;
+    return room_string.startsWith(query);
   });
 }
 
@@ -438,26 +442,32 @@ function closeHeading(heading) {
   heading.classList.remove('open');
 }
 
+var last_query = ''
 function showSearchedCards(query) {
-  var container = document.getElementById('content');
-  container.innerHTML = '';
-  if (!query == '') {
-    try {
-      document.getElementsByClassName('btn-active')[0].classList.remove('btn-active');
-    }
-    catch(err) {}
+  query = query.toUpperCase().replace(/\s+/g, '');
 
-    var matched = room_objects.getCardsByInput(query);
-    for (var i = 0; i < matched.length; i++) {
-      container.appendChild(matched[i].makeCard());
-    }
+  if (last_query != query) {
+    last_query = query;
+    var container = document.getElementById('content');
+    container.innerHTML = '';
+    if (!query == '') {
+      try {
+        document.getElementsByClassName('btn-active')[0].classList.remove('btn-active');
+      }
+      catch(err) {}
 
-    // animating the cards when they show up
-    new Animate({
-      elements: container.getElementsByClassName('card'),
-      animation: 'move-in 0.5s ease-out',
-      gap: 30
-    }).start();
+      var matched = room_objects.getCardsByInput(query);
+      for (var i = 0; i < matched.length; i++) {
+        container.appendChild(matched[i].makeCard());
+      }
+
+      // animating the cards when they show up
+      new Animate({
+        elements: container.getElementsByClassName('card'),
+        animation: 'move-in 0.5s ease-out',
+        gap: 30
+      }).start();
+    }
   }
 }
 
@@ -466,7 +476,7 @@ var animation;
 
 $(function() {
   room_objects = new Rooms(rooms_dict);
-  var default_sort = document.getElementsByClassName('default')[0].textContent.toLowerCase();
+  var default_sort = document.getElementsByClassName('default')[0].lastChild.textContent.toLowerCase();
   room_objects.showRoomsBy(default_sort);
 
   // An array containing all the rooms

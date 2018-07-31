@@ -13,13 +13,34 @@
   <title>Student Comfort</title>
   <link rel="shortcut icon" href="images/favicon.ico">
   <link rel="stylesheet" href="css/index.css" type="text/css">
-  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700|Roboto+Condensed" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="js/navbar.js"></script>
+  <script src="js/animate_on_scroll.js"></script>
   <script src="js/zoom_image.js"></script>
 </head>
 
 <body>
+  <script>
+    // for the comments section
+    setTimeout(function() {
+      new AnimateOnScroll({
+        elements: document.getElementById('callout-section'),
+        next: new Animate({
+          elements: document.getElementsByClassName('callout'),
+          animation: 'impact 1.4s',
+          gap: 600,
+          next: new Animate({
+            elements: document.getElementsByClassName('quotes-icon'),
+            gap: 500,
+            animation: 'boom 0.7s'
+          })
+        })
+      });
+    }, 10);
+
+  </script>
   <div id="container">
     <section class="navigation">
       <div class="nav-container">
@@ -64,7 +85,7 @@
                   <a href="accessibility.html">Accessibility</a>
                 </li>
                 <li>
-                  <a href="student_comfort.html">Student Comfort</a>
+                  <a href="user_consultation.html">User Consultation</a>
                 </li>
               </ul>
             </li>
@@ -120,7 +141,10 @@
         </nav>
       </div>
     </section>
-    <h1>Student Comfort</h1>
+    <div style="margin-left: 35px">
+      <h1 style="display: inline; margin-left: 0">User Consultation</h1>
+      <h1 style="display: inline; font-size: 20px; margin-left: 0">in collaboration with <img style="display: inline; height: 80px" src="images/innovation_hub_logo.png" alt="Innovation hub logo"></h1>
+    </div>
     <div class="background-container">
       <div class="background enhancing"></div>
     </div>
@@ -128,13 +152,42 @@
 
       <div id="main">
         <section>
+          <h2>Student Comfort</h2>
           <p>Recent student outreach has identified power as a fundamental element that would improve the
             experience in the classroom, enabling students to work more effectively, and stay connected
-            throughout the day as they move around Campus. This summer's renovations added power to 1,594
-            seats across the campus.
+            throughout the day as they move around campus. These renovations will add power to more than
+            1,594 seats across the campus.
           </p>
+          <div style="display: flex; align-items: center; justify-content: center; flex-wrap: wrap">
+            <img class="zoom-image" style="max-width: 48%; min-width: 450px" src="images/duplex.png" alt="Duplex outlets for each pair of seats">
+            <img class="zoom-image" style="max-width: 48%; min-width: 450px" src="images/student_consultation.png"
+              alt="Poll of the most important feature in a classroom">
+          </div>
+          <p><strong>Key Question: </strong>How do we design learning spaces that address student needs?</p>
+          <p><strong>Our Goal: </strong>To create spaces that are dynamic and accessible learning spaces,
+            where students feel that the classroom not only fulfills needs, but also enhances the learning
+            or teaching experience.</p>
         </section>
-        <img class="zoom-image" style="width: 47%" src="images/duplex.png" alt="Duplex outlets for each pair of seats">
+        <section>
+          <h2>Faculty Consultation</h2>
+          <section id="callout-section">
+            <h2 style="text-align: center">Comments</h2>
+            <div class="callout bottom-left">
+              <img class="quotes-icon" src="images/quotes.svg" alt="quotes icon">
+              <p class="quote">Thank you. I am very grateful for having been given the opportunity to give feedback.</p>
+            </div>
+            <div class="callout bottom-right">
+              <img class="quotes-icon" src="images/quotes.svg" alt="quotes icon">
+              <p class="quote">These proposed changes look amazing. I am sure our faculty and students will love the upgrade
+                to the classrooms. Thanks for all your hard work on this.</p>
+            </div>
+          </section>
+          <p><strong>Key Question: </strong>What key elements of the classroom do you find useful, engaging
+            or interesting, and which elements can be improved?</p>
+          <p><strong>Our Goal: </strong>To create purpose built instructional environments that meet the
+            diverse needs of faculty across the St. George Campus.</p>
+        </section>
+
       </div>
     </div>
   </div>
