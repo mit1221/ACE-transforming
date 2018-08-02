@@ -173,7 +173,7 @@ function addViewer(card) {
     var feedback_button = document.createElement('A');
     feedback_button.target = '_blank';
     feedback_button.className = 'button icon-button';
-    feedback_button.href = 'feedback.html?room=' + this.building + this.room_number;
+    feedback_button.href = '../webapp/f?p=118?room=' + this.building + this.room_number;
     feedback_button.innerHTML = '<img src="images/feedback.svg">Give feedback';
 
     ba_buttons.appendChild(feedback_button);
@@ -315,7 +315,7 @@ Rooms.prototype.sortRooms = function() {
     }
 
     // first sort by building and then by room number
-    return building_a < building_b ? -1 : building_a > building_b ? 1 : (number_a - number_b);
+    return building_a < building_b ? -1 : building_a > building_b ? 1 : (number_a - number_b != 0 ? number_a - number_b : (a.type == 'Ongoing' ? 1 : -1));
   });
 }
 

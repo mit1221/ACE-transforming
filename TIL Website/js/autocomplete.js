@@ -14,7 +14,7 @@ function autocomplete(inp, arr) {
       a.setAttribute("id", this.id + "autocomplete-list");
       a.setAttribute("class", "autocomplete-items");
       /*append the DIV element as a child of the autocomplete container:*/
-      this.parentNode.appendChild(a);
+      $(a).insertAfter(this);
       /*for each item in the array...*/
       for (i = 0; i < arr.length; i++) {
         /*check if the item starts with the same letters as the text field value:*/
@@ -30,8 +30,11 @@ function autocomplete(inp, arr) {
           b.addEventListener("click", function(e) {
               /*insert the value for the autocomplete text field:*/
               inp.value = this.getElementsByTagName("input")[0].value;
-              /*trigger onchange on the input*/
-              inp.onchange();
+              if (inp.onchange != null) {
+                /*trigger onchange on the input*/
+                inp.onchange();
+              }
+
               /*close the list of autocompleted values,
               (or any other open lists of autocompleted values:*/
               closeAllLists();
@@ -51,6 +54,7 @@ function autocomplete(inp, arr) {
         /*and and make the current item more visible:*/
         addActive(x);
         var dropdown = document.getElementById("autocomplete-list")
+        console.log(dropdown);
         if (currentFocus > 2) {
           dropdown.scrollBy(0, 42);
         } else {

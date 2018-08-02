@@ -17,6 +17,8 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="js/navbar.js"></script>
   <script src="js/rooms_data.js"></script>
+  <script src="js/autocomplete.js"></script>
+  <script src="js/button_toggle.js"></script>
 </head>
 
 <body>
@@ -55,6 +57,9 @@
                 </svg>Mandate</a>
               <ul class="nav-dropdown">
                 <li>
+                  <a href="user_consultation.html">User Consultation</a>
+                </li>
+                <li>
                   <a href="pedagogy.html">Pedagogy</a>
                 </li>
                 <li>
@@ -62,9 +67,6 @@
                 </li>
                 <li>
                   <a href="accessibility.html">Accessibility</a>
-                </li>
-                <li>
-                  <a href="user_consultation.html">User Consultation</a>
                 </li>
               </ul>
             </li>
@@ -97,7 +99,7 @@
                       <polygon points="349 141 424 48 424 103.931495"></polygon>
                       <path d="M131,73.8497182 L200.598488,0 L416,34.7546744 L336.363065,136 L131,73.8497182 Z M164,67.8158154 L227.963142,87.5130791 L267.798292,44.8494597 L199.13721,29 L164,67.8158154 Z"></path>
                   </g>
-                </svg>Teaching Aids</a>
+                </svg>Instructional Technology</a>
               <ul class="nav-dropdown">
                 <li>
                   <a href="teaching_dock.html">Teaching Dock</a>
@@ -108,7 +110,7 @@
               </ul>
             </li>
             <li>
-              <a href="feedback.html" class="active">
+              <a href="../webapp/f?p=118" class="active">
                 <svg width="18px" height="18px" viewBox="0 0 84 78" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                     <title>Feedback icon</title>
                     <g id="Page-1" stroke="none" stroke-width="1" fill="white" fill-rule="evenodd">
@@ -123,35 +125,69 @@
     <h1>Feedback</h1>
     <div class="wrapper">
       <div id="main">
-        <div id="classroom" class="form-container">
-          <form method="post" name="classroom" id="classroom_form">
-            <div class="name-email">
-              <div class="fullname">
-                <div><span class="asterisk">* </span>Full Name:<br><input type="text" name="firstname" class="required"
-                    placeholder="First Name" autofocus></div>
-                <div><br><input type="text" name="lastname" class="required" placeholder="Last Name"></div>
-              </div>
-              <br>
-              <div><span class="asterisk">* </span>Email:<br><input type="text" name="email" class="required"
-                  placeholder="Enter a valid email address"></div>
+        <form method="post" name="form" id="form" autocomplete="off">
+          <span class="asterisk">* </span>Select classroom:<br><input type="text" name="classroom" id="classroom"
+            class="required" placeholder="Please use this format: BA290">
+          <div class="name-email">
+            <div class="fullname">
+              <div><span class="asterisk">* </span>Full Name:<br><input type="text" name="firstname" class="required"
+                  placeholder="First Name" autofocus></div>
+              <div><br><input type="text" name="lastname" class="required" placeholder="Last Name"></div>
             </div>
-            <span class="asterisk">* </span>Select classroom:<br><input type="text" name="classroom"
-              class="required" placeholder="Please use this format: BA290">
-            <span class="asterisk">* </span>Who are you:<br>
-            <select>
-              <option value="student">Student</option>
-              <option value="professor">Professor</option>
-              <option value="student">Other</option>
-            </select>
-            <br>Elements of the classroom that could be improved:<br>
-            <textarea rows="5" cols="50" name="q1"></textarea>
-            <br>What do you like about this classroom?<br>
-            <textarea rows="5" cols="50" name="q2"></textarea>
-            <br>Any additional classroom features that would be useful, interesting, or engaging:<br>
-            <textarea rows="5" cols="50" name="q3"></textarea><br>
-            <div style="display: flex; justify-content: center; margin-bottom: 0;"><input type="submit" name="submit" onclick="return confirm('Do you really want to submit the form?');"
-                value="Submit Feedback" disabled></div>
-          </form>
+            <br>
+            <div><span class="asterisk">* </span>Email:<br><input type="text" name="email" class="required"
+                placeholder="Enter a valid email address"></div>
+          </div>
+          <span class="asterisk">* </span>Who are you:<br>
+          <select id="identification" onchange="
+          if (this.value == 'other') {
+            var textField = document.createElement('INPUT');
+            textField.type = 'text';
+            textField.placeholder = 'Please specify';
+            textField.className = 'required';
+            textField.id = 'other';
+            textField.name = 'other';
+            $(textField).insertAfter($('#identification'));
+          } else {
+            if ($('#other') != null) {
+              $('#other').remove();
+            }
+          }
+          ">
+            <option value="student">Student</option>
+            <option value="faculty">Faculty</option>
+            <option value="staff">Staff</option>
+            <option value="other">Other</option>
+          </select>
+          <div class="button-group">
+            <button type="button" onclick="openForm('environment')" class="button-group-button default">Classroom Environment</button>
+            <button type="button" onclick="openForm('technology')" class="button-group-button">Instructional Technology</button>
+          </div>
+
+          <!-------------------------------- ENVIRONMENT SECTION -------------------------------->
+          <section class="form-section" id="environment">
+            Question 1<br>
+            <textarea rows="5" cols="50"></textarea> Question 2<br>
+            <textarea rows="5" cols="50"></textarea> Question 3<br>
+            <textarea rows="5" cols="50"></textarea>
+          </section>
+
+          <!-------------------------------- TECHNOLOGY SECTION -------------------------------->
+          <section class="form-section" id="technology">
+            Question 1<br>
+            <textarea rows="5" cols="50"></textarea> Question 2<br>
+            <textarea rows="5" cols="50"></textarea> Question 3<br>
+            <textarea rows="5" cols="50"></textarea> Question 4<br>
+            <textarea rows="5" cols="50"></textarea>
+          </section>
+          <input type="checkbox" value="subscribe"> I am willing to be contacted for project updates.
+          <br>
+          <div style="display: flex; justify-content: center; margin-bottom: 0;"><input type="submit" name="submit" onclick="return confirm('Do you really want to submit the form?');"
+              value="Submit Feedback"></div>
+        </form>
+        <div class="contact" style="display: flex; justify-content: flex-end">
+          <p style="margin-right: 20px"><strong>Phone: </strong>(416) 978-2187</p>
+          <p><strong>Email: </strong><a href="mailto:classroom.ace@utoronto.ca">classroom.ace@utoronto.ca</a></p>
         </div>
       </div>
     </div>
@@ -173,6 +209,32 @@
       </ul>
     </nav>
   </footer>
+  <script>
+    openForm('environment');
+
+    function openForm(name) {
+      var x = document.getElementsByClassName("form-section");
+      for (var i = 0; i < x.length; i++) {
+        x[i].style.display = "none ";
+      }
+      document.getElementById(name).style.display = "block ";
+    }
+
+  </script>
+  <script>
+    var rooms = [];
+
+    for (var building in rooms_dict) {
+      for (var type in rooms_dict[building]) {
+        for (var room in rooms_dict[building][type]) {
+          rooms.push(building + room);
+        }
+      }
+    }
+    // initiate the autocomplete function on the "search-input " element, and pass along the rooms array as possible autocomplete values
+    autocomplete(document.getElementById('classroom'), rooms);
+
+  </script>
 </body>
 
 </html>
