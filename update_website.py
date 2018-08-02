@@ -55,17 +55,11 @@ for i in range(df.shape[0]):
             rooms_to_scope_dict[key].append(0)
 
 # Updates the JavaScript file with the new data
-with open('./TIL Website/js/show_rooms.js', 'r+') as f:
-    content = f.read()
-    index = 0
-    for _ in range(4):
-        index = content.find(';', index + 1)
-    append_text = content[index:]
-    f.seek(0, 0)
+with open('./TIL Website/js/rooms_data.js', 'w') as f:
     f.write('var rooms_dict = ' + str(rooms_dict) + ';\n\n')
     f.write('var rooms_with_360_images = ' + str(rooms_with_360_images) + ';\n\n')
     f.write('var rooms_to_scope_dict = ' + str(rooms_to_scope_dict) + ';\n\n')
-    f.write('var fullform = ' + str(fullforms) + append_text)
+    f.write('var fullform = ' + str(fullforms) + ';')
 
 
 # Gets the totals from the stats spreadsheet and updates the HTML file with the data

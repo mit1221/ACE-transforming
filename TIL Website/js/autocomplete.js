@@ -50,12 +50,24 @@ function autocomplete(inp, arr) {
         currentFocus++;
         /*and and make the current item more visible:*/
         addActive(x);
+        var dropdown = document.getElementById("autocomplete-list")
+        if (currentFocus > 2) {
+          dropdown.scrollBy(0, 42);
+        } else {
+          dropdown.scrollTo(0, 0);
+        }
       } else if (e.keyCode == 38) { //up
         /*If the arrow UP key is pressed,
         decrease the currentFocus variable:*/
         currentFocus--;
         /*and and make the current item more visible:*/
         addActive(x);
+        var dropdown = document.getElementById("autocomplete-list")
+        if (currentFocus < x.length - 3) {
+          dropdown.scrollBy(0, -42);
+        } else {
+          dropdown.scrollTo(0, dropdown.scrollHeight);
+        }
       } else if (e.keyCode == 13) {
         /*If the ENTER key is pressed, prevent the form from being submitted,*/
         e.preventDefault();
