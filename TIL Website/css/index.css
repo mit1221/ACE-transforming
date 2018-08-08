@@ -117,6 +117,7 @@ body {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  align-items: stretch;
 }
 
 #landing-page-container > div:first-child {
@@ -928,7 +929,7 @@ button img, .button img, .button svg {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 20px 0;
+  padding: 20px 5px;
   margin-right: 20px;
   margin-bottom: 20px;
   transition: 0.2s ease-out;
