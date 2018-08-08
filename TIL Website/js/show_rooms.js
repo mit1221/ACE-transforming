@@ -21,6 +21,7 @@ if (!String.prototype.startsWith) {
   };
 }
 
+// class for room object
 function Room(room_number, building, type, date) {
   this.room_number = room_number;
   this.building = building;
@@ -30,6 +31,7 @@ function Room(room_number, building, type, date) {
     rooms_with_360_images[this.building].indexOf(this.room_number) >= 0 ? true : false;
 }
 
+// makes an HTML card from the card object
 Room.prototype.makeCard = function(sort_type) {
   var card = document.createElement('DIV');
   card.className = 'card';
@@ -49,7 +51,6 @@ Room.prototype.makeCard = function(sort_type) {
   text_div.appendChild(card_heading);
 
   if (this.type == 'Ongoing') {
-    // adding the feedback button on top of the card
     card.classList.add('card-incomplete');
 
     // adding the date to be completed to the card if the rooms are not sorted by date
@@ -64,9 +65,10 @@ Room.prototype.makeCard = function(sort_type) {
       text_div.appendChild(date_heading);
     }
   }
+  card.appendChild(text_div);
+
   // clicking a card for a room to open the viewer
   card.addEventListener('click', addViewer.bind(this, card));
-  card.appendChild(text_div);
   return card;
 }
 
@@ -80,12 +82,13 @@ function addViewer(card) {
     current.classList.remove('card-active');
   }
 
-  // add container
+  // add container if the currently open card wasn't clicked
   if (current != card) {
     card.classList.add('card-active');
     var container = document.createElement('DIV');
     container.className = 'ba-container';
 
+    // 'x' icon
     var close = document.createElement('I');
     close.className = 'material-icons close';
     close.innerHTML = 'close';
@@ -101,11 +104,13 @@ function addViewer(card) {
       }, 300);
     }
 
+    // add the title of the viewer
     var title = document.createElement('p');
     title.className = 'ba-container-title';
     title.textContent = this.building + ' ' + this.room_number;
     container.appendChild(title);
 
+    // adding the Completed/Upgrade Schedule date
     var date_text = document.createElement('P');
     date_text.className = 'date-text';
     var temp = this.date.split('/');
@@ -118,6 +123,7 @@ function addViewer(card) {
       '<strong>Upgrade scheduled:</strong> ' + formatted_date;
     container.appendChild(date_text);
 
+    // returns an image element of the specified scope icon
     function createScopeIcon(scope, type) {
       var icon = document.createElement('IMG');
       icon.src = 'images/progress_icons/' + scope + '_progress_icon.svg';
@@ -126,6 +132,7 @@ function addViewer(card) {
       return icon;
     }
 
+    // creating the scope icon images for the room
     var scopeIcons = document.createElement('DIV');
     var scopes = rooms_to_scope_dict[this.building + this.room_number];
     if (scopes != null) {
@@ -136,6 +143,7 @@ function addViewer(card) {
       }
     }
 
+    // adds large image if room is not completed yet and before/after viewer if room is completed
     if (this.type == 'Ongoing') {
       var imagesAndIconsContainer = document.createElement('DIV');
       imagesAndIconsContainer.className = 'images-icons-container';
@@ -150,16 +158,16 @@ function addViewer(card) {
     } else {
       scopeIcons.className = 'complete-scope-icons-container';
       container.appendChild(scopeIcons);
-
-      // adds the before/after viewer by default
       addContent(container, this);
     }
 
     card.parentElement.appendChild(container);
+    // makes the before/after viewer work
     add_sliding_functionality();
 
-    var ba_buttons = document.createElement('DIV');
-    ba_buttons.className = 'ba-buttons';
+    // adds the buttons at the bottom of the viewer
+    var viewer_buttons = document.createElement('DIV');
+    viewer_buttons.className = 'viewer-buttons';
 
     if (this.type != 'Ongoing' && this.has_360_image) {
       var toggle_button = document.createElement('BUTTON');
@@ -167,7 +175,7 @@ function addViewer(card) {
       toggle_button.id = 'toggle-button';
       toggle_button.className = 'icon-button';
       toggle_button.addEventListener('click', toggleViewer);
-      ba_buttons.appendChild(toggle_button);
+      viewer_buttons.appendChild(toggle_button);
     }
 
     var feedback_button = document.createElement('A');
@@ -176,8 +184,8 @@ function addViewer(card) {
     feedback_button.href = '../webapp/f?p=118?room=' + this.building + this.room_number;
     feedback_button.innerHTML = '<img src="images/feedback.svg">Give feedback';
 
-    ba_buttons.appendChild(feedback_button);
-    container.appendChild(ba_buttons);
+    viewer_buttons.appendChild(feedback_button);
+    container.appendChild(viewer_buttons);
     container.scrollIntoView();  // scroll to the viewer automatically
     current = card;
     parent = card.parentElement;
@@ -187,6 +195,7 @@ function addViewer(card) {
   current = null;
 }
 
+// creates the before/after slider and the 360 image
 function addContent(container, room) {
   var slider = document.createElement('DIV');
   slider.className = 'ba-slider';
@@ -251,6 +260,7 @@ function addImages(room) {
   }
 }
 
+// create 360 viewer using Google VR View
 function load360(room) {
   var image_url = 'images/room_images/' + room.building + '-' + fullform[room.building] +
   '/360_images/' + room.room_number + '.jpg';
@@ -262,6 +272,7 @@ function load360(room) {
   });
 }
 
+// toggle between the before/after and the 360 viewer
 function toggleViewer() {
   var button = document.getElementById('toggle-button');
   if (button.textContent.substring(0, 3) == '360') {
@@ -275,17 +286,21 @@ function toggleViewer() {
   }
 }
 
+// class for the rooms object
 function Rooms(rooms_dict) {
   this.rooms = this.makeRoomObjects(rooms_dict);
+  // sorts this.roooms alphabetically
   this.sortRooms();
   this.categorized_by_date = {};
   this.categorized_by_building = {};
   if (rooms_dict != undefined) {
+    // populates this.categorized_by_date and this.categorized_by_building
     this.categorizeRooms('date');
     this.categorizeRooms('building');
   }
 }
 
+// returns a list with Room objects given the dictionary in the form {Building: {Type: {Room Number: Date}}}
 Rooms.prototype.makeRoomObjects = function(dict) {
   var rooms = [];
 
@@ -304,11 +319,14 @@ Rooms.prototype.sortRooms = function() {
   this.rooms.sort(function(a, b) {
     var building_a = a.building;
     var number_a;
+
+    // if room number is like 'B150', only the number (150) is considered
     if (!isNaN(parseInt(a.room_number.charAt(0)))) {
       number_a = parseInt(a.room_number);
     } else {
       number_a = parseInt(a.room_number.substr(1));
     }
+
     var building_b = b.building;
     var number_b;
     if (!isNaN(parseInt(b.room_number.charAt(0)))) {
@@ -322,6 +340,7 @@ Rooms.prototype.sortRooms = function() {
   });
 }
 
+// categorizes the room objects in the rooms list by sort_type
 Rooms.prototype.categorizeRooms = function(sort_type) { // sort_type is either 'date' or 'building'
   var dict_type = sort_type == 'date' ? this.categorized_by_date : this.categorized_by_building;
 
@@ -340,7 +359,9 @@ Rooms.prototype.categorizeRooms = function(sort_type) { // sort_type is either '
   }
 }
 
+// creates HTML elements for the headings and the cards and display them
 Rooms.prototype.showRoomsBy = function(type) { // type is either 'date' or 'building'
+  // resets all variables and clears any elements from content
   var content = document.getElementById('content');
   content.innerHTML = '';
   current = null; // refers to currently active card
@@ -369,10 +390,11 @@ Rooms.prototype.showRoomsBy = function(type) { // type is either 'date' or 'buil
 
   // rendering the content (headings and the room cards)
   for (var i = 0; i < categories.length; i++) {
-    // create heading for each
+    // create heading for each category
     var heading = document.createElement('DIV');
     heading.className = 'category-heading';
 
+    // create the season icons
     if (!isNaN(categories[i].charAt(0))) {
       var season_image1 = document.createElement('IMG');
       season_image1.src = 'images/' + seasons_fullform[categories[i].charAt(0)] + '.svg';
@@ -385,6 +407,7 @@ Rooms.prototype.showRoomsBy = function(type) { // type is either 'date' or 'buil
       heading.appendChild(season_image1);
       heading.appendChild(season_image2);
     } else {
+      // create the building icon
       var image = document.createElement('IMG');
       image.src = 'images/building.svg';
       image.className = 'heading-image';
@@ -403,6 +426,7 @@ Rooms.prototype.showRoomsBy = function(type) { // type is either 'date' or 'buil
         title = 'Pilot Project';
       }
 
+      // gets the number of different buildings in a particular category
       var unique_buildings = [];
       for (var j = 0; j < dict_type[key].length; j++) {
         var curr_building = dict_type[key][j].building;
@@ -430,7 +454,7 @@ Rooms.prototype.showRoomsBy = function(type) { // type is either 'date' or 'buil
       stats = finished + ' Completed' + ' | ' + in_progress + ' Upcoming';
     }
 
-    heading.innerHTML += title + '<div class="stats">' + stats + '</div>';
+    heading.innerHTML += '<p>' + title + '</p>' + '<div class="stats">' + stats + '</div>';
     content.appendChild(heading);
 
     // container for the rooms in each building
@@ -479,12 +503,18 @@ function closeHeading(heading) {
   heading.classList.remove('open');
 }
 
-var last_query = ''
+var last_query = '';
 function showSearchedCards(query) {
   query = query.toUpperCase().replace(/\s+/g, '');
-
   if (last_query != query) {
     last_query = query;
+
+    // if user deletes query, sort the rooms by date
+    if (query == '') {
+      document.getElementById('date_button').click();
+      return;
+    }
+
     var container = document.getElementById('content');
     container.innerHTML = '';
     if (!query == '') {

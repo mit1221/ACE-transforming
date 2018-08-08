@@ -838,6 +838,11 @@ i {
   font-weight: bold;
   text-decoration: underline;
   color: #002A5C;
+  transition: 0.1s;
+}
+
+.link:hover {
+  color: #337AB7;
 }
 
 .important {
@@ -1008,21 +1013,6 @@ button img, .button img, .button svg {
 }
 
 /* ========================== PROGRESS ========================== */
-
-.ba-buttons {
-  width: 100%;
-  max-width: 900px;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
-  margin: auto;
-  margin-top: 10px;
-}
-
-.ba-buttons > * {
-  margin: 5px;
-}
 
 /* styling for the before/after images */
 .ba-slider {
@@ -1210,6 +1200,10 @@ button img, .button img, .button svg {
   align-items: center;
 }
 
+.category-heading p {
+  margin: 0;
+}
+
 .category-heading, .card {
   opacity: 0;
   position: relative;
@@ -1377,6 +1371,21 @@ button img, .button img, .button svg {
   margin-top: 0;
   margin-left: 20px;
   margin-bottom: 5px;
+}
+
+.viewer-buttons {
+  width: 100%;
+  max-width: 900px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+  margin-top: 10px;
+}
+
+.viewer-buttons > * {
+  margin: 5px;
 }
 
 .date-text {
