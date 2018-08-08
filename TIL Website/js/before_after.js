@@ -1,8 +1,8 @@
 // Call & init
-$(document).ready(add_sliding_functionality);
+$(document).ready(addSlidingFunctionality);
 
 
-function add_sliding_functionality(){
+function addSlidingFunctionality(){
   $('.ba-slider').each(function(){
     var cur = $(this);
     // Adjust the slider
@@ -13,7 +13,7 @@ function add_sliding_functionality(){
   });
 
   if ($('.ba-slider').length != 0) {
-    before_after_buttons();
+    beforeAfterButtons();
   }
 }
 

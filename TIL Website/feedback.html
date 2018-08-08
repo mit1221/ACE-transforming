@@ -225,9 +225,9 @@
   <script>
     var rooms = [];
 
-    for (var building in rooms_dict) {
-      for (var type in rooms_dict[building]) {
-        for (var room in rooms_dict[building][type]) {
+    for (var building in roomsDict) {
+      for (var type in roomsDict[building]) {
+        for (var room in roomsDict[building][type]) {
           rooms.push(building + room);
         }
       }

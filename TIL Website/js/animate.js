@@ -1,7 +1,7 @@
 var before_text_array = [];
 var after_text_array = [];
 
-function before_after_buttons() {
+function beforeAfterButtons() {
   before_text_array = $('.before_text');
   after_text_array = $('.after_text');
 

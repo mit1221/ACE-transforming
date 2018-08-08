@@ -1,11 +1,11 @@
-var seasons_fullform = {
+var seasonsFullform = {
   1: 'Winter',
   2: 'Spring',
   3: 'Summer',
   4: 'Fall'
 };
 
-var scopes_fullform = {
+var scopesFullform = {
   0: 'accessibility',
   1: 'finishes',
   2: 'furniture',
@@ -22,50 +22,50 @@ if (!String.prototype.startsWith) {
 }
 
 // class for room object
-function Room(room_number, building, type, date) {
-  this.room_number = room_number;
+function Room(roomNumber, building, type, date) {
+  this.roomNumber = roomNumber;
   this.building = building;
   this.type = type; //type is 'Pilot', 'Completed', or 'Ongoing'
   this.date = date;
-  this.has_360_image = rooms_with_360_images[this.building] !== undefined &&
-    rooms_with_360_images[this.building].indexOf(this.room_number) >= 0 ? true : false;
+  this.has360Image = roomsWith360Images[this.building] !== undefined &&
+    roomsWith360Images[this.building].indexOf(this.roomNumber) >= 0 ? true : false;
 }
 
 // makes an HTML card from the card object
-Room.prototype.makeCard = function(sort_type) {
+Room.prototype.makeCard = function(sortType) {
   var card = document.createElement('DIV');
   card.className = 'card';
 
   // creating the thumbnail for the card
-  var room_image = document.createElement('IMG');
-  room_image.src = 'images/room_images/' + this.building + '-' + fullform[this.building] +
-    '/' + this.type + '/' + this.room_number + '_' + this.date.split('/')[0] + '-' + this.date.split('/')[1] + '.jpg';
-  room_image.alt = this.building + ' ' + this.room_number;
-  card.appendChild(room_image);
+  var roomImage = document.createElement('IMG');
+  roomImage.src = 'images/room_images/' + this.building + '-' + fullform[this.building] +
+    '/' + this.type + '/' + this.roomNumber + '_' + this.date.split('/')[0] + '-' + this.date.split('/')[1] + '.jpg';
+  roomImage.alt = this.building + ' ' + this.roomNumber;
+  card.appendChild(roomImage);
 
   // adding the room number title to the card
-  var text_div = document.createElement('DIV');
-  text_div.className = 'text-div';
-  var card_heading = document.createElement('H4');
-  card_heading.textContent = room_image.alt;
-  text_div.appendChild(card_heading);
+  var textDiv = document.createElement('DIV');
+  textDiv.className = 'text-div';
+  var cardHeading = document.createElement('H4');
+  cardHeading.textContent = roomImage.alt;
+  textDiv.appendChild(cardHeading);
 
   if (this.type == 'Ongoing') {
     card.classList.add('card-incomplete');
 
     // adding the date to be completed to the card if the rooms are not sorted by date
-    if (sort_type != 'date') {
-      var date_heading = document.createElement('p');
+    if (sortType != 'date') {
+      var dateHeading = document.createElement('p');
       var temp = this.date.split('/');
-      var formatted_date = seasons_fullform[temp[0]];
+      var formattedDate = seasonsFullform[temp[0]];
       var temp2 = temp[1].split('-');
       var year = temp2[1];
-      formatted_date += '/' + seasons_fullform[temp2[0]] + ' ' + year;
-      date_heading.textContent = formatted_date;
-      text_div.appendChild(date_heading);
+      formattedDate += '/' + seasonsFullform[temp2[0]] + ' ' + year;
+      dateHeading.textContent = formattedDate;
+      textDiv.appendChild(dateHeading);
     }
   }
-  card.appendChild(text_div);
+  card.appendChild(textDiv);
 
   // clicking a card for a room to open the viewer
   card.addEventListener('click', addViewer.bind(this, card));
@@ -107,21 +107,21 @@ function addViewer(card) {
     // add the title of the viewer
     var title = document.createElement('p');
     title.className = 'ba-container-title';
-    title.textContent = this.building + ' ' + this.room_number;
+    title.textContent = this.building + ' ' + this.roomNumber;
     container.appendChild(title);
 
     // adding the Completed/Upgrade Schedule date
-    var date_text = document.createElement('P');
-    date_text.className = 'date-text';
+    var dateText = document.createElement('P');
+    dateText.className = 'date-text';
     var temp = this.date.split('/');
-    var formatted_date = seasons_fullform[temp[0]];
+    var formattedDate = seasonsFullform[temp[0]];
     var temp2 = temp[1].split('-');
-    formatted_date += '/' + seasons_fullform[temp2[0]] + ' ' + temp2[1];
-    date_text.innerHTML = this.type != 'Ongoing' ? (this.type == 'Pilot' ?
+    formattedDate += '/' + seasonsFullform[temp2[0]] + ' ' + temp2[1];
+    dateText.innerHTML = this.type != 'Ongoing' ? (this.type == 'Pilot' ?
       '<strong>Completed:</strong> Summer 2017' :
-      '<strong>Completed:</strong> ' + formatted_date) :
-      '<strong>Upgrade scheduled:</strong> ' + formatted_date;
-    container.appendChild(date_text);
+      '<strong>Completed:</strong> ' + formattedDate) :
+      '<strong>Upgrade scheduled:</strong> ' + formattedDate;
+    container.appendChild(dateText);
 
     // returns an image element of the specified scope icon
     function createScopeIcon(scope, type) {
@@ -134,11 +134,11 @@ function addViewer(card) {
 
     // creating the scope icon images for the room
     var scopeIcons = document.createElement('DIV');
-    var scopes = rooms_to_scope_dict[this.building + this.room_number];
+    var scopes = roomsToScopeDict[this.building + this.roomNumber];
     if (scopes != null) {
       for (var i = 0; i < scopes.length; i++) {
         if (scopes[i] == 1) {
-          scopeIcons.appendChild(createScopeIcon(scopes_fullform[i], this.type));
+          scopeIcons.appendChild(createScopeIcon(scopesFullform[i], this.type));
         }
       }
     }
@@ -163,29 +163,29 @@ function addViewer(card) {
 
     card.parentElement.appendChild(container);
     // makes the before/after viewer work
-    add_sliding_functionality();
+    addSlidingFunctionality();
 
     // adds the buttons at the bottom of the viewer
-    var viewer_buttons = document.createElement('DIV');
-    viewer_buttons.className = 'viewer-buttons';
+    var viewerButtons = document.createElement('DIV');
+    viewerButtons.className = 'viewer-buttons';
 
-    if (this.type != 'Ongoing' && this.has_360_image) {
-      var toggle_button = document.createElement('BUTTON');
-      toggle_button.innerHTML = '<img src="images/360_icon.svg">360&#176; Viewer';
-      toggle_button.id = 'toggle-button';
-      toggle_button.className = 'icon-button';
-      toggle_button.addEventListener('click', toggleViewer);
-      viewer_buttons.appendChild(toggle_button);
+    if (this.type != 'Ongoing' && this.has360Image) {
+      var toggleButton = document.createElement('BUTTON');
+      toggleButton.innerHTML = '<img src="images/360_icon.svg">360&#176; Viewer';
+      toggleButton.id = 'toggle-button';
+      toggleButton.className = 'icon-button';
+      toggleButton.addEventListener('click', toggleViewer);
+      viewerButtons.appendChild(toggleButton);
     }
 
-    var feedback_button = document.createElement('A');
-    feedback_button.target = '_blank';
-    feedback_button.className = 'button icon-button';
-    feedback_button.href = '../webapp/f?p=118?room=' + this.building + this.room_number;
-    feedback_button.innerHTML = '<img src="images/feedback.svg">Give feedback';
+    var feedbackButton = document.createElement('A');
+    feedbackButton.target = '_blank';
+    feedbackButton.className = 'button icon-button';
+    feedbackButton.href = '../webapp/f?p=118?room=' + this.building + this.roomNumber;
+    feedbackButton.innerHTML = '<img src="images/feedback.svg">Give feedback';
 
-    viewer_buttons.appendChild(feedback_button);
-    container.appendChild(viewer_buttons);
+    viewerButtons.appendChild(feedbackButton);
+    container.appendChild(viewerButtons);
     container.scrollIntoView();  // scroll to the viewer automatically
     current = card;
     parent = card.parentElement;
@@ -200,21 +200,21 @@ function addContent(container, room) {
   var slider = document.createElement('DIV');
   slider.className = 'ba-slider';
 
-  var before_text = document.createElement('DIV');
-  var after_text = document.createElement('DIV');
-  before_text.className = 'ba_text before_text';
-  after_text.className = 'ba_text after_text';
-  before_text.textContent = 'Before';
-  after_text.textContent = 'After';
+  var beforeText = document.createElement('DIV');
+  var afterText = document.createElement('DIV');
+  beforeText.className = 'ba_text before_text';
+  afterText.className = 'ba_text after_text';
+  beforeText.textContent = 'Before';
+  afterText.textContent = 'After';
 
-  var ba_images = addImages(room); // returns an array with the before image and then the after image
-  slider.appendChild(ba_images[1]);
-  slider.appendChild(after_text);
+  var baImages = addImages(room); // returns an array with the before image and then the after image
+  slider.appendChild(baImages[1]);
+  slider.appendChild(afterText);
 
   var resize = document.createElement('DIV');
   resize.className = 'resize';
-  resize.appendChild(ba_images[0]);
-  resize.appendChild(before_text);
+  resize.appendChild(baImages[0]);
+  resize.appendChild(beforeText);
 
   slider.appendChild(resize);
 
@@ -223,15 +223,15 @@ function addContent(container, room) {
   slider.appendChild(handle);
   container.appendChild(slider);
 
-  if (room.has_360_image) {
-    var image_360 = document.createElement('DIV');
-    image_360.id = room.building + room.room_number;
-    image_360.className = 'image-360';
+  if (room.has360Image) {
+    var image360 = document.createElement('DIV');
+    image360.id = room.building + room.roomNumber;
+    image360.className = 'image-360';
 
-    image_360.innerHTML = '<h3 style="text-align: center; text-transform: none">Feature coming soon...</h3>';
+    image360.innerHTML = '<h3 style="text-align: center; text-transform: none">Feature coming soon...</h3>';
 
-    container.appendChild(image_360);
-    image_360.style.display = 'none';
+    container.appendChild(image360);
+    image360.style.display = 'none';
     // setTimeout(function() {
     //   load360(room);
     // }, 100);
@@ -239,34 +239,34 @@ function addContent(container, room) {
 }
 
 function addImages(room) {
-  var image_url = 'images/room_images/' + room.building + '-' + fullform[room.building] +
+  var imageUrl = 'images/room_images/' + room.building + '-' + fullform[room.building] +
   '/' + room.type + '/';
-  var image_text = room.building + ' ' + room.room_number;
+  var imageText = room.building + ' ' + room.roomNumber;
 
   if (room.type == 'Ongoing') {
     var image = document.createElement('IMG');
     image.className = 'ongoing-image';
-    image.src = image_url + room.room_number + '_' + room.date.split('/')[0] + '-' + room.date.split('/')[1] + '.jpg';
-    image.alt = image_text;
+    image.src = imageUrl + room.roomNumber + '_' + room.date.split('/')[0] + '-' + room.date.split('/')[1] + '.jpg';
+    image.alt = imageText;
     return image;
   } else {
-    var before_image = document.createElement('IMG');
-    var after_image = document.createElement('IMG');
-    before_image.src = image_url + 'before/' + room.room_number + '.jpg';
-    after_image.src = image_url + 'after/' + room.room_number + '.jpg';
-    before_image.alt = image_text + ' Before';
-    after_image.alt = image_text + ' After';
-    return [before_image, after_image];
+    var beforeImage = document.createElement('IMG');
+    var afterImage = document.createElement('IMG');
+    beforeImage.src = imageUrl + 'before/' + room.roomNumber + '.jpg';
+    afterImage.src = imageUrl + 'after/' + room.roomNumber + '.jpg';
+    beforeImage.alt = imageText + ' Before';
+    afterImage.alt = imageText + ' After';
+    return [beforeImage, afterImage];
   }
 }
 
 // create 360 viewer using Google VR View
 function load360(room) {
-  var image_url = 'images/room_images/' + room.building + '-' + fullform[room.building] +
-  '/360_images/' + room.room_number + '.jpg';
+  var imageUrl = 'images/room_images/' + room.building + '-' + fullform[room.building] +
+  '/360_images/' + room.roomNumber + '.jpg';
 
-  var vrView = new VRView.Player('#' + room.building + room.room_number, {
-    image: image_url,
+  var vrView = new VRView.Player('#' + room.building + room.roomNumber, {
+    image: imageUrl,
     width: '100%',
     height: '500px'
   });
@@ -287,14 +287,14 @@ function toggleViewer() {
 }
 
 // class for the rooms object
-function Rooms(rooms_dict) {
-  this.rooms = this.makeRoomObjects(rooms_dict);
+function Rooms(roomsDict) {
+  this.rooms = this.makeRoomObjects(roomsDict);
   // sorts this.roooms alphabetically
   this.sortRooms();
-  this.categorized_by_date = {};
-  this.categorized_by_building = {};
-  if (rooms_dict != undefined) {
-    // populates this.categorized_by_date and this.categorized_by_building
+  this.categorizedByDate = {};
+  this.categorizedByBuilding = {};
+  if (roomsDict != undefined) {
+    // populates this.categorizedByDate and this.categorizedByBuilding
     this.categorizeRooms('date');
     this.categorizeRooms('building');
   }
@@ -317,44 +317,44 @@ Rooms.prototype.makeRoomObjects = function(dict) {
 
 Rooms.prototype.sortRooms = function() {
   this.rooms.sort(function(a, b) {
-    var building_a = a.building;
-    var number_a;
+    var buildingA = a.building;
+    var numberA ;
 
     // if room number is like 'B150', only the number (150) is considered
-    if (!isNaN(parseInt(a.room_number.charAt(0)))) {
-      number_a = parseInt(a.room_number);
+    if (!isNaN(parseInt(a.roomNumber.charAt(0)))) {
+      numberA  = parseInt(a.roomNumber);
     } else {
-      number_a = parseInt(a.room_number.substr(1));
+      numberA  = parseInt(a.roomNumber.substr(1));
     }
 
-    var building_b = b.building;
-    var number_b;
-    if (!isNaN(parseInt(b.room_number.charAt(0)))) {
-      number_b = parseInt(b.room_number);
+    var buildingB = b.building;
+    var numberB;
+    if (!isNaN(parseInt(b.roomNumber.charAt(0)))) {
+      numberB = parseInt(b.roomNumber);
     } else {
-      number_b = parseInt(b.room_number.substr(1));
+      numberB = parseInt(b.roomNumber.substr(1));
     }
 
     // first sort by building and then by room number
-    return building_a < building_b ? -1 : building_a > building_b ? 1 : (number_a - number_b != 0 ? number_a - number_b : (a.type == 'Ongoing' ? 1 : -1));
+    return buildingA < buildingB ? -1 : buildingA > buildingB ? 1 : (numberA  - numberB != 0 ? numberA  - numberB : (a.type == 'Ongoing' ? 1 : -1));
   });
 }
 
-// categorizes the room objects in the rooms list by sort_type
-Rooms.prototype.categorizeRooms = function(sort_type) { // sort_type is either 'date' or 'building'
-  var dict_type = sort_type == 'date' ? this.categorized_by_date : this.categorized_by_building;
+// categorizes the room objects in the rooms list by sortType
+Rooms.prototype.categorizeRooms = function(sortType) { // sortType is either 'date' or 'building'
+  var dictType = sortType == 'date' ? this.categorizedByDate : this.categorizedByBuilding;
 
   for (var i = 0; i < this.rooms.length; i++) {
-    if (this.rooms[i].type == 'Pilot' && sort_type == 'date') {
-      if (dict_type['Pilot'] == undefined) {
-        dict_type['Pilot'] = [];
+    if (this.rooms[i].type == 'Pilot' && sortType == 'date') {
+      if (dictType['Pilot'] == undefined) {
+        dictType['Pilot'] = [];
       }
-      dict_type['Pilot'].push(this.rooms[i]);
+      dictType['Pilot'].push(this.rooms[i]);
     } else {
-      if (dict_type[this.rooms[i][sort_type]] == undefined) {
-        dict_type[this.rooms[i][sort_type]] = [];
+      if (dictType[this.rooms[i][sortType]] == undefined) {
+        dictType[this.rooms[i][sortType]] = [];
       }
-      dict_type[this.rooms[i][sort_type]].push(this.rooms[i]);
+      dictType[this.rooms[i][sortType]].push(this.rooms[i]);
     }
   }
 }
@@ -365,23 +365,23 @@ Rooms.prototype.showRoomsBy = function(type) { // type is either 'date' or 'buil
   var content = document.getElementById('content');
   content.innerHTML = '';
   current = null; // refers to currently active card
-  currently_open = []; // refers to currently open headings
+  currentlyOpen = []; // refers to currently open headings
 
-  var dict_type = type == 'date' ? this.categorized_by_date :
-    this.categorized_by_building;
-  var categories = Object.keys(dict_type);
+  var dictType = type == 'date' ? this.categorizedByDate :
+    this.categorizedByBuilding;
+  var categories = Object.keys(dictType);
 
   if (type == 'date') {
     // sort by year first and then by season
     categories.sort(function(a, b) {
-      var year_a = a == 'Pilot' ? 0 : parseInt(a.slice(-4));
-      var year_b = b == 'Pilot' ? 0 : parseInt(b.slice(-4));
-      var season_a_1 = parseInt(a.charAt(0));
-      var season_a_2 = parseInt(a.charAt(2));
-      var season_b_1 = parseInt(b.charAt(0));
-      var season_b_2 = parseInt(b.charAt(2));
+      var yearA = a == 'Pilot' ? 0 : parseInt(a.slice(-4));
+      var yearB = b == 'Pilot' ? 0 : parseInt(b.slice(-4));
+      var season1ForA = parseInt(a.charAt(0));
+      var season2ForA = parseInt(a.charAt(2));
+      var season1ForB = parseInt(b.charAt(0));
+      var season2ForB = parseInt(b.charAt(2));
 
-      return (year_a - year_b) != 0 ? (year_a - year_b) : (season_a_1 - season_b_1) != 0 ? (season_a_1 - season_b_1) : (season_a_2 - season_b_2);
+      return (yearA - yearB) != 0 ? (yearA - yearB) : (season1ForA - season1ForB) != 0 ? (season1ForA - season1ForB) : (season2ForA - season2ForB);
     });
   } else if (type == 'building') {
     // sort alphabetically
@@ -396,16 +396,16 @@ Rooms.prototype.showRoomsBy = function(type) { // type is either 'date' or 'buil
 
     // create the season icons
     if (!isNaN(categories[i].charAt(0))) {
-      var season_image1 = document.createElement('IMG');
-      season_image1.src = 'images/' + seasons_fullform[categories[i].charAt(0)] + '.svg';
-      season_image1.className = 'heading-image';
+      var seasonImage1 = document.createElement('IMG');
+      seasonImage1.src = 'images/' + seasonsFullform[categories[i].charAt(0)] + '.svg';
+      seasonImage1.className = 'heading-image';
 
-      var season_image2 = document.createElement('IMG');
-      season_image2.src = 'images/' + seasons_fullform[categories[i].charAt(2)] + '.svg';
-      season_image2.className = 'heading-image';
+      var seasonImage2 = document.createElement('IMG');
+      seasonImage2.src = 'images/' + seasonsFullform[categories[i].charAt(2)] + '.svg';
+      seasonImage2.className = 'heading-image';
 
-      heading.appendChild(season_image1);
-      heading.appendChild(season_image2);
+      heading.appendChild(seasonImage1);
+      heading.appendChild(seasonImage2);
     } else {
       // create the building icon
       var image = document.createElement('IMG');
@@ -420,137 +420,139 @@ Rooms.prototype.showRoomsBy = function(type) { // type is either 'date' or 'buil
 
     if (type == 'date') {
       if (categories[i] != 'Pilot') {
-        title = seasons_fullform[key.charAt(0)] + '/' +
-          seasons_fullform[key.charAt(2)] + ' ' + key.slice(-4);
+        title = seasonsFullform[key.charAt(0)] + '/' +
+          seasonsFullform[key.charAt(2)] + ' ' + key.slice(-4);
       } else {
         title = 'Pilot Project';
       }
 
       // gets the number of different buildings in a particular category
-      var unique_buildings = [];
-      for (var j = 0; j < dict_type[key].length; j++) {
-        var curr_building = dict_type[key][j].building;
-        if (unique_buildings[unique_buildings.length - 1] != curr_building) {
-          unique_buildings.push(curr_building);
+      var uniqueBuildings = [];
+      for (var j = 0; j < dictType[key].length; j++) {
+        var currBuilding = dictType[key][j].building;
+        if (uniqueBuildings[uniqueBuildings.length - 1] != currBuilding) {
+          uniqueBuildings.push(currBuilding);
         }
       }
 
-      stats = dict_type[key].length + ' Classrooms' + ' | ' + unique_buildings.length + ' Buildings';
+      stats = dictType[key].length + ' Classrooms' + ' | ' + uniqueBuildings.length + ' Buildings';
     } else if (type == 'building') {
       var building = categories[i];
       title = fullform[building] + ' (' + building + ')';
 
       var finished = 0;
-      var in_progress = 0;
-      for (var j = 0; j < dict_type[key].length; j++) {
-        var curr_type = dict_type[key][j].type;
-        if (curr_type == 'Ongoing') {
-          in_progress += 1;
+      var inProgress = 0;
+      for (var j = 0; j < dictType[key].length; j++) {
+        var currType = dictType[key][j].type;
+        if (currType == 'Ongoing') {
+          inProgress += 1;
         } else {
           finished += 1;
         }
       }
 
-      stats = finished + ' Completed' + ' | ' + in_progress + ' Upcoming';
+      stats = finished + ' Completed' + ' | ' + inProgress + ' Upcoming';
     }
 
     heading.innerHTML += '<p>' + title + '</p>' + '<div class="stats">' + stats + '</div>';
     content.appendChild(heading);
 
     // container for the rooms in each building
-    var rooms_in_building = document.createElement('DIV');
-    rooms_in_building.className = 'rooms';
-    content.appendChild(rooms_in_building);
-    heading.addEventListener('click', addCards.bind(this, heading, dict_type, categories[i], type));
+    var roomsInBuilding = document.createElement('DIV');
+    roomsInBuilding.className = 'rooms';
+    content.appendChild(roomsInBuilding);
+    heading.addEventListener('click', addCards.bind(this, heading, dictType, categories[i], type));
   }
 }
 
+// return the cards that match the query
 Rooms.prototype.getCardsByInput = function(query) {
   return this.rooms.filter(function(room) {
-    var room_string = room.building + room.room_number;
-    return room_string.startsWith(query);
+    var roomString = room.building + room.roomNumber;
+    return roomString.startsWith(query);
   });
 }
 
-var currently_open = [];
+var currentlyOpen = [];
+// create cards for the rooms and add to container
 function addCards(heading, dict, category, type) {
-  // create cards for the rooms and add to container
-  var room_container = heading.nextSibling;
-  if (currently_open.indexOf(heading) == -1) {
+  var roomContainer = heading.nextSibling;
+  if (currentlyOpen.indexOf(heading) == -1) {
     dict[category].forEach(function(room) {
-      room_container.appendChild(room.makeCard(type));
+      roomContainer.appendChild(room.makeCard(type));
     });
-    currently_open.push(heading);
+    currentlyOpen.push(heading);
     heading.classList.add('open');
 
     // animating the cards when they show up
     new Animate({
-      elements: room_container.getElementsByClassName('card'),
+      elements: roomContainer.getElementsByClassName('card'),
       animation: 'move-in 0.3s ease-out',
       gap: 20
     }).start();
     heading.scrollIntoView();
-
   } else {
     closeHeading(heading);
   }
 }
 
 function closeHeading(heading) {
-  var room_container = heading.nextSibling;
-  room_container.innerHTML = '';
-  currently_open.splice(currently_open.indexOf(heading), 1);
+  var roomContainer = heading.nextSibling;
+  roomContainer.innerHTML = '';
+  currentlyOpen.splice(currentlyOpen.indexOf(heading), 1);
   heading.classList.remove('open');
 }
 
-var last_query = '';
+var lastQuery = '';
+// display the cards that match the query
 function showSearchedCards(query) {
   query = query.toUpperCase().replace(/\s+/g, '');
-  if (last_query != query) {
-    last_query = query;
+  if (lastQuery != query) {
+    lastQuery = query;
 
-    // if user deletes query, sort the rooms by date
+    // if user deletes query, categorize the rooms by date
     if (query == '') {
       document.getElementById('date_button').click();
       return;
     }
 
+    // unselect the active button when something is typed and remove the cards from view
     var container = document.getElementById('content');
     container.innerHTML = '';
-    if (!query == '') {
-      try {
-        document.getElementsByClassName('btn-active')[0].classList.remove('btn-active');
-      }
-      catch(err) {}
-
-      var matched = room_objects.getCardsByInput(query);
-      for (var i = 0; i < matched.length; i++) {
-        container.appendChild(matched[i].makeCard());
-      }
-
-      // animating the cards when they show up
-      new Animate({
-        elements: container.getElementsByClassName('card'),
-        animation: 'move-in 0.5s ease-out',
-        gap: 30
-      }).start();
+    var activeButton = document.getElementsByClassName('btn-active')[0];
+    if (activeButton != null) {
+      activeButton.classList.remove('btn-active');
     }
+
+    // gets the matched cards and displays them
+    var matched = roomObjects.getCardsByInput(query);
+    for (var i = 0; i < matched.length; i++) {
+      container.appendChild(matched[i].makeCard());
+    }
+
+    // animating the cards when they show up
+    new Animate({
+      elements: container.getElementsByClassName('card'),
+      animation: 'move-in 0.5s ease-out',
+      gap: 30
+    }).start();
   }
 }
 
-var room_objects;
+var roomObjects;
 var animation;
 
 $(function() {
-  room_objects = new Rooms(rooms_dict);
-  var default_sort = document.getElementsByClassName('default')[0].lastChild.textContent.toLowerCase();
-  room_objects.showRoomsBy(default_sort);
+  roomObjects = new Rooms(roomsDict);
+  // gets the button selected by default and uses it to categorize the cards on page load
+  var defaultSort = document.getElementsByClassName('default')[0].lastChild.textContent.toLowerCase();
+  roomObjects.showRoomsBy(defaultSort);
 
   // An array containing all the rooms
   var rooms = [];
 
-  for (var i = 0; i < room_objects.rooms.length; i++) {
-    rooms.push(room_objects.rooms[i].building + room_objects.rooms[i].room_number);
+  for (var i = 0; i < roomObjects.rooms.length; i++) {
+    rooms.push(roomObjects.rooms[i].building + roomObjects.rooms[i].roomNumber);
   }
 
   // initiate the autocomplete function on the "search-input" element, and pass along the rooms array as possible autocomplete values
@@ -565,12 +567,12 @@ $(function() {
   animation.start();
 
   document.getElementById('date_button').addEventListener('click', function() {
-    room_objects.showRoomsBy('date');
+    roomObjects.showRoomsBy('date');
     // for animating the headings when date is clicked
     animation.start();
   });
   document.getElementById('building_button').addEventListener('click', function() {
-    room_objects.showRoomsBy('building');
+    roomObjects.showRoomsBy('building');
     // for animating the headings when building is clicked
     animation.start();
   });
