@@ -138,7 +138,7 @@
             <div><span class="asterisk">* </span>Email:<br><input type="text" name="email" class="required"
                 placeholder="Enter a valid email address"></div>
           </div>
-          <span class="asterisk">* </span>Who are you:<br>
+          <span class="asterisk">* </span>Role:<br>
           <select id="identification" onchange="
           if (this.value == 'other') {
             var textField = document.createElement('INPUT');
@@ -166,9 +166,13 @@
 
           <!-------------------------------- ENVIRONMENT SECTION -------------------------------->
           <section class="form-section" id="environment">
-            Question 1<br>
-            <textarea rows="5" cols="50"></textarea> Question 2<br>
-            <textarea rows="5" cols="50"></textarea> Question 3<br>
+            Please provide feedback about the classroom environment (i.e. classroom layout, furniture, colours, lighting,
+            etc.)
+            <br>
+            <textarea rows="5" cols="50"></textarea>Please provide feedback about the classroom's technology
+            (i.e. projector, TV screens, teaching station, etc.)<br>
+            <textarea rows="5" cols="50"></textarea>Please provide any other input or suggestions that
+            you have to enhance your experience in this classroom.<br>
             <textarea rows="5" cols="50"></textarea>
           </section>
 
@@ -182,6 +186,10 @@
           </section>
           <label class="checkmark-container">I am willing to be contacted for project updates.
             <input type="checkbox" value="subscribe">
+            <span class="checkmark"></span>
+          </label>
+          <label class="checkmark-container">I am willing to be contacted to discuss my feedback in a more detailed interview in the future.
+            <input type="checkbox" value="interview">
             <span class="checkmark"></span>
           </label>
           <br>

@@ -218,11 +218,14 @@ function addContent(container, room) {
     var image_360 = document.createElement('DIV');
     image_360.id = room.building + room.room_number;
     image_360.className = 'image-360';
+
+    image_360.innerHTML = '<h3 style="text-align: center; text-transform: none">Feature coming soon...</h3>';
+
     container.appendChild(image_360);
     image_360.style.display = 'none';
-    setTimeout(function() {
-      load360(room);
-    }, 100);
+    // setTimeout(function() {
+    //   load360(room);
+    // }, 100);
   }
 }
 
@@ -459,8 +462,8 @@ function addCards(heading, dict, category, type) {
     // animating the cards when they show up
     new Animate({
       elements: room_container.getElementsByClassName('card'),
-      animation: 'move-in 0.5s ease-out',
-      gap: 30
+      animation: 'move-in 0.3s ease-out',
+      gap: 20
     }).start();
     heading.scrollIntoView();
 

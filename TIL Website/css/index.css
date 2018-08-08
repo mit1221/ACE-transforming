@@ -623,11 +623,11 @@ body {
   content: 'Expanding';
 }
 
-.background.enhancing {
+.background.user_feedback {
   background-image: url('../images/enhancing_image.jpg');
 }
-.background.enhancing:after {
-  content: 'Enhancing';
+.background.user_feedback:after {
+  content: 'User Feedback';
 }
 
 .background.accessibility {
@@ -1632,19 +1632,20 @@ form input[type=submit]:disabled {
 .checkmark-container input:checked ~ .checkmark {
     background-color: #002A5C;
     border-color: #002A5C;
-    box-shadow: 0 0 0 3px rgba(0, 42, 92, 0.3);
-    -webkit-animation: checkmark 0.2s;
-    animation: checkmark 0.2s;
+    -webkit-animation: checkmark 0.3s;
+    animation: checkmark 0.3s;
 }
 
 @-webkit-keyframes checkmark {
-  from {background-color: #CCC; border-color: #CCC; box-shadow: none;}
-  to {background-color: #002A5C; border-color: #002A5C; box-shadow: 0 0 0 3px rgba(0, 42, 92, 0.3);}
+  0% {background-color: #CCC; border-color: #CCC; box-shadow: none;}
+  50% {background-color: #002A5C; border-color: #002A5C; box-shadow: 0 0 0 3px rgba(0, 42, 92, 0.3);}
+  100% {box-shadow: 0 0 0 6px rgba(0, 42, 92, 0);}
 }
 
 @keyframes checkmark {
-  from {background-color: #CCC; border-color: #CCC; box-shadow: none;}
-  to {background-color: #002A5C; border-color: #002A5C; box-shadow: 0 0 0 3px rgba(0, 42, 92, 0.3);}
+  0% {background-color: #CCC; border-color: #CCC; box-shadow: none;}
+  50% {background-color: #002A5C; border-color: #002A5C; box-shadow: 0 0 0 3px rgba(0, 42, 92, 0.3);}
+  100% {box-shadow: 0 0 0 6px rgba(0, 42, 92, 0);}
 }
 
 /* Create the checkmark/indicator (hidden when not checked) */
