@@ -2,9 +2,12 @@ var beforeTextArray = [];
 var afterTextArray = [];
 
 function beforeAfterButtons() {
+  // get all the before and after buttons on the page
   beforeTextArray = $('.before_text');
   afterTextArray = $('.after_text');
 
+  // for each of the buttons, when clicked, move the slider for the
+  // corresponding before/after viewer to the left or right
   for (var i = 0; i < beforeTextArray.length; i++) {
     beforeTextArray[i].addEventListener('click', moveSlider.bind(this, i, 'before'));
     afterTextArray[i].addEventListener('click', moveSlider.bind(this, i, 'after'));
@@ -12,7 +15,7 @@ function beforeAfterButtons() {
 }
 
 function moveSlider(position, selected) {
-  // 'selected' is either 'before' or 'after' only
+  // 'selected' is either 'before' or 'after'
   if (selected == 'before') {
     $('.resize:eq(' + position + ')')
       .animate({ width: '98%' })

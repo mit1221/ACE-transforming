@@ -10,11 +10,13 @@ $(document).ready(function() {
   var modalHeader = document.createElement('DIV');
   modalHeader.className = 'modal_header';
 
+  // 'x' button
   var close = document.createElement('I');
   close.className = 'material-icons close';
   close.innerHTML = 'close';
   modalHeader.appendChild(close);
 
+  // text for the header of the modal
   var headerText = document.createElement('P');
   headerText.id = 'header_text';
   modalHeader.appendChild(headerText);
@@ -48,6 +50,8 @@ $(document).ready(function() {
       closeModal();
     }
   }
+
+  // clicking on an image to enlarge it
   for (var i = 0; i < images.length; i++) {
     images[i].addEventListener("click", function() {
       var largeImg = document.createElement('IMG');
@@ -59,6 +63,7 @@ $(document).ready(function() {
     });
   }
 
+  // clicking on a card to enlarge it
   for (var i = 0; i < cards.length; i++) {
     cards[i].parentElement.addEventListener("click", function() {
       var largeImg = document.createElement('IMG');
