@@ -56,9 +56,9 @@ for i in range(df.shape[0]):
 
 # Updates the JavaScript file with the new data
 with open('./TIL Website/js/rooms_data.js', 'w') as f:
-    f.write('var rooms_dict = ' + str(rooms_dict) + ';\n\n')
-    f.write('var rooms_with_360_images = ' + str(rooms_with_360_images) + ';\n\n')
-    f.write('var rooms_to_scope_dict = ' + str(rooms_to_scope_dict) + ';\n\n')
+    f.write('var roomsDict = ' + str(rooms_dict) + ';\n\n')
+    f.write('var roomsWith360Images = ' + str(rooms_with_360_images) + ';\n\n')
+    f.write('var roomsToScopeDict = ' + str(rooms_to_scope_dict) + ';\n\n')
     f.write('var fullform = ' + str(fullforms) + ';')
 
 

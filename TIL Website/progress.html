@@ -136,7 +136,8 @@
           <div class="search-box">
             <i class="material-icons search-icon" style="color: #CCC">search</i>
             <input type="text" class="search-input" placeholder="Search room (Ex. BA1130)" onchange="showSearchedCards(this.value)"
-              oninput="showSearchedCards(this.value)">
+              oninput="showSearchedCards(this.value)" onfocus="document.removeEventListener('keyup', moveFocus)"
+              onfocusout="if (current != null) {document.addEventListener('keyup', moveFocus);}">
           </div>
           <p>Sort rooms by:</p>
           <div id="completed-ongoing-group" class="button-group">

@@ -1,3 +1,5 @@
+var domain = 'https://www.ace.utoronto.ca/images/Photos/Website/room_pics/';
+
 var seasonsFullform = {
   1: 'Winter',
   2: 'Spring',
@@ -38,7 +40,9 @@ Room.prototype.makeCard = function(sortType) {
 
   // creating the thumbnail for the card
   var roomImage = document.createElement('IMG');
-  roomImage.src = 'images/room_images/' + this.building + '-' + fullform[this.building] +
+  roomImage.src = this.type != 'Ongoing' ?
+    domain + this.building + '-' + this.roomNumber + '.jpg' :
+    'images/room_images/' + this.building + '-' + fullform[this.building] +
     '/' + this.type + '/' + this.roomNumber + '_' + this.date.split('/')[0] + '-' + this.date.split('/')[1] + '.jpg';
   roomImage.alt = this.building + ' ' + this.roomNumber;
   card.appendChild(roomImage);
@@ -101,6 +105,7 @@ function addViewer(card) {
         current.classList.remove('card-active');
         current.scrollIntoView();
         current = null;
+        document.removeEventListener('keyup', moveFocus);
       }, 300);
     }
 
@@ -189,10 +194,56 @@ function addViewer(card) {
     container.scrollIntoView();  // scroll to the viewer automatically
     current = card;
     parent = card.parentElement;
+    document.addEventListener('keydown', moveFocus);
     return;
   }
   // if the same card was clicked twice, then it removes the card from 'current'
   current = null;
+  document.removeEventListener('keyup', moveFocus);
+}
+
+// handling arrow key presses
+var moveFocus = function(event) {
+  var key = event.which || event.keyCode;
+  if (key == 8 || key == 46) { // backspace key is pressed
+    document.getElementsByClassName('close')[0].click();
+  }
+  if (key == 37) { // left arrow key pressed
+    // if the first card in the heading is reached
+    if (current.previousSibling == null) {
+      // check if there is a heading before
+      var headings = Array.prototype.slice.call(document.getElementsByClassName('category-heading'));
+      var indexOfOpenHeading = headings.indexOf(parent.previousSibling);
+      if (indexOfOpenHeading > 0) {
+        // check if the previous heading is open and if it is not, then open it
+        var previousHeading = headings[indexOfOpenHeading - 1]
+        if (currentlyOpen.indexOf(previousHeading) == -1) {
+          previousHeading.click();
+        }
+        // open the first room in the previous heading
+        previousHeading.nextSibling.firstChild.click();
+      }
+    } else {
+      // open the previous card in the same heading
+      current.previousSibling.click();
+    }
+  } else if (key == 39){ // right arrow key pressed
+    // if the last card in the heading is reached
+    if (current.nextSibling.classList.contains('ba-container')) {
+      // check if there is another heading after
+      if (parent.nextElementSibling != null) {
+        // check if the next heading is open and if it is not, then open it
+        if (currentlyOpen.indexOf(parent.nextSibling) == -1) {
+          parent.nextSibling.click();
+        }
+        // open the first room in the next heading
+        parent.nextSibling.nextSibling.firstChild.click();
+      }
+    } else {
+      // open the next card in the same heading
+      current.nextSibling.click();
+    }
+  }
 }
 
 // creates the before/after slider and the 360 image
@@ -240,20 +291,20 @@ function addContent(container, room) {
 
 function addImages(room) {
   var imageUrl = 'images/room_images/' + room.building + '-' + fullform[room.building] +
-  '/' + room.type + '/';
+  '/' + room.type + '/' + room.roomNumber + '_' + room.date.split('/')[0] + '-' + room.date.split('/')[1] + '.jpg';
   var imageText = room.building + ' ' + room.roomNumber;
 
   if (room.type == 'Ongoing') {
     var image = document.createElement('IMG');
     image.className = 'ongoing-image';
-    image.src = imageUrl + room.roomNumber + '_' + room.date.split('/')[0] + '-' + room.date.split('/')[1] + '.jpg';
+    image.src = imageUrl ;
     image.alt = imageText;
     return image;
   } else {
     var beforeImage = document.createElement('IMG');
     var afterImage = document.createElement('IMG');
-    beforeImage.src = imageUrl + 'before/' + room.roomNumber + '.jpg';
-    afterImage.src = imageUrl + 'after/' + room.roomNumber + '.jpg';
+    beforeImage.src = imageUrl;
+    afterImage.src = domain + room.building + '-' + room.roomNumber + '.jpg';
     beforeImage.alt = imageText + ' Before';
     afterImage.alt = imageText + ' After';
     return [beforeImage, afterImage];
@@ -366,6 +417,7 @@ Rooms.prototype.showRoomsBy = function(type) { // type is either 'date' or 'buil
   content.innerHTML = '';
   current = null; // refers to currently active card
   currentlyOpen = []; // refers to currently open headings
+  document.removeEventListener('keyup', moveFocus);
 
   var dictType = type == 'date' ? this.categorizedByDate :
     this.categorizedByBuilding;
@@ -501,6 +553,7 @@ function closeHeading(heading) {
   roomContainer.innerHTML = '';
   currentlyOpen.splice(currentlyOpen.indexOf(heading), 1);
   heading.classList.remove('open');
+  document.removeEventListener('keyup', moveFocus);
 }
 
 var lastQuery = '';
@@ -508,6 +561,9 @@ var lastQuery = '';
 function showSearchedCards(query) {
   query = query.toUpperCase().replace(/\s+/g, '');
   if (lastQuery != query) {
+    document.removeEventListener('keyup', moveFocus);
+    current = null; // refers to currently active card
+
     lastQuery = query;
 
     // if user deletes query, categorize the rooms by date

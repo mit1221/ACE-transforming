@@ -65,7 +65,7 @@ $(document).ready(function() {
 
   // clicking on a card to enlarge it
   for (var i = 0; i < cards.length; i++) {
-    cards[i].parentElement.addEventListener("click", function() {
+    cards[i].addEventListener("click", function() {
       var largeImg = document.createElement('IMG');
       largeImg.src = this.children[0].src;
       modal.style.display = 'block';

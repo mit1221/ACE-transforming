@@ -3,7 +3,9 @@ function autocomplete(inp, arr) {
   the text field element and an array of possible autocompleted values:*/
   var currentFocus;
   /*execute a function when someone writes in the text field:*/
-  inp.addEventListener("input", function(e) {
+  inp.addEventListener("input", addItems);
+  inp.addEventListener("focus", addItems);
+  function addItems(e) {
       var a, b, i, val = this.value;
       /*close any already open lists of autocompleted values*/
       closeAllLists();
@@ -42,7 +44,7 @@ function autocomplete(inp, arr) {
           a.appendChild(b);
         }
       }
-  });
+  }
   /*execute a function presses a key on the keyboard:*/
   inp.addEventListener("keydown", function(e) {
       var x = document.getElementById(this.id + "autocomplete-list");
@@ -53,12 +55,13 @@ function autocomplete(inp, arr) {
         currentFocus++;
         /*and and make the current item more visible:*/
         addActive(x);
-        var dropdown = document.getElementById("autocomplete-list")
-        console.log(dropdown);
-        if (currentFocus > 2) {
-          dropdown.scrollBy(0, 42);
-        } else {
-          dropdown.scrollTo(0, 0);
+        var dropdown = document.getElementById("autocomplete-list");
+        if (dropdown != null && dropdown.children.length > 0) {
+          if (currentFocus > 2) {
+            dropdown.scrollBy(0, 42);
+          } else {
+            dropdown.scrollTo(0, 0);
+          }
         }
       } else if (e.keyCode == 38) { //up
         /*If the arrow UP key is pressed,
@@ -66,11 +69,13 @@ function autocomplete(inp, arr) {
         currentFocus--;
         /*and and make the current item more visible:*/
         addActive(x);
-        var dropdown = document.getElementById("autocomplete-list")
-        if (currentFocus < x.length - 3) {
-          dropdown.scrollBy(0, -42);
-        } else {
-          dropdown.scrollTo(0, dropdown.scrollHeight);
+        var dropdown = document.getElementById("autocomplete-list");
+        if (dropdown != null && dropdown.children.length > 0) {
+          if (currentFocus < x.length - 3) {
+            dropdown.scrollBy(0, -42);
+          } else {
+            dropdown.scrollTo(0, dropdown.scrollHeight);
+          }
         }
       } else if (e.keyCode == 13) {
         /*If the ENTER key is pressed, prevent the form from being submitted,*/
