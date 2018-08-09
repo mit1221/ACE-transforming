@@ -1,17 +1,17 @@
-var before_text_array = [];
-var after_text_array = [];
+var beforeTextArray = [];
+var afterTextArray = [];
 
 function beforeAfterButtons() {
-  before_text_array = $('.before_text');
-  after_text_array = $('.after_text');
+  beforeTextArray = $('.before_text');
+  afterTextArray = $('.after_text');
 
-  for (var i = 0; i < before_text_array.length; i++) {
-    before_text_array[i].addEventListener('click', move_slider.bind(this, i, 'before'));
-    after_text_array[i].addEventListener('click', move_slider.bind(this, i, 'after'));
+  for (var i = 0; i < beforeTextArray.length; i++) {
+    beforeTextArray[i].addEventListener('click', moveSlider.bind(this, i, 'before'));
+    afterTextArray[i].addEventListener('click', moveSlider.bind(this, i, 'after'));
   }
 }
 
-function move_slider(position, selected) {
+function moveSlider(position, selected) {
   // 'selected' is either 'before' or 'after' only
   if (selected == 'before') {
     $('.resize:eq(' + position + ')')

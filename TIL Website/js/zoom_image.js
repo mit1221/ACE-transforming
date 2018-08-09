@@ -1,23 +1,24 @@
 $(document).ready(function() {
   var images = document.getElementsByClassName('zoom-image');
+  var cards = document.getElementsByClassName('zoom-card');
   var modal = document.createElement('DIV');
   modal.className = 'modal';
 
   var content = document.createElement('DIV');
   content.className = 'modal_content';
 
-  var modal_header = document.createElement('DIV');
-  modal_header.className = 'modal_header';
+  var modalHeader = document.createElement('DIV');
+  modalHeader.className = 'modal_header';
 
   var close = document.createElement('I');
   close.className = 'material-icons close';
   close.innerHTML = 'close';
-  modal_header.appendChild(close);
+  modalHeader.appendChild(close);
 
-  var header_text = document.createElement('P');
-  header_text.id = 'header_text';
-  modal_header.appendChild(header_text);
-  content.appendChild(modal_header);
+  var headerText = document.createElement('P');
+  headerText.id = 'header_text';
+  modalHeader.appendChild(headerText);
+  content.appendChild(modalHeader);
 
   var body = document.createElement('DIV');
   body.className = 'modal_body';
@@ -26,7 +27,7 @@ $(document).ready(function() {
   modal.appendChild(content);
   document.body.appendChild(modal);
 
-  function close_modal() {
+  function closeModal() {
     content.classList.add('animateout');
     setTimeout(function() {
       modal.style.display = "none";
@@ -38,22 +39,33 @@ $(document).ready(function() {
 
   // When the user clicks on <span> (x), close the modal
   close.onclick = function() {
-    close_modal();
+    closeModal();
   }
 
   // When the user clicks anywhere outside of the modal, close it
   window.onclick = function(event) {
     if (event.target == modal) {
-      close_modal();
+      closeModal();
     }
   }
   for (var i = 0; i < images.length; i++) {
     images[i].addEventListener("click", function() {
-      var large_img = document.createElement('IMG');
-      large_img.src = this.src;
+      var largeImg = document.createElement('IMG');
+      largeImg.src = this.src;
       modal.style.display = 'block';
-      body.appendChild(large_img);
-      header_text.innerHTML = this.alt;
+      body.appendChild(largeImg);
+      headerText.innerHTML = this.alt;
+      document.body.style.overflow = 'hidden';
+    });
+  }
+
+  for (var i = 0; i < cards.length; i++) {
+    cards[i].parentElement.addEventListener("click", function() {
+      var largeImg = document.createElement('IMG');
+      largeImg.src = this.children[0].src;
+      modal.style.display = 'block';
+      body.appendChild(largeImg);
+      headerText.innerHTML = this.children[1].innerHTML;
       document.body.style.overflow = 'hidden';
     });
   }
