@@ -286,7 +286,7 @@ body {
   position: fixed;
   width: 100%;
   top: 0;
-  transition: 0.2s ease-in;
+  transition: 0.2s;
   z-index: 1000;
 }
 
