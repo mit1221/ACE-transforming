@@ -283,6 +283,11 @@ body {
   border-top: 5px solid transparent;
   margin-bottom: 30px;
   box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  position: fixed;
+  width: 100%;
+  top: 0;
+  transition: 0.2s;
+  z-index: 1000;
 }
 
 .brand {
@@ -368,11 +373,22 @@ body {
 .nav-mobile {
   display: none;
   position: absolute;
-  top: 0;
+  top: -5px;
   right: 0;
   background: #002A5C;
   height: 80px;
   width: 70px;
+  cursor: pointer;
+  opacity: 0.9;
+  transition: 0.2s;
+}
+
+.nav-mobile:hover {
+  background: #bccbde;
+}
+
+.nav-mobile:hover #nav-toggle span:before, .nav-mobile:hover #nav-toggle span:after {
+  width: 35px;
 }
 
 @media (max-width: 1250px) {
@@ -380,12 +396,19 @@ body {
     display: block;
   }
 
+  .navigation nav ul li a, .navigation nav ul li ul li a {
+    opacity: 0.95;
+  }
+
   .navigation nav {
     width: 100%;
-    padding: 70px 0 15px;
+    padding-top: 75px;
   }
   .navigation nav ul {
-    display: none;
+    max-height: 0;
+    overflow: auto;
+    transition: 0.3s ease-in-out;
+    box-shadow: 0px 4px 10px 0px rgba(0, 0, 0, 0.3);
   }
   .navigation nav ul li {
     float: none;
@@ -410,6 +433,7 @@ body {
 
   .nav-dropdown {
     position: static;
+    display: block;
   }
 
   .navigation nav ul li a.active {
@@ -435,15 +459,15 @@ body {
   position: absolute;
   left: 18px;
   top: 22px;
-  cursor: pointer;
-  padding: 10px 35px 16px 0px;
+  padding: 15px 35px 16px 0px;
+  transform: scaleX(-1);
 }
 #nav-toggle span,
 #nav-toggle span:before,
 #nav-toggle span:after {
   cursor: pointer;
-  border-radius: 1px;
-  height: 5px;
+  border-radius: 50px;
+  height: 2px;
   width: 35px;
   background: #ffffff;
   position: absolute;
@@ -453,9 +477,11 @@ body {
 }
 #nav-toggle span:before {
   top: -10px;
+  width: 30px;
 }
 #nav-toggle span:after {
   bottom: -10px;
+  width: 20px;
 }
 #nav-toggle.active span {
   background-color: transparent;
@@ -464,9 +490,11 @@ body {
   top: 0;
 }
 #nav-toggle.active span:before {
+  width: 35px;
   transform: rotate(45deg);
 }
 #nav-toggle.active span:after {
+  width: 35px;
   transform: rotate(-45deg);
 }
 
@@ -499,6 +527,20 @@ body {
   height: 25px;
 }
 
+@media (max-width: 500px) {
+  #uoft_logo {
+    height: 30px;
+  }
+
+  #ace_logo {
+    height: 15px;
+  }
+
+  #til_logo {
+    height: 15px;
+  }
+}
+
 .navigation nav ul li a.active {
   pointer-events: none;
   border-bottom: 5px solid #bccbde;
@@ -519,13 +561,22 @@ body {
   transition: 0.2s;
 }
 
+.nav-down {
+  top: 0;
+}
+
+.nav-up {
+  top: -95px;
+}
+
 /* ---------------------------- IMAGE ----------------------------*/
 .background-container {
   width: 100%;
   height: 400px;
   padding-bottom: 6px;
   border-bottom: 5px solid #002A5C;
-  margin-bottom: 10px;
+  margin-top: 80px;
+  margin-bottom: -80px;
   -webkit-animation: move-in 0.7s ease-out; /* Safari 4.0 - 8.0 */
   animation: move-in 0.7s ease-out;
   display: flex;
@@ -557,12 +608,12 @@ body {
   font-weight: lighter;
   background: #002A5C;
   padding: 10px 30px;
-  -webkit-animation: fade-in 1.2s; /* Safari 4.0 - 8.0 */
-  animation: fade-in 1.2s;
+  -webkit-animation: fade-in-delayed 1.2s; /* Safari 4.0 - 8.0 */
+  animation: fade-in-delayed 1.2s;
 }
 
 .background.index {
-  background-image: url('../images/wide_image.png');
+  background-image: url('../images/wide_image.jpg');
   position: absolute;
   left: 0;
   top: 0;
@@ -589,8 +640,8 @@ body {
   font-weight: lighter;
   background: #002A5C;
   padding: 10px 30px;
-  -webkit-animation: fade-in 1.2s; /* Safari 4.0 - 8.0 */
-  animation: fade-in 1.2s;
+  -webkit-animation: fade-in-delayed 1.2s; /* Safari 4.0 - 8.0 */
+  animation: fade-in-delayed 1.2s;
   animation-delay: 0.8s;
 }
 @media (max-width: 900px) {
@@ -767,6 +818,7 @@ footer {
   display: flex;
   justify-content: space-between;
   padding: 0 20px 120px 20px;
+  margin-top: 80px;
 }
 
 .wrapper>div {
@@ -792,7 +844,7 @@ footer {
 h1 {
   font-weight: bold;
   line-height: 1.25em;
-  margin: 0px 0px 15px 35px;
+  margin: 30px 0px 15px 0;
   border: 0;
   padding: 0;
   text-align: left;
@@ -1036,8 +1088,8 @@ button img, .button img, .button svg {
   border-radius: 5px;
   color: #337AB7;
   font-size: 10px;
-  -webkit-animation: fade-in 1.4s; /* Safari 4.0 - 8.0 */
-  animation: fade-in 1.4s;
+  -webkit-animation: fade-in-delayed 1.4s; /* Safari 4.0 - 8.0 */
+  animation: fade-in-delayed 1.4s;
   cursor: pointer;
   transition: 0.2s;
 }
@@ -1060,14 +1112,14 @@ button img, .button img, .button svg {
 }
 
 /* Safari 4.0 - 8.0 */
-@-webkit-keyframes fade-in {
+@-webkit-keyframes fade-in-delayed {
   0% {opacity: 0}
   40% {opacity: 0}
   100% {opacity: 1}
 }
 
 /* Standard syntax */
-@keyframes fade-in {
+@keyframes fade-in-delayed {
   0% {opacity: 0}
   40% {opacity: 0}
   100% {opacity: 1}
@@ -1758,7 +1810,7 @@ form input[type=submit]:disabled {
   background-color: #CCCCCC;
   padding: 15px;
   margin: 10px 40px 10px 0;
-  flex-basis: 200px;
+  width: 400px;
 }
 
 .contact_card_title {
@@ -1855,7 +1907,6 @@ form input[type=submit]:disabled {
 }
 
 .modal {
-  display: none;
   position: fixed;
   z-index: 1000;
   left: 0;
@@ -1865,7 +1916,14 @@ form input[type=submit]:disabled {
   height: 100%;
   overflow: auto;
   background-color: rgb(0,0,0); /* Fallback color */
-  background-color: rgba(0,0,0,0.6);
+  background-color: rgba(0,0,0,0.8);
+  -webkit-animation: fade-in 0.3s;
+  animation: fade-in 0.3s;
+}
+
+.modal.animateout {
+  -webkit-animation: fade-out 0.25s;
+  animation: fade-out 0.25s;
 }
 
 /* Modal Content */
@@ -1880,13 +1938,13 @@ form input[type=submit]:disabled {
   min-width: 500px;
   max-width: 1500px;
   box-shadow: 0px 8px 20px 0 rgba(0, 0, 0, 0.2);
-  -webkit-animation: animatetop 0.4s;
-  animation: animatetop 0.4s;
+  -webkit-animation: slide-in-bottom 0.3s;
+  animation: slide-in-bottom 0.3s;
 }
 
-.animateout {
-  animation-name: animateout;
-  animation-duration: 0.4s;
+.modal_content.animateout {
+  -webkit-animation: animateout 0.25s;
+  animation: animateout 0.25s;
 }
 
 .modal_header {
@@ -1894,7 +1952,7 @@ form input[type=submit]:disabled {
   box-sizing: border-box;
   position: relative;
   width: 100%;
-  background-color: rgba(0,0,0,0.7);
+  background-color: #002A5C;
   color: white;
   font-size: 20px;
   border-radius: 10px 10px 0 0;
@@ -1953,14 +2011,44 @@ form input[type=submit]:disabled {
   to {top: 0; opacity: 1}
 }
 
+@-webkit-keyframes fade-in {
+  from {opacity: 0}
+  to {opacity: 1}
+}
+
+@keyframes fade-in {
+  from {opacity: 0}
+  to {opacity: 1}
+}
+
+@-webkit-keyframes fade-out {
+  from {opacity: 1}
+  to {opacity: 0}
+}
+
+@keyframes fade-out {
+  from {opacity: 1}
+  to {opacity: 0}
+}
+
+@-webkit-keyframes slide-in-bottom {
+  from {transform: translateY(50px); opacity: 0}
+  to {transform: translateY(0); opacity: 1}
+}
+
+@keyframes slide-in-bottom {
+  from {transform: translateY(50px); opacity: 0}
+  to {transform: translateY(0); opacity: 1}
+}
+
 @-webkit-keyframes animateout {
-  from {top: 0; opacity: 1}
-  to {top: -300px; opacity: 0}
+  from {transform: translateY(0px); opacity: 1}
+  to {transform: translateY(50px); opacity: 0}
 }
 
 @keyframes animateout {
-  from {top: 0; opacity: 1}
-  to {top: -300px; opacity: 0}
+  from {transform: translateY(0px); opacity: 1}
+  to {transform: translateY(50px); opacity: 0}
 }
 
 /* The Close Button */
@@ -1968,13 +2056,14 @@ form input[type=submit]:disabled {
   color: white;
   float: right;
   font-size: 28px;
+  padding: 5px;
   transition: 0.1s;
 }
 
 .close:hover,
 .close:focus {
-  color: #337AB7;
   cursor: pointer;
+  background: #337AB7;
 }
 
 /* ========================== AUTOCOMPLETE ========================== */

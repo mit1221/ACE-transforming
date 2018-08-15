@@ -1,4 +1,4 @@
-var domain = 'https://www.ace.utoronto.ca/images/Photos/Website/room_pics/';
+var domain = '../images/Photos/Website/room_pics/';
 
 var seasonsFullform = {
   1: 'Winter',
@@ -194,7 +194,7 @@ function addViewer(card) {
     container.scrollIntoView();  // scroll to the viewer automatically
     current = card;
     parent = card.parentElement;
-    document.addEventListener('keydown', moveFocus);
+    document.addEventListener('keyup', moveFocus);
     return;
   }
   // if the same card was clicked twice, then it removes the card from 'current'
@@ -205,7 +205,7 @@ function addViewer(card) {
 // handling arrow key presses
 var moveFocus = function(event) {
   var key = event.which || event.keyCode;
-  if (key == 8 || key == 46) { // backspace key is pressed
+  if (key == 8 || key == 27 || key == 46) { // backspace key is pressed
     document.getElementsByClassName('close')[0].click();
   }
   if (key == 37) { // left arrow key pressed
