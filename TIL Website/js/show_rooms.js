@@ -123,7 +123,7 @@ function addViewer(card) {
     var temp2 = temp[1].split('-');
     formattedDate += '/' + seasonsFullform[temp2[0]] + ' ' + temp2[1];
     dateText.innerHTML = this.type != 'Ongoing' ? (this.type == 'Pilot' ?
-      '<strong>Completed:</strong> Summer 2017' :
+      '<strong>Completed:</strong> ' + temp2[1] :
       '<strong>Completed:</strong> ' + formattedDate) :
       '<strong>Upgrade scheduled:</strong> ' + formattedDate;
     container.appendChild(dateText);
@@ -140,6 +140,14 @@ function addViewer(card) {
     // creating the scope icon images for the room
     var scopeIcons = document.createElement('DIV');
     var scopes = roomsToScopeDict[this.building + this.roomNumber];
+
+    if (scopes != null && scopes.constructor !== Array) {
+      if (this.type == 'Pilot') {
+        scopes = scopes[this.date.split('-')[1]];
+      } else {
+        scopes = scopes[this.date];
+      }
+    }
     if (scopes != null) {
       for (var i = 0; i < scopes.length; i++) {
         if (scopes[i] == 1) {
@@ -186,7 +194,7 @@ function addViewer(card) {
     var feedbackButton = document.createElement('A');
     feedbackButton.target = '_blank';
     feedbackButton.className = 'button icon-button';
-    feedbackButton.href = '../webapp/f?p=118?room=' + this.building + this.roomNumber;
+    feedbackButton.href = '../webapp/f?p=118?p1_classroom:' + this.building + this.roomNumber;
     feedbackButton.innerHTML = '<img src="images/feedback.svg">Give feedback';
 
     viewerButtons.appendChild(feedbackButton);
@@ -358,8 +366,10 @@ Rooms.prototype.makeRoomObjects = function(dict) {
   for (var building in dict) {
     for (var type in dict[building]) {
       for (var room in dict[building][type]) {
-        var date = dict[building][type][room];
-        rooms.push(new Room(room, building, type, date));
+        var dates = dict[building][type][room];
+        for (var i = 0; i < dates.length; i++) {
+          rooms.push(new Room(room, building, type, dates[i]));
+        }
       }
     }
   }
