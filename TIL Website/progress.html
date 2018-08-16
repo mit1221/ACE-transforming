@@ -133,12 +133,15 @@
       <div id="main">
         <h1>Progress</h1>
         <section>
-          <div class="search-box">
-            <i class="material-icons search-icon" style="color: #CCC">search</i>
-            <input type="text" class="search-input" placeholder="Search room (Ex. BA1130)" onchange="showSearchedCards(this.value)"
-              oninput="showSearchedCards(this.value)" onfocus="document.removeEventListener('keyup', moveFocus)"
-              onfocusout="if (current != null) {document.addEventListener('keyup', moveFocus);}">
+          <div id="scroll-anchor">
+            <div class="search-box" id="search-box">
+              <i class="material-icons search-icon" style="color: #CCC">search</i>
+              <input type="text" class="search-input" placeholder="Search room (Ex. BA1130)" onchange="showSearchedCards(this.value)"
+                oninput="showSearchedCards(this.value)" onfocus="document.removeEventListener('keyup', moveFocus)"
+                onfocusout="if (current != null) {document.addEventListener('keyup', moveFocus);}">
+            </div>
           </div>
+
           <p>Sort rooms by:</p>
           <div id="completed-ongoing-group" class="button-group">
             <button id="date_button" class="button-group-button default"><i class="material-icons">date_range</i><span>Date</span></button>
@@ -165,6 +168,48 @@
       </ul>
     </nav>
   </footer>
+
+  <div class="close-viewer-message">
+    Press 'Esc' or click 'X' to close this viewer
+  </div>
+  <script>
+    var $anchor = $("#scroll-anchor");
+    var $scroller = $('#search-box');
+    var $input = $('.search-input');
+    var navbarHeight = $('.navigation').outerHeight();
+
+    var move = function() {
+      var st = $(window).scrollTop();
+      var ot = $anchor.offset().top;
+      if (st > ot) {
+        $scroller.css({
+          position: "fixed",
+        });
+        if ($('.navigation').hasClass('nav-down')) {
+          $scroller.css({
+            top: navbarHeight + "px"
+          });
+        } else {
+          $scroller.css({
+            top: "0px"
+          });
+        }
+        $scroller.addClass('sticky');
+        $input.addClass('sticky');
+      } else {
+
+        $scroller.css({
+          position: "relative",
+          top: ""
+        });
+        $scroller.removeClass('sticky');
+        $input.removeClass('sticky');
+      }
+    };
+    $(window).scroll(move);
+    move();
+
+  </script>
 </body>
 
 </html>

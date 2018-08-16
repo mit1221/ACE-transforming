@@ -200,9 +200,24 @@ function addViewer(card) {
     viewerButtons.appendChild(feedbackButton);
     container.appendChild(viewerButtons);
     container.scrollIntoView();  // scroll to the viewer automatically
+
+    setTimeout(function() {
+      move(); // move the search bar
+    }, 50)
+
+    // opens a 2s message saying how to close the viewer
+    var closeMessage = document.getElementsByClassName('close-viewer-message')[0];
+    closeMessage.style.opacity = 1;
+    closeMessage.style.visibility = 'visible';
+    setTimeout(function() {
+      closeMessage.style.opacity = 0;
+      closeMessage.style.visibility = 'hidden';
+    }, 2000);
+
+    document.addEventListener('keyup', moveFocus); // allows pressing arrow keys to change rooms
+
     current = card;
     parent = card.parentElement;
-    document.addEventListener('keyup', moveFocus);
     return;
   }
   // if the same card was clicked twice, then it removes the card from 'current'
@@ -553,6 +568,9 @@ function addCards(heading, dict, category, type) {
       gap: 20
     }).start();
     heading.scrollIntoView();
+    setTimeout(function() {
+      move(); // move the search bar
+    }, 100)
   } else {
     closeHeading(heading);
   }
