@@ -228,7 +228,7 @@ function addViewer(card) {
 // handling arrow key presses
 var moveFocus = function(event) {
   var key = event.which || event.keyCode;
-  if (key == 8 || key == 27 || key == 46) { // backspace key is pressed
+  if (key == 27) { // escape key is pressed
     document.getElementsByClassName('close')[0].click();
   }
   if (key == 37) { // left arrow key pressed
