@@ -2001,7 +2001,7 @@ form input[type=submit]:disabled {
 }
 
 .modal_body img {
-  max-width: 100%;
+  max-width: 95%;
   /* min-width: 500px; */
   width: auto;
   max-height: 700px;
