@@ -194,7 +194,7 @@ function addViewer(card) {
     var feedbackButton = document.createElement('A');
     feedbackButton.target = '_blank';
     feedbackButton.className = 'button icon-button';
-    feedbackButton.href = '../webapp/f?p=118?p1_classroom:' + this.building + this.roomNumber;
+    feedbackButton.href = '../webapp/f?p=118:1:::::P1_CLASSROOM:' + this.building + this.roomNumber;
     feedbackButton.innerHTML = '<img src="images/feedback.svg">Give feedback';
 
     viewerButtons.appendChild(feedbackButton);
