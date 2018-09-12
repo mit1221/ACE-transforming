@@ -3,16 +3,56 @@ import pandas as pd
 from pandas import ExcelWriter
 from pandas import ExcelFile
 
-# Gets all the rooms added to the room_images directory
 rooms_dict = {}
 fullforms = {}
 rooms_with_360_images = {}
 rooms_to_scope_dict = {}
 
+seasons_fullform = {
+  'winter': '1',
+  'spring': '2',
+  'summer': '3',
+  'fall': '4'
+}
+
+# Get the scope for all the rooms
+df = pd.read_excel('scope.xlsx', sheet_name='Sheet1')
+columns = list(df.columns)
+for i in range(df.shape[0]):
+    row = df.loc[i, : ]
+
+    #removes the space between building name and room number
+    key = ('').join(row[0].split(' '))
+
+    if str(row[-1]) == 'nan':
+        rooms_to_scope_dict[key] = []
+        list_ref = rooms_to_scope_dict[key]
+
+    else:
+        if key not in rooms_to_scope_dict:
+            rooms_to_scope_dict[key] = {}
+        date = str(row[-1])
+        if len(date) > 4:
+            temp = date.split(' ')[0].split('/')
+            date = seasons_fullform[temp[0]] + '/' + seasons_fullform[temp[1]] + '-' + date.split(' ')[1]
+        rooms_to_scope_dict[key][date] = []
+        list_ref = rooms_to_scope_dict[key][date]
+
+    for j in range(1, df.shape[1] - 1):
+        if str(row[j]) != 'nan':
+            list_ref.append(1)
+        else:
+            list_ref.append(0)
+
+# Gets all the rooms added to the room_images directory
 for (dirpath, dirnames, filenames) in walk('./TIL Website/images/room_images'):
     if not('Before' in dirpath or 'After' in dirpath):
         if 'completed' in dirpath.lower() or 'ongoing' in dirpath.lower() or 'pilot' in dirpath.lower():
             type_dict = {}
+
+            splitted_path = dirpath.split('\\')
+            building = splitted_path[-2].split('-')[0]
+
             for pic in filenames:
                 if '.jpg' in pic.lower():
                     temp = pic.split('_')
@@ -22,10 +62,17 @@ for (dirpath, dirnames, filenames) in walk('./TIL Website/images/room_images'):
                     season1 = temp2[0]
                     season2 = temp2[1]
                     year = temp2[2].split('.')[0]
-                    type_dict[room_number] = season1 + '/' + season2 + '-' + year
 
-            splitted_path = dirpath.split('\\')
-            building = splitted_path[-2].split('-')[0]
+                    if room_number not in type_dict:
+                        type_dict[room_number] = []
+                    type_dict[room_number].append(season1 + '/' + season2 + '-' + year)
+                    if not isinstance(rooms_to_scope_dict[building + room_number], list):
+                        # this means there are multiple dates for the room
+                        keys = rooms_to_scope_dict[building + room_number].keys()
+                        for key in keys:
+                            if 'ongoing' in dirpath.lower() and key != '2017' and key not in type_dict[room_number]:
+                                type_dict[room_number].append(key)
+
             fullforms[building] = '-'.join(splitted_path[-2].split('-')[1:])
             type = splitted_path[-1]
             if building not in rooms_dict:
@@ -38,21 +85,6 @@ for (dirpath, dirnames, filenames) in walk('./TIL Website/images/room_images'):
                 if building not in rooms_with_360_images:
                     rooms_with_360_images[building] = []
                 rooms_with_360_images[building].append(pic.split('.')[0])
-
-# Get the scope for all the rooms
-df = pd.read_excel('scope.xlsx', sheet_name='Sheet1')
-columns = list(df.columns)
-for i in range(df.shape[0]):
-    row = df.loc[i, : ]
-
-    #removes the space between building name and room number
-    key = ('').join(row[0].split(' '))
-    rooms_to_scope_dict[key] = []
-    for j in range(1, df.shape[1]):
-        if str(row[j]) != 'nan':
-            rooms_to_scope_dict[key].append(1)
-        else:
-            rooms_to_scope_dict[key].append(0)
 
 # Updates the JavaScript file with the new data
 with open('./TIL Website/js/rooms_data.js', 'w') as f:
