@@ -1,4 +1,5 @@
 var domain = '../images/Photos/Website/room_pics/';
+// var domain = 'https://ace.utoronto.ca/images/Photos/Website/room_pics/';
 
 var seasonsFullform = {
   1: 'Winter',
@@ -37,6 +38,7 @@ function Room(roomNumber, building, type, date) {
 Room.prototype.makeCard = function(sortType) {
   var card = document.createElement('DIV');
   card.className = 'card';
+  card.id = this.building + this.roomNumber;
 
   // creating the thumbnail for the card
   var roomImage = document.createElement('IMG');
@@ -199,6 +201,8 @@ function addViewer(card) {
 
     viewerButtons.appendChild(feedbackButton);
     container.appendChild(viewerButtons);
+    var hash = '#' + this.building + this.roomNumber;
+    window.history.pushState(null, null, hash);
     container.scrollIntoView();  // scroll to the viewer automatically
 
     setTimeout(function() {
@@ -625,6 +629,7 @@ function showSearchedCards(query) {
 
 var roomObjects;
 var animation;
+var roomsClickedArray = [];
 
 $(function() {
   roomObjects = new Rooms(roomsDict);
@@ -661,3 +666,12 @@ $(function() {
     animation.start();
   });
 });
+
+if (window.history && window.history.pushState) {
+    $(window).on('popstate', function() {
+      setTimeout(function() {
+        document.body.scrollTop = document.documentElement.scrollTop = 0;
+      }, 20);
+    });
+
+  }
