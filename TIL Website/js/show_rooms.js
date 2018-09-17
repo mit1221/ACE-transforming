@@ -1,5 +1,5 @@
-var domain = '../images/Photos/Website/room_pics/';
-// var domain = 'https://ace.utoronto.ca/images/Photos/Website/room_pics/';
+// var domain = '../images/Photos/Website/room_pics/';
+var domain = 'https://ace.utoronto.ca/images/Photos/Website/room_pics/';
 
 var seasonsFullform = {
   1: 'Winter',
