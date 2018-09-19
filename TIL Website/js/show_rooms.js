@@ -303,7 +303,7 @@ function addContent(container, room) {
 
   if (room.has360Image) {
     var image360 = document.createElement('DIV');
-    image360.id = room.building + room.roomNumber;
+    image360.id = room.building + room.roomNumber + '-360';
     image360.className = 'image-360';
 
     image360.innerHTML = '<h3 style="text-align: center; text-transform: none">Feature coming soon...</h3>';
@@ -343,7 +343,7 @@ function load360(room) {
   var imageUrl = 'images/room_images/' + room.building + '-' + fullform[room.building] +
   '/360_images/' + room.roomNumber + '.jpg';
 
-  var vrView = new VRView.Player('#' + room.building + room.roomNumber, {
+  var vrView = new VRView.Player('#' + room.building + room.roomNumber + '-360', {
     image: imageUrl,
     width: '100%',
     height: '500px'
@@ -670,7 +670,7 @@ $(function() {
 if (window.history && window.history.pushState) {
     $(window).on('popstate', function() {
       setTimeout(function() {
-        document.body.scrollTop = document.documentElement.scrollTop = 0;
+        document.getElementsByClassName('close')[0].click();
       }, 20);
     });
 
