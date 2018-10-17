@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 
-
 <html lang="en">
 
 <head>
@@ -9,14 +8,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta charset="UTF-8">
 
-  <title>Unified Teaching Station</title>
+  <title>Blog</title>
   <link rel="shortcut icon" href="images/favicon.ico">
   <link rel="stylesheet" href="css/index.css" type="text/css">
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="js/navbar.js"></script>
-  <script src="js/zoom_image.js"></script>
+  <script src="js/animate.js"></script>
+  <script src="js/animate_on_scroll.js"></script>
 </head>
 
 <body>
@@ -73,7 +73,7 @@
               </ul>
             </li>
             <li>
-              <a href="progress.html">
+              <a href="progress.html" class="active">
                 <svg width="20px" height="20px" viewBox="0 0 60 60" version="1.1" xmlns="http://www.w3.org/2000/svg"
                   xmlns:xlink="http://www.w3.org/1999/xlink">
                   <title>Progress icon</title>
@@ -140,42 +140,28 @@
     </section>
     <div class="wrapper">
       <div id="main">
-        <h1>Unified Teaching Station</h1>
-        <section class="teaching-aid">
-          <div class="row" style="align-items: center">
-            <img class="zoom-image" style="max-height: 370px; width: auto; height: auto; padding-top: 40px"
-              src="images/teaching_station/teaching_station_front.jpg" alt="Unified Teaching Station Front View">
-            <img class="zoom-image" style="max-height: 400px; width: auto; height: auto;" src="images/teaching_station/teaching_station_side.jpg"
-              alt="Unified Teaching Station Side View">
-            <img style="height: 600px; padding-top: 50px" src="images/teaching_station/teaching_station_pic.jpg"
-              alt="Picture of Unified Teaching Station">
+        <h1>Progress</h1>
+        <section>
+          <div id="scroll-anchor">
+            <div class="search-box" id="search-box">
+              <i class="material-icons search-icon" style="color: #CCC">search</i>
+              <input type="text" class="search-input" placeholder="Search room (Ex. BA1130)"
+                onchange="showSearchedCards(this.value)" oninput="showSearchedCards(this.value)"
+                onfocus="document.removeEventListener('keyup', moveFocus)" onfocusout="if (current != null) {document.addEventListener('keyup', moveFocus);}">
+            </div>
+          </div>
+
+          <p>Sort rooms by:</p>
+          <div id="completed-ongoing-group" class="button-group">
+            <button id="date_button" class="button-group-button default"><i class="material-icons">date_range</i><span>Date</span></button>
+            <button id="building_button" class="button-group-button"><i class="material-icons">account_balance</i><span>Building</span></button>
           </div>
         </section>
-        <section>
-          <p>
-            The new Unified Teaching Station aims to stream line and simplify the current Teaching
-            Station Senior,
-            both in physical design by creating a smaller profile to allow for more teaching space,
-            simplifying
-            the number of moving parts, and updating the usable space on top. As well as the
-            technology
-            aspects by creating a step by step interface to help easier connect source
-            materials/device
-            to the overhead display. The Unified Teaching Station will still offer all the same
-            functionality
-            as the traditional Teaching Station such as intercom tech support and control panel as
-            well
-            as new features including a flat top design for easier placement of device and a
-            barrier-free
-            device shelf.
-          </p>
-          <a class="button" href="../webapp/f?p=118" style="width: 400px"><img src="images/feedback.svg">Give
-            feedback on your Unified Teaching Station</a>
-        </section>
+        <section id="content"></section>
       </div>
     </div>
   </div>
-  <!------------------------------------------------- foooter ------------------------------------>
+  <!------------------------------------------------- footer ------------------------------------>
   <footer id="footer">
     <nav>
       <ul id="footer_items">
@@ -191,6 +177,47 @@
       </ul>
     </nav>
   </footer>
+  <script>
+    var $anchor = $("#scroll-anchor");
+    var $scroller = $('#search-box');
+    var $input = $('.search-input');
+    var navbarHeight = $('.navigation').outerHeight();
+
+    var move = function() {
+      var st = $(window).scrollTop();
+      var ot = $anchor.offset().top;
+      if (st > ot) {
+        $scroller.css({
+          position: "fixed",
+        });
+        if ($('.navigation').hasClass('nav-down')) {
+          $scroller.css({
+            top: navbarHeight + "px"
+          });
+        } else {
+          $scroller.css({
+            top: "0px"
+          });
+        }
+        $scroller.addClass('sticky');
+        $input.addClass('sticky');
+      } else {
+
+        $scroller.css({
+          position: "relative",
+          top: ""
+        });
+        $scroller.removeClass('sticky');
+        $input.removeClass('sticky');
+      }
+    };
+    $(window).scroll(move);
+    move();
+
+  </script>
+  <div class="close-viewer-message">
+    Press 'Esc' or click 'X' to close this viewer
+  </div>
 </body>
 
 </html>

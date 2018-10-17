@@ -65,13 +65,15 @@ for (dirpath, dirnames, filenames) in walk('./TIL Website/images/room_images'):
 
                     if room_number not in type_dict:
                         type_dict[room_number] = []
-                    type_dict[room_number].append(season1 + '/' + season2 + '-' + year)
+                    date_to_add = season1 + '/' + season2 + '-' + year
+                    if date_to_add not in type_dict[room_number]:
+                        type_dict[room_number].append(date_to_add)
 
                     if not isinstance(rooms_to_scope_dict[building + room_number], list):
                         # this means there are multiple dates for the room
                         keys = rooms_to_scope_dict[building + room_number].keys()
                         for key in keys:
-                            if 'ongoing' in dirpath.lower() and key != '2017' and key not in type_dict[room_number] and key not in rooms_dict[building]['Completed'][room_number]:
+                            if 'ongoing' in dirpath.lower() and key != '2017' and ((key not in type_dict[room_number]) and (key not in rooms_dict[building]['Completed'][room_number])):
                                 type_dict[room_number].append(key)
 
             fullforms[building] = '-'.join(splitted_path[-2].split('-')[1:])
