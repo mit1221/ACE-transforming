@@ -879,6 +879,12 @@ h5 {
   color: #333;
 }
 
+h6 {
+  font-size: 0.8em;
+  color: #a7a3a3;
+  margin: 0;
+}
+
 section {
   margin-bottom: 50px;
 }
@@ -2154,4 +2160,43 @@ form input[type=submit]:disabled {
 .one-column img {
   margin-bottom: 20px;
   width: 500px;
+}
+
+/* ============================== BLOG ============================== */
+
+
+.blog-page {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 40px;
+}
+
+.blog-posts {
+  flex: 3;
+  flex-basis: 400px;
+  margin-right: 40px;
+}
+
+.right-column {
+  flex: 1;
+  flex-basis: 200px;
+  min-height: 500px;
+  background: #eeeeee;
+}
+
+.blog-post {
+  border-radius: 3px;
+  border-bottom: 2px solid #eee;
+  margin-bottom: 40px;
+  transition: 0.2s;
+}
+
+.blog-post:last-child {
+  border-bottom: none;
+}
+
+.blog-post h3 {
+  font-size: 1.3em;
+  text-transform: none;
+  margin-bottom: 5px;
 }
