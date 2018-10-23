@@ -882,6 +882,7 @@ h5 {
 h6 {
   font-size: 0.8em;
   color: #a7a3a3;
+  color: #337AB7;
   margin: 0;
 }
 
@@ -2165,13 +2166,13 @@ form input[type=submit]:disabled {
 /* ============================== BLOG ============================== */
 
 
-.blog-page {
+.news-page {
   display: flex;
   flex-wrap: wrap;
   margin-top: 40px;
 }
 
-.blog-posts {
+.news {
   flex: 3;
   flex-basis: 400px;
   margin-right: 40px;
@@ -2184,19 +2185,30 @@ form input[type=submit]:disabled {
   background: #eeeeee;
 }
 
-.blog-post {
+.post {
   border-radius: 3px;
   border-bottom: 2px solid #eee;
   margin-bottom: 40px;
+  padding-bottom: 20px;
   transition: 0.2s;
 }
 
-.blog-post:last-child {
+.post:last-child {
   border-bottom: none;
 }
 
-.blog-post h3 {
+.post h3 {
   font-size: 1.3em;
   text-transform: none;
   margin-bottom: 5px;
+}
+
+#full-article {
+  max-width: 1000px;
+  margin: auto;
+}
+
+#full-article img {
+  max-width: 800px;
+  max-height: 300px;
 }
