@@ -2169,7 +2169,6 @@ form input[type=submit]:disabled {
 .news-page {
   display: flex;
   flex-wrap: wrap;
-  margin-top: 40px;
 }
 
 .news {
@@ -2211,4 +2210,11 @@ form input[type=submit]:disabled {
 #full-article img {
   max-width: 800px;
   max-height: 300px;
+}
+
+.bar {
+  height: 5px;
+  width: 70px;
+  background-color: #337AB7;
+  margin-bottom: 30px;
 }
