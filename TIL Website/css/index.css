@@ -2178,11 +2178,22 @@ form input[type=submit]:disabled {
   margin-left: 40px;
 }
 
-.latest-news {
+.latest-news-section {
   flex: 1;
   flex-basis: 200px;
-  min-height: 500px;
+}
+
+.latest-news {
   background: #eeeeee;
+  padding: 25px;
+}
+
+.latest-news-text {
+  color: #333;
+}
+
+.latest-news-text:hover {
+  text-decoration: underline;
 }
 
 .post {
@@ -2218,4 +2229,10 @@ form input[type=submit]:disabled {
   width: 70px;
   background-color: #337AB7;
   margin-bottom: 30px;
+}
+
+.bar-center-aligned {
+  margin: auto;
+  background-color: #002A5C;
+  height: 3px;
 }
