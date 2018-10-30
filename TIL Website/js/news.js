@@ -4,6 +4,8 @@ const POST_LENGTH = 300;
 
 function generatePosts() {
   var articleHTML = '';
+
+  // generate a post for each news item
   for (id in newsInfo) {
     var articleInfo = newsInfo[id];
     var title = articleInfo.title;
@@ -21,6 +23,7 @@ function generatePosts() {
 
 }
 
+// display only the first POST_LENGTH characters of text
 function reduceNewsText(text) {
   var originalText = text;
 
