@@ -2172,7 +2172,7 @@ form input[type=submit]:disabled {
   flex-wrap: wrap;
 }
 
-.news {
+.second-column {
   flex: 3;
   flex-basis: 400px;
   margin-left: 40px;
@@ -2181,6 +2181,7 @@ form input[type=submit]:disabled {
 .latest-news-section {
   flex: 1;
   flex-basis: 200px;
+  margin-bottom: 40px;
 }
 
 .latest-news {
@@ -2199,7 +2200,7 @@ form input[type=submit]:disabled {
 .post {
   border-radius: 3px;
   border-bottom: 2px solid #eee;
-  margin-bottom: 40px;
+  margin-bottom: 20px;
   padding-bottom: 20px;
   transition: 0.2s;
 }
@@ -2212,6 +2213,26 @@ form input[type=submit]:disabled {
   font-size: 1.3em;
   text-transform: none;
   margin-bottom: 5px;
+  margin-top: 0;
+}
+
+.image-and-content {
+  display: flex;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  align-items: center;
+}
+
+.image-container {
+  margin-right: 10px;
+}
+
+.image-and-content img {
+  height: 70px;
+}
+
+.image-and-content p {
+  margin: 0;
 }
 
 #full-article {
@@ -2222,6 +2243,12 @@ form input[type=submit]:disabled {
 #full-article img {
   max-width: 800px;
   max-height: 300px;
+}
+
+@media (max-width: 800px) {
+  #full-article img {
+    max-width: 500px;
+  }
 }
 
 .bar {
