@@ -3,16 +3,16 @@ $(document).ready(displayInfo);
 function displayInfo() {
   var articleInfo = null;
   for (var i = 0; i < newsInfo.length; i++) {
-    if (newsInfo[i].title == getPostTitle()) {
+    if (correctFormat(newsInfo[i].title) == getPostTitle()) {
       articleInfo = newsInfo[i];
       break;
     }
   }
 
-  var title = articleInfo.title;
-  var author = articleInfo.author;
+  var title = correctFormat(articleInfo.title);
+  var author = correctFormat(articleInfo.author);
   var date = articleInfo.date;
-  var contentHTML = articleInfo.content;
+  var contentHTML = correctFormat(articleInfo.content);
   var image = articleInfo.image;
   var link = articleInfo.link;
 
@@ -34,4 +34,12 @@ function getPostTitle() {
 
 function decodeURL(url) {
   return decodeURIComponent(url);
+}
+
+function correctFormat(str) {
+  return str
+    .replace(/’/g, '\'')
+    .replace(/–/g, '-')
+    .replace(/“/g, '"')
+    .replace(/”/g, '"');
 }

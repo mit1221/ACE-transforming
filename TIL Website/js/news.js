@@ -44,11 +44,14 @@ function populateLatestNews() {
 
   for (var i = 0; i < Math.min(LATEST_POSTS_TO_DISPLAY, newsInfo.length); i++) {
     var article = newsArray[i];
-    var dateHTML = '<h6 style="margin-top: 30px; margin-bottom: 5px;"><span class="date">' +
-      article.date + '</span></h6>';
+    var title = correctFormat(article.title);
+    var date = article.date;
 
-    latestNewsHTML += '<div class="latest-news-item">' + dateHTML + '<a href="full_article.html#' + encodeURL(article.title) + '">' +
-      '<h4 class="latest-news-text">' + article.title + '</h4>' + '</a></div>';
+    var dateHTML = '<h6 style="margin-top: 30px; margin-bottom: 5px;"><span class="date">' +
+      date + '</span></h6>';
+
+    latestNewsHTML += '<div class="latest-news-item">' + dateHTML + '<a href="full_article.html#' + encodeURL(title) + '">' +
+      '<h4 class="latest-news-text">' + title + '</h4>' + '</a></div>';
   }
 
   $('.latest-news-content').html(latestNewsHTML);
@@ -70,10 +73,10 @@ function createPosts(startIndex, endIndex) {
   for (var i = startIndex; i < endIndex; i++) {
     var articleInfo = newsArray[i];
 
-    var title = articleInfo.title;
-    var author = articleInfo.author;
+    var title = correctFormat(articleInfo.title);
+    var author = correctFormat(articleInfo.author);
     var date = articleInfo.date;
-    var summary = articleInfo.summary;
+    var summary = correctFormat(articleInfo.summary);
     var imageHTML = articleInfo.image != undefined ? '<div class="image-container"><img src="images/news_images/' + articleInfo.image + '"/></div>' : '';
 
     articleHTML +=
@@ -109,4 +112,12 @@ function reduceNewsText(text) {
 // makes text URL friendly
 function encodeURL(url) {
   return encodeURIComponent(url);
+}
+
+function correctFormat(str) {
+  return str
+    .replace(/’/g, '\'')
+    .replace(/–/g, '-')
+    .replace(/“/g, '"')
+    .replace(/”/g, '"');
 }

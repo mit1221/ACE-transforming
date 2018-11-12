@@ -325,10 +325,12 @@ body {
   line-height: 70px;
   background: #002A5C;
   color: white;
+  font-weight: normal;
   border-bottom: 5px solid transparent;
   transition: 0.2s ease-out;
 }
 .navigation nav ul li a:hover {
+  text-decoration: none;
   border-bottom-color: #bccbde;
   color: #bccbde;
 }
@@ -805,12 +807,14 @@ footer {
 
 #footer_items a {
   display: block;
+  font-weight: normal;
   color: #bccbde;
   padding: 15px 25px;
   transition: 50ms;
 }
 
 #footer_items a:hover {
+  text-decoration: none;
   color: white;
 }
 
