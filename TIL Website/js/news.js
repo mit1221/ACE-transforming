@@ -1,8 +1,8 @@
 $(document).ready(populatePage);
 
-const POST_LENGTH = 300;
-const LATEST_POSTS_TO_DISPLAY = 3;
-const POSTS_TO_DISPLAY = 4;
+var POST_LENGTH = 300;
+var LATEST_POSTS_TO_DISPLAY = 3;
+var POSTS_TO_DISPLAY = 4;
 var newsArray = [];
 var loadMoreClicked = 0;
 

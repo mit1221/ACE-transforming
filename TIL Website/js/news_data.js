@@ -19,12 +19,12 @@ var newsInfo = [{
       "<li>Zhenni (Jenna) Liao, Design Research Assistant, Masters student, Faculty of Information</li>" +
       "<li>Ricardo Menendez, Design Research Assistant, MBA student, Rotman School of Management</li>" +
       "</ul>" +
-      "<img src='images/news_images/julia.jpg'/>" +
-      "<img src='images/news_images/Nick.jpg'/>" +
-      "<img src='images/news_images/Danielle.jpg'/>" +
-      "<img src='images/news_images/Saaili.jpg'/>" +
-      "<img src='images/news_images/Zhenni.jpg'/>" +
-      "<img src='images/news_images/Ricardo.jpg'/>" +
+      "<img height='150px' src='images/news_images/julia.jpg'/>" +
+      "<img height='150px' src='images/news_images/Nick.jpg'/>" +
+      "<img height='150px' src='images/news_images/Danielle.jpg'/>" +
+      "<img height='150px' src='images/news_images/Saaili.jpg'/>" +
+      "<img height='150px' src='images/news_images/Zhenni.jpg'/>" +
+      "<img height='150px' src='images/news_images/Ricardo.jpg'/>" +
       "<p>ACE staff leading the <em>Transforming the Instructional Landscape</em> project include:</p>" +
       "<ul>" +
       "<li>Steven Bailey, Director, Academic + Campus Events</li>" +
@@ -33,11 +33,11 @@ var newsInfo = [{
       "<li>Gretta Leach, Classroom Design & Development Support, ACE</li>" +
       "<li>David Yan, Classroom Technology, ACE</li>" +
       "</ul>" +
-      "<img src='images/news_images/STEVE HEADSHOT.jpg'/>" +
-      "<img src='images/news_images/ANDY HEADSHOT.jpg'/>" +
-      "<img src='images/news_images/EMILY HEADSHOT.jpg'/>" +
-      "<img src='images/news_images/GRETTA HEADSHOT.jpg'/>" +
-      "<img src='images/news_images/DAVE HEADSHOT.jpg'/>" +
+      "<img height='150px' src='images/news_images/STEVE HEADSHOT.jpg'/>" +
+      "<img height='150px' src='images/news_images/ANDY HEADSHOT.jpg'/>" +
+      "<img height='150px' src='images/news_images/EMILY HEADSHOT.jpg'/>" +
+      "<img height='150px' src='images/news_images/GRETTA HEADSHOT.jpg'/>" +
+      "<img height='150px' src='images/news_images/DAVE HEADSHOT.jpg'/>" +
       "<p>These teams are most excited about working together because of the opportunity to create significant impact on campus for students and instructors for many years to come.</p>" +
       "<p>For full details on the <em>Transforming the Instructional Landscape</em> project please visit <a href='http://uoft.me/til'>uoft.me/til</a>.</p>"
   },

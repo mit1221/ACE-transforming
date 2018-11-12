@@ -2233,6 +2233,7 @@ form input[type=submit]:disabled {
 
 .image-and-content img {
   height: 70px;
+  min-width: 70px;
 }
 
 .image-and-content p {
