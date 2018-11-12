@@ -1,30 +1,46 @@
-var newsInfo = [{
-    'title': 'Recruitment: Family Care Research Project',
-    'author': 'By Shirin Gerami, Design Research Team Lead (Family Care Office)',
-    'date': 'November 5, 2018',
-    'image': '181105.jpg',
-    'link': 'http://blogs.studentlife.utoronto.ca/innovationhub/recruitment-family-care-research-project/',
-    'summary': "In partnership with the University of Toronto's Family Care Office, the Innovation Hub would love to hear about your experience as a U of T student and parent or caregiver. We are interested in the opportunities, challenges, and needs that parents and caregivers have as they navigate their multiple roles and responsibilities while studying.",
-    'content': "<h3>Are you a student with family responsibilities?</h3>" +
-      "<p>In partnership with the University of Toronto's Family Care Office, the Innovation Hub would love to hear about your experience as a U of T student and parent or caregiver. We are interested in the opportunities, challenges, and needs that parents and caregivers have as they navigate their multiple roles and responsibilities while studying.</p>" +
-      "<p>We are currently looking for students to <strong>participate in 1-hour interviews</strong> as part of this research. If you are interested in participating in this study, or would like more information, please contact <a href='mailto:shirin.gerami@mail.utoronto.ca'>shirin.gerami@mail.utoronto.ca</a>. </p>" +
-      "<p>The insights from this research project will be shared with the Family Care Office, aiding their efforts to better serve and support students with family care-giving responsibilities. It is designed to give voice to your unique experiences as a student with family-care giving responsibilities, as well as to use the insights gathered to identify resources and support systems needed to enrich your experience at University of Toronto. We want to make sure that your voice is heard and that your experience is accounted for!</p>"
-  },
-  {
-    'title': 'How to Better Support UofT Students: The Future of SLP Event!',
-    'author': 'By Suzie Kim, Communications Team',
-    'date': 'November 2, 2018 ',
-    'image': '181102.jpg',
-    'link': 'http://blogs.studentlife.utoronto.ca/innovationhub/how-to-better-support-uoft-students-the-future-of-slp-event/#more-2437',
-    'summary': "On October 11th, 2018, the Innovation Hub partnered with the SLP network to host a research event entitled SLP Presents: The Future of SLP.  SLP is a network of staff who  work directly with students across at the University of Toronto�s three campuses.  The partnership between SLP and the Innovation Hub commenced last year to explore two questions: What should the future of the SLP Network look like? and how should this community of practice be redesigned to better serve the needs and wants of all its members? ",
-    'content': "<P>On October 11th, 2018, the Innovation Hub partnered with the SLP network to host a research event entitled <strong>SLP Presents: The Future of SLP</strong>.  SLP is a network of staff who  work directly with students across at the University of Toronto�s three campuses.  The partnership between SLP and the Innovation Hub commenced last year to explore two questions: What should the future of the SLP Network look like? and how should this community of practice be redesigned to better serve the needs and wants of all its members?  After conducting a number of empathy interviews with staff in a variety of positions and career stages, insights were generated.  These insights reveled that supporting staff to develop institutional knowledge, mentorship and networking, senior management involvement and career development support are areas where there are opportunities for SLP to provide support.  This event sought to gather additional data to inform next steps of the process.<p/>" +
-      "<img src='images/news_images/181107b.jpg'/>" +
-      "<p>The event featured an inclusive and welcoming environment, where colleagues with similar motives, skills, and responsibilities came together to share ideas and struggles that appear in their work on campus.</p>" +
-      "<p>After an opening introduction and a brief presentation of past research insights, the event focused on encouraging participants to engage in activities and discussion. Various booths around the room focused on different topics, like career path, professional learning, connections, community and supporting students.</p>" +
-      "<img src='images/news_images/181102c.jpg'/>" +
-      "<p>Our research team is now working with the data and artifacts collected at this event. We will analyze and synthesize the data and insights for the future of the SLP Network. Stay tuned for our results, to be posted on this blog in the coming months!</p>" +
-      "<p>Note: a copy of the Innovation Hub�s SLP research report is available to UofT staff by request at<a href='innovationhub@utoronto.ca'></a></p>"
-  },
+﻿var newsInfo = [ {
+        'title': 'Designing Classrooms "with" and not "for" the University Community',
+        'author': 'By Julia Smeed, Innovation Projects Officer',
+        'date': 'November 7, 2018',
+        'image': 'julia.jpg',
+        'link': 'http://blogs.studentlife.utoronto.ca/innovationhub/designing-classrooms-with-and-not-for-the-university-community/',
+        'summary': "A world-class institution deserves world-class spaces for learning and instruction. That’s why we think that Academic and Campus Events (ACE) landmark renovation project – Transforming the Instructional Landscape (TIL) – will be such an exciting and impactful project at U of T. ",
+        'content': "<p>A world-class institution deserves world-class spaces for learning and instruction. That’s why we think that Academic and Campus Events (ACE) landmark renovation project – Transforming the Instructional Landscape (TIL) – will be such an exciting and impactful project at U of T. The instructional space on campus plays an essential role in fulfilling the university’s mandate to provide an unparalleled learning experience and impacts every student here. As the steward of these important facilities, ACE is committed to developing accessible, innovative, and purpose-built classrooms that address the needs of instructors and students. We can’t help but be inspired by their ambitious new vision for U of T.</p>"+
+"<p>To achieve this vision, ACE has partnered with us to take taking an innovative approach to the re-design of instructional space. Using human-centred methodologies, we seek to deeply understand the user experience to ensure that user needs, desires, and perspectives are at the core of the re-design process. With ACE’s sights set to renovate 174 classrooms across 23 buildings on campus, we are working hard to gather data through observation, interviews and pop-up style events to test and get feedback on potential designs. Rather than a linear process, design thinking is an iterative process of prototyping and testing, continually engaging and drawing upon user experience. Through this process, ACE aims to embrace the idea of providing a better experience to every community member who uses academic spaces. Getting early and constant feedback makes the ideation process more efficient and assures the best fit with what stakeholders are looking for. Furthermore, it provides students and faculty a stake in the design process.</p>"+
+"<p>What additionally makes this project so impactful, is the unique role that ACE has in the postsecondary sector as a dedicated space management team for such a large percentage of campus space.  Few other universities consolidate classroom and shared space allocation across departments and buildings into one dedicated, multi-faceted team, allowing for more flexible and efficient processes. The traditional method of space allocation in academic institutions assigns rooms based on department and building, leaving rooms unused or poorly allocated in reference to instructional needs. By consolidating the space management of both classrooms and shared space under one umbrella, ACE is able to recognize and respond to the changing needs of students and instructors.  Classroom spaces are assigned based on efficiency and pedagogical considerations allowing for better support of instructors and students.  ACE’s approach allows the instructional landscape to keep pace with evolving technologies and emerging teaching pedagogies.</p>"+
+"<p>With an eye to improving the learning experience in <strong>almost 6000 courses across campus</strong>, Transforming the Instructional Landscape is no small feat. Working in collaboration, not just with the Innovation Hub, but the very students and faculty that instruct and learn in these spaces is crucial to ensuring the most impactful re-design possible. And engaging in the ongoing iterative process of prototyping and refining designs ensures that ACE will be well positioned to effectively maintain transformative spaces on campus for many years to come. Stay tuned for further updates on this project by subscribing to our <a href='http://blogs.studentlife.utoronto.ca/innovationhub/category/hub-blog/'>blog</a> and faculty and student who would like to contribute to this research are encouraged to reach out to us at <a href='mailto:innovationhub@utoronto.ca'>innovationhub@utoronto.ca</a></p>"+
+"<h4><strong>Meet the Team</strong></h4>"+
+"<p>The Innovation Hub team working in partnership with ACE on Transforming the Instructional Landscape brings together students from both undergraduate and graduate disciplines in business, anthropology, religion, and user experience design. Innovation Hub team members include:</p>"+
+"<ul>" +
+"<li>Julia Smeed, Innovation Hub Project Leader</li>" +
+"<li>Nick Feinig, Senior Research Assistant, PhD student, Department of Anthropology</li>" +
+"<li>Danielle Baillargeon, Design Research Assistant, PhD student, Department for the Study of Religion</li>" +
+"<li>Saaili Junnarkar, Design Research Assistant, Masters student, Faculty of Information</li>" +
+"<li>Zhenni (Jenna) Liao, Design Research Assistant, Masters student, Faculty of Information</li>" +
+"<li>Ricardo Menendez, Design Research Assistant, MBA student, Rotman School of Management</li>" +
+"</ul>" +
+"<img src='images/news_images/julia.jpg'/>"+
+"<img src='images/news_images/Nick.jpg'/>"+
+"<img src='images/news_images/Danielle.jpg'/>"+
+"<img src='images/news_images/Saaili.jpg'/>"+
+"<img src='images/news_images/Zhenni.jpg'/>"+
+"<img src='images/news_images/Ricardo.jpg'/>"+
+"<p>ACE staff leading the <em>Transforming the Instructional Landscape</em> project include:</p>"+
+"<ul>"+
+"<li>Steven Bailey, Director, Academic + Campus Events</li>"+
+"<li>Andy Allen, Manager, Academic Scheduling, ACE</li>"+
+"<li>Emily Ling, Architect, Classroom Design & Development Officer, ACE</li>"+
+"<li>Gretta Leach, Classroom Design & Development Support, ACE</li>"+
+"<li>David Yan, Classroom Technology, ACE</li>"+
+"</ul>"+
+"<img src='images/news_images/STEVE HEADSHOT.jpg'/>"+
+"<img src='images/news_images/ANDY HEADSHOT.jpg'/>"+
+"<img src='images/news_images/EMILY HEADSHOT.jpg'/>"+
+"<img src='images/news_images/GRETTA HEADSHOT.jpg'/>"+
+"<img src='images/news_images/DAVE HEADSHOT.jpg'/>"+
+"<p>These teams are most excited about working together because of the opportunity to create significant impact on campus for students and instructors for many years to come.</p>"+
+"<p>For full details on the <em>Transforming the Instructional Landscape</em> project please visit <a href='http://uoft.me/til'>uoft.me/til.</a></p>"
+},
 
   /*
     {
