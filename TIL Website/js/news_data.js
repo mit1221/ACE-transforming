@@ -57,7 +57,7 @@ var newsInfo = [{
       "<p>Interested in learning more?&nbsp; Follow the links to find out more about the <a href='http://blogs.studentlife.utoronto.ca/innovationhub/designing-classrooms-with-and-not-for-the-university-community/'>Innovation Hub and ACE partnership</a> and learn more about the <a href='https://www.ace.utoronto.ca/til/'><em>Transforming the Instructional Landscape </em></a>project</p>"
   },
   {
-    'title': 'Transforming – the Instructional Landscape with ACE: What instructors and students have told us so far',
+    'title': 'Transforming the Instructional Landscape with ACE: What instructors and students have told us so far',
     'author': 'By Nick Feinig, Senior Research Assistant (for the ACE-Transforming the Instructional Landscape project)',
     'date': 'November 9, 2018',
     'image': 'Nick.jpg',
