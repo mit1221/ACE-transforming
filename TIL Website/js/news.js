@@ -1,8 +1,8 @@
 $(document).ready(populatePage);
 
-const POST_LENGTH = 300;
-const LATEST_POSTS_TO_DISPLAY = 3;
-const POSTS_TO_DISPLAY = 4;
+var POST_LENGTH = 300;
+var LATEST_POSTS_TO_DISPLAY = 3;
+var POSTS_TO_DISPLAY = 4;
 var newsArray = [];
 var loadMoreClicked = 0;
 
@@ -19,18 +19,6 @@ function populatePage() {
   });
 
   populateLatestNews();
-
-  if (typeof(Storage) !== "undefined") {
-    if (sessionStorage != undefined) {
-      if (sessionStorage.clickCount == null) {
-        sessionStorage.clickCount = 0;
-      } else {
-        loadMoreClicked = sessionStorage.clickCount;
-      }
-    }
-  } else {
-    console.log("No web storage support.");
-  }
 
   generatePosts(Math.min(POSTS_TO_DISPLAY + POSTS_TO_DISPLAY * loadMoreClicked, newsInfo.length));
 
@@ -91,12 +79,6 @@ function createPosts(startIndex, endIndex) {
 
 function loadMoreContent() {
   generatePosts(Math.min(POSTS_TO_DISPLAY + POSTS_TO_DISPLAY * ++loadMoreClicked, newsInfo.length));
-
-  if (typeof(Storage) !== "undefined") {
-    sessionStorage.clickCount = loadMoreClicked;
-  } else {
-    console.log("No web storage support.");
-  }
 }
 
 // display only the first POST_LENGTH characters of text
