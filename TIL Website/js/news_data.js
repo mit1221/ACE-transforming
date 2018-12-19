@@ -124,5 +124,15 @@ var newsInfo = [{
       "<p>In addition to faculty engagement in our research, the recent furniture events hosted by <u><a href='https://ace.utoronto.ca/'>ACE</a></u> brought us feedback from <strong>over 700 students</strong> on the furniture they prefer, their favourite classrooms on campus, and challenges they encounter in classes both large and small. Themes from these conversations highlighted student needs for accessible seating and ample storage space for belongings, among many others.</p>" +
       "<p>The next big phase of the <u><a href='https://www.ace.utoronto.ca/til/'>TIL</a></u> project is to engage in data analysis to uncover the core needs of classrooms users such that we can find innovative ways to bring it all together into classroom re-design. We are still collecting data and encourage any students or faculty who wish to share their experiences on campus to reach out to the TIL team at <a href='mailto:classroom.ace@utoronto.ca'>classroom.ace@utoronto.ca</a></p>"
   },
-
+  /*
+    {
+      'title': '',
+      'author': '',
+      'date': '',
+      'image': '',
+      'link': '',
+      'summary': "",
+      'content': "<p></p>"
+    },
+  */
 ];

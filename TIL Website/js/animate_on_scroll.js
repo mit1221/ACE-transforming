@@ -10,8 +10,8 @@ function Animate(options) {
   }
 
   this.elements = (HTMLCollection.prototype.isPrototypeOf(options.elements) ||
-                  NodeList.prototype.isPrototypeOf(options.elements)) ?
-                  options.elements : [options.elements];
+      NodeList.prototype.isPrototypeOf(options.elements)) ?
+    options.elements : [options.elements];
   this.animation = options.animation != null ? options.animation : 'move-up 0.4s ease-out';
   this.extraAnimations = options.extraAnimations;
   this.next = options.next != null ? (options.next.constructor === Array ? options.next : [options.next]) : [];
@@ -46,7 +46,7 @@ Animate.prototype.animate = function(el) {
   }
 
   var object = this;
-  var delay = object.next[1] != null ? object.next[1] : (parseFloat(this.animation.split(' ')[1]) * 1000) * (2/4);
+  var delay = object.next[1] != null ? object.next[1] : (parseFloat(this.animation.split(' ')[1]) * 1000) * (2 / 4);
 
   // call other animations which happen AFTER the main animation, if any
   if (object.next.length > 0) {
@@ -112,8 +112,9 @@ AnimateOnScroll.prototype.scrollHandler = function() {
   if (this.elements.length > 1) {
     // add all elements to the queue if any of them is in the viewport
     if (this.chainAnimation) {
-      if (!this.isFinished[0] &&
-      [].slice.call(this.elements).some(function(element) {return isInViewport(element)})) {
+      if (!this.isFinished[0] && [].slice.call(this.elements).some(function(element) {
+          return isInViewport(element)
+        })) {
         for (var i = 0; i < this.elements.length; i++) {
           this.isFinished[i] = true;
           queue.push(this.elements[i]);
@@ -139,7 +140,9 @@ AnimateOnScroll.prototype.scrollHandler = function() {
   }
 
   // remove event listener if all the elements are animated
-  if (this.isFinished.every(function(val) {return val == true})) {
+  if (this.isFinished.every(function(val) {
+      return val == true
+    })) {
     window.removeEventListener('scroll', this.scrollHandlerBinded);
   }
 }
@@ -152,7 +155,7 @@ function isInViewport(element) {
   var rect = element.getBoundingClientRect();
   var height = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
 
-  return rect.top > -(element.clientHeight) + (height / 3) && rect.top < height - (height / 3);
+  return rect.top > -(element.clientHeight) + (height / 3) && rect.top < height - (height / 8);
 }
 
 
@@ -167,7 +170,7 @@ function countUp(element) {
       clearInterval(timer);
       numberElement.textContent = number;
     } else {
-      numberElement.textContent =  Math.ceil(i * (number / 100));
+      numberElement.textContent = Math.ceil(i * (number / 100));
       i++;
     }
   }, 10);
@@ -200,8 +203,8 @@ function typewriter(element) {
     if (i >= lettersCorrect.length) {
       clearInterval(timer);
     } else {
-      if (lettersCorrect[i+1]) {
-        quote.textContent += lettersCorrect[i] + lettersCorrect[i+1];
+      if (lettersCorrect[i + 1]) {
+        quote.textContent += lettersCorrect[i] + lettersCorrect[i + 1];
       } else {
         quote.textContent += lettersCorrect[i];
       }

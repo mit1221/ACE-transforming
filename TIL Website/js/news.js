@@ -65,13 +65,25 @@ function createPosts(startIndex, endIndex) {
     var author = correctFormat(articleInfo.author);
     var date = articleInfo.date;
     var summary = correctFormat(articleInfo.summary);
-    var imageHTML = articleInfo.image != undefined ? '<div class="image-container"><img src="images/news_images/' + articleInfo.image + '"/></div>' : '';
+    var imageHTML = '';
+
+    if (articleInfo.image != undefined) {
+      imageHTML += '<div class="image-container">';
+      if (articleInfo.image.constructor === Array) {
+        for (var j = 0; j < articleInfo.image.length; j++) {
+          imageHTML += '<img src="images/news_images/' + articleInfo.image[j] + '"/>';
+        }
+      } else {
+        imageHTML += '<img src="images/news_images/' + articleInfo.image + '"/>';
+      }
+      imageHTML += '</div>';
+    }
 
     articleHTML +=
-      '<div class="post"><h3>' + title + '</h3>' +
+      '<a href="full_article.html#' + encodeURL(title) + '"><div class="post"><h3>' + title + '</h3>' +
       '<h6><span class="name">' + author + ' </span><span style="color: #CCC">|</span> <span class="date">' +
       date + '</span></h6><div class="image-and-content">' + imageHTML + '<p>' + summary + '</p></div>' +
-      '<a href="full_article.html#' + encodeURL(title) + '" class="link" style="font-size: 0.9em">Continue reading &#187;</a></div>';
+      '<a href="full_article.html#' + encodeURL(title) + '" class="link" style="font-size: 0.9em">Continue reading &#187;</a></div></a>';
   }
 
   return articleHTML;
