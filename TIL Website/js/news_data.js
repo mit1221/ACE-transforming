@@ -1,4 +1,4 @@
-﻿var newsInfo = [{
+var newsInfo = [{
     'title': 'Designing Classrooms "with" and not "for" the University Community',
     'author': 'By Julia Smeed, Innovation Projects Officer',
     'date': 'November 7, 2018',
@@ -41,9 +41,9 @@
       "<p>These teams are most excited about working together because of the opportunity to create significant impact on campus for students and instructors for many years to come.</p>" +
       "<p>For full details on the <em>Transforming the Instructional Landscape</em> project please visit <a href='http://uoft.me/til'>uoft.me/til</a>.</p>"
   },
- 
 
- {
+
+  {
     'title': 'Upcoming Event: Transforming the Instructional Landscape - What makes a classroom great?',
     'author': 'By Suzie Kim, iHub Communications Team',
     'date': 'November 9, 2018',
@@ -51,21 +51,19 @@
     'link': 'http://blogs.studentlife.utoronto.ca/innovationhub/upcoming-event-transforming-the-instructional-landscape-event-what-makes-a-classroom-great/',
     'summary': "<strong>Shape your future classroom!</strong> Have you noticed the new look of your classrooms?  Are you curious about how your old classrooms will be transformed? Academic and Campus Events (ACE), in partnership with the Innovation Hub invites you to attend our <strong><em>What Makes a Classroom Great</em></strong>  pop-up event.",
     'content': "<p><strong>Shape your future classroom!</strong> Have you noticed the new look of your classrooms?  Are you curious about how your old classrooms will be transformed? Academic and Campus Events (ACE), in partnership with the Innovation Hub invites you to attend our <strong><em>What Makes a Classroom Great</em></strong>  pop-up event.</p>" +
-     
- "<p>Students, faculty and staff members please come by any time to engage with displays highlighting elements from recently renovated classrooms. Test out new classroom furniture and tell us what you think!  We will be there to chat with you and hear your thoughts. Share your ideas and insights with us to inform the classroom redesign process. This engaging event is open to all, so come out and say hello!  Refreshments will be provided.</p>" +
-     
- "<p>Drop by one of our pop-up locations between November 21st – 23rd:</p>" +
-     
- "<ul><li>Wednesday November 21st - 1pm-4pm, in the Lobby of&nbsp;Bahen&nbsp;Centre</li><li>Thursday November 22nd - 1pm-4pm, in the Lobby of&nbsp;Bahen&nbsp;Centre</li><li>Friday November 23rd - 10pm-4pm, in the Medical Science Building Student Lounge</li></ul>"+
-     
- "<p>We hope to see you there!</p>" +
-    
- "<p>If you can't join us but would like to share your thoughts, please email <a href='mailto:innovationhub@utoronto.ca'>innovationhub@utoronto.ca</a></p>" +
+
+      "<p>Students, faculty and staff members please come by any time to engage with displays highlighting elements from recently renovated classrooms. Test out new classroom furniture and tell us what you think!  We will be there to chat with you and hear your thoughts. Share your ideas and insights with us to inform the classroom redesign process. This engaging event is open to all, so come out and say hello!  Refreshments will be provided.</p>" +
+
+      "<p>Drop by one of our pop-up locations between November 21st – 23rd:</p>" +
+
+      "<ul><li>Wednesday November 21st - 1pm-4pm, in the Lobby of&nbsp;Bahen&nbsp;Centre</li><li>Thursday November 22nd - 1pm-4pm, in the Lobby of&nbsp;Bahen&nbsp;Centre</li><li>Friday November 23rd - 10pm-4pm, in the Medical Science Building Student Lounge</li></ul>" +
+
+      "<p>We hope to see you there!</p>" +
+
+      "<p>If you can't join us but would like to share your thoughts, please email <a href='mailto:innovationhub@utoronto.ca'>innovationhub@utoronto.ca</a></p>" +
       "<p>Interested in learning more?&nbsp; Follow the links to find out more about the <a href='http://blogs.studentlife.utoronto.ca/innovationhub/designing-classrooms-with-and-not-for-the-university-community/'>Innovation Hub and ACE partnership</a> and learn more about the <a href='https://www.ace.utoronto.ca/til/'><em>Transforming the Instructional Landscape </em></a>project</p>"
   },
-  
-
-{
+  {
     'title': 'Transforming the Instructional Landscape with ACE: What instructors and students have told us so far',
     'author': 'By Nick Feinig, Senior Research Assistant (for the ACE-Transforming the Instructional Landscape project)',
     'date': 'November 9, 2018',
@@ -84,53 +82,47 @@
   },
 
 
-{
-      'title': 'Educause 2018 Annual Conference in Denver Colorado',
-      'author': 'By Emily Ling, Architect, Classroom Design and Standard Officer, ACE Design Team ',
-      'date': 'November 30, 2018',
-      'image': 'EMILY HEADSHOT SM.jpg',
-      'summary': "What happens when you put thousands of Teaching and Learning Innovation Leaders and Higher Ed IT Professionals in the same place for one week?  This October, Steve Bailey (Director, Academic + Campus Events) and I went to the Mile High City to attend the highly anticipated Educause 2018 Conference. ",
-      'content':"<p>What happens when you put thousands of Teaching and Learning Innovation Leaders and Higher Ed IT Professionals in the same place for one week?  This October, Steve Bailey (Director, Academic + Campus Events) and I went to the Mile High City to attend the highly anticipated Educause 2018 Conference.</p>"+ 
-"<br><h4><strong>Day 1</strong></h4>"+
-"<p>At the <u>Pre-Conference Workshop Learning Space Design Jam</u> facilitated by Adam Finkelstein (McGill), we feedback on each participants learning space designs to explore how design thinking can enhance the learning space design process. We learned from each other’s experience at updating classroom to better Teaching & Learning experience. Common concerns shared across Institutions were: Faculty Engagement, Ownership of classrooms, Budget and Funding, Policy, technological evolution.</p>"
-+
-"<img src='images/news_images/181130A.jpg' />"+
-"<br><br><h4><strong>Day 2</strong></h4>"+ 
-"<p>During the <u>Keynote Speech: Eavesdropping on America's - Conversation on Race</u>, Michele Norris shared how her post-card pet project gained international awareness of racial issues through the use of website. Initially, Michele started the Race Card Project by mailing post cards to participants asking for six words to describe the individual’s idea of race, however, through the later use of website and social media, it became an international sensation that snapshots paint a vivid picture of America's attitudes and experiences about race during a fascinating moment in American history. </p>"+
-"<p>At <u>Learning Space Design Community Group Session</u>, the Learning Space Design leaders around the globe to discuss on topics from what makes a physical space conducive to learning to the principles/processes of effective learning space design. Each School shared ideas and experience on how formal and informal spaces impact teaching practices, learning activities, student interactions, and campus sense of community. ACE’s presentation of Myhal Centre for Engineering Innovation & Entrepreneurship attracted lots of attentions, that we are expecting many requests for tours in the up-coming months.</p>"+
-"<img src='images/news_images/181130B.jpg' width=700 height=300/>"+
-"<br><br><h4><strong>Day 3</strong></h4>"+ 
-"<p>John Augeri from Paris Digital University presented <u>The Rise of Informal Learning Spaces: Design, Challenges, Assessment</u>.  This topic resonates to our hearts as ACE has been long campaigning to bring good design into not just classrooms (formal learning spaces), but also to the informal spaces around it.  We understand learning is not limited in just within the walls of classrooms, students need quality space outside of classrooms for peer learning to exchange ideas and spark creativities. </p>"+
-"<img src='images/news_images/181130C.jpg' width=300 height=200/>"+
-"<img src='images/news_images/181130D.jpg' width=400 height=200 />"+
-"<p>During the session of <u>Implementing the LSRS (Learning Spaces Rating System) Across Campus: Multi-Institutional Perspectives</u>, we explored the challenges and opportunities of how multiple institutions have used the LSRS to evaluate their entire classroom ecosystem.  It is an in-depth discussion of how The Learning Space Rating System (LSRS) can help institutions measure their classrooms' potential to support active learning and can be used at all stages of planning and design. An example of how Harvard University uses the data to Evaluate a Pilot Project:</p>"+
-"<img src='images/news_images/181130E.jpg' width=750 height=400/>"+
-"<br><br><h4><strong>Day 4</strong></h4>"+ 
-"<p>On the last day, ACE attended <u>Design Thinking: Leading Change Across Your Organization</u>.  This session explored implementation of Design Thinking across an organization. Design thinking defines, researches, ideates, prototypes, selects, and implements. We use this process as the cornerstone of creating user-centered opportunities to redesign our learning spaces. </p>"+
-"<img src='images/news_images/181130F.jpg' width=700 height=400/>"+
-"<p>Before we headed to the airport, Steve and I were very lucky to run into Yan Tam-Seguin from UTM.  A leading member on the designing of UTM’s future Student Services Plaza, in her spare time, Yan is an avid traveler. During the 1.5hr crush tour, she took us to Denver Milk Market District and Union Station.  Both are recent downtown revitalization projects that celebrates the city’s history and local flavor. </p>"+
-"<img src='images/news_images/181130G.jpg' width=700 height=600 />"
+  {
+    'title': 'Educause 2018 Annual Conference in Denver Colorado',
+    'author': 'By Emily Ling, Architect, Classroom Design and Standard Officer, ACE Design Team ',
+    'date': 'November 30, 2018',
+    'image': 'EMILY HEADSHOT SM.jpg',
+    'summary': "What happens when you put thousands of Teaching and Learning Innovation Leaders and Higher Ed IT Professionals in the same place for one week?  This October, Steve Bailey (Director, Academic + Campus Events) and I went to the Mile High City to attend the highly anticipated Educause 2018 Conference. ",
+    'content': "<p>What happens when you put thousands of Teaching and Learning Innovation Leaders and Higher Ed IT Professionals in the same place for one week?  This October, Steve Bailey (Director, Academic + Campus Events) and I went to the Mile High City to attend the highly anticipated Educause 2018 Conference.</p>" +
+      "<br><h4><strong>Day 1</strong></h4>" +
+      "<p>At the <u>Pre-Conference Workshop Learning Space Design Jam</u> facilitated by Adam Finkelstein (McGill), we feedback on each participants learning space designs to explore how design thinking can enhance the learning space design process. We learned from each other’s experience at updating classroom to better Teaching & Learning experience. Common concerns shared across Institutions were: Faculty Engagement, Ownership of classrooms, Budget and Funding, Policy, technological evolution.</p>" +
+      "<img src='images/news_images/181130A.jpg' />" +
+      "<br><br><h4><strong>Day 2</strong></h4>" +
+      "<p>During the <u>Keynote Speech: Eavesdropping on America's - Conversation on Race</u>, Michele Norris shared how her post-card pet project gained international awareness of racial issues through the use of website. Initially, Michele started the Race Card Project by mailing post cards to participants asking for six words to describe the individual’s idea of race, however, through the later use of website and social media, it became an international sensation that snapshots paint a vivid picture of America's attitudes and experiences about race during a fascinating moment in American history. </p>" +
+      "<p>At <u>Learning Space Design Community Group Session</u>, the Learning Space Design leaders around the globe to discuss on topics from what makes a physical space conducive to learning to the principles/processes of effective learning space design. Each School shared ideas and experience on how formal and informal spaces impact teaching practices, learning activities, student interactions, and campus sense of community. ACE’s presentation of Myhal Centre for Engineering Innovation & Entrepreneurship attracted lots of attentions, that we are expecting many requests for tours in the up-coming months.</p>" +
+      "<img src='images/news_images/181130B.jpg' width=700 height=300/>" +
+      "<br><br><h4><strong>Day 3</strong></h4>" +
+      "<p>John Augeri from Paris Digital University presented <u>The Rise of Informal Learning Spaces: Design, Challenges, Assessment</u>.  This topic resonates to our hearts as ACE has been long campaigning to bring good design into not just classrooms (formal learning spaces), but also to the informal spaces around it.  We understand learning is not limited in just within the walls of classrooms, students need quality space outside of classrooms for peer learning to exchange ideas and spark creativities. </p>" +
+      "<img src='images/news_images/181130C.jpg' width=300 height=200/>" +
+      "<img src='images/news_images/181130D.jpg' width=400 height=200 />" +
+      "<p>During the session of <u>Implementing the LSRS (Learning Spaces Rating System) Across Campus: Multi-Institutional Perspectives</u>, we explored the challenges and opportunities of how multiple institutions have used the LSRS to evaluate their entire classroom ecosystem.  It is an in-depth discussion of how The Learning Space Rating System (LSRS) can help institutions measure their classrooms' potential to support active learning and can be used at all stages of planning and design. An example of how Harvard University uses the data to Evaluate a Pilot Project:</p>" +
+      "<img src='images/news_images/181130E.jpg' width=750 height=400/>" +
+      "<br><br><h4><strong>Day 4</strong></h4>" +
+      "<p>On the last day, ACE attended <u>Design Thinking: Leading Change Across Your Organization</u>.  This session explored implementation of Design Thinking across an organization. Design thinking defines, researches, ideates, prototypes, selects, and implements. We use this process as the cornerstone of creating user-centered opportunities to redesign our learning spaces. </p>" +
+      "<img src='images/news_images/181130F.jpg' width=700 height=400/>" +
+      "<p>Before we headed to the airport, Steve and I were very lucky to run into Yan Tam-Seguin from UTM.  A leading member on the designing of UTM’s future Student Services Plaza, in her spare time, Yan is an avid traveler. During the 1.5hr crush tour, she took us to Denver Milk Market District and Union Station.  Both are recent downtown revitalization projects that celebrates the city’s history and local flavor. </p>" +
+      "<img src='images/news_images/181130G.jpg' width=700 height=600 />"
   },
-{
-      'title': 'Great Classrooms on Campus: Listening to Students and Faculty',
-      'author': 'By Kate Bowers, Senior Project Assistant & Nick Feinig, Senior Research Assistant',
-      'date': 'December 11, 2018',
-      'image': 'Kate & Nick.jpg',
-      'link': 'http://blogs.studentlife.utoronto.ca/innovationhub/great-classrooms-on-campus-listening-to-students-and-faculty/',
-      'summary': "Many factors contribute to an ideal learning environment on campus, and the Transforming the Instructional Landscape (TIL) team lead by Academic and Campus Events (ACE) is working hard to understand deeply how student and	 faculty needs can be incorporated into classroom design.",   
-'content': 
-"<p>Many factors contribute to an ideal learning environment on campus, and the <u><a href='https://ace.utoronto.ca/til'>Transforming the Instructional Landscape</a></u> (TIL) team lead by <u><a href='https://ace.utoronto.ca'>Academic and Campus Events</a></u> (ACE) is working hard to understand deeply how student and faculty needs can be incorporated into classroom design.  In fact, over the past two weeks, the TIL team has run a series of events to ask students and faculty, “what makes a classroom great?”  From movable furniture to screen-sharing capabilities for students, newly created classrooms on campus enable a shift in both how students think about learning and how faculty think about teaching.</p>"
- +"<img src='images/news_images/181211 ACE-Furniture-Fair-06-768x512.jpg'/>"+
-"<p>So far in the research process for the <u><a href='https://www.ace.utoronto.ca/til/'>TIL project</a></u> we have hit some impressive numbers. With <strong>174 classrooms</strong> up for renovation. there is a tremendous opportunity to change the pedagogical landscape at U of T and transform not just the learning experience for students, but also the social experience of attending a large institution like U of T. With a move toward more collaborative work, group seating and active learning spaces, new classrooms on campus will provide opportunities for academic and student community development.</p>"
-+
-"<p>One such space that showcases a new classroom style is Lee & Margaret Lau Auditorium in the Myhal Centre for Engineering Innovation and Entrepreneurship. With <strong>468 seats</strong> set in small groups, microphones for sharing ideas, and a <strong>60-foot video wall</strong>, this feat of design and technology is an impressive new space that instructors are eager to try out for their large classes. Over <strong>40 faculty, teaching support staff and AV specialists</strong> came out on November 27th to our event Myhal 150: Bring Us Your Vision, Make It a Reality. Keen to learn about the new technological capabilities of this room, and to provide feedback on teaching experience thus far, many faculty shared their teaching visions with the <u><a href='https://www.ace.utoronto.ca/til/'>TIL</a></u> team.</p>"
-+
-"<p>One such vision includes combined lecture/tutorial sections. Lectures could be interspersed with activities completed at each desk cluster and monitored by the instructor from the teaching station. Another emphasized resource sharing: students can actively contribute quotation, articles, and video clips mid lecture, which the instructor can seamlessly integrate into the flow of the class. These examples illustrate the collaborative nature of Myhal 150. Thanks to advances in technology and a greater understanding of the relationship between classroom space and pedagogy, university classes are no longer limited to the unidirectional flow of information from instructor to student.</p>"
-+"<img src='images/news_images/181211 ACE-Furniture-Fair-18-768x512.jpg'/>" + 
-"<p>In addition to faculty engagement in our research, the recent furniture events hosted by <u><a href='https://ace.utoronto.ca/'>ACE</a></u> brought us feedback from <strong>over 700 students</strong> on the furniture they prefer, their favourite classrooms on campus, and challenges they encounter in classes both large and small. Themes from these conversations highlighted student needs for accessible seating and ample storage space for belongings, among many others.</p>"
-+ 
-"<p>The next big phase of the <u><a href='https://www.ace.utoronto.ca/til/'>TIL</a></u> project is to engage in data analysis to uncover the core needs of classrooms users such that we can find innovative ways to bring it all together into classroom re-design. We are still collecting data and encourage any students or faculty who wish to share their experiences on campus to reach out to the TIL team at <a href='mailto:classroom.ace@utoronto.ca'>classroom.ace@utoronto.ca</a></p>"
- },
+  {
+    'title': 'Great Classrooms on Campus: Listening to Students and Faculty',
+    'author': 'By Kate Bowers, Senior Project Assistant & Nick Feinig, Senior Research Assistant',
+    'date': 'December 11, 2018',
+    'image': 'Kate & Nick.jpg',
+    'link': 'http://blogs.studentlife.utoronto.ca/innovationhub/great-classrooms-on-campus-listening-to-students-and-faculty/',
+    'summary': "Many factors contribute to an ideal learning environment on campus, and the Transforming the Instructional Landscape (TIL) team lead by Academic and Campus Events (ACE) is working hard to understand deeply how student and	 faculty needs can be incorporated into classroom design.",
+    'content': "<p>Many factors contribute to an ideal learning environment on campus, and the <u><a href='https://ace.utoronto.ca/til'>Transforming the Instructional Landscape</a></u> (TIL) team lead by <u><a href='https://ace.utoronto.ca'>Academic and Campus Events</a></u> (ACE) is working hard to understand deeply how student and faculty needs can be incorporated into classroom design.  In fact, over the past two weeks, the TIL team has run a series of events to ask students and faculty, “what makes a classroom great?”  From movable furniture to screen-sharing capabilities for students, newly created classrooms on campus enable a shift in both how students think about learning and how faculty think about teaching.</p>" +
+      "<img src='images/news_images/181211 ACE-Furniture-Fair-06-768x512.jpg'/>" +
+      "<p>So far in the research process for the <u><a href='https://www.ace.utoronto.ca/til/'>TIL project</a></u> we have hit some impressive numbers. With <strong>174 classrooms</strong> up for renovation. there is a tremendous opportunity to change the pedagogical landscape at U of T and transform not just the learning experience for students, but also the social experience of attending a large institution like U of T. With a move toward more collaborative work, group seating and active learning spaces, new classrooms on campus will provide opportunities for academic and student community development.</p>" +
+      "<p>One such space that showcases a new classroom style is Lee & Margaret Lau Auditorium in the Myhal Centre for Engineering Innovation and Entrepreneurship. With <strong>468 seats</strong> set in small groups, microphones for sharing ideas, and a <strong>60-foot video wall</strong>, this feat of design and technology is an impressive new space that instructors are eager to try out for their large classes. Over <strong>40 faculty, teaching support staff and AV specialists</strong> came out on November 27th to our event Myhal 150: Bring Us Your Vision, Make It a Reality. Keen to learn about the new technological capabilities of this room, and to provide feedback on teaching experience thus far, many faculty shared their teaching visions with the <u><a href='https://www.ace.utoronto.ca/til/'>TIL</a></u> team.</p>" +
+      "<p>One such vision includes combined lecture/tutorial sections. Lectures could be interspersed with activities completed at each desk cluster and monitored by the instructor from the teaching station. Another emphasized resource sharing: students can actively contribute quotation, articles, and video clips mid lecture, which the instructor can seamlessly integrate into the flow of the class. These examples illustrate the collaborative nature of Myhal 150. Thanks to advances in technology and a greater understanding of the relationship between classroom space and pedagogy, university classes are no longer limited to the unidirectional flow of information from instructor to student.</p>" +
+      "<img src='images/news_images/181211 ACE-Furniture-Fair-18-768x512.jpg'/>" +
+      "<p>In addition to faculty engagement in our research, the recent furniture events hosted by <u><a href='https://ace.utoronto.ca/'>ACE</a></u> brought us feedback from <strong>over 700 students</strong> on the furniture they prefer, their favourite classrooms on campus, and challenges they encounter in classes both large and small. Themes from these conversations highlighted student needs for accessible seating and ample storage space for belongings, among many others.</p>" +
+      "<p>The next big phase of the <u><a href='https://www.ace.utoronto.ca/til/'>TIL</a></u> project is to engage in data analysis to uncover the core needs of classrooms users such that we can find innovative ways to bring it all together into classroom re-design. We are still collecting data and encourage any students or faculty who wish to share their experiences on campus to reach out to the TIL team at <a href='mailto:classroom.ace@utoronto.ca'>classroom.ace@utoronto.ca</a></p>"
+  },
 
 ];
-
