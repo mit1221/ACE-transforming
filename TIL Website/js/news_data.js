@@ -124,6 +124,42 @@ var newsInfo = [{
       "<p>In addition to faculty engagement in our research, the recent furniture events hosted by <u><a href='https://ace.utoronto.ca/'>ACE</a></u> brought us feedback from <strong>over 700 students</strong> on the furniture they prefer, their favourite classrooms on campus, and challenges they encounter in classes both large and small. Themes from these conversations highlighted student needs for accessible seating and ample storage space for belongings, among many others.</p>" +
       "<p>The next big phase of the <u><a href='https://www.ace.utoronto.ca/til/'>TIL</a></u> project is to engage in data analysis to uncover the core needs of classrooms users such that we can find innovative ways to bring it all together into classroom re-design. We are still collecting data and encourage any students or faculty who wish to share their experiences on campus to reach out to the TIL team at <a href='mailto:classroom.ace@utoronto.ca'>classroom.ace@utoronto.ca</a></p>"
   },
+  {
+    'title': 'What Makes a Classroom Great? Join us and share your thoughts!',
+    'author': 'By Julia Smeed, Innovation Projects Officer',
+    'date': 'January 22, 2019',
+    'image': 'julia.jpg',
+    'link': 'http://blogs.studentlife.utoronto.ca/innovationhub/what-makes-a-classroom-great-join-us-and-share-your-thoughts/',
+    'summary': "The Transforming the Instructional Landscape team is pleased to invite students, staff and faculty to participate in our upcoming What Makes a Classroom Great? event.  Join us to explore different learning environments, imagine classroom possibilities and play with classroom furniture options.  Come and tell us what you think and we’ll have free pizza as our way of thanking you for your participation.",
+    'content': "<p>The <a href='http://blogs.studentlife.utoronto.ca/innovationhub/designing-classrooms-with-and-not-for-the-university-community/#more-2576'>Transforming the Instructional Landscape team</a> is pleased to invite students, staff and faculty to participate in our upcoming&nbsp;<em>What Makes a Classroom Great?&nbsp;</em>event.&nbsp; Join us to explore different learning environments, imagine classroom possibilities and play with classroom furniture options.&nbsp; Come and tell us what you think and we’ll have free pizza as our way of thanking you for your participation.</p>" +
+      "<p>Drop in on Tuesday February 5th from 1-4pm at Sidney Smith, Wednesday February 6th from 12-3pm at OISE or Thursday February 7th from 1-4pm at Robarts Library.&nbsp; We look forward to seeing you there!&nbsp; You can learn more about the Transforming the Instructional Landscape initiative by visiting <a href='https://www.ace.utoronto.ca/til/'>uoft.me/til</a></p>" +
+      "<img src='images/news_images/190122A.png'/>"
+  },
+  {
+    'title': '#UofTBTS16: Classroom upgrades coming to a room near you',
+    'author': 'By Noreen Ahmed-Ullah & Arthur Kaptainis',
+    'date': 'January 22, 2019',
+    'link': 'https://www.utoronto.ca/news/uoftbts16-classroom-upgrades-coming-room-near-you',
+    'summary': "Students returning to school may see wider seats, more writing space - and get this - electrical outlets within reach to charge laptops and phones.",
+    'content': "<img src='images/news_images/190122B.jpg' /><p>Students returning to school may see wider seats, more writing space – and get this – electrical outlets within reach to charge laptops and phones.</p>" +
+      "<p>This school year, a handful of classrooms at the St. George campus have the new amenities. In eight years, U of T administrators hope to have all of the classes retrofitted with new furniture and amenities that are timed to bring U of T into a new era of teaching and learning.</p>" +
+      "<p>“Modern day learners need power, more comfortable seats and more writing space,” said <strong>Steve Bailey</strong>, director of Academic and Campus Events. “The intent is that in eight years, we’ll have gone through all the classrooms on campus, transforming the instructional landscape.”</p>" +
+      "<p>As part of the program, the university is also looking at creating more active (also known as interactive) learning spaces. So, gone are the blackboards at the front of the classroom. You won’t see rectangular desks lined up in rows.</p>" +
+      "<p>Instead, think of hexagonal shaped desks that invite more student collaboration. And video screens and whiteboards hanging on multiple walls that allow for students to display their work and more teacher-student interaction.</p>" +
+      "<p>This year the university is piloting a second renovated active learning space at the Ontario Institute for Studies in Education building on Bloor Street. There's a similarly retrofitted classroom at the Faculty of Applied Science and Engineering’s Sanford Fleming building.</p>" +
+      "<p>Once they’ve solicited faculty feedback, university officials will see whether more classrooms like this should be created across the campus. Right now, the goal is to add to the active learning spaces planned for the new Centre for Engineering Innovation and Entreprenuership in the next two years.</p>" +
+      "<p>“It’s about recognizing that instruction in the current form takes many capacities,” Bailey said. “For some people, lecturing is the way to do it. For other people, it’s not about lecture theatres. They want to do more active learning. We’re introducing these spaces to the teaching community and then getting feedback from them on what works and what doesn’t work.”</p>" +
+      "<img src='images/news_images/190122C.jpg'/>" +
+      "<p>With the St. George campus alone home to 300 classrooms, some rooms over the years have been upgraded but more than 200 instructional spaces remain unchanged. Investments are planned over the next few years to upgrade and revitalize the rooms. The cost is estimated at $12 million, paid through both the operating budget and income generated from renting out university spaces.</p>" +
+      "<p>The upgrades can’t happen all at once. They need to be spaced out, taking place mostly during the quieter summer months when not all classrooms are in use. There are more classrooms expected to be upgraded over the winter break as well.</p>" +
+      "<p>In the eight upgraded classrooms located across St. George – at Galbraith, Health Sciences, McLennan Physical Laboratories, Medical Sciences, Ramsey Wright, Sanford Fleming, Sid Smith and OISE – students will see wider, more comfortable seats.</p>" +
+      "<p>In smaller classrooms, stiff chairs have been replaced with comfortable bucket seats that can move. In larger lecture halls, the chairs still may be fixed but can swing around or have more room, making it easier for students to get in and out of their seat.</p>" +
+      "<p>The small kidney-shaped desks have also been upgraded with in some cases flat tabletops, and in other cases wider writing surfaces – to accommodate laptops.</p>" +
+      "<p>Where possible, for every seat in a renovated classroom, there is an electrical outlet.</p>" +
+      "<p>Student feedback has made it clear that charging capacity is essential, Bailey said.</p>" +
+      "<p>Along with the upgrades to the classroom, Bailey’s office is working with faculties on a new approach to classroom assignment – one that considers a professor’s needs in the classroom rather than focusing on their faculty assignment first.</p>" +
+      "<p>“It’s a two-parter,” Bailey said. “We need a commitment to invest in our classrooms. But we also need a plan and direction on how we can get the right people in the right space.”</p>"
+  },
   /*
     {
       'title': '',

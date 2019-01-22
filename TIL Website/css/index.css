@@ -2252,7 +2252,7 @@ form input[type=submit]:disabled {
 
 #full-article img {
   max-width: 800px;
-  height: 300px;
+  max-height: 600px;
 }
 
 @media (max-width: 800px) {
