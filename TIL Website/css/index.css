@@ -663,11 +663,11 @@ body {
   background-image: url('../images/intro_image.jpg');
 }
 
-.background.emerging {
+.background.pedagogy {
   background-image: url('../images/emerging_image.jpg');
 }
-.background.emerging:after {
-  content: 'Emerging';
+.background.pedagogy:after {
+  content: 'Active Learning Pedagogy';
 }
 
 .background.expanding {
