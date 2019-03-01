@@ -3,8 +3,7 @@ var domain = 'https://ace.utoronto.ca/images/Photos/Website/room_pics/';
 
 var seasonsFullform = {
   1: 'Winter',
-  2: 'Spring',
-  3: 'Summer',
+  2: 'Summer',
   4: 'Fall'
 };
 
@@ -27,9 +26,6 @@ if (!String.prototype.startsWith) {
 function formattedDate(season1, season2, year) {
   if (year == 2023) {
     return "To be determined"
-  }
-  if (season1 == 2) {
-    return seasonsFullform[season1] + '/' + seasonsFullform[season2] + ' ' + year;
   }
   return seasonsFullform[season1] + ' ' + year;
 }
@@ -484,19 +480,12 @@ Rooms.prototype.showRoomsBy = function(type) { // type is either 'date' or 'buil
     var heading = document.createElement('DIV');
     heading.className = 'category-heading';
 
-    // create the season icons
+    // create the season icon
     if (!isNaN(categories[i].charAt(0))) {
-      var seasonImage1 = document.createElement('IMG');
-      seasonImage1.src = 'images/' + seasonsFullform[categories[i].charAt(0)] + '.svg';
-      seasonImage1.className = 'heading-image';
-      heading.appendChild(seasonImage1);
-
-      if (categories[i].charAt(0) == 2) {
-        var seasonImage2 = document.createElement('IMG');
-        seasonImage2.src = 'images/' + seasonsFullform[categories[i].charAt(2)] + '.svg';
-        seasonImage2.className = 'heading-image';
-        heading.appendChild(seasonImage2);
-      }
+      var seasonImage = document.createElement('IMG');
+      seasonImage.src = 'images/' + seasonsFullform[categories[i].charAt(0)] + '.svg';
+      seasonImage.className = 'heading-image';
+      heading.appendChild(seasonImage);
     } else {
       // create the building icon
       var image = document.createElement('IMG');
