@@ -24,9 +24,6 @@ if (!String.prototype.startsWith) {
 }
 
 function formattedDate(season1, season2, year) {
-  if (year == 2023) {
-    return "To be determined"
-  }
   return seasonsFullform[season1] + ' ' + year;
 }
 
