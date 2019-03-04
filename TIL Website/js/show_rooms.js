@@ -127,7 +127,7 @@ function addViewer(card) {
     var year = temp2[1];
     var date = formattedDate(temp[0], temp2[0], year);
     dateText.innerHTML = this.type != 'Ongoing' ? (this.type == 'Pilot' ?
-        '<strong>Completed:</strong> ' + temp2[1] :
+        '<strong>Completed:</strong> ' + temp2[1] : // show just the year for pilot project rooms
         '<strong>Completed:</strong> ' + date) :
       '<strong>Upgrade scheduled:</strong> ' + date;
     container.appendChild(dateText);
@@ -144,7 +144,6 @@ function addViewer(card) {
     // creating the scope icon images for the room
     var scopeIcons = document.createElement('DIV');
     var scopes = roomsToScopeDict[this.building + this.roomNumber];
-
     if (scopes != null && scopes.constructor !== Array) {
       if (this.type == 'Pilot') {
         scopes = scopes[this.date.split('-')[1]];
