@@ -215,19 +215,24 @@ body {
   align-items: center;
 }
 
-.numbers-body, .themes {
+.numbers-body, .themes, .principles {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
   width: 100%;
 }
 
-.number-box, .theme-card {
+.number-box, .theme-card, .principle {
   flex-basis: 200px;
   display: flex;
   flex-direction: column;
   align-items: center;
   transform-origin: top left;
+}
+
+.principle {
+  flex-basis: 45%;
+  align-items: flex-start;
 }
 
 .number {
@@ -247,7 +252,7 @@ body {
 }
 
 @media (max-width: 700px) {
-  .number-box, .theme-card {
+  .number-box, .theme-card, .principle {
     flex-basis: 400px;
   }
 }
@@ -266,12 +271,27 @@ body {
   max-width: 200px;
 }
 
-.theme-card p:last-of-type {
+.principle p {
+  max-width: 100%;
+}
+
+.theme-card p:last-of-type, .principle p:last-of-type {
   flex-grow: 1;
 }
 
 .theme-card img {
   height: 110px;
+}
+
+.principle-logo-text {
+  display: flex;
+  align-items: flex-end;
+}
+
+.principle img {
+  display: inline;
+  height: 40px;
+  padding-right: 10px;
 }
 
 /* ----------------------- HEADER -------------------- */
@@ -293,7 +313,7 @@ body {
 .brand {
   position: absolute;
   float: left;
-  line-height: 75px;
+  /* line-height: 75px; */
 }
 
 .brand a,
@@ -505,7 +525,7 @@ body {
 .navigation #image {
   display: flex;
   align-items: center;
-  padding: 10px 25px;
+  padding: 10px 20px;
 }
 
 #uoft_logo {
@@ -513,21 +533,16 @@ body {
   padding-right: 15px;
 }
 
-#ace_and_til {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-}
-
-#ace_and_til img {
+.navigation #image img {
   padding-left: 10px;
 }
 
-#ace_logo {
-  height: 20px;
+.navigation #image a {
+  display: flex;
+  height: 100%;
 }
 
-#til_logo {
+#ace_logo, #til_logo {
   height: 25px;
 }
 
@@ -536,11 +551,7 @@ body {
     height: 30px;
   }
 
-  #ace_logo {
-    height: 15px;
-  }
-
-  #til_logo {
+  #ace_logo, #til_logo {
     height: 15px;
   }
 }
@@ -692,6 +703,7 @@ body {
 
 .background.design-principles {
   background-image: url('../images/user_feedback.jpg');
+  background-position: 0 42%;
 }
 
 /* Safari 4.0 - 8.0 */
