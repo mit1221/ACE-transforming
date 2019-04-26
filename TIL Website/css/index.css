@@ -543,16 +543,16 @@ body {
 }
 
 #ace_logo, #til_logo {
-  height: 25px;
+  height: 30px;
 }
 
-@media (max-width: 500px) {
+@media (max-width: 630px) {
   #uoft_logo {
     height: 30px;
   }
 
   #ace_logo, #til_logo {
-    height: 15px;
+    height: 20px;
   }
 }
 
