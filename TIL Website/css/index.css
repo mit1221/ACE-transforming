@@ -690,6 +690,10 @@ body {
   background-image: url('../images/accessibility.png');
 }
 
+.background.design-principles {
+  background-image: url('../images/user_feedback.jpg');
+}
+
 /* Safari 4.0 - 8.0 */
 @-webkit-keyframes move-in {
   from {opacity: 0; transform:  translateX(-30px);}
@@ -1157,6 +1161,11 @@ button img, .button img, .button svg {
   -webkit-animation: slide-in 1s; /* Safari 4.0 - 8.0 */
   animation: slide-in 1s;
 }
+
+.resize img {
+  height: 100%;
+}
+
 .handle {
   /* Thin line seperator */
   position: absolute;

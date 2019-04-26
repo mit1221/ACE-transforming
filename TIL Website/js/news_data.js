@@ -1,4 +1,4 @@
-var newsInfo = [{
+﻿var newsInfo = [{
     'title': 'Designing Classrooms "with" and not "for" the University Community',
     'author': 'By Julia Smeed, Innovation Projects Officer',
     'date': 'November 7, 2018',
@@ -161,6 +161,29 @@ var newsInfo = [{
       "<p>Along with the upgrades to the classroom, Bailey’s office is working with faculties on a new approach to classroom assignment – one that considers a professor’s needs in the classroom rather than focusing on their faculty assignment first.</p>" +
       "<p>“It’s a two-parter,” Bailey said. “We need a commitment to invest in our classrooms. But we also need a plan and direction on how we can get the right people in the right space.”</p>"
   },
+  {
+      'title': 'Classroom 2.0: How U of T Engineering is inspiring new innovative, accessible learning spaces',
+      'author': 'By Romi Levine',
+      'date': 'February 6, 2019',
+          'link': 'https://news.engineering.utoronto.ca/classroom-2-0-how-u-of-t-engineering-is-inspiring-new-innovative-accessible-learning-spaces/',
+      'summary': "Steven Bailey and Emily Ling of Academic + Campus Events believe the Lee & Margaret Lau Auditorium, located in the new Myhal Centre for Engineering Innovation & Entrepreneurship, is a model for the future of teaching and learning at the university.",
+      'content':"<img src='images/news_images/190206A.jpg'/>" + 
+	  "<p>When it comes to lecture halls, U of T Engineering’s Lee & Margaret Lau Auditorium is the gold standard.</p>" + "<p>The room, located in the new Myhal Centre for Engineering Innovation & Entrepreneurship, is outfitted with the latest technology – including a 60-foot-wide screen, believed to be the largest of any North American classroom.</p>" + 
+	  "<p>But it’s the subtleties of its design that make the 468-person classroom special, says Steven Bailey, director, Academic + Campus Events (ACE) at U of T.</p>" +
+	  "<p>Instead of rows of chairs facing the front of the room, seats are arranged in groups of four around a rectangular table, with plenty of room for instructors, TAs and students to walk through the aisles.</p>" +
+	  "<p>“The focus of the room is not at the front like a typical lecture hall, the focus is actually at the table,” says Bailey. “This is where the important conversations and sharing of ideas is going to happen.”</p>" +
+	  "<p>The auditorium is a model for the future of teaching and learning – but at a nearly 192-year-old university with plenty of aging classrooms, replicating this brand-new lecture hall gets a bit complicated.</p>" +
+	  "<p>That’s where Bailey and the ACE team come in. They’ve set out on an ambitious plan to renovate 174 classrooms on campus through the Transforming the Instructional Landscape (TIL) initiative</p>" +
+	  "<p>“We can’t build everything to look like that,” says Bailey of the Lee & Margaret Lau Auditorium.  “But what we can do is to take elements of that and incorporate it into other spaces.”</p>" +
+	  "<img src='images/news_images/190206B.jpg'/>" +
+	  "<p>This week, ACE, in partnership with Student Life’s Innovation Hub, will be hosting events on the downtown Toronto campus, inviting the U of T community to share their input at What Makes a Classroom Great? Students, staff and faculty can test out different types of furniture and provide input on what they like.</p>" +
+	  "<p>“We can get an idea of how they can be combined or improved in a classroom setting to help their learning and teaching experience,” says Emily Ling, architect and classroom design and development officer at ACE.</p>" +
+	  "<p>While the TIL initiative only involves renovating classrooms on the downtown Toronto campus, U of T Scarborough and U of T Mississauga are taking part in the conversation while embarking on similar initiatives, says Bailey.</p>" +
+	    "<p>“Everyone is excited about what we’re doing here and we’re bringing the community together to work on this.”</p>"
+	   
+	}, 
+	
+	
   /*
     {
       'title': '',
